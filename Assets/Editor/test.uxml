@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/test.uss?fileID=7433441132597879392&amp;guid=79d9859f7ad2fe44da9785f7fb73b246&amp;type=3#test" />
+    <engine:Label text="Hello World! From UXML" />
+    <engine:Label text="Hello World! With Style" class="custom-label" />
+    <engine:Button text="create" name="createuss" />
+    <engine:Button text="Button" style="height: 117px; width: 344px;" />
+</engine:UXML>
