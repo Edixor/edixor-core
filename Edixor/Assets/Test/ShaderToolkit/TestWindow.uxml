@@ -1,0 +1,22 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Edixor/Test/ShaderToolkit/TestWindow.uss?fileID=7433441132597879392&amp;guid=3eeb36b1a90179540acf37f0a02884d8&amp;type=3#TestWindow" />
+    <Style src="project://database/Assets/test/TestFacade.uss?fileID=7433441132597879392&amp;guid=5d01202af0e91b740884cc34a532f3a4&amp;type=3#TestFacade" />
+    <engine:Label text="Hello World! From UXML" />
+    <engine:Label text="Hello World! With Style" class="custom-label" />
+    <engine:TextField label="Text Field" placeholder-text="filler text" name="id2" style="height: 39px; width: 510px; align-self: flex-start;" />
+    <engine:ScrollView style="flex-direction: column; align-items: stretch; justify-content: space-between; align-self: stretch; height: 288px;">
+        <engine:Button text="Button" name="Button" class="custom-buttom" />
+        <engine:Button text="Button" name="Button" style="color: rgb(168, 82, 82);" />
+        <engine:Button text="Button" name="Button" class="custom-buttom" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+        <engine:Button text="Button" name="Button" />
+    </engine:ScrollView>
+</engine:UXML>

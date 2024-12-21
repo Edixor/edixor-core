@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class BFPStyle {
-    private BFPStyleModel model;
+public class ExUITStyle {
+    private ExUITModel model;
 
-    public BFPStyle(BFPStyleModel model) {
+    public ExUITStyle(ExUITModel model) {
         this.model = model;
     }
 
-    public BFPStyleComponent GetStyleComponent(string name, TypeComponents? type = null) {
+    public ExUITComponent GetStyleComponent(TypeComponents? type) {
         if (type.HasValue) {
             for (int i = 0; i < model.components.Length; i++) {
                 if (model.components[i].type == type.Value) {
@@ -15,20 +15,14 @@ public class BFPStyle {
                 }
             }
         }
-
-        for (int i = 0; i < model.components.Length; i++) {
-            if (model.components[i].name == name) {
-                return model.components[i];
-            }
-        }
         return null;
     }
 
-    public void Update(BFPStyleModel newModel) {
+    public void Update(ExUITModel newModel) {
         this.model = newModel;
     }
 
-    public BFPStyleModel GetModel() {
+    public ExUITModel GetModel() {
         
         if (model != null)
         {

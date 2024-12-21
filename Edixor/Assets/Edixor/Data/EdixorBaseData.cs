@@ -3,14 +3,14 @@ using UnityEngine;
 using System.IO; 
 using System;  
 
-[CreateAssetMenu(fileName = "BaseDataPlagin", menuName = "BFP/BaseDataPlagin", order = 0)]
-public class EdixorBaseData : ScriptableObject {
+[CreateAssetMenu(fileName = "EdixorData", menuName = "Edixor/EdixorData", order = 0)]
+public class EdixorData : ScriptableObject {
     
     [SerializeField] private List<DataPlagin> plagins;
     [SerializeField] private DataTranslation languages;
     [SerializeField] private string version = "00.00.00";
     [SerializeField] private string mainPath;
-    public DataStyle dataStyle = new DataStyle(25);
+    public DataStyle styles = new DataStyle();
 
     public List<DataPlagin> Plagins => plagins;
     public DataTranslation Languages => languages;

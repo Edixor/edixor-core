@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class CustomEnum : Menu<CustomEnum, CMItemBool>
 {
     // Инициализация меню с заданным стилем
-    public void Initialize(BFPStyle style)
+    public void Initialize()
     {
-        this.style = style;
+        //this.style = style;
 
         // Загрузка состояний всех элементов при инициализации
         foreach (var menuItem in menuItems)

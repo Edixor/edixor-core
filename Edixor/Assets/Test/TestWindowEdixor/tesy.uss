@@ -1,0 +1,78 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%; /* Гарантирует, что root занимает всю высоту окна */
+}
+
+
+.top-section {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    background-color: rgb(44, 44, 44);
+    align-items: center;
+    padding: 0; /* Убираем внутренние отступы секции */
+    margin: 0; /* Убираем внешние отступы */
+    overflow-x: scroll; /* Включаем горизонтальную прокрутку */
+    overflow-y: hidden; /* Полностью отключаем вертикальную прокрутку */
+    scrollbar-width: thin; /* Управление шириной полосы прокрутки */
+    position: relative; /* Для управления положением полосы прокрутки */
+}
+
+.top-section > .unity-button {
+    height: 30px; /* Высота кнопки */
+    min-width: 0px; /* Сбрасываем минимальную ширину по умолчанию */
+    padding: 0 10px; /* Внутренние отступы кнопки для текста */
+    border-radius: 0px; /* Прямоугольные углы */
+    justify-content: center; /* Центровка текста внутри кнопки */
+    align-items: center; /* Вертикальное центрирование текста */
+    text-align: center; /* Центрирование текста по горизонтали */
+    margin: 0; /* Убираем промежуток между кнопками */
+    flex-shrink: 0; /* Запрещает сжиматься кнопкам в слайдере */
+}
+
+
+.middle-section {
+    flex-grow: 1; /* Заставляет среднюю секцию занимать всё оставшееся пространство */
+    background-color: rgb(102, 102, 102);
+}
+
+.bottom-section {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    height: 30px;
+    background-color: rgb(153, 153, 153);
+    align-items: center;
+    justify-content: space-between; /* Делит секцию на левую и правую стороны */
+}
+
+.left-section, .right-section {
+    display: flex;
+    flex-direction: row;
+    gap: 5px; /* Расстояние между кнопками */
+    flex-grow: 1; /* Обе секции занимают одинаковое пространство */
+}
+
+.left-section {
+    background-color: rgb(4, 71, 255);
+}
+
+.right-section {
+    background-color: rgb(255, 12, 12);
+    justify-content: flex-end; /* Элементы выравниваются по правому краю */
+}
+
+
+
+.left-section > .unity-button, 
+.right-section > .unity-button {
+    width: 25px;  /* Ширина кнопки */
+    height: 25px; /* Высота кнопки, равная ширине для квадрата */
+    border-radius: 2px; /* Прямоугольные углы */
+    padding: 0px; /* Убираем внутренние отступы, чтобы кнопка была полностью квадратной */
+    justify-content: center; /* Выравнивание текста по центру кнопки */
+    align-items: center; /* Вертикальное центрирование текста */
+    text-align: center;
+}

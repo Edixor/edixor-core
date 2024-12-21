@@ -1,12 +1,13 @@
+using UnityEngine.UIElements;
 using UnityEngine;
 
 [System.Serializable]
-public class BFPStyleElements
+public class ExUITElements
 {
-    public string name;
-    public GUIStyle displayOptions;
+    public TypeElements typeElements;
+    public StyleSheet displayOptions;
 
-    public GUIStyle GetGUIStyle() {
+    public StyleSheet GetGUIStyle() {
         return displayOptions;
     }
 }

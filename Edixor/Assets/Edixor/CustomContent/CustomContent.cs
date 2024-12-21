@@ -6,59 +6,17 @@ using System;
 public abstract class Menu<T, I> : EditorWindow where T : Menu<T, I> where I : ICMItem
 {
     protected List<I> menuItems = new List<I>();
-    protected BFPStyle style;
+    //protected BFPStyle style;
     protected bool isOpen = false;
     protected float itemHeight = 20f;
     protected static T activeMenu;
     
     // Dictionary to store groups of CMItemBool
     protected Dictionary<int, List<CMItemBool>> cmItemBoolGroups = new Dictionary<int, List<CMItemBool>>();
-    private int nextGroupId = 0;
+    //private int nextGroupId = 0;
 
     public void AddItem(I typeItem) {
         menuItems.Add(typeItem);
-    }
-
-    public void AddSomeItem<TItem>(TItem[] typeItems) where TItem : ICMItem
-    {
-        if (typeItems == null || typeItems.Length == 0)
-            return;
-
-        // Track the starting index for the new items
-        int minIndex = menuItems.Count;
-        int maxIndex = minIndex + typeItems.Length - 1;
-
-        // Determine item type and handle accordingly
-        if (typeof(TItem) == typeof(CMItemBool))
-        {
-            var boolItemsList = new List<CMItemBool>();
-            foreach (var item in typeItems)
-            {
-                if (item is CMItemBool boolItem)
-                {
-                    menuItems.Add((I)(ICMItem)boolItem); // Cast to I
-                    boolItemsList.Add(boolItem);
-                }
-            }
-
-            // Store the range of indices for this group
-            cmItemBoolGroups[nextGroupId] = boolItemsList;
-            nextGroupId++;
-        }
-        else if (typeof(TItem) == typeof(CMItemAction))
-        {
-            foreach (var item in typeItems)
-            {
-                if (item is CMItemAction actionItem)
-                {
-                    menuItems.Add((I)(ICMItem)actionItem); // Cast to I
-                }
-            }
-        }
-        else
-        {
-            throw new ArgumentException("Unsupported item type.");
-        }
     }
 
     public virtual void ShowMenu(Vector2 position)

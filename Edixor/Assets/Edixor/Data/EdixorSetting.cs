@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.UIElements; 
 using UnityEngine;
 using UnityEditor; 
 using System.IO;
@@ -6,7 +7,7 @@ using System;
 
 public static class EdixorSetting
 {
-    private static EdixorBaseData baseDataPlaginInstance;
+    private static EdixorData baseDataPlaginInstance;
 
     // Метод для проверки инициализации
     private static void CheckInitialization()
@@ -37,7 +38,7 @@ public static class EdixorSetting
             Debug.Log(assetPath);
 
             string relativeAssetPath = "Assets/Edixor/Data/BFPSetting.asset";
-            baseDataPlaginInstance = AssetDatabase.LoadAssetAtPath<EdixorBaseData>(relativeAssetPath);
+            baseDataPlaginInstance = AssetDatabase.LoadAssetAtPath<EdixorData>(relativeAssetPath);
 
             if (baseDataPlaginInstance == null)
             {
@@ -126,9 +127,9 @@ public static class EdixorSetting
         baseDataPlaginInstance?.InitializeMainPath();
     }
 
-    public static void AddBFPStyle(BFPStyleModel model) {
+    public static void AddBFPStyle(StyleSheet uss) {
         Debug.Log("2");
         CheckInitialization();
-        baseDataPlaginInstance?.dataStyle.NewStyle(new BFPStyle(model));
+        baseDataPlaginInstance?.styles.NewStyle(uss);
     }
 }

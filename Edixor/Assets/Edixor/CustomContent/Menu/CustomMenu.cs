@@ -4,9 +4,9 @@ using UnityEngine;
 public class CustomMenu : Menu<CustomMenu, ICMItem>
 {
     // Инициализация стиля меню
-    public void Initialize(BFPStyle style)
+    public void Initialize()
     {
-        this.style = style;
+        //this.style = style;
 
         // Загрузка состояния каждого элемента при инициализации
         foreach (var menuItem in menuItems)

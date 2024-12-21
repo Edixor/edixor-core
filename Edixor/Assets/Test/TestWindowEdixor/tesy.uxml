@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement class="root">
+        <ui:ScrollView class="top-section" mode="Horizontal">
+            <ui:Button name="toggleButton1" text="Window1" />
+            <ui:Button name="toggleButton2" text="Window2" />
+            <ui:Button name="toggleButton3" text="Window3" />
+            <ui:Button name="toggleButton4" text="Window4" />
+            <ui:Button name="toggleButton5" text="Window5" />
+        </ui:ScrollView>
+
+        <ui:VisualElement class="middle-section">
+            <ui:ScrollView name="scrollView" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="bottom-section">
+            <ui:VisualElement class="left-section">
+                <ui:Button name="leftButton1" text="&lt;" />
+                <ui:Button name="leftButton2" text="&gt;" />
+                <ui:Button name="Restart" text="Re" />
+            </ui:VisualElement>
+            <ui:VisualElement class="right-section">
+                <ui:Button name="rightButton1" text="F1" />
+                <ui:Button name="rightButton2" text="F2" />
+                <ui:Button name="rightButton3" text="F3" />
+                <ui:Button name="rightButton4" text="F4" />
+                <ui:Button name="rightButton5" text="F5" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

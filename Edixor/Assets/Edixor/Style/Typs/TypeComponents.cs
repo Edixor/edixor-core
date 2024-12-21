@@ -1,9 +1,9 @@
 public enum TypeComponents 
 {
-    meduim,
-    facade,
+    edixorWindow,
+    window,
     editor,
     menu,
-    menuEnum,
+    Enum,
     hint
 }
