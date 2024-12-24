@@ -1,27 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ui:UXML xmlns:ui="UnityEngine.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <ui:VisualElement class="root">
-        <ui:ScrollView class="top-section" mode="Horizontal">
-            <ui:Button name="mainWindow" text="main" />
-        </ui:ScrollView>
-
-        <ui:VisualElement class="middle-section">
-            <ui:ScrollView name="scrollView" />
+        <ui:VisualElement name="top-section" class="top-section">
         </ui:VisualElement>
-
+        <ui:VisualElement class="middle-section">
+            <ui:ScrollView class="middle-section-content" name="middle-section-content" />
+        </ui:VisualElement>
         <ui:VisualElement class="bottom-section">
-            <ui:VisualElement class="left-section">
-                <ui:Button name="..." text="&lt;" />
-                <ui:Button name="..." text="&gt;" />
-                <ui:Button name="Restart" text="Re" />
-            </ui:VisualElement>
-            <ui:VisualElement class="right-section">
-                <ui:Button name="..." text="F1" />
-                <ui:Button name="..." text="F2" />
-                <ui:Button name="..." text="F3" />
-                <ui:Button name="..." text="F4" />
-                <ui:Button name="..." text="F5" />
-            </ui:VisualElement>
+            <ui:VisualElement name="left-section" class="left-section" />
+            <ui:VisualElement name="right-section" class="right-section" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

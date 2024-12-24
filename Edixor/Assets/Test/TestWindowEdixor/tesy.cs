@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class EdixorWindowTest : EditorWindow
 {
-    private Button toggleButton;
+    private List<EdixorFunction> boxFunction1 = new List<EdixorFunction>() {};
+    private List<EdixorFunction> boxFunction2 = new List<EdixorFunction>() {};
     private ScrollView scrollView;
 
     // Статическая переменная для хранения текущего окна
@@ -37,16 +39,34 @@ public class EdixorWindowTest : EditorWindow
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Test/TestWindowEdixor/tesy.uss");
         root.styleSheets.Add(styleSheet);
 
-        scrollView = root.Q<ScrollView>("scrollView");
+        // Добавляем кнопки в секции
+        VisualElement leftSection = root.Q<VisualElement>(className: "left-section");
+        VisualElement rightSection = root.Q<VisualElement>(className: "right-section");
 
-        // Добавляем элементы в ScrollView
-        for (int i = 0; i < 20; i++)
+        if (leftSection != null)
         {
-            scrollView.Add(new Label($"Item {i + 1}"));
+            AddButtonsWithIconsToSection(leftSection, boxFunction1);
         }
 
-        // Применяем обработчик для кнопки "Restart"
-        root.Q<Button>("Restart").clicked += RestartWindow;
+        if (rightSection != null)
+        {
+            AddButtonsWithIconsToSection(rightSection, boxFunction2);
+        }
+    }
+
+    private void AddButtonsWithIconsToSection(VisualElement section, List<EdixorFunction> functions)
+    {
+        foreach (var func in functions)
+        {
+            Button button = new Button(() => func.Activate());
+            button.name = func.Name;
+
+            // Добавляем изображение на кнопку
+            var icon = new Image { image = func.Icon };
+            button.Add(icon);
+
+            section.Add(button);
+        }
     }
 
     // Проверка, если окно открыто, то перезапускать его

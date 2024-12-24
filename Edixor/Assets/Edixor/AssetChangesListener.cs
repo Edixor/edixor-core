@@ -17,7 +17,7 @@ public class AssetChangesListener : AssetPostprocessor
             Debug.Log("Assets changed, checking window state...");
 
             // Проверяем, существует ли окно и не закрыто ли оно
-            var window = EdixorWindow.currentWindow;
+            var window = EdixorWindow.CurrentWindow;
             if (window != null)
             {
                 // Если окно открыто, то перезапустить его

@@ -1,46 +1,30 @@
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class EdixorWindow : EditorWindow
 {
-    private Button toggleButton;
-    private ScrollView scrollView;
+    public static EdixorWindow CurrentWindow { get; private set; }
 
-    public static EdixorWindow currentWindow;
+    private VisualElement scrollView;
+    private EdixorUIManager uiManager;
 
     [MenuItem("Window/EdixorWindow")]
     public static void ShowWindow()
     {
-        currentWindow = GetWindow<EdixorWindow>("EdixorWindow");
-        currentWindow.minSize = new Vector2(300, 200);
+        CurrentWindow = GetWindow<EdixorWindow>("EdixorWindow");
     }
 
     private void OnEnable()
     {
-        LoadUI();
-    }
-
-    private void LoadUI()
-    {
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Edixor/UI/EdixorWindow/EdixorWIndow.uxml");
-        VisualElement root = visualTree.Instantiate();
-
-        root.style.height = new StyleLength(Length.Percent(100));
-
-        rootVisualElement.Clear();
-        rootVisualElement.Add(root);
-
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Edixor/UI/EdixorWindow/EdixorWIndow.uss");
-        root.styleSheets.Add(styleSheet);
-
-        scrollView = root.Q<ScrollView>("scrollView");
-
+        uiManager = new EdixorUIManager(this);
+        uiManager.LoadUI();
     }
 
     public void RestartWindow()
     {
-        if (currentWindow != null && currentWindow == this)
+        if (CurrentWindow != null)
         {
             Debug.Log("Restarting window...");
             Close();
@@ -48,12 +32,16 @@ public class EdixorWindow : EditorWindow
         }
         else
         {
-            Debug.Log("Window is not open, skipping restart.");
+            Debug.LogWarning("Window is not open, skipping restart.");
         }
+    }
+
+    public EdixorUIManager GetUIManager() {
+        return uiManager;
     }
 
     private void OnDisable()
     {
-        currentWindow = null;
+        CurrentWindow = null;
     }
 }
