@@ -76,7 +76,7 @@ public class EdixorUIManager
 
         leftFunctions = new List<EdixorFunction> { new RestartFunction(window) };
         tabs = new List<EdixorTab> { new NewTab(scrollView)};
-        rightFunctions = new List<EdixorFunction> { new SettingsFunction(window, this)};
+        rightFunctions = new List<EdixorFunction> { new SettingsFunction(window, this), new HotKeysFunction(window, this)};
 
         AddTabs(topSection, scrollView, tabs);
 

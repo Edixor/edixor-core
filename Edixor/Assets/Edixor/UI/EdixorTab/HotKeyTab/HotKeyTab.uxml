@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Edixor/UI/EdixorTab/HotKeyTab/HotKeyTab.uss?fileID=7433441132597879392&amp;guid=49d01c32c3ce42f44a58952ea8a2b7f4&amp;type=3#HotKeyTab" />
+    <engine:VisualElement name="VisualElement" style="flex-grow: 1;">
+        <engine:Label text="Hotkeys" style="-unity-text-align: upper-center; font-size: 20px; -unity-font-style: bold;" />
+        <engine:Label text="Press Ctrl+x for: " />
+        <engine:Label text="Press Ctrl+x for: " />
+        <engine:Label text="Press Ctrl+x for: " />
+    </engine:VisualElement>
+</engine:UXML>

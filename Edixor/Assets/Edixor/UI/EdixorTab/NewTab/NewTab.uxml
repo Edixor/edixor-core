@@ -1,5 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:VisualElement style="flex-grow: 1;">
-        <engine:Label text="NewTab" style="font-size: 23px; -unity-font-style: bold; -unity-text-align: upper-center;" />
+        <engine:Label text="Edixor" style="font-size: 23px; -unity-font-style: bold; -unity-text-align: upper-center;" />
+        <engine:TextField placeholder-text="Найдите Команду" style="height: 46px; width: 355px; position: relative; right: auto; left: 10%;" />
+        <engine:DropdownField label="быстрые вкладки" />
     </engine:VisualElement>
 </engine:UXML>
