@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="tab-section" class="tab-section">
+        </ui:VisualElement>
+        <ui:VisualElement class="middle-section">
+            <ui:ScrollView class="middle-section-content" name="middle-section-content" />
+        </ui:VisualElement>
+        <ui:VisualElement name="function-section" class="function-section">
+            <ui:VisualElement name="command-function-section" class="command-function-section" />
+            <ui:VisualElement name="other-function-section" class="other-function-section" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

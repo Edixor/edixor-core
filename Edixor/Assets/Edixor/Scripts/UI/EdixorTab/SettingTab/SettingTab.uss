@@ -1,0 +1,38 @@
+.main-container {
+    padding: 20px;
+}
+
+.basic-setting-label {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.design-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.design-box {
+    background-color: #333333;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.image-button {
+    flex: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 80px;
+    max-width: 200px;
+    min-height: 80px;
+    max-height: 200px;
+}
+

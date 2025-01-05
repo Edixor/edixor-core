@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="root">
+        <ui:VisualElement class="left-section">
+            <ui:ScrollView name="left-scroll" class="left-scroll">
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement class="right-section">
+            <ui:VisualElement name="tab-section" class="tab-section">
+            </ui:VisualElement>
+            <ui:VisualElement class="middle-section">
+                <ui:ScrollView class="middle-section-content" name="middle-section-content" />
+            </ui:VisualElement>
+            <ui:VisualElement class="bottom-section">
+                <ui:VisualElement name="function-left-section" class="function-left" />
+                <ui:VisualElement name="function-right-section" class="function-right" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
