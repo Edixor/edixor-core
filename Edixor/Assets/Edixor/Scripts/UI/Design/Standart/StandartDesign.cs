@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
+[OrderAttributeFactory(1)]
 public class StandardDesign : EdixorDesign, IVersions
 {
     private VisualElement tabSection, commandSection, otherSection, functionSection;
@@ -45,8 +46,8 @@ public class StandardDesign : EdixorDesign, IVersions
             return;
         }
 
-        commandFunctions = new List<EdixorFunction> { functions[0] };
-        otherFunctions = new List<EdixorFunction> { functions[1] };
+        commandFunctions = SeparationоfFunctions(new[] { typeof(RestartFunction)});
+        otherFunctions = SeparationоfFunctions(new[] { typeof(HotKeysFunction), typeof(SettingsFunction) });
 
         AddButtonsToSection(commandSection, commandFunctions);
         AddButtonsToSection(otherSection, otherFunctions);
@@ -54,22 +55,6 @@ public class StandardDesign : EdixorDesign, IVersions
         InitializeVersionActions();
         ChangeVersion(window.GetSetting().GetDesignVersion());
     }
-
-    private void AddButtonsToSection(VisualElement section, List<EdixorFunction> functions)
-    {
-        if (section == null || functions == null) return;
-
-        foreach (var func in functions)
-        {
-            var button = new Button(() => func.Activate()); 
-            if (func.Icon != null)
-            {
-                button.Add(new Image { image = func.Icon });
-            }
-            section.Add(button);
-        }
-    }
-
 
     public void ChangeVersion(int version)
     {

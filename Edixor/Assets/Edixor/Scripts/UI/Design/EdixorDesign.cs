@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 public abstract class EdixorDesign
 {
@@ -92,6 +93,60 @@ public abstract class EdixorDesign
         }
 
         return null;
+    }
+
+    protected List<EdixorFunction> SeparationоfFunctions(Type[] types)
+    {
+        var functionsList = new List<EdixorFunction>();
+
+        foreach (var type in types)
+        {
+            if (!typeof(EdixorFunction).IsAssignableFrom(type))
+            {
+                Debug.LogError($"Type {type.Name} is not a subclass of EdixorFunction.");
+                continue;
+            }
+
+            try
+            {
+                var constructor = type.GetConstructor(new[] { typeof(EdixorWindow) });
+                if (constructor == null)
+                {
+                    Debug.LogError($"Type {type.Name} does not have a constructor accepting EdixorWindow.");
+                    continue;
+                }
+
+                var instance = constructor.Invoke(new object[] { window }) as EdixorFunction;
+                if (instance != null)
+                {
+                    functionsList.Add(instance);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error creating instance for type {type.Name}: {ex.Message}");
+            }
+        }
+
+        return functionsList;
+    }
+
+    protected void AddButtonsToSection(VisualElement section, List<EdixorFunction> functions)
+    {
+        if (section == null || functions == null) return;
+
+        foreach (var func in functions)
+        {
+            Button button = new Button(() => func.Activate());
+
+            if (func.Icon != null)
+            {
+                Image icon = new Image { image = func.Icon };
+                button.Add(icon);
+            }
+
+            section.Add(button);
+        }
     }
 
     public List<EdixorFunction> GetFunctions()

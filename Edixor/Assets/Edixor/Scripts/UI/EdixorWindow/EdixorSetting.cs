@@ -12,6 +12,7 @@ public class EdixorWindowSetting
 
     private List<EdixorDesign> designs;
     private List<EdixorFunction> functions;
+    private List<KeyAction> hotKeys;
 
     private bool isInitialized = false;
 
@@ -33,15 +34,16 @@ public class EdixorWindowSetting
     private void InitializeData()
     {
         EdixorFunctionFactory functionFactory = new EdixorFunctionFactory();
-        functionFactory.RegisterAllFunctions(window);
+        functionFactory.RegisterAll(window);
+        functions = functionFactory.GetAllItems();
 
-        functions = functionFactory.GetAllFunctions();
+        EdixorDesignFactory designFactory = new EdixorDesignFactory();
+        designFactory.RegisterAll(window);
+        designs = designFactory.GetAllItems();
 
-        designs = new List<EdixorDesign>
-        {
-            new StandardDesign(window),
-            new IntertedDesign(window)
-        };
+        KeyActionFactory hotKeysFactory = new KeyActionFactory();
+        hotKeysFactory.RegisterAll(window);
+        hotKeys = hotKeysFactory.GetAllItems();
     }
 
     public List<EdixorFunction> GetFunctions()
@@ -54,6 +56,12 @@ public class EdixorWindowSetting
     {
         EnsureInitialized();
         return new List<EdixorDesign>(designs);
+    }
+
+    public List<KeyAction> GetHotKeys()
+    {
+        EnsureInitialized();
+        return new List<KeyAction>(hotKeys);
     }
 
     public EdixorDesign GetCurrentDesign(int index = -1)

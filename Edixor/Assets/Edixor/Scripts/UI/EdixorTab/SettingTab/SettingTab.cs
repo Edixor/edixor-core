@@ -6,7 +6,6 @@ public class SettingTab : EdixorTab
 {
     private EdixorUIManager edixorUIManager;
     private EdixorWindow window;
-    private VisualElement root;
     
     public SettingTab(VisualElement ParentContainer, EdixorWindow window) : base(ParentContainer)
     {
@@ -43,10 +42,8 @@ public class SettingTab : EdixorTab
 
     public override void OnUI()
     {
-        // Получаем список функций
         List<EdixorFunction> functions = edixorUIManager.GetDesign().GetFunctions();
 
-        // Получаем контейнер для добавления элементов
         VisualElement designContainer = root.Q<VisualElement>("design-container");
         if (designContainer == null)
         {
@@ -90,6 +87,10 @@ public class SettingTab : EdixorTab
         EdixorDesign design = window.GetSetting().GetCurrentDesign(designIndex);
         if (design is IVersions version)
         {
+            if (version.countVersion == 0)
+            {
+                version.InitializeVersionActions();
+            }
             for (int j = 0; j < version.countVersion; j++)
             {
                 Button button = CreateButton(designIndex, j);
@@ -97,6 +98,7 @@ public class SettingTab : EdixorTab
             }
         } else
         {
+            Debug.Log("Create button");
             Button button = CreateButton(designIndex, 0);
             buttonRow.Add(button);
         }

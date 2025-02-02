@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
 
+[OrderAttributeFactory(2)]
 public class IntertedDesign : EdixorDesign
 {
     private VisualElement topSection;
@@ -10,8 +11,8 @@ public class IntertedDesign : EdixorDesign
     private VisualElement leftSection;
     private VisualElement rightSection;
  
-    private List<EdixorFunction> leftFunctions;
-    private List<EdixorFunction> rightFunctions;
+    private List<EdixorFunction> commandFunctions;
+    private List<EdixorFunction> otherFunctions;
 
     public override string PathUxml => "Assets/Edixor/Scripts/UI/Design/Inverted/Inverted.uxml";
     public override string PathUss => "Assets/Edixor/Scripts/UI/Design/Inverted/Inverted.uss";
@@ -29,29 +30,11 @@ public class IntertedDesign : EdixorDesign
         leftSection = root.Q<VisualElement>("function-left-section");
         rightSection = root.Q<VisualElement>("function-right-section");
 
-        leftFunctions = new List<EdixorFunction> { functions[0] };
-        rightFunctions = new List<EdixorFunction> { functions[1] };
+        commandFunctions = SeparationоfFunctions(new[] { typeof(RestartFunction)});
+        otherFunctions = SeparationоfFunctions(new[] { typeof(HotKeysFunction), typeof(SettingsFunction) });
 
-        AddButtonsToSection(leftSection, leftFunctions);
+        AddButtonsToSection(leftSection, commandFunctions);
 
-        AddButtonsToSection(rightSection, rightFunctions);
-    }
-
-    private void AddButtonsToSection(VisualElement section, List<EdixorFunction> functions)
-    {
-        if (section == null || functions == null) return;
-
-        foreach (var func in functions)
-        {
-            Button button = new Button(() => func.Activate());
-
-            if (func.Icon != null)
-            {
-                Image icon = new Image { image = func.Icon };
-                button.Add(icon);
-            }
-
-            section.Add(button);
-        }
+        AddButtonsToSection(rightSection, otherFunctions);
     }
 }

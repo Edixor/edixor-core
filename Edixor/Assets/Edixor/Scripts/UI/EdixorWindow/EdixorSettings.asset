@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ba1541a2affd744b50ac5ea6967b24, type: 3}
   m_Name: EdixorSettings
   m_EditorClassIdentifier: 
-  designIndex: 0
+  designIndex: 1
   designVersionIndex: 0

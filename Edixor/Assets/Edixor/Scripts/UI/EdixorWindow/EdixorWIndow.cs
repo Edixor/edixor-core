@@ -9,6 +9,7 @@ public class EdixorWindow : EditorWindow
     private VisualElement scrollView;
     private EdixorUIManager uiManager;
     private EdixorWindowSetting setting;
+    private EdixorHotKeys hotKeys;
 
     [MenuItem("Window/EdixorWindow")]
     public static void ShowWindow()
@@ -16,10 +17,21 @@ public class EdixorWindow : EditorWindow
         CurrentWindow = GetWindow<EdixorWindow>("EdixorWindow");
     }
 
+
     private void OnEnable()
     {
+        AssetChangesListener.OnRestartPending += RestartWindow;
+
         InitializeSettings();
         InitializeUI();
+        InitializeHotKet();
+    }
+
+    private void OnGUI()
+    {
+        if (hotKeys == null) hotKeys = new EdixorHotKeys(this);
+
+        hotKeys.OnKeys();
     }
 
     private void InitializeSettings()
@@ -28,8 +40,6 @@ public class EdixorWindow : EditorWindow
         {
             setting = new EdixorWindowSetting(this);
         }
-
-        // Проверяем существование настроек и создаем их, если их нет.
         setting.Load();
     }
 
@@ -37,6 +47,11 @@ public class EdixorWindow : EditorWindow
     {
         uiManager = new EdixorUIManager(this);
         uiManager.LoadUI();
+    }
+
+    private void InitializeHotKet()
+    {
+        //...
     }
 
     

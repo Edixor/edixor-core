@@ -7,7 +7,9 @@ public abstract class EdixorTab
     public abstract string Title { get; }
     public abstract string PathUxml { get; }
     public abstract string PathUss { get; }
+
     protected VisualElement ParentContainer;
+    protected VisualElement root;
 
     protected EdixorTab(VisualElement ParentContainer)
     {
@@ -23,7 +25,7 @@ public abstract class EdixorTab
             return;
         }
 
-        VisualElement root = visualTree.Instantiate();
+        root = visualTree.Instantiate();
         root.style.height = new StyleLength(Length.Percent(100));
 
         if (ParentContainer == null)

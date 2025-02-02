@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AssetChangesListener : AssetPostprocessor
 {
+    // Статическое событие, которое будет уведомлять о перезапуске окна
+    public static event System.Action OnRestartPending;
+
     // Флаг для предотвращения множественного перезапуска
     private static bool isRestartPending = false;
 
@@ -16,20 +19,14 @@ public class AssetChangesListener : AssetPostprocessor
         // Если был изменён хотя бы один файл
         if (importedAssets.Length > 0 || deletedAssets.Length > 0 || movedAssets.Length > 0)
         {
-            // Проверяем, существует ли окно
-            var window = EdixorWindow.CurrentWindow;
-            if (window != null && !isRestartPending)
+            if (!isRestartPending)
             {
                 isRestartPending = true; // Устанавливаем флаг
 
-                // Ожидаем до следующего кадра перед перезапуском окна
-                EditorApplication.delayCall += () =>
-                {
-                    window.RestartWindow();
-                    isRestartPending = false; // Сбрасываем флаг
-                };
+                // Оповещаем всех подписчиков, что перезапуск запланирова
+                OnRestartPending?.Invoke();
             }
         }
     }
 }
-#endif
+#endif 
