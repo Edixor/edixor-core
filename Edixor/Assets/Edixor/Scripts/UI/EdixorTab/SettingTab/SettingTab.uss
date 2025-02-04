@@ -36,3 +36,21 @@
     max-height: 200px;
 }
 
+.function-box {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    background-color: #222222;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+.function-button {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 2.5px; 
+}
+

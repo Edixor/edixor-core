@@ -29,10 +29,6 @@ public class RestartFunction : EdixorFunction, IFunctionSetting
 
     public void Setting(VisualElement root)
     {
-        VisualElement boxSetting = new VisualElement();
-        
-        boxSetting.Add(new Label(Name));
-
         Toggle tabCleaningToggle = new Toggle("Tab cleaning");
 
         tabCleaningToggle.RegisterValueChangedCallback(evt =>
@@ -47,10 +43,8 @@ public class RestartFunction : EdixorFunction, IFunctionSetting
             ClearCache = evt.newValue;
         });
 
-        boxSetting.Add(tabCleaningToggle);
-        boxSetting.Add(clearCacheToggle);
-
-        root.Add(boxSetting);
+        root.Add(tabCleaningToggle);
+        root.Add(clearCacheToggle);
     }
 
 }

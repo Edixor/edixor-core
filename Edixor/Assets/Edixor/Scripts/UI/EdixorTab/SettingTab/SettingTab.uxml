@@ -1,15 +1,11 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Edixor/UI/EdixorTab/SettingTab/SettingTab.uss?fileID=7433441132597879392&amp;guid=6fa26c3804420bb4fa6b2e9901a2c381&amp;type=3#SettingTab" />
-
-    <!-- Основной контейнер -->
+    <Style src="project://database/Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss?fileID=7433441132597879392&amp;guid=6fa26c3804420bb4fa6b2e9901a2c381&amp;type=3#SettingTab" />
     <engine:VisualElement class="main-container">
-        <!-- Заголовок "Basic Setting" -->
-        <engine:Label text="Basic Setting" class="basic-setting-label" />
-
-        <!-- Секция Design -->
+        <engine:Label text="Basic Setting" class="basic-setting-label" style="height: 23px; width: 309px;" />
         <engine:Label text="Design" class="design-label" />
-
-        <!-- Контейнер для динамических кнопо -->
-        <engine:VisualElement name="design-container" class="design-container"></engine:VisualElement>
+        <engine:VisualElement name="design-container" class="design-container" />
+        <engine:Label text="Function Setting" class="basic-setting-label" style="height: 25px; width: 309px;" />
+        <engine:VisualElement name="funcion-container" style="flex-grow: 1;" />
+        <engine:VisualElement name="funcion-setting-container" style="flex-grow: 1;" />
     </engine:VisualElement>
 </engine:UXML>

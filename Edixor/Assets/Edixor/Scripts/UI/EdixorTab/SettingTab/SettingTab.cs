@@ -6,6 +6,7 @@ public class SettingTab : EdixorTab
 {
     private EdixorUIManager edixorUIManager;
     private EdixorWindow window;
+    private IFunctionSetting activeFunction = null;
     
     public SettingTab(VisualElement ParentContainer, EdixorWindow window) : base(ParentContainer)
     {
@@ -118,11 +119,45 @@ public class SettingTab : EdixorTab
 
     private void AddFunctionSettings(List<EdixorFunction> functions)
     {
+        VisualElement funcionContainer = root.Q<VisualElement>("funcion-container"); 
+        VisualElement funcionSettingContainer = root.Q<VisualElement>("funcion-setting-container"); 
+
+        Label infoLabel = new Label("Click on a function to configure it");
+        funcionSettingContainer.Add(infoLabel);
+
         foreach (EdixorFunction func in functions)
         {
             if (func is IFunctionSetting settingFunc)
             {
-                settingFunc.Setting(root);
+                Button function = new Button(() =>
+                {
+                    if (activeFunction != settingFunc)
+                    {
+
+                        if (funcionSettingContainer.Contains(infoLabel))
+                        {
+                            funcionSettingContainer.Remove(infoLabel);
+                        } else
+                        {
+                            funcionSettingContainer.Clear();
+                        }
+
+                        funcionSettingContainer.Add(new Label(func.Name));
+                        settingFunc.Setting(funcionSettingContainer);
+
+                        activeFunction = settingFunc;
+                    }
+                });
+
+                function.AddToClassList("function-button");
+
+                if (func.Icon != null)
+                {
+                    Image icon = new Image { image = func.Icon };
+                    function.Add(icon);
+                }
+
+                funcionContainer.Add(function);
             }
         }
     }

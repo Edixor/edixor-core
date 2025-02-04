@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine;
 using UnityEditor;
@@ -5,6 +6,7 @@ using UnityEditor;
 public class HotKeysFunction : EdixorFunction, IFunctionSetting
 {
     private EdixorUIManager edixorUIManager;
+    private List<KeyAction> hotkeys;
 
     public HotKeysFunction(EdixorWindow window) : base(window) {
         
@@ -33,6 +35,17 @@ public class HotKeysFunction : EdixorFunction, IFunctionSetting
 
     public void Setting(VisualElement root)
     {
-       //...
+        hotkeys = Window.GetSetting().GetHotKeys();
+
+        foreach (KeyAction key in hotkeys)
+        {
+            string combination = string.Join(" + ", key.Combination); 
+
+            Label hotkeyLabel = new Label($"{key.Name}: {combination}");
+            Button hotkeyEdit = new Button() { text = "Edit" };
+
+            root.Add(hotkeyLabel);
+            root.Add(hotkeyEdit);
+        }
     }
 }
