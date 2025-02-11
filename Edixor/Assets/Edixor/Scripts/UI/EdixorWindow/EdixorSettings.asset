@@ -12,5 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ba1541a2affd744b50ac5ea6967b24, type: 3}
   m_Name: EdixorSettings
   m_EditorClassIdentifier: 
+  designs:
+  - rid: 8753972094409113721
+  - rid: 8753972094409113722
   designIndex: 1
   designVersionIndex: 0
+  functions:
+  - rid: 8753972094409113723
+  - rid: 8753972094409113724
+  - rid: 8753972094409113725
+  hotKeys:
+  - rid: 8753972094409113726
+  - rid: 8753972094409113727
+  isModified: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 8753972094409113721
+      type: {class: StandardDesign, ns: , asm: Assembly-CSharp}
+      data:
+        _desingName: Standard
+    - rid: 8753972094409113722
+      type: {class: IntertedDesign, ns: , asm: Assembly-CSharp}
+      data:
+        _desingName: Interted
+    - rid: 8753972094409113723
+      type: {class: HotKeysFunction, ns: , asm: Assembly-CSharp}
+      data:
+        _functionName: HotKeys
+    - rid: 8753972094409113724
+      type: {class: RestartFunction, ns: , asm: Assembly-CSharp}
+      data:
+        _functionName: Restart
+        _tabCleaning: 0
+        _clearCache: 0
+    - rid: 8753972094409113725
+      type: {class: SettingsFunction, ns: , asm: Assembly-CSharp}
+      data:
+        _functionName: Setting
+    - rid: 8753972094409113726
+      type: {class: Exit, ns: , asm: Assembly-CSharp}
+      data:
+        _actionName: Exit
+        _enable: 1
+        combination: 3001000065000000
+    - rid: 8753972094409113727
+      type: {class: KeyRestart, ns: , asm: Assembly-CSharp}
+      data:
+        _actionName: Restart
+        _enable: 1
+        combination: 3001000072000000

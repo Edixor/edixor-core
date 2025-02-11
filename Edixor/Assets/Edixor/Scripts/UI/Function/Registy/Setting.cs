@@ -3,8 +3,17 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
 using System;
+
 public class SettingsFunction : EdixorFunction
 {
+    [Header("Basic information")]
+    [SerializeField]
+    private string _functionName = "Setting";
+    public string FunctionName 
+    {
+        get { return _functionName; }
+        private set { _functionName = value; }
+    }
     public SettingsFunction(EdixorWindow window) : base(window)
     {
     }

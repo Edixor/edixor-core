@@ -3,5 +3,7 @@
     <engine:VisualElement name="VisualElement" style="flex-grow: 1;">
         <engine:Label text="Hotkeys" style="-unity-text-align: upper-center; font-size: 20px; -unity-font-style: bold;" />
         <engine:VisualElement name="hotkeys-container" style="flex-grow: 1;" />
+        <engine:Label text="Want to change keyboard shortcuts? Change them in settings" name="setting" style="align-self: stretch; align-items: auto;" />
+        <engine:Button name="Setting-button" style="width: 23px; height: 23px; white-space: pre; -unity-text-align: middle-center;" />
     </engine:VisualElement>
 </engine:UXML>

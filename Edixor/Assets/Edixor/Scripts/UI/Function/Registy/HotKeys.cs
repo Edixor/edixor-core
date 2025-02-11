@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using UnityEditor;
 
+
 public class HotKeysFunction : EdixorFunction, IFunctionSetting
 {
     private EdixorUIManager edixorUIManager;
@@ -13,7 +14,16 @@ public class HotKeysFunction : EdixorFunction, IFunctionSetting
     }
     public override Texture2D Icon => AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Edixor/Texture/EdixorWindow/Functions/photo_3_2024-12-24_18-59-17.jpg");
 
-    public override string Name => "HotKeys";
+    [Header("Basic information")]
+    [SerializeField]
+    private string _functionName = "HotKeys";
+    public string FunctionName
+    {
+        get { return _functionName; }
+        private set { _functionName = value; }
+    }
+
+    public override string Name => _functionName;
 
     public override string Description => "Shows All Hotkeys in Aoplication";
 

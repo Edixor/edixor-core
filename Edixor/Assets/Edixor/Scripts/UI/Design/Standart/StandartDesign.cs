@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 
 [OrderAttributeFactory(1)]
+[Serializable]
 public class StandardDesign : EdixorDesign, IVersions
 {
     private VisualElement tabSection, commandSection, otherSection, functionSection;
@@ -15,6 +16,15 @@ public class StandardDesign : EdixorDesign, IVersions
     public override string PathUxml => "Assets/Edixor/Scripts/UI/Design/Standart/EdixorWIndow.uxml";
     public override string PathUss => "Assets/Edixor/Scripts/UI/Design/Standart/EdixorWIndow.uss";
     public override string Image => "Assets/Edixor/Texture/EdixorWindow/Design/Standart1.png";
+    [Header("Basic information")]
+    [SerializeField]
+    private string _desingName = "Standard";
+    public string desingName
+    {
+        get { return _desingName; }
+        private set { _desingName = value; }
+    }
+
     public override string Name => "Standard";
     public override string Description => "added by developers in version: 00.00.01";
 

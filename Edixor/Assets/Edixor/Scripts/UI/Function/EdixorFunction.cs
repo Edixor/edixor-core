@@ -1,6 +1,8 @@
-using UnityEditor;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class EdixorFunction
 {
     public abstract Texture2D Icon { get; }

@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 [OrderAttributeFactory(2)]
+[Serializable]
 public class IntertedDesign : EdixorDesign
 {
     private VisualElement topSection;
@@ -17,7 +19,18 @@ public class IntertedDesign : EdixorDesign
     public override string PathUxml => "Assets/Edixor/Scripts/UI/Design/Inverted/Inverted.uxml";
     public override string PathUss => "Assets/Edixor/Scripts/UI/Design/Inverted/Inverted.uss";
     public override string Image => "Assets/Edixor/Texture/EdixorWindow/Design/Standart1.png";
-    public override string Name => "Lateral";
+
+    [Header("Basic information")]
+    [SerializeField]
+    private string _desingName = "Interted";
+    public string desingName
+    {
+        get { return _desingName; }
+        private set { _desingName = value; }
+    }
+
+    public override string Name => "Interted";
+
     public override string Description => "added by developers in version: 00.00.01";
 
     public IntertedDesign(EdixorWindow window) : base(window) {

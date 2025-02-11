@@ -9,11 +9,11 @@ C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Unity.exe
 -batchMode
 -noUpm
 -name
-AssetImportWorker0
+AssetImportWorker1
 -projectPath
 C:/Users/S/Documents/GitHub/Edixor/Edixor
 -logFile
-Logs/AssetImportWorker0.log
+Logs/AssetImportWorker1.log
 -srvPort
 59742
 -job-worker-count
@@ -59,12 +59,12 @@ C:/Users/S/Documents/GitHub/Edixor/Edixor
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [4888]  Target information:
+Player connection [5356]  Target information:
 
-Player connection [4888]  * "[IP] 192.168.1.46 [Port] 0 [Flags] 2 [Guid] 4039498650 [EditorId] 4039498650 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-7VPLHCL) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [5356]  * "[IP] 192.168.1.46 [Port] 0 [Flags] 2 [Guid] 898067824 [EditorId] 898067824 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-7VPLHCL) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [4888] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [4888] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [5356] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [5356] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 1
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -75,7 +75,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 25.68 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 36.66 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.29f1 (9fafe5c9db65)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Resources/UnitySubsystems
@@ -91,106 +91,156 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56420
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56060
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Registered in 0.053027 seconds.
-- Loaded All Assemblies, in  4.446 seconds
+Registered in 0.057931 seconds.
+- Loaded All Assemblies, in  4.867 seconds
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 1876 ms
+Android Extension - Scanning For ADB Devices 2645 ms
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  6.611 seconds
-Domain Reload Profiling: 11045ms
-	BeginReloadAssembly (1333ms)
+- Finished resetting the current domain, in  8.044 seconds
+Domain Reload Profiling: 12896ms
+	BeginReloadAssembly (1987ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (3ms)
-	RebuildCommonClasses (181ms)
-	RebuildNativeTypeToScriptingClass (229ms)
-	initialDomainReloadingComplete (297ms)
-	LoadAllAssembliesAndSetupDomain (2392ms)
-		LoadAssemblies (1322ms)
+		CreateAndSetChildDomain (6ms)
+	RebuildCommonClasses (355ms)
+	RebuildNativeTypeToScriptingClass (109ms)
+	initialDomainReloadingComplete (590ms)
+	LoadAllAssembliesAndSetupDomain (1810ms)
+		LoadAssemblies (1970ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2346ms)
-			TypeCache.Refresh (2332ms)
-				TypeCache.ScanAssembly (2209ms)
-			BuildScriptInfoCaches (6ms)
-			ResolveRequiredComponents (3ms)
-	FinalizeReload (6613ms)
+		AnalyzeDomain (1776ms)
+			TypeCache.Refresh (1767ms)
+				TypeCache.ScanAssembly (1612ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (8046ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (6012ms)
+		SetupLoadedEditorAssemblies (7406ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2681ms)
-			SetLoadedEditorAssemblies (22ms)
-			BeforeProcessingInitializeOnLoad (57ms)
-			ProcessInitializeOnLoadAttributes (1192ms)
-			ProcessInitializeOnLoadMethodAttributes (637ms)
-			AfterProcessingInitializeOnLoad (1421ms)
-			EditorAssembliesLoaded (2ms)
+			InitializePlatformSupportModulesInManaged (3956ms)
+			SetLoadedEditorAssemblies (42ms)
+			BeforeProcessingInitializeOnLoad (191ms)
+			ProcessInitializeOnLoadAttributes (2261ms)
+			ProcessInitializeOnLoadMethodAttributes (922ms)
+			AfterProcessingInitializeOnLoad (34ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (0ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  7.866 seconds
-Refreshing native plugins compatible for Editor in 13.90 ms, found 4 plugins.
+- Loaded All Assemblies, in 24.870 seconds
+Refreshing native plugins compatible for Editor in 6.84 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in 19.623 seconds
-Domain Reload Profiling: 27440ms
-	BeginReloadAssembly (1295ms)
+- Finished resetting the current domain, in  6.086 seconds
+Domain Reload Profiling: 30858ms
+	BeginReloadAssembly (6867ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (47ms)
+		DisableScriptedObjects (89ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (159ms)
-	RebuildCommonClasses (390ms)
-	RebuildNativeTypeToScriptingClass (76ms)
-	initialDomainReloadingComplete (284ms)
-	LoadAllAssembliesAndSetupDomain (5765ms)
-		LoadAssemblies (5103ms)
+		CreateAndSetChildDomain (276ms)
+	RebuildCommonClasses (668ms)
+	RebuildNativeTypeToScriptingClass (7326ms)
+	initialDomainReloadingComplete (1669ms)
+	LoadAllAssembliesAndSetupDomain (8241ms)
+		LoadAssemblies (10606ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1520ms)
-			TypeCache.Refresh (1136ms)
-				TypeCache.ScanAssembly (1009ms)
-			BuildScriptInfoCaches (331ms)
-			ResolveRequiredComponents (34ms)
-	FinalizeReload (19629ms)
+		AnalyzeDomain (3727ms)
+			TypeCache.Refresh (3255ms)
+				TypeCache.ScanAssembly (3109ms)
+			BuildScriptInfoCaches (433ms)
+			ResolveRequiredComponents (28ms)
+	FinalizeReload (6088ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (18585ms)
+		SetupLoadedEditorAssemblies (5502ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (111ms)
-			SetLoadedEditorAssemblies (33ms)
-			BeforeProcessingInitializeOnLoad (621ms)
-			ProcessInitializeOnLoadAttributes (16250ms)
-			ProcessInitializeOnLoadMethodAttributes (1504ms)
-			AfterProcessingInitializeOnLoad (65ms)
+			InitializePlatformSupportModulesInManaged (45ms)
+			SetLoadedEditorAssemblies (19ms)
+			BeforeProcessingInitializeOnLoad (410ms)
+			ProcessInitializeOnLoadAttributes (4788ms)
+			ProcessInitializeOnLoadMethodAttributes (214ms)
+			AfterProcessingInitializeOnLoad (27ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (46ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
-Refreshing native plugins compatible for Editor in 17.08 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (31ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.90 seconds
+Refreshing native plugins compatible for Editor in 4.32 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4753 unused Assets / (0.6 MB). Loaded Objects now: 5244.
-Memory consumption went from 87.9 MB to 87.3 MB.
-Total: 53.569300 ms (FindLiveObjects: 3.672400 ms CreateObjectMapping: 3.625000 ms MarkObjects: 33.835700 ms  DeleteObjects: 12.424000 ms)
+Unloading 4753 unused Assets / (376.3 KB). Loaded Objects now: 5244.
+Memory consumption went from 87.9 MB to 87.6 MB.
+Total: 31.886200 ms (FindLiveObjects: 2.185900 ms CreateObjectMapping: 1.196000 ms MarkObjects: 23.695800 ms  DeleteObjects: 4.800400 ms)
 
 ========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  6.529 seconds
+Refreshing native plugins compatible for Editor in 15.75 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.239 seconds
+Domain Reload Profiling: 11758ms
+	BeginReloadAssembly (2142ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (99ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (448ms)
+	RebuildCommonClasses (640ms)
+	RebuildNativeTypeToScriptingClass (116ms)
+	initialDomainReloadingComplete (198ms)
+	LoadAllAssembliesAndSetupDomain (3421ms)
+		LoadAssemblies (3820ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (849ms)
+			TypeCache.Refresh (34ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (784ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (5241ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (4302ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (106ms)
+			SetLoadedEditorAssemblies (74ms)
+			BeforeProcessingInitializeOnLoad (603ms)
+			ProcessInitializeOnLoadAttributes (3348ms)
+			ProcessInitializeOnLoadMethodAttributes (148ms)
+			AfterProcessingInitializeOnLoad (23ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (25ms)
+Refreshing native plugins compatible for Editor in 10.96 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4751 unused Assets / (0.7 MB). Loaded Objects now: 5247.
+Memory consumption went from 85.5 MB to 84.8 MB.
+Total: 20.905500 ms (FindLiveObjects: 2.346800 ms CreateObjectMapping: 1.689600 ms MarkObjects: 12.945100 ms  DeleteObjects: 3.914100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
 Received Import Request.
-  Time since last request: 449480.824603 seconds.
+  Time since last request: 450267.305016 seconds.
   path: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset
   artifactKey: Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset using Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)Зарегистрированные классы:
@@ -284,7 +334,7 @@ EdixorSettings:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorSetting.cs:19)
 
 (Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 66)
 
-HotKeyNames: Exit - Restart
+HotKeyNames:  - 
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
@@ -306,73 +356,10 @@ EdixorSettings:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorSetting.cs:19)
 
 (Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 67)
 
-HotKeyAction1: LeftShift - E
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:68)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
-UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
-UnityEngine.ScriptableObject:CreateInstance (System.Type)
-UnityEditor.EditorWindow:GetWindowPrivate (System.Type,bool,string,bool,bool)
-UnityEditor.EditorWindow:GetWindow (System.Type,bool,string,bool)
-UnityEditor.EditorWindow:GetWindow<EdixorWindow> (bool,string,bool)
-UnityEditor.EditorWindow:GetWindow<EdixorWindow> ()
-EdixorSettings:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorSetting.cs:19)
-
-(Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 68)
-
-HotKeyAction2: LeftShift - R
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:69)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
-UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
-UnityEngine.ScriptableObject:CreateInstance (System.Type)
-UnityEditor.EditorWindow:GetWindowPrivate (System.Type,bool,string,bool,bool)
-UnityEditor.EditorWindow:GetWindow (System.Type,bool,string,bool)
-UnityEditor.EditorWindow:GetWindow<EdixorWindow> (bool,string,bool)
-UnityEditor.EditorWindow:GetWindow<EdixorWindow> ()
-EdixorSettings:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorSetting.cs:19)
-
-(Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 69)
-
-Calls to "AssetDatabase.SaveAssets" are restricted during asset importing. 
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-EdixorWindowSetting:Save () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:182)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:71)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
-UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
-UnityEngine.ScriptableObject:CreateInstance (System.Type)
-UnityEditor.EditorWindow:GetWindowPrivate (System.Type,bool,string,bool,bool)
-UnityEditor.EditorWindow:GetWindow (System.Type,bool,string,bool)
-UnityEditor.EditorWindow:GetWindow<EdixorWindow> (bool,string,bool)
-UnityEditor.EditorWindow:GetWindow<EdixorWindow> ()
-EdixorSettings:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorSetting.cs:19)
-
-[Assets/Edixor/Scripts/UI/EdixorSetting.cs line 19]
-
-UnityException: Calls to "AssetDatabase.SaveAssets" are restricted during asset importing. 
-  at (wrapper managed-to-native) UnityEditor.AssetDatabase.SaveAssets()
-  at EdixorWindowSetting.Save () [0x00019] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:182 
-  at EdixorWindowSetting.InitializeData () [0x001d3] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:71 
+ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+  at System.Collections.Generic.List`1[T].get_Item (System.Int32 index) [0x00009] in <ed969b0e627d471da4848289f9c322df>:0 
+  at EdixorWindowSetting.InitializeData () [0x00145] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:68 
   at EdixorWindowSetting.EnsureInitialized () [0x00008] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:29 
   at EdixorWindowSetting.GetHotKeys () [0x00000] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:90 
   at EdixorWindow.InitializeSettings () [0x0001f] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorWIndow.cs:44 
@@ -386,7 +373,7 @@ UnityEditor.EditorWindow:GetWindow(Boolean, String, Boolean)
 UnityEditor.EditorWindow:GetWindow()
 EdixorSettings:OnEnable() (at Assets\Edixor\Scripts\UI\EdixorSetting.cs:19)
 
-(Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 182)
+(Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 68)
 
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
@@ -397,40 +384,29 @@ New input system (experimental) initialized
 Using Windows.Gaming.Input
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
- -> (artifact id: 'e307f2adb1f56aa4aa387f41e72c7718') in 5.3359816 seconds
+ -> (artifact id: '897fe2bbec909803b47096f3ba1d0324') in 0.775245 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 4.07 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 4.59 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4740 unused Assets / (1.0 MB). Loaded Objects now: 5253.
-Memory consumption went from 164.5 MB to 163.5 MB.
-Total: 24.594700 ms (FindLiveObjects: 1.580800 ms CreateObjectMapping: 1.830200 ms MarkObjects: 17.508200 ms  DeleteObjects: 3.667000 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.63 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4740 unused Assets / (131.0 KB). Loaded Objects now: 5253.
-Memory consumption went from 164.5 MB to 164.4 MB.
-Total: 29.573600 ms (FindLiveObjects: 2.699300 ms CreateObjectMapping: 1.476500 ms MarkObjects: 22.376800 ms  DeleteObjects: 3.012600 ms)
+Unloading 4740 unused Assets / (0.8 MB). Loaded Objects now: 5256.
+Memory consumption went from 166.5 MB to 165.7 MB.
+Total: 37.074700 ms (FindLiveObjects: 1.663700 ms CreateObjectMapping: 1.702800 ms MarkObjects: 18.074300 ms  DeleteObjects: 15.624600 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.885 seconds
-Refreshing native plugins compatible for Editor in 9.56 ms, found 4 plugins.
+- Loaded All Assemblies, in  3.120 seconds
+Refreshing native plugins compatible for Editor in 4.10 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
-<RI> Initialized touch support.
 Зарегистрированные классы:
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -494,7 +470,7 @@ EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.
 
 (Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 66)
 
-HotKeyNames: Exit - Restart
+HotKeyNames:  - 
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
@@ -509,195 +485,82 @@ EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.
 
 (Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 67)
 
-HotKeyAction1: LeftShift - E
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:68)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
+ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+  at System.Collections.Generic.List`1[T].get_Item (System.Int32 index) [0x00009] in <ed969b0e627d471da4848289f9c322df>:0 
+  at EdixorWindowSetting.InitializeData () [0x00145] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:68 
+  at EdixorWindowSetting.EnsureInitialized () [0x00008] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:29 
+  at EdixorWindowSetting.GetHotKeys () [0x00000] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorSetting.cs:90 
+  at EdixorWindow.InitializeSettings () [0x0001f] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorWIndow.cs:44 
+  at EdixorWindow.OnEnable () [0x00011] in C:\Users\S\Documents\GitHub\Edixor\Edixor\Assets\Edixor\Scripts\UI\EdixorWindow\EdixorWIndow.cs:24 
 
 (Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 68)
 
-HotKeyAction2: LeftShift - R
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:69)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
-
-(Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs Line: 69)
-
-Assertion failed on expression: '!AssetDatabase::IsAssetImportWorkerProcess()'
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-EdixorWindowSetting:Save () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:182)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:71)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
-
-[Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs line 182]
-
-Refresh completed but there are assets queued up for importing. Check for code that modifies assets which gets called after OnPostProcessAllAssets. Additional details in Log file
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-EdixorWindowSetting:Save () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:182)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:71)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
-
-[Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs line 182]
-
-Assets queued for import after Refresh completed:
-	Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset
-Asset Pipeline Refresh (id=dbdf475ee2a3fd842970d3fa38e6ca71): Total: 0.093 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
-Assertion failed on expression: 'm_Ptr'
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-EdixorWindowSetting:Save () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:182)
-EdixorWindowSetting:InitializeData () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:71)
-EdixorWindowSetting:EnsureInitialized () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:29)
-EdixorWindowSetting:GetHotKeys () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs:90)
-EdixorWindow:InitializeSettings () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:44)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:24)
-
-[Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSetting.cs line 182]
-
-False - aaa
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-EdixorUIManager:LoadUI () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorUIManager.cs:24)
-EdixorWindow:InitializeUI () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:53)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:25)
-
-(Filename: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorUIManager.cs Line: 24)
-
-NewTab UI has been successfully removed from the parent container.
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-EdixorTab:DeleteUI () (at Assets/Edixor/Scripts/UI/EdixorTab/EdixorTab.cs:59)
-EdixorUIManager:SwitchTab (int) (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorUIManager.cs:74)
-EdixorUIManager:AddTab (EdixorTab) (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorUIManager.cs:70)
-EdixorUIManager:LoadUI () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorUIManager.cs:29)
-EdixorWindow:InitializeUI () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:53)
-EdixorWindow:OnEnable () (at Assets/Edixor/Scripts/UI/EdixorWindow/EdixorWIndow.cs:25)
-
-(Filename: Assets/Edixor/Scripts/UI/EdixorTab/EdixorTab.cs Line: 59)
-
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  6.736 seconds
-Domain Reload Profiling: 9616ms
-	BeginReloadAssembly (1049ms)
+- Finished resetting the current domain, in  3.321 seconds
+Domain Reload Profiling: 6433ms
+	BeginReloadAssembly (851ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (106ms)
+		DisableScriptedObjects (87ms)
 		BackupInstance (0ms)
-		ReleaseScriptingObjects (1ms)
-		CreateAndSetChildDomain (187ms)
-	RebuildCommonClasses (122ms)
-	RebuildNativeTypeToScriptingClass (51ms)
-	initialDomainReloadingComplete (95ms)
-	LoadAllAssembliesAndSetupDomain (1561ms)
-		LoadAssemblies (1594ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (140ms)
+	RebuildCommonClasses (129ms)
+	RebuildNativeTypeToScriptingClass (49ms)
+	initialDomainReloadingComplete (106ms)
+	LoadAllAssembliesAndSetupDomain (1975ms)
+		LoadAssemblies (1553ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (573ms)
-			TypeCache.Refresh (20ms)
+		AnalyzeDomain (918ms)
+			TypeCache.Refresh (31ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (527ms)
-			ResolveRequiredComponents (20ms)
-	FinalizeReload (6738ms)
+			BuildScriptInfoCaches (845ms)
+			ResolveRequiredComponents (30ms)
+	FinalizeReload (3322ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (3310ms)
+		SetupLoadedEditorAssemblies (2294ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (39ms)
-			SetLoadedEditorAssemblies (11ms)
-			BeforeProcessingInitializeOnLoad (159ms)
-			ProcessInitializeOnLoadAttributes (2812ms)
-			ProcessInitializeOnLoadMethodAttributes (263ms)
-			AfterProcessingInitializeOnLoad (25ms)
+			InitializePlatformSupportModulesInManaged (41ms)
+			SetLoadedEditorAssemblies (18ms)
+			BeforeProcessingInitializeOnLoad (194ms)
+			ProcessInitializeOnLoadAttributes (1871ms)
+			ProcessInitializeOnLoadMethodAttributes (144ms)
+			AfterProcessingInitializeOnLoad (26ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (2778ms)
-Refreshing native plugins compatible for Editor in 8.48 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (505ms)
+Refreshing native plugins compatible for Editor in 4.02 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4751 unused Assets / (1.5 MB). Loaded Objects now: 5270.
-Memory consumption went from 168.8 MB to 167.3 MB.
-Total: 28.544700 ms (FindLiveObjects: 2.222900 ms CreateObjectMapping: 1.635600 ms MarkObjects: 18.339800 ms  DeleteObjects: 6.337800 ms)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4751 unused Assets / (0.7 MB). Loaded Objects now: 5259.
+Memory consumption went from 166.3 MB to 165.7 MB.
+Total: 22.372400 ms (FindLiveObjects: 1.858200 ms CreateObjectMapping: 1.081600 ms MarkObjects: 15.536400 ms  DeleteObjects: 3.887400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 4.07 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 4.68 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4740 unused Assets / (1.0 MB). Loaded Objects now: 5270.
-Memory consumption went from 168.2 MB to 167.2 MB.
-Total: 27.144800 ms (FindLiveObjects: 1.565700 ms CreateObjectMapping: 1.022600 ms MarkObjects: 20.111400 ms  DeleteObjects: 4.436200 ms)
+Unloading 4740 unused Assets / (131.0 KB). Loaded Objects now: 5259.
+Memory consumption went from 166.5 MB to 166.3 MB.
+Total: 29.101500 ms (FindLiveObjects: 2.122600 ms CreateObjectMapping: 1.522700 ms MarkObjects: 21.487600 ms  DeleteObjects: 3.959500 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Import Request.
-  Time since last request: 477.588987 seconds.
+  Time since last request: 305.146877 seconds.
   path: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset
   artifactKey: Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset using Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '003c5bff11d72680d4967c60f90f90fa') in 0.0080921 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 33.832882 seconds.
-  path: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset
-  artifactKey: Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset using Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '003c5bff11d72680d4967c60f90f90fa') in 0.0017033 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.74 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4740 unused Assets / (131.0 KB). Loaded Objects now: 5270.
-Memory consumption went from 168.2 MB to 168.0 MB.
-Total: 31.046800 ms (FindLiveObjects: 2.021600 ms CreateObjectMapping: 1.774700 ms MarkObjects: 23.854800 ms  DeleteObjects: 3.387100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 37.310792 seconds.
-  path: Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset
-  artifactKey: Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset using Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '71893e9244f3bd150fa058cf01713174') in 0.0023607 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+Start importing Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset using Guid(b379006ce784c5141b99b1e7af0b62fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '41308de8512a437fe975b40ee52c40cc') in 0.0821284 seconds
+Number of updated asset objects reloaded before import = 1Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 14.661 seconds
-Refreshing native plugins compatible for Editor in 17.27 ms, found 4 plugins.
+- Loaded All Assemblies, in  2.817 seconds
+Refreshing native plugins compatible for Editor in 4.31 ms, found 4 plugins.
 The file 'MemoryStream' is corrupted! Remove it and launch unity again!
 [Position out of bounds!]
 Fatal Error! The file 'MemoryStream' is corrupted! Remove it and launch unity again!
@@ -725,16 +588,9 @@ C:\Windows\System32\sechost.dll:sechost.dll (00007FFD0D2B0000), size: 618496 (re
 C:\Windows\System32\RPCRT4.dll:RPCRT4.dll (00007FFD0C4A0000), size: 1179648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\System32\bcrypt.dll:bcrypt.dll (00007FFD0BE40000), size: 155648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\System32\ole32.dll:ole32.dll (00007FFD0E210000), size: 1400832 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.113
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\libfbxsdk.dll:libfbxsdk.dll (00007FFCD0040000), size: 8019968 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.7.0
 C:\Windows\System32\combase.dll:combase.dll (00007FFD0CF10000), size: 3366912 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.145
 C:\Windows\System32\bcryptPrimitives.dll:bcryptPrimitives.dll (00007FFD0BFC0000), size: 528384 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
 C:\Windows\System32\SETUPAPI.dll:SETUPAPI.dll (00007FFD0DDA0000), size: 4653056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\s3tcompress.dll:s3tcompress.dll (00007FFD04D60000), size: 180224 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\ispc_texcomp.dll:ispc_texcomp.dll (00007FFCFDEC0000), size: 1826816 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\etccompress.dll:etccompress.dll (00007FFCCFB60000), size: 5070848 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\compress_bc7e.dll:compress_bc7e.dll (00007FFCF8990000), size: 1433600 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\FreeImage.dll:FreeImage.dll (0000000180000000), size: 5783552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.18.0.0
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\WinPixEventRuntime.dll:WinPixEventRuntime.dll (00007FFD094B0000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.2201.24001
 C:\Windows\System32\cfgmgr32.dll:cfgmgr32.dll (00007FFD0C450000), size: 303104 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\System32\SHELL32.dll:SHELL32.dll (00007FFD0D5F0000), size: 7208960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
 C:\Windows\System32\shcore.dll:shcore.dll (00007FFD0C640000), size: 692224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
@@ -748,6 +604,13 @@ C:\Windows\System32\cryptsp.dll:cryptsp.dll (00007FFD0B3A0000), size: 94208 (res
 C:\Windows\System32\WS2_32.dll:WS2_32.dll (00007FFD0D3E0000), size: 454656 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\System32\OLEAUT32.dll:OLEAUT32.dll (00007FFD0DCD0000), size: 802816 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.86
 C:\Windows\System32\WINTRUST.dll:WINTRUST.dll (00007FFD0B660000), size: 376832 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.145
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\s3tcompress.dll:s3tcompress.dll (00007FFD04D60000), size: 180224 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\ispc_texcomp.dll:ispc_texcomp.dll (00007FFCFDEC0000), size: 1826816 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\etccompress.dll:etccompress.dll (00007FFCCFB60000), size: 5070848 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\libfbxsdk.dll:libfbxsdk.dll (00007FFCD0040000), size: 8019968 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.7.0
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\compress_bc7e.dll:compress_bc7e.dll (00007FFCF8990000), size: 1433600 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\FreeImage.dll:FreeImage.dll (0000000180000000), size: 5783552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.18.0.0
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\WinPixEventRuntime.dll:WinPixEventRuntime.dll (00007FFD094B0000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.2201.24001
 C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\umbraoptimizer64.dll:umbraoptimizer64.dll (00007FFCFA490000), size: 1187840 (result: 0), SymType: '-deferred-', PDB: ''
 C:\Windows\SYSTEM32\d3d11.dll:d3d11.dll (00007FFD08460000), size: 2469888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\d3d12.dll:d3d12.dll (00007FFCDEAA0000), size: 1908736 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
@@ -756,9 +619,6 @@ C:\Windows\SYSTEM32\dxgi.dll:dxgi.dll (00007FFD09F90000), size: 958464 (result: 
 C:\Windows\SYSTEM32\HID.DLL:HID.DLL (00007FFD09EA0000), size: 57344 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\IPHLPAPI.DLL:IPHLPAPI.DLL (00007FFD0A810000), size: 237568 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\OPENGL32.dll:OPENGL32.dll (00007FFCF68B0000), size: 1372160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\MSVCP140.dll:MSVCP140.dll (00007FFD04B40000), size: 581632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
-C:\Windows\SYSTEM32\VCRUNTIME140.dll:VCRUNTIME140.dll (00007FFD07E80000), size: 110592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
-C:\Windows\SYSTEM32\VCRUNTIME140_1.dll:VCRUNTIME140_1.dll (00007FFD07E70000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
 C:\Windows\SYSTEM32\WINHTTP.dll:WINHTTP.dll (00007FFD011B0000), size: 978944 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\WINMM.dll:WINMM.dll (00007FFD09410000), size: 147456 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\GLU32.dll:GLU32.dll (00007FFD049B0000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
@@ -766,18 +626,21 @@ C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\SketchUpAPI.dll:SketchUpAPI
 C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\NativeProxyHelper.dll:NativeProxyHelper.dll (00007FFCF5980000), size: 1789952 (result: 0), SymType: '-deferred-', PDB: ''
 C:\Windows\SYSTEM32\VERSION.dll:VERSION.dll (00007FFD0ADC0000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\WSOCK32.dll:WSOCK32.dll (00007FFD094A0000), size: 36864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
+C:\Windows\SYSTEM32\MSVCP140.dll:MSVCP140.dll (00007FFD04B40000), size: 581632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
+C:\Windows\SYSTEM32\VCRUNTIME140.dll:VCRUNTIME140.dll (00007FFD07E80000), size: 110592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
+C:\Windows\SYSTEM32\VCRUNTIME140_1.dll:VCRUNTIME140_1.dll (00007FFD07E70000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
 C:\Windows\SYSTEM32\WINMMBASE.dll:WINMMBASE.dll (00007FFD093E0000), size: 184320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\SketchUpCommonPreferences.dll:SketchUpCommonPreferences.dll (00007FFD00F10000), size: 499712 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 23.0.0.0
-C:\Windows\SYSTEM32\dxcore.dll:dxcore.dll (00007FFD09F70000), size: 131072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\Secur32.dll:Secur32.dll (00007FFCFC0A0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
+C:\Windows\SYSTEM32\dxcore.dll:dxcore.dll (00007FFD09F70000), size: 131072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\SSPICLI.DLL:SSPICLI.DLL (00007FFD0B1D0000), size: 192512 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\OpenRL.dll:OpenRL.dll (0000021E12980000), size: 12779520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.5.0.2907
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\OpenRL.dll:OpenRL.dll (00000296DA180000), size: 12779520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.5.0.2907
+C:\Windows\SYSTEM32\MSWSOCK.DLL:MSWSOCK.DLL (00007FFD0AAB0000), size: 421888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\MSVCP100.dll:MSVCP100.dll (000000006D830000), size: 622592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.473
 C:\Windows\SYSTEM32\MSVCR100.dll:MSVCR100.dll (000000006D750000), size: 860160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.473
 C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\embree.dll:embree.dll (00007FFCCD3B0000), size: 16711680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.14.0.0
-C:\Windows\SYSTEM32\MSWSOCK.DLL:MSWSOCK.DLL (00007FFD0AAB0000), size: 421888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\tbb.dll:tbb.dll (00007FFD04760000), size: 303104 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.2022.1111
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\OpenRL_pthread.dll:OpenRL_pthread.dll (0000021E11060000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.9.0.0
+C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\OpenRL_pthread.dll:OpenRL_pthread.dll (00000296D8890000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.9.0.0
 C:\Windows\system32\uxtheme.dll:uxtheme.dll (00007FFD09870000), size: 626688 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\system32\IconCodecService.dll:IconCodecService.dll (00007FFD04270000), size: 36864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
 C:\Windows\SYSTEM32\WindowsCodecs.dll:WindowsCodecs.dll (00007FFD06E40000), size: 1765376 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
@@ -846,10 +709,8 @@ C:\Windows\SYSTEM32\dbghelp.dll:dbghelp.dll (00007FFCFC540000), size: 2048000 (r
 0x00007FFCC17DAD78 (Unity) DebugStringToFile
 0x00007FFCBFBD6102 (Unity) CachedReader::OutOfBoundsError
 0x00007FFCBFBD6CA0 (Unity) CachedReader::Read
-0x00007FFCBFF0D883 (Unity) TransferField_NonArray<StreamedBinaryRead,Converter_String>
-0x00007FFCBFE7DCCC (Unity) ExecuteSerializationCommands<JSONRead>
-0x00007FFCBFE8AF17 (Unity) SerializeTraits<ReferencedObjectData<0> >::Transfer<StreamedBinaryRead>
-0x00007FFCBFE8B12E (Unity) SerializeTraits<RegisteredReferencedObject<0> >::Transfer<StreamedBinaryRead>
+0x00007FFCBFE8BACA (Unity) SerializeTraits<ReferencedManagedType>::Transfer<StreamedBinaryRead>
+0x00007FFCBFE8B06E (Unity) SerializeTraits<RegisteredReferencedObject<0> >::Transfer<StreamedBinaryRead>
 0x00007FFCBFE8C22B (Unity) SerializeTraits<ManagedReferencesTransferState>::Transfer<StreamedBinaryRead>
 0x00007FFCBFE9AC6F (Unity) <lambda_580fa16bd23d18c3e466e7b58feca0a1>::operator()
 0x00007FFCBFE94F48 (Unity) TransferScriptingObject<StreamedBinaryRead>

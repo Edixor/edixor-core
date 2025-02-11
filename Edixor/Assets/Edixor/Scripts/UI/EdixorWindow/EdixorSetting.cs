@@ -33,17 +33,39 @@ public class EdixorWindowSetting
 
     private void InitializeData()
     {
-        EdixorFunctionFactory functionFactory = new EdixorFunctionFactory();
-        functionFactory.RegisterAll(window);
-        functions = functionFactory.GetAllItems();
+        if (settings.isModified == false)
+        {
+            EdixorDesignFactory designFactory = new EdixorDesignFactory();
+            designFactory.RegisterAll(window);
+            designs = designFactory.GetAllItems();
 
-        EdixorDesignFactory designFactory = new EdixorDesignFactory();
-        designFactory.RegisterAll(window);
-        designs = designFactory.GetAllItems();
+            EdixorFunctionFactory functionFactory = new EdixorFunctionFactory();
+            functionFactory.RegisterAll(window);
+            functions = functionFactory.GetAllItems();
 
-        KeyActionFactory hotKeysFactory = new KeyActionFactory();
-        hotKeysFactory.RegisterAll(window);
-        hotKeys = hotKeysFactory.GetAllItems();
+            KeyActionFactory hotKeysFactory = new KeyActionFactory();
+            hotKeysFactory.RegisterAll(window);
+            hotKeys = hotKeysFactory.GetAllItems();
+
+            settings.designs = designs;
+            settings.functions = functions;
+            settings.hotKeys = hotKeys;
+
+            settings.isModified = true;
+            Save();
+        } else
+        {
+
+            EdixorDesignFactory designFactory = new EdixorDesignFactory();
+            designFactory.RegisterAll(window);
+            designs = designFactory.GetAllItems();
+
+            hotKeys = settings.hotKeys;
+            functions = settings.functions;
+
+            Save();
+        }
+
     }
 
     public List<EdixorFunction> GetFunctions()
@@ -61,7 +83,21 @@ public class EdixorWindowSetting
     public List<KeyAction> GetHotKeys()
     {
         EnsureInitialized();
-        return new List<KeyAction>(hotKeys);
+        return hotKeys;
+    }
+
+    public void SetHotKeys(KeyAction keyAction, int index)
+    {
+        EnsureInitialized();
+        if (index >= 0 && index < hotKeys.Count)
+        {
+            hotKeys[index] = keyAction;
+            Save();
+        }
+        else
+        {
+            throw new System.ArgumentOutOfRangeException(nameof(index), "Invalid hotkey index.");
+        }
     }
 
     public EdixorDesign GetCurrentDesign(int index = -1)

@@ -2,14 +2,36 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Exit : KeyAction
 {
-    public override List<KeyCode> Combination => new List<KeyCode> { KeyCode.LeftShift, KeyCode.E };
-    
-    public override Action action => () => window.Close();
+    [SerializeField]
+    private List<KeyCode> combination = new List<KeyCode> { KeyCode.LeftShift, KeyCode.E };
 
-    public override string Name => "Exit";
+    // Используем базовое поле имени, поэтому не нужно вводить дополнительное поле
+    public override List<KeyCode> Combination => combination;
 
-    public Exit(EdixorWindow window) : base(window) {
+    public override Action Action => () =>
+    {
+        if (window != null)
+        {
+            window.Close();
+        }
+        else
+        {
+            Debug.LogError("Window is null in Exit action");
+        }
+    };
+
+    // Параметрless конструктор для сериализации
+    public Exit() : base()
+    {
+        Name = "Exit";  // задаём имя по умолчанию
+    }
+
+    // Конструктор с передачей окна
+    public Exit(EdixorWindow window) : base(window)
+    {
+        Name = "Exit";
     }
 }

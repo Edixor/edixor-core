@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
+[Serializable]
 public abstract class EdixorDesign
 {
     protected VisualElement root;

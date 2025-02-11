@@ -21,6 +21,8 @@ public class EdixorUIManager
     {
         design = window.GetSetting().GetCurrentDesign();
 
+        Debug.Log((design == null) + " - aaa");
+
         design.LoadUI();
         
         tabs = new List<EdixorTab> { new NewTab(design.GetSection("middle-section-content"))};

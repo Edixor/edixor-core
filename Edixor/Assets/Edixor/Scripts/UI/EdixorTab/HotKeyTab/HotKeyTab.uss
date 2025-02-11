@@ -1,5 +1,10 @@
-.custom-label {
-    font-size: 20px;
-    -unity-font-style: bold;
-    color: rgb(68, 138, 255);
+.title {
+    font-size: 15px;
+}
+
+.hotkeys-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Выравнивание элементов по центру */
+    gap: 10px; /* Отступ между элементами */
 }

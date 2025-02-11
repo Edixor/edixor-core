@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using UnityEngine.UIElements;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.UIElements;
 
 public class EdixorWindow : EditorWindow
 {
@@ -17,20 +16,18 @@ public class EdixorWindow : EditorWindow
         CurrentWindow = GetWindow<EdixorWindow>("EdixorWindow");
     }
 
-
     private void OnEnable()
     {
         AssetChangesListener.OnRestartPending += RestartWindow;
-
         InitializeSettings();
         InitializeUI();
-        InitializeHotKet();
+        InitializeHotKeys();
     }
 
     private void OnGUI()
     {
-        if (hotKeys == null) hotKeys = new EdixorHotKeys(this);
-
+        if (hotKeys == null)
+            InitializeHotKeys();
         hotKeys.OnKeys();
     }
 
@@ -41,6 +38,15 @@ public class EdixorWindow : EditorWindow
             setting = new EdixorWindowSetting(this);
         }
         setting.Load();
+
+        // Передаём окно в каждое горячее действие
+        if (setting.GetHotKeys() != null)
+        {
+            foreach (var action in setting.GetHotKeys())
+            {
+                action.SetWindow(this);
+            }
+        }
     }
 
     private void InitializeUI()
@@ -49,12 +55,11 @@ public class EdixorWindow : EditorWindow
         uiManager.LoadUI();
     }
 
-    private void InitializeHotKet()
+    private void InitializeHotKeys()
     {
-        //...
+        hotKeys = new EdixorHotKeys(this);
     }
 
-    
     public void RestartWindow()
     {
         if (CurrentWindow == null)
@@ -62,56 +67,28 @@ public class EdixorWindow : EditorWindow
             Debug.LogWarning("Window is not open, skipping restart.");
             return;
         }
-
         Debug.Log("Restarting window...");
-        // Отключаем вызов Close, чтобы избежать повторного разрушения окна
         EditorApplication.delayCall += () =>
         {
-            Close(); // Закрываем окно в следующем кадре
-            ShowWindow(); // Открываем новое окно
+            Close();
+            ShowWindow();
         };
     }
 
-
-    public EdixorUIManager GetUIManager()
-    {
-        return uiManager;
-    }
-
-    public EdixorWindowSetting GetSetting()
-    {
-        return setting;
-    }
+    public EdixorUIManager GetUIManager() => uiManager;
+    public EdixorWindowSetting GetSetting() => setting;
+    public void UpdateUI() => uiManager?.LoadUI();
 
     private void OnDisable()
     {
         if (CurrentWindow != this) return;
-
-        try
-        {
-            SaveSettings();
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Failed to save settings: {e.Message}");
-        }
-
+        try { SaveSettings(); }
+        catch (System.Exception e) { Debug.LogError("Failed to save settings: " + e.Message); }
         CurrentWindow = null;
     }
 
-
     private void SaveSettings()
     {
-        if (setting != null)
-        {
-            try
-            {
-                setting.Save();
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"Failed to save settings: {e.Message}");
-            }
-        }
+        setting?.Save();
     }
 }
