@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
+using System.Linq;
 
 public class EdixorWindow : EditorWindow
 {
@@ -9,6 +11,9 @@ public class EdixorWindow : EditorWindow
     private EdixorUIManager uiManager;
     private EdixorWindowSetting setting;
     private EdixorHotKeys hotKeys;
+
+    // Экземпляр обработчика захвата горячей клавиши
+    private HotkeyCaptureHandler hotkeyCaptureHandler = new HotkeyCaptureHandler();
 
     [MenuItem("Window/EdixorWindow")]
     public static void ShowWindow()
@@ -19,7 +24,6 @@ public class EdixorWindow : EditorWindow
     private void OnEnable()
     {
         CurrentWindow = this;
-        //AssetChangesListener.OnRestartPending += RestartWindow;
         InitializeSettings();
 
         // Устанавливаем в настройках, что окно открыто
@@ -31,6 +35,17 @@ public class EdixorWindow : EditorWindow
 
     private void OnGUI()
     {
+        // Если идёт захват новой комбинации, делегируем обработку HotkeyCaptureHandler'у
+        if (hotkeyCaptureHandler.IsCapturing())
+        {
+            hotkeyCaptureHandler.Process(Event.current);
+            // Выводим информацию о текущей комбинации (опционально)
+            EditorGUILayout.LabelField("Capturing Hotkey: " + hotkeyCaptureHandler.GetCurrentCombinationString());
+            // Не выполняем основную логику горячих клавиш, пока идёт захват
+            return;
+        }
+
+        // Обычная логика окна и обработка горячих клавиш
         if (hotKeys == null)
             InitializeHotKeys();
         hotKeys.OnKeys();
@@ -67,7 +82,6 @@ public class EdixorWindow : EditorWindow
 
     public void RestartWindow()
     {
-        // Используем сохранённое состояние окна из настроек
         if (!setting.IsWindowOpen())
         {
             Debug.LogWarning("Window is not open, skipping restart.");
@@ -91,7 +105,7 @@ public class EdixorWindow : EditorWindow
         try { SaveSettings(); }
         catch (System.Exception e) { Debug.LogError("Failed to save settings: " + e.Message); }
         
-        // Обновляем состояние окна – отмечаем, что окно закрываетс
+        // Обновляем состояние окна – отмечаем, что окно закрывается
         setting.SetWindowOpen(false);
         CurrentWindow = null;
     }
@@ -99,5 +113,14 @@ public class EdixorWindow : EditorWindow
     private void SaveSettings()
     {
         setting?.Save();
+    }
+
+    /// <summary>
+    /// Вызывается для начала захвата новой комбинации клавиш.
+    /// Делегирует захват специализированному обработчику.
+    /// </summary>
+    public void StartHotkeyCapture(System.Action<List<KeyCode>> onHotkeyCaptured)
+    {
+        hotkeyCaptureHandler.StartCapture(onHotkeyCaptured);
     }
 }

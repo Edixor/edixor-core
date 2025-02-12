@@ -1,13 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
-using UnityEngine;
 
 public class HotKeysTab : EdixorTab
 {
     private List<KeyAction> hotkeyActions;
     private VisualElement designContainer;
     private EdixorWindow window;
+
     public HotKeysTab(VisualElement ParentContainer, EdixorWindow window) : base(ParentContainer) {
         hotkeyActions = window.GetSetting().GetHotKeys();
         this.window = window;
@@ -19,8 +21,7 @@ public class HotKeysTab : EdixorTab
 
     public override void OnUI() {
         designContainer = root.Q<VisualElement>("hotkeys-container");
-
-        ListHotKeys("Window", 0, 2);
+        ListHotKeys("Window", 0, hotkeyActions.Count);
     }
 
     private void ListHotKeys(string title, int minIndex, int maxIndex) {
@@ -45,47 +46,51 @@ public class HotKeysTab : EdixorTab
         Label hotkeyName = new Label(hotkeyActions[index].Name);
         hotkeysBox.Add(hotkeyName);
 
-        string combination = string.Join(" + ", hotkeyActions[index].Combination);
+        // Получаем строку для отображения комбинации
+        string combination = string.Join(" + ", hotkeyActions[index].Combination.Select(k => k.ToString()));
         Label hotkeyContent = new Label(combination);
+        // Присвоим уникальное имя (если нужно для поиска через Q)
+        hotkeyContent.name = "hotkeyContent" + index;
         hotkeysBox.Add(hotkeyContent);
 
         Button hotkeyEdit = new Button() { text = "Edit" };
         hotkeysBox.Add(hotkeyEdit);
 
-        hotkeyEdit.clicked += () => ShowHotkeyMenu(hotkeyEdit, index);
+        // При нажатии передаём метку, которую будем обновлять в callback
+        hotkeyEdit.clicked += () => ChangeHotkey(index, hotkeyContent);
 
         return hotkeysBox;
     }
 
-    private void ShowHotkeyMenu(VisualElement target, int index) {
-        GenericMenu menu = new GenericMenu();
+    /// <summary>
+    /// Метод для изменения горячей клавиши.
+    /// При завершении захвата обновляется и отображение комбинации.
+    /// </summary>
+    private void ChangeHotkey(int index, Label hotkeyContent)
+    {
+        Debug.Log($"Изменение горячей клавиши: {hotkeyActions[index].Name}");
 
-        menu.AddItem(new GUIContent("Change Hotkey"), false, () => ChangeHotkey(index));
+        window.StartHotkeyCapture((List<KeyCode> newCombination) =>
+        {
+            Debug.Log("Новая комбинация: " + string.Join(" + ", newCombination.Select(k => k.ToString())));
 
-        if (hotkeyActions[index].enable) {
-            menu.AddItem(new GUIContent("Disable Hotkey"), false, () => DisableHotkey(index));
-        } else {
-            menu.AddItem(new GUIContent("Enable Hotkey"), false, () => EnableHotkey(index));
-        }
+            hotkeyActions[index].Combination.Clear();
+            hotkeyActions[index].Combination.AddRange(newCombination);
+            window.GetSetting().SetHotKeys(hotkeyActions[index], index);
 
-        Vector2 mousePosition = target.worldBound.position + new Vector2(0, target.worldBound.height);
-        menu.DropDown(new Rect(mousePosition, Vector2.zero));
-    }
-
-
-
-    private void ChangeHotkey(int index) {
-        Debug.Log($"Changing hotkey: {hotkeyActions[index].Name}");
+            // Обновляем отображение новой комбинации динамически.
+            hotkeyContent.text = string.Join(" + ", hotkeyActions[index].Combination.Select(k => k.ToString()));
+        });
     }
 
     private void EnableHotkey(int index) {
-        Debug.Log($"Enabling hotkey: {hotkeyActions[index].Name}");
+        Debug.Log($"Включение горячей клавиши: {hotkeyActions[index].Name}");
         hotkeyActions[index].enable = true;
         window.GetSetting().SetHotKeys(hotkeyActions[index], index);
     }
 
     private void DisableHotkey(int index) {
-        Debug.Log($"Disabling hotkey: {hotkeyActions[index].Name}");
+        Debug.Log($"Отключение горячей клавиши: {hotkeyActions[index].Name}");
         hotkeyActions[index].enable = false;
         window.GetSetting().SetHotKeys(hotkeyActions[index], index);
     }
