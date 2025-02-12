@@ -15,16 +15,6 @@ public class EdixorSettings : ScriptableObject
 
     public bool isModified;
 
-    private void OnEnable()
-    {
-        // Если окно открыто, устанавливаем его ссылку во все горячие клавиши
-        EdixorWindow window = EditorWindow.GetWindow<EdixorWindow>();
-        if (window != null && hotKeys != null)
-        {
-            foreach (var action in hotKeys)
-            {
-                action.SetWindow(window);
-            }
-        }
-    }
+    public bool isWindowOpen;
 }
+ 

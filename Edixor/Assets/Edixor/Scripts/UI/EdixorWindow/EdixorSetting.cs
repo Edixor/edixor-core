@@ -53,9 +53,9 @@ public class EdixorWindowSetting
 
             settings.isModified = true;
             Save();
-        } else
+        } 
+        else
         {
-
             EdixorDesignFactory designFactory = new EdixorDesignFactory();
             designFactory.RegisterAll(window);
             designs = designFactory.GetAllItems();
@@ -65,7 +65,6 @@ public class EdixorWindowSetting
 
             Save();
         }
-
     }
 
     public List<EdixorFunction> GetFunctions()
@@ -176,5 +175,18 @@ public class EdixorWindowSetting
             EditorUtility.SetDirty(settings);
             AssetDatabase.SaveAssets();
         }
+    }
+
+    // Новые методы для работы со статусом окна:
+
+    public bool IsWindowOpen()
+    {
+        return settings.isWindowOpen;
+    }
+
+    public void SetWindowOpen(bool open)
+    {
+        settings.isWindowOpen = open;
+        Save();
     }
 }

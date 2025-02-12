@@ -25,6 +25,7 @@ MonoBehaviour:
   - rid: 8753972094409113726
   - rid: 8753972094409113727
   isModified: 1
+  isWindowOpen: 0
   references:
     version: 2
     RefIds:

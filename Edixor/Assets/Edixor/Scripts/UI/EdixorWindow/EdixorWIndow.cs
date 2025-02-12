@@ -18,8 +18,13 @@ public class EdixorWindow : EditorWindow
 
     private void OnEnable()
     {
-        AssetChangesListener.OnRestartPending += RestartWindow;
+        CurrentWindow = this;
+        //AssetChangesListener.OnRestartPending += RestartWindow;
         InitializeSettings();
+
+        // Устанавливаем в настройках, что окно открыто
+        setting.SetWindowOpen(true);
+
         InitializeUI();
         InitializeHotKeys();
     }
@@ -62,7 +67,8 @@ public class EdixorWindow : EditorWindow
 
     public void RestartWindow()
     {
-        if (CurrentWindow == null)
+        // Используем сохранённое состояние окна из настроек
+        if (!setting.IsWindowOpen())
         {
             Debug.LogWarning("Window is not open, skipping restart.");
             return;
@@ -84,6 +90,9 @@ public class EdixorWindow : EditorWindow
         if (CurrentWindow != this) return;
         try { SaveSettings(); }
         catch (System.Exception e) { Debug.LogError("Failed to save settings: " + e.Message); }
+        
+        // Обновляем состояние окна – отмечаем, что окно закрываетс
+        setting.SetWindowOpen(false);
         CurrentWindow = null;
     }
 
