@@ -6,7 +6,7 @@ using System;
 public class EdixorWindowSetting
 {
     private readonly EdixorWindow window;
-    private EdixorSettings settings;
+    private EdixorSettingSave settings;
 
     private const string SettingsPath = "Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset";
 
@@ -158,11 +158,11 @@ public class EdixorWindowSetting
 
     public void Load()
     {
-        settings = AssetDatabase.LoadAssetAtPath<EdixorSettings>(SettingsPath);
+        settings = AssetDatabase.LoadAssetAtPath<EdixorSettingSave>(SettingsPath);
         if (settings == null)
         {
             Debug.LogWarning("Settings not found, creating new default settings.");
-            settings = ScriptableObject.CreateInstance<EdixorSettings>();
+            settings = ScriptableObject.CreateInstance<EdixorSettingSave>();
             AssetDatabase.CreateAsset(settings, SettingsPath);
             AssetDatabase.SaveAssets();
         }
