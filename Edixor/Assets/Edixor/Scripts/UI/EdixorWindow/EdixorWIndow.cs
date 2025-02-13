@@ -94,8 +94,9 @@ public class EdixorWindow : EditorWindow
         };
     }
 
-    public EdixorUIManager GetUIManager() => uiManager;
     public EdixorWindowSetting GetSetting() => setting;
+    public EdixorUIManager GetUIManager() => uiManager;
+    public EdixorHotKeys GetHotKey() => hotKeys;
     public void UpdateUI() => uiManager?.LoadUI();
 
     private void OnDisable()

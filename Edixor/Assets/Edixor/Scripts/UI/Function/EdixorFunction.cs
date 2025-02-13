@@ -15,5 +15,12 @@ public abstract class EdixorFunction
         this.Window = window;
     }
 
+    public void Init(EdixorWindow window) {
+        this.Window = window;
+    }
+    public bool Empty() {
+        return Window == null;
+    }
+
     public abstract void Activate();
 }

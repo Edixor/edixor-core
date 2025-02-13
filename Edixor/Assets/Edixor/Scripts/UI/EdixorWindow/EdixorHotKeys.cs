@@ -60,6 +60,10 @@ public class EdixorHotKeys
         return combination.All(key => currentlyPressedKeys.Contains(key));
     }
 
+    public List<KeyAction> GetKeys() {
+        return hotkeyActions;
+    }
+
     private class KeyCombinationComparer : IEqualityComparer<List<KeyCode>>
     {
         public bool Equals(List<KeyCode> x, List<KeyCode> y)

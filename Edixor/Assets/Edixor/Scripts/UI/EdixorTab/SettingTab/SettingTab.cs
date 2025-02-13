@@ -145,6 +145,11 @@ public class SettingTab : EdixorTab
                         Label functionTitle = new Label(func.Name);
                         functionTitle.AddToClassList("function-title");
                         funcionSettingContainer.Add(functionTitle);
+
+                        if(func.Empty()) {
+                            func.Init(window);
+                        }
+
                         settingFunc.Setting(funcionSettingContainer);
 
                         activeFunction = settingFunc;

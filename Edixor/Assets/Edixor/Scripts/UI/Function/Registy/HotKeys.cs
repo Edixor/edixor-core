@@ -44,6 +44,8 @@ public class HotKeysFunction : EdixorFunction, IFunctionSetting
 
     public void Setting(VisualElement root)
     {
+        Debug.Log(Window == null);
+
         hotkeys = Window.GetSetting().GetHotKeys();
 
         foreach (KeyAction key in hotkeys)

@@ -68,13 +68,15 @@ public class EdixorWindowSetting
     public List<EdixorDesign> GetDesigns()
     {
         EnsureInitialized();
+        Debug.Log("GetDesigns called with " + settings.designs.Count + " designs.");
         return new List<EdixorDesign>(settings.designs);
     }
 
     public List<KeyAction> GetHotKeys()
     {
         EnsureInitialized();
-        return settings.hotKeys;
+        Debug.Log("GetHotKeys called with " + settings.hotKeys.Count + " hotkeys.");
+        return new List<KeyAction>(settings.hotKeys);
     }
 
     public void SetHotKeys(KeyAction keyAction, int index)
