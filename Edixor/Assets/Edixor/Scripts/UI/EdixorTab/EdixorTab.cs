@@ -1,20 +1,47 @@
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
-using UnityEngine;
+using System;
 
+[Serializable]
 public abstract class EdixorTab
 {
-    public abstract string Title { get; }
-    public abstract string PathUxml { get; }
-    public abstract string PathUss { get; }
+    // Эти поля будут отображаться в инспекторе в заданном порядке:
+    [SerializeField, Tooltip("Название вкладки")]
+    private string tabName;
 
+    [SerializeField, Tooltip("Путь к UXML файлу")]
+    private string pathUxml;
+
+    [SerializeField, Tooltip("Путь к USS файлу")]
+    private string pathUss;
+
+    // Остальные поля, не нужные для показа в инспекторе:
     protected VisualElement ParentContainer;
     protected VisualElement root;
 
-    protected EdixorTab(VisualElement ParentContainer)
+    protected EdixorTab(VisualElement ParentContainer, string tabName, string pathUxml, string pathUss)
     {
         this.ParentContainer = ParentContainer;
+        this.tabName = tabName;
+        this.pathUxml = pathUxml;
+        this.pathUss = pathUss;
     }
+
+    /// <summary>
+    /// Название вкладки (только для чтения)
+    /// </summary>
+    public string Title => tabName;
+
+    /// <summary>
+    /// Путь к UXML файлу
+    /// </summary>
+    public string PathUxml => pathUxml;
+
+    /// <summary>
+    /// Путь к USS файлу
+    /// </summary>
+    public string PathUss => pathUss;
 
     public virtual void LoadUI() 
     {
@@ -30,7 +57,7 @@ public abstract class EdixorTab
 
         if (ParentContainer == null)
         {
-            Debug.LogError("'ParentContainer' is null. Cannot load NewTab UI.");
+            Debug.LogError("'ParentContainer' is null. Cannot load Tab UI.");
             return;
         }
 
@@ -48,15 +75,16 @@ public abstract class EdixorTab
 
     public abstract void OnUI();
 
-    public virtual void DeleteUI() {
+    public virtual void DeleteUI() 
+    {
         if (ParentContainer == null)
         {
-            Debug.LogError("'ParentContainer' is null. Cannot delete NewTab UI.");
+            Debug.LogError("'ParentContainer' is null. Cannot delete Tab UI.");
             return;
         }
 
         ParentContainer.Clear();
-        Debug.Log("NewTab UI has been successfully removed from the parent container.");
+        Debug.Log("Tab UI has been successfully removed from the parent container.");
     }
 
     protected T LoadAssetAtPath<T>(string path) where T : UnityEngine.Object
@@ -69,4 +97,8 @@ public abstract class EdixorTab
         return asset;
     }
 
+    public void SetParentContainer(VisualElement container)
+    {
+        ParentContainer = container;
+    }
 }

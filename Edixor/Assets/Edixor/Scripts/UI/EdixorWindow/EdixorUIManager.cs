@@ -7,7 +7,6 @@ public class EdixorUIManager
 {
     private List<EdixorTab> tabs = new List<EdixorTab>();
     private int indexTab = -1;
-    // Словарь для хранения соответствия между вкладкой и её контейнером (с кнопками)
     private Dictionary<EdixorTab, VisualElement> tabContainers = new Dictionary<EdixorTab, VisualElement>();
 
     private readonly EdixorWindow window;
@@ -21,14 +20,72 @@ public class EdixorUIManager
     public void LoadUI()
     {
         design = window.GetSetting().GetCurrentDesign();
-
         design.LoadUI();
         
-        // Создаем первую вкладку при запуске
-        AddTab(new NewTab(design.GetSection("middle-section-content")));
+        // Восстанавливаем ранее сохранённые вкладки, если они есть
+        if (!RestoreTabs())
+        {
+            // Если вкладок не было сохранено – создаём первую вкладку по умолчанию
+            AddTab(new NewTab(design.GetSection("middle-section-content")));
+        }
     }
 
-    // Метод создания контейнера для вкладки с кнопкой переключения и кнопкой закрытия
+    /// <summary>
+    /// Восстанавливает сохранённые вкладки из настроек.
+    /// Возвращает true, если были восстановлены хотя бы одна вкладка.
+    /// </summary>
+    private bool RestoreTabs()
+    {
+        List<EdixorTab> savedTabs = window.GetSetting().GetTabs();
+        if (savedTabs != null && savedTabs.Count > 0)
+        {
+            // Очищаем UI секцию вкладок и центральную область для корректного восстановления
+            design.GetSection("tab-section").Clear();
+            VisualElement middleSection = design.GetSection("middle-section-content");
+            middleSection.Clear();
+            
+            // Восстанавливаем каждую вкладку
+            foreach (EdixorTab tab in savedTabs)
+            {
+                // Перед добавлением вкладки устанавливаем ей корректный контейнер
+                tab.SetParentContainer(middleSection);
+                // Добавляем вкладку без повторного сохранения
+                AddTab(tab, saveState: false);
+            }
+            
+            // Определяем сохранённый индекс активной вкладки
+            int savedActiveIndex = window.GetSetting().GetLastActiveTabIndex();
+            if (savedActiveIndex < 0 || savedActiveIndex >= tabs.Count)
+                savedActiveIndex = 0;
+            SwitchTab(savedActiveIndex);
+            return true;
+        }
+        return false;
+    }
+
+
+    // Перегруженный метод AddTab с возможностью отключить сохранение состояния
+    public void AddTab(EdixorTab newTab, bool saveState = true)
+    {
+        if (newTab == null) return;
+
+        // Если ранее отображался empty state, очищаем центральную область
+        ClearEmptyStateUI();
+
+        tabs.Add(newTab);
+        var container = CreateTabContainer(newTab);
+        tabContainers[newTab] = container;
+        design.GetSection("tab-section").Add(container);
+        
+        // При добавлении новой вкладки сохраняем обновлённое состояние, если это не восстановление из настроек
+        if (saveState)
+            window.GetSetting().SetTabs(tabs);
+
+        // Переключаемся на вновь добавленную вкладку
+        SwitchTab(tabs.IndexOf(newTab));
+    }
+
+    // Создание контейнера для вкладки с кнопками переключения и закрытия
     private VisualElement CreateTabContainer(EdixorTab tab)
     {
         var container = new VisualElement();
@@ -55,45 +112,25 @@ public class EdixorUIManager
         return container;
     }
 
-    public void AddTab(EdixorTab newTab)
-    {
-        if (newTab == null) return;
-
-        // Если ранее отображался empty state, очищаем центральную область
-        ClearEmptyStateUI();
-
-        tabs.Add(newTab);
-        var container = CreateTabContainer(newTab);
-        tabContainers[newTab] = container;
-        design.GetSection("tab-section").Add(container);
-        
-        // Переключаемся на вновь добавленную вкладку
-        SwitchTab(tabs.IndexOf(newTab));
-    }
-
-    // Метод закрытия вкладки по её индексу
-    private void CloseTab(int index)
+    public void CloseTab(int index)
     {
         if (index < 0 || index >= tabs.Count) return;
 
         var closingTab = tabs[index];
-        // Удаляем UI закрываемой вкладки
         closingTab.DeleteUI();
 
-        // Удаляем контейнер вкладки из секции вкладок
         if (tabContainers.TryGetValue(closingTab, out var container))
         {
             design.GetSection("tab-section").Remove(container);
             tabContainers.Remove(closingTab);
         }
 
-        // Определяем, была ли закрыта активная вкладка
         bool wasActiveTabClosed = (indexTab == index);
-
-        // Удаляем вкладку из списка
         tabs.RemoveAt(index);
 
-        // Если больше нет вкладок, показываем empty state
+        // Сохраняем обновлённый список вкладок
+        window.GetSetting().SetTabs(tabs);
+
         if (tabs.Count == 0)
         {
             indexTab = -1;
@@ -103,27 +140,23 @@ public class EdixorUIManager
 
         if (wasActiveTabClosed)
         {
-            // Если закрытая вкладка была активной, переключаемся на соседнюю вкладку
             int newActiveIndex = index > 0 ? index - 1 : 0;
             SwitchTab(newActiveIndex);
         }
         else
         {
-            // Если закрытая вкладка находилась перед активной, корректируем индекс активной вкладки
             if (indexTab > index)
                 indexTab--;
 
-            // Перезагружаем UI активной вкладки, чтобы гарантировать его отображение
             SwitchTab(indexTab);
         }
     }
 
-    // Метод переключения между вкладками
     private void SwitchTab(int index)
     {
         if (index < 0 || index >= tabs.Count) return;
 
-        // Если ранее была активная вкладка, удаляем её UI
+        // Удаляем UI предыдущей активной вкладки
         if (indexTab >= 0 && indexTab < tabs.Count)
         {
             tabs[indexTab].DeleteUI();
@@ -131,22 +164,22 @@ public class EdixorUIManager
         tabs[index].LoadUI();
         tabs[index].OnUI();
         indexTab = index;
+        // Сохраняем индекс активной вкладки
+        window.GetSetting().SetLastActiveTabIndex(index);
     }
 
-    // Метод, который отображает пустое состояние, если вкладок нет
     private void ShowEmptyStateUI()
     {
         VisualElement middleSection = design.GetSection("middle-section-content");
         middleSection.Clear();
 
-        // Сообщение для пользователя на английском
+        Label emoji = new Label("=[");
         Label message = new Label("It seems you've closed all tabs... Please click the button below to create a new tab.");
+        middleSection.Add(emoji);
         middleSection.Add(message);
 
-        // Кнопка для создания новой вкладки на английском
         Button createNewTabButton = new Button(() =>
         {
-            // Создаем новую вкладку, передавая тот же контейнер для контента
             AddTab(new NewTab(middleSection));
         })
         {
@@ -155,12 +188,24 @@ public class EdixorUIManager
         middleSection.Add(createNewTabButton);
     }
 
-    // Метод для очистки пустого состояния, если оно отображалось
     private void ClearEmptyStateUI()
     {
         VisualElement middleSection = design.GetSection("middle-section-content");
-        // Предполагается, что при создании новой вкладки UI полностью обновляется
         middleSection.Clear();
+    }
+
+    /// <summary>
+    /// Сохраняет текущий список открытых вкладок в настройках.
+    /// Вызывается, например, при закрытии окна.
+    /// </summary>
+    public void SaveTabsState()
+    {
+        window.GetSetting().SetTabs(tabs);
+    }
+    
+    public List<EdixorTab> GetTabs()
+    {
+        return tabs;
     }
 
     public EdixorDesign GetDesign()

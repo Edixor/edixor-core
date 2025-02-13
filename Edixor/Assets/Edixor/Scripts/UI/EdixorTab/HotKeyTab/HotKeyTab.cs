@@ -1,24 +1,26 @@
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
+using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
+[Serializable]
 public class HotKeysTab : EdixorTab
 {
     private List<KeyAction> hotkeyActions;
     private VisualElement designContainer;
     private EdixorWindow window;
 
-    public HotKeysTab(VisualElement ParentContainer, EdixorWindow window) : base(ParentContainer)
+    // Передаём необходимые данные в базовый конструктор:
+    public HotKeysTab(VisualElement ParentContainer, EdixorWindow window)
+        : base(ParentContainer, "HotKey", 
+               "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml", 
+               "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss")
     {
         hotkeyActions = window.GetSetting().GetHotKeys();
         this.window = window;
     }
-
-    public override string Title => "HotKey";
-    public override string PathUxml => "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml";
-    public override string PathUss => "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss";
 
     public override void OnUI()
     {
@@ -54,30 +56,23 @@ public class HotKeysTab : EdixorTab
         // Отображение комбинации (преобразуем список KeyCode в строку)
         string combination = string.Join(" + ", hotkeyActions[index].Combination.Select(k => k.ToString()));
         Label hotkeyContent = new Label(combination);
-        // Присваиваем уникальное имя для возможности поиска (через Q)
-        hotkeyContent.name = "hotkeyContent" + index;
+        hotkeyContent.name = "hotkeyContent" + index; // Уникальное имя для поиска через Q
         hotkeysBox.Add(hotkeyContent);
 
         // Кнопка редактирования
         Button hotkeyEdit = new Button() { text = "Edit" };
         hotkeysBox.Add(hotkeyEdit);
 
-        // При нажатии вызываем GenericMenu для смены/отключения горячей клавиши
         hotkeyEdit.clicked += () => ShowHotkeyMenu(hotkeysBox, index);
 
         return hotkeysBox;
     }
 
-    /// <summary>
-    /// Создаёт и отображает GenericMenu с вариантами смены или переключения состояния горячей клавиши.
-    /// </summary>
     private void ShowHotkeyMenu(VisualElement target, int index)
     {
         GenericMenu menu = new GenericMenu();
 
-        // Опция для смены горячей клавиши
         menu.AddItem(new GUIContent("Change Hotkey"), false, () => ChangeHotkey(index));
-        // Опция для включения/отключения горячей клавиши
         if (hotkeyActions[index].enable)
         {
             menu.AddItem(new GUIContent("Disable Hotkey"), false, () => DisableHotkey(index));
@@ -87,29 +82,21 @@ public class HotKeysTab : EdixorTab
             menu.AddItem(new GUIContent("Enable Hotkey"), false, () => EnableHotkey(index));
         }
 
-        // Отображаем меню ниже элемента, по его worldBound
         Vector2 mousePosition = target.worldBound.position + new Vector2(0, target.worldBound.height);
         menu.DropDown(new Rect(mousePosition, Vector2.zero));
     }
 
-    /// <summary>
-    /// Запускает захват новой комбинации для выбранного горячего действия.
-    /// По завершении обновляет комбинацию в настройках и динамически обновляет UI.
-    /// </summary>
     private void ChangeHotkey(int index)
     {
         Debug.Log($"Изменение горячей клавиши: {hotkeyActions[index].Name}");
 
-        // Запускаем захват новой комбинации через окно.
         window.StartHotkeyCapture((List<KeyCode> newCombination) =>
         {
             Debug.Log("Новая комбинация: " + string.Join(" + ", newCombination.Select(k => k.ToString())));
-            // Обновляем комбинацию через метод, поскольку свойство Combination только для чтения.
             hotkeyActions[index].Combination.Clear();
             hotkeyActions[index].Combination.AddRange(newCombination);
             window.GetSetting().SetHotKeys(hotkeyActions[index], index);
 
-            // Обновляем отображение новой комбинации в UI.
             Label hotkeyContent = designContainer.Q<Label>("hotkeyContent" + index);
             if (hotkeyContent != null)
             {

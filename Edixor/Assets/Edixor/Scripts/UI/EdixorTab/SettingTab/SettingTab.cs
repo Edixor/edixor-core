@@ -2,44 +2,24 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
+using System;
+
+[Serializable]
 public class SettingTab : EdixorTab
 {
     private EdixorUIManager edixorUIManager;
     private EdixorWindow window;
     private IFunctionSetting activeFunction = null;
     
-    public SettingTab(VisualElement ParentContainer, EdixorWindow window) : base(ParentContainer)
+    // Передаём необходимые данные в базовый конструктор:
+    public SettingTab(VisualElement ParentContainer, EdixorWindow window)
+        : base(ParentContainer, "Setting", 
+               "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml", 
+               "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss")
     {
         this.edixorUIManager = window.GetUIManager();
         this.window = window;
     }
-
-    public override void LoadUI()
-    {
-        var visualTree = LoadAssetAtPath<VisualTreeAsset>(PathUxml);
-        if (visualTree == null) return;
-
-        root = visualTree.Instantiate();
-        root.style.height = new StyleLength(Length.Percent(100));
-
-        if (ParentContainer == null)
-        {
-            Debug.LogError("ParentContainer is null. Cannot load NewTab UI.");
-            return;
-        }
-
-        ParentContainer.Clear();
-        ParentContainer.Add(root);
-
-        var styleSheet = LoadAssetAtPath<StyleSheet>(PathUss);
-        if (styleSheet == null) return;
-
-        root.styleSheets.Add(styleSheet);
-    }
-
-    public override string Title => "Setting";
-    public override string PathUxml => "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml";
-    public override string PathUss => "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss";
 
     public override void OnUI()
     {
@@ -77,7 +57,7 @@ public class SettingTab : EdixorTab
         AddButtonsToRow(buttonRow, designIndex);
 
         designBox.Add(buttonRow);
-        designBox.Add(new Label(designIndex == window.GetSetting().GetDesignIndex() ? "selections" : "not selected"));
+        designBox.Add(new Label(designIndex == window.GetSetting().GetDesignIndex() ? "selected" : "not selected"));
         designBox.Add(new Label(window.GetSetting().GetCurrentDesign(designIndex).Description));
 
         return designBox;
@@ -97,7 +77,8 @@ public class SettingTab : EdixorTab
                 Button button = CreateButton(designIndex, j);
                 buttonRow.Add(button);
             }
-        } else
+        }
+        else
         {
             Debug.Log("Create button");
             Button button = CreateButton(designIndex, 0);
@@ -133,11 +114,11 @@ public class SettingTab : EdixorTab
                 {
                     if (activeFunction != settingFunc)
                     {
-
                         if (funcionSettingContainer.Contains(infoLabel))
                         {
                             funcionSettingContainer.Remove(infoLabel);
-                        } else
+                        }
+                        else
                         {
                             funcionSettingContainer.Clear();
                         }
@@ -146,7 +127,8 @@ public class SettingTab : EdixorTab
                         functionTitle.AddToClassList("function-title");
                         funcionSettingContainer.Add(functionTitle);
 
-                        if(func.Empty()) {
+                        if (func.Empty())
+                        {
                             func.Init(window);
                         }
 

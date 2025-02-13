@@ -102,8 +102,16 @@ public class EdixorWindow : EditorWindow
     private void OnDisable()
     {
         if (CurrentWindow != this) return;
-        try { SaveSettings(); }
-        catch (System.Exception e) { Debug.LogError("Failed to save settings: " + e.Message); }
+        try 
+        { 
+            // Сохраняем список открытых вкладок перед закрытием окна
+            uiManager?.SaveTabsState();
+            SaveSettings();
+        }
+        catch (System.Exception e) 
+        { 
+            Debug.LogError("Failed to save settings: " + e.Message); 
+        }
         
         // Обновляем состояние окна – отмечаем, что окно закрывается
         setting.SetWindowOpen(false);

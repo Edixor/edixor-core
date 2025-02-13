@@ -13,48 +13,71 @@ MonoBehaviour:
   m_Name: EdixorSettings
   m_EditorClassIdentifier: 
   designs:
-  - rid: 8753972138534502400
+  - rid: 8753972138534502658
   designIndex: 0
   designVersionIndex: 0
   functions:
-  - rid: 8753972137804431496
-  - rid: 8753972137804431497
-  - rid: 8753972137804431498
+  - rid: 8753972138534502650
+  - rid: 8753972138534502651
+  - rid: 8753972138534502652
   hotKeys:
-  - rid: 8753972137804431499
-  - rid: 8753972137804431500
+  - rid: 8753972138534502653
+  - rid: 8753972138534502654
+  tabs:
+  - rid: 8753972138534502655
+  - rid: 8753972138534502656
+  - rid: 8753972138534502657
+  lastActiveTabIndex: 2
   isModified: 1
-  isWindowOpen: 1
+  isWindowOpen: 0
   references:
     version: 2
     RefIds:
-    - rid: 8753972137804431496
+    - rid: 8753972138534502650
       type: {class: HotKeysFunction, ns: , asm: Assembly-CSharp}
       data:
         _functionName: HotKeys
-    - rid: 8753972137804431497
+    - rid: 8753972138534502651
       type: {class: RestartFunction, ns: , asm: Assembly-CSharp}
       data:
         _functionName: Restart
         _tabCleaning: 0
         _clearCache: 0
-    - rid: 8753972137804431498
+    - rid: 8753972138534502652
       type: {class: SettingsFunction, ns: , asm: Assembly-CSharp}
       data:
         _functionName: Setting
-    - rid: 8753972137804431499
+    - rid: 8753972138534502653
       type: {class: Exit, ns: , asm: Assembly-CSharp}
       data:
         _actionName: Exit
         _enable: 1
         combination: 3001000065000000
-    - rid: 8753972137804431500
+    - rid: 8753972138534502654
       type: {class: KeyRestart, ns: , asm: Assembly-CSharp}
       data:
         _actionName: Restart
         _enable: 1
         combination: 3001000072000000
-    - rid: 8753972138534502400
+    - rid: 8753972138534502655
+      type: {class: NewTab, ns: , asm: Assembly-CSharp}
+      data:
+        tabName: New Tab
+        pathUxml: Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uxml
+        pathUss: Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uss
+    - rid: 8753972138534502656
+      type: {class: SettingTab, ns: , asm: Assembly-CSharp}
+      data:
+        tabName: Setting
+        pathUxml: Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml
+        pathUss: Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss
+    - rid: 8753972138534502657
+      type: {class: HotKeysTab, ns: , asm: Assembly-CSharp}
+      data:
+        tabName: HotKey
+        pathUxml: Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml
+        pathUss: Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss
+    - rid: 8753972138534502658
       type: {class: StandardDesign, ns: , asm: Assembly-CSharp}
       data:
         _desingName: Standard

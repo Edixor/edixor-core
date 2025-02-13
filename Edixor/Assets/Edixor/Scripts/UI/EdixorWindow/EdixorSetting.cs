@@ -28,14 +28,13 @@ public class EdixorWindowSetting
 
     private void InitializeData()
     {
-        // Регистрируем и получаем список дизайнов из фабрики.
+        // Регистрация дизайнов и первоначальная инициализация...
         EdixorDesignFactory designFactory = new EdixorDesignFactory();
         designFactory.RegisterAll(window);
         List<EdixorDesign> factoryDesigns = designFactory.GetAllItems();
 
         if (!settings.isModified)
         {
-            // Регистрируем функции и горячие клавиши только при первом создании настроек.
             EdixorFunctionFactory functionFactory = new EdixorFunctionFactory();
             functionFactory.RegisterAll(window);
             List<EdixorFunction> factoryFunctions = functionFactory.GetAllItems();
@@ -51,17 +50,39 @@ public class EdixorWindowSetting
         }
         else
         {
-            // Если настройки уже были модифицированы, можно обновить только список дизайнов,
-            // если это необходимо, или оставить его как есть.
             settings.designs = factoryDesigns;
         }
         Save();
     }
 
+    // Новый метод для сохранения списка открытых вкладок
+    public void SetTabs(List<EdixorTab> newTabs)
+    {
+        settings.tabs = newTabs;
+        Save();
+    }
+
+    public List<EdixorTab> GetTabs()
+    {
+        return settings.tabs;
+    }
+
+    // Методы для сохранения и получения индекса активной вкладки
+    public void SetLastActiveTabIndex(int index)
+    {
+        settings.lastActiveTabIndex = index;
+        Save();
+    }
+
+    public int GetLastActiveTabIndex()
+    {
+        return settings.lastActiveTabIndex;
+    }
+
+    // Остальные методы настроек остаются без изменений...
     public List<EdixorFunction> GetFunctions()
     {
         EnsureInitialized();
-        // При необходимости можно вернуть копию списка для защиты данных.
         return new List<EdixorFunction>(settings.functions);
     }
 
@@ -170,8 +191,6 @@ public class EdixorWindowSetting
             AssetDatabase.SaveAssets();
         }
     }
-
-    // Методы для работы со статусом окна:
 
     public bool IsWindowOpen()
     {

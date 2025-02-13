@@ -1,5 +1,11 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:VisualElement style="flex-grow: 1;">
-        <engine:Label text="NewTab" style="font-size: 23px; -unity-font-style: bold; -unity-text-align: upper-center;" />
+        <engine:VisualElement name="basic-data" style="flex-grow: 1; scale: 1 1;">
+            <engine:Label text="WELCOM TO THE EDIXOR" style="font-size: 20px; -unity-font-style: bold; -unity-text-align: upper-center;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1; align-items: stretch; flex-direction: row;">
+            <engine:VisualElement name="frequent-tabs" style="flex-grow: 1;" />
+            <engine:VisualElement name="news" style="flex-grow: 1;" />
+        </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

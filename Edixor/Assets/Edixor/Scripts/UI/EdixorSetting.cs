@@ -13,8 +13,13 @@ public class EdixorSettingSave : ScriptableObject
 
     [SerializeReference] public List<KeyAction> hotKeys;
 
+    // Новое поле для хранения открытых вкладок
+    [SerializeReference] public List<EdixorTab> tabs = new List<EdixorTab>();
+
+    // Новое поле для хранения индекса активной вкладки
+    public int lastActiveTabIndex;
+
     public bool isModified;
 
     public bool isWindowOpen;
 }
- 
