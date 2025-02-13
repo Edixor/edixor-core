@@ -6,7 +6,6 @@ using UnityEditor;
 
 public class HotKeysFunction : EdixorFunction, IFunctionSetting
 {
-    private EdixorUIManager edixorUIManager;
     private List<KeyAction> hotkeys;
 
     public HotKeysFunction(EdixorWindow window) : base(window) {

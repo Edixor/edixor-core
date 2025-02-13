@@ -13,53 +13,53 @@ MonoBehaviour:
   m_Name: EdixorSettings
   m_EditorClassIdentifier: 
   designs:
-  - rid: 8753972094409113721
-  - rid: 8753972094409113722
-  designIndex: 1
+  - rid: 8753972137804431416
+  - rid: 8753972137804431417
+  designIndex: 0
   designVersionIndex: 0
   functions:
-  - rid: 8753972094409113723
-  - rid: 8753972094409113724
-  - rid: 8753972094409113725
+  - rid: 8753972132028088422
+  - rid: 8753972132028088423
+  - rid: 8753972132028088424
   hotKeys:
-  - rid: 8753972094409113726
-  - rid: 8753972094409113727
+  - rid: 8753972132028088425
+  - rid: 8753972132028088426
   isModified: 1
-  isWindowOpen: 1
+  isWindowOpen: 0
   references:
     version: 2
     RefIds:
-    - rid: 8753972094409113721
-      type: {class: StandardDesign, ns: , asm: Assembly-CSharp}
-      data:
-        _desingName: Standard
-    - rid: 8753972094409113722
-      type: {class: IntertedDesign, ns: , asm: Assembly-CSharp}
-      data:
-        _desingName: Interted
-    - rid: 8753972094409113723
+    - rid: 8753972132028088422
       type: {class: HotKeysFunction, ns: , asm: Assembly-CSharp}
       data:
         _functionName: HotKeys
-    - rid: 8753972094409113724
+    - rid: 8753972132028088423
       type: {class: RestartFunction, ns: , asm: Assembly-CSharp}
       data:
         _functionName: Restart
         _tabCleaning: 0
         _clearCache: 0
-    - rid: 8753972094409113725
+    - rid: 8753972132028088424
       type: {class: SettingsFunction, ns: , asm: Assembly-CSharp}
       data:
         _functionName: Setting
-    - rid: 8753972094409113726
+    - rid: 8753972132028088425
       type: {class: Exit, ns: , asm: Assembly-CSharp}
       data:
         _actionName: Exit
         _enable: 1
         combination: 3001000065000000
-    - rid: 8753972094409113727
+    - rid: 8753972132028088426
       type: {class: KeyRestart, ns: , asm: Assembly-CSharp}
       data:
         _actionName: Restart
         _enable: 1
         combination: 3001000072000000
+    - rid: 8753972137804431416
+      type: {class: StandardDesign, ns: , asm: Assembly-CSharp}
+      data:
+        _desingName: Standard
+    - rid: 8753972137804431417
+      type: {class: IntertedDesign, ns: , asm: Assembly-CSharp}
+      data:
+        _desingName: Interted

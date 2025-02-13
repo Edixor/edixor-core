@@ -9,11 +9,6 @@ public class EdixorWindowSetting
     private EdixorSettingSave settings;
 
     private const string SettingsPath = "Assets/Edixor/Scripts/UI/EdixorWindow/EdixorSettings.asset";
-
-    private List<EdixorDesign> designs;
-    private List<EdixorFunction> functions;
-    private List<KeyAction> hotKeys;
-
     private bool isInitialized = false;
 
     public EdixorWindowSetting(EdixorWindow context)
@@ -33,86 +28,83 @@ public class EdixorWindowSetting
 
     private void InitializeData()
     {
-        if (settings.isModified == false)
-        {
-            EdixorDesignFactory designFactory = new EdixorDesignFactory();
-            designFactory.RegisterAll(window);
-            designs = designFactory.GetAllItems();
+        // Регистрируем и получаем список дизайнов из фабрики.
+        EdixorDesignFactory designFactory = new EdixorDesignFactory();
+        designFactory.RegisterAll(window);
+        List<EdixorDesign> factoryDesigns = designFactory.GetAllItems();
 
+        if (!settings.isModified)
+        {
+            // Регистрируем функции и горячие клавиши только при первом создании настроек.
             EdixorFunctionFactory functionFactory = new EdixorFunctionFactory();
             functionFactory.RegisterAll(window);
-            functions = functionFactory.GetAllItems();
+            List<EdixorFunction> factoryFunctions = functionFactory.GetAllItems();
 
             KeyActionFactory hotKeysFactory = new KeyActionFactory();
             hotKeysFactory.RegisterAll(window);
-            hotKeys = hotKeysFactory.GetAllItems();
+            List<KeyAction> factoryHotKeys = hotKeysFactory.GetAllItems();
 
-            settings.designs = designs;
-            settings.functions = functions;
-            settings.hotKeys = hotKeys;
-
+            settings.designs = factoryDesigns;
+            settings.functions = factoryFunctions;
+            settings.hotKeys = factoryHotKeys;
             settings.isModified = true;
-            Save();
-        } 
+        }
         else
         {
-            EdixorDesignFactory designFactory = new EdixorDesignFactory();
-            designFactory.RegisterAll(window);
-            designs = designFactory.GetAllItems();
-
-            hotKeys = settings.hotKeys;
-            functions = settings.functions;
-
-            Save();
+            // Если настройки уже были модифицированы, можно обновить только список дизайнов,
+            // если это необходимо, или оставить его как есть.
+            settings.designs = factoryDesigns;
         }
+        Save();
     }
 
     public List<EdixorFunction> GetFunctions()
     {
         EnsureInitialized();
-        return new List<EdixorFunction>(functions);
+        // При необходимости можно вернуть копию списка для защиты данных.
+        return new List<EdixorFunction>(settings.functions);
     }
 
     public List<EdixorDesign> GetDesigns()
     {
         EnsureInitialized();
-        return new List<EdixorDesign>(designs);
+        return new List<EdixorDesign>(settings.designs);
     }
 
     public List<KeyAction> GetHotKeys()
     {
         EnsureInitialized();
-        return hotKeys;
+        return settings.hotKeys;
     }
 
     public void SetHotKeys(KeyAction keyAction, int index)
     {
         EnsureInitialized();
-        if (index >= 0 && index < hotKeys.Count)
+        if (index >= 0 && index < settings.hotKeys.Count)
         {
-            hotKeys[index] = keyAction;
+            settings.hotKeys[index] = keyAction;
             Save();
         }
         else
         {
-            throw new System.ArgumentOutOfRangeException(nameof(index), "Invalid hotkey index.");
+            throw new ArgumentOutOfRangeException(nameof(index), "Invalid hotkey index.");
         }
     }
 
     public EdixorDesign GetCurrentDesign(int index = -1)
     {
         EnsureInitialized();
-        if (index >= 0 && index < designs.Count)
+        if (index >= 0 && index < settings.designs.Count)
         {
-            return designs[index];
+            return settings.designs[index];
         }
 
-        if (settings.designIndex >= 0 && settings.designIndex < designs.Count)
+        if (settings.designIndex >= 0 && settings.designIndex < settings.designs.Count)
         {
-            return designs[settings.designIndex];
+            return settings.designs[settings.designIndex];
         }
 
-        throw new System.IndexOutOfRangeException("Design index is out of range.");
+        throw new IndexOutOfRangeException("Design index is out of range.");
     }
 
     public int GetDesignIndex()
@@ -131,14 +123,14 @@ public class EdixorWindowSetting
     {
         EnsureInitialized();
 
-        if (index >= 0 && index < designs.Count)
+        if (index >= 0 && index < settings.designs.Count)
         {
             settings.designIndex = index;
             Save();
         }
         else
         {
-            throw new System.ArgumentOutOfRangeException(nameof(index), "Invalid design index.");
+            throw new ArgumentOutOfRangeException(nameof(index), "Invalid design index.");
         }
     }
 
@@ -146,9 +138,9 @@ public class EdixorWindowSetting
     {
         EnsureInitialized();
 
-        if (index < 0 || index >= designs.Count)
+        if (index < 0 || index >= settings.designs.Count)
         {
-            throw new System.ArgumentOutOfRangeException(nameof(index), "Invalid design index.");
+            throw new ArgumentOutOfRangeException(nameof(index), "Invalid design index.");
         }
 
         settings.designIndex = index;
@@ -177,7 +169,7 @@ public class EdixorWindowSetting
         }
     }
 
-    // Новые методы для работы со статусом окна:
+    // Методы для работы со статусом окна:
 
     public bool IsWindowOpen()
     {

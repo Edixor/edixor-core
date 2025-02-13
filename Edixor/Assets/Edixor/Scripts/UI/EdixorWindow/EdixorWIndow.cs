@@ -24,11 +24,8 @@ public class EdixorWindow : EditorWindow
     private void OnEnable()
     {
         CurrentWindow = this;
+
         InitializeSettings();
-
-        // Устанавливаем в настройках, что окно открыто
-        setting.SetWindowOpen(true);
-
         InitializeUI();
         InitializeHotKeys();
     }
@@ -67,6 +64,8 @@ public class EdixorWindow : EditorWindow
                 action.SetWindow(this);
             }
         }
+
+        setting.SetWindowOpen(true);
     }
 
     private void InitializeUI()
