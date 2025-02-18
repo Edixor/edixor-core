@@ -47,8 +47,9 @@ public class EdixorUIManager
             // Восстанавливаем каждую вкладку
             foreach (EdixorTab tab in savedTabs)
             {
-                // Перед добавлением вкладки устанавливаем ей корректный контейнер
+                tab.SetWindow(window);
                 tab.SetParentContainer(middleSection);
+                tab.Init();
                 // Добавляем вкладку без повторного сохранения
                 AddTab(tab, saveState: false);
             }

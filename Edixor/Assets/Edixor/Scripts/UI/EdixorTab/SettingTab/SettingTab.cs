@@ -8,17 +8,21 @@ using System;
 public class SettingTab : EdixorTab
 {
     private EdixorUIManager edixorUIManager;
-    private EdixorWindow window;
     private IFunctionSetting activeFunction = null;
     
     // Передаём необходимые данные в базовый конструктор:
     public SettingTab(VisualElement ParentContainer, EdixorWindow window)
-        : base(ParentContainer, "Setting", 
+        : base(ParentContainer, 
+               "Setting", 
                "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml", 
                "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss")
     {
-        this.edixorUIManager = window.GetUIManager();
+        Init(); 
         this.window = window;
+    }
+
+    public override void Init() {
+        this.edixorUIManager = window.GetUIManager();
     }
 
     public override void OnUI()

@@ -10,20 +10,29 @@ public class HotKeysTab : EdixorTab
 {
     private List<KeyAction> hotkeyActions;
     private VisualElement designContainer;
-    private EdixorWindow window;
 
     // Передаём необходимые данные в базовый конструктор:
     public HotKeysTab(VisualElement ParentContainer, EdixorWindow window)
-        : base(ParentContainer, "HotKey", 
+        : base(ParentContainer, 
+               "HotKey", 
                "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml", 
                "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss")
     {
-        hotkeyActions = window.GetSetting().GetHotKeys();
+        Init();
         this.window = window;
+    }
+
+    public override void Init() {
+        hotkeyActions = window.GetSetting().GetHotKeys();
     }
 
     public override void OnUI()
     {
+        if (hotkeyActions == null || hotkeyActions.Count == 0)
+        {
+            hotkeyActions = window.GetSetting().GetHotKeys();
+        }
+
         designContainer = root.Q<VisualElement>("hotkeys-container");
         ListHotKeys("Window", 0, hotkeyActions.Count);
     }

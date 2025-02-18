@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EdixorSettings
   m_EditorClassIdentifier: 
   designs:
-  - rid: 8753972138534502658
+  - rid: 8753972250240090112
   designIndex: 0
   designVersionIndex: 0
   functions:
@@ -24,10 +24,10 @@ MonoBehaviour:
   - rid: 8753972138534502653
   - rid: 8753972138534502654
   tabs:
-  - rid: 8753972138534502655
-  - rid: 8753972138534502656
-  - rid: 8753972138534502657
-  lastActiveTabIndex: 2
+  - rid: 8753972249895895106
+  - rid: 8753972249895895107
+  - rid: 8753972249895895108
+  lastActiveTabIndex: 1
   isModified: 1
   isWindowOpen: 0
   references:
@@ -59,25 +59,25 @@ MonoBehaviour:
         _actionName: Restart
         _enable: 1
         combination: 3001000072000000
-    - rid: 8753972138534502655
+    - rid: 8753972249895895106
       type: {class: NewTab, ns: , asm: Assembly-CSharp}
       data:
         tabName: New Tab
         pathUxml: Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uxml
         pathUss: Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uss
-    - rid: 8753972138534502656
-      type: {class: SettingTab, ns: , asm: Assembly-CSharp}
-      data:
-        tabName: Setting
-        pathUxml: Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml
-        pathUss: Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss
-    - rid: 8753972138534502657
+    - rid: 8753972249895895107
       type: {class: HotKeysTab, ns: , asm: Assembly-CSharp}
       data:
         tabName: HotKey
         pathUxml: Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml
         pathUss: Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss
-    - rid: 8753972138534502658
+    - rid: 8753972249895895108
+      type: {class: SettingTab, ns: , asm: Assembly-CSharp}
+      data:
+        tabName: Setting
+        pathUxml: Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml
+        pathUss: Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss
+    - rid: 8753972250240090112
       type: {class: StandardDesign, ns: , asm: Assembly-CSharp}
       data:
         _desingName: Standard

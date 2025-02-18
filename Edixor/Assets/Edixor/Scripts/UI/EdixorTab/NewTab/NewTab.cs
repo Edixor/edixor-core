@@ -10,7 +10,13 @@ public class NewTab : EdixorTab
         : base(ParentContainer, "New Tab", 
                "Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uxml", 
                "Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uss")
-    {}
+    {
+        Init();
+    }
+
+    public override void Init() {
+        // Инициализация новой вкладки
+    }
 
     public override void OnUI() 
     {

@@ -19,6 +19,8 @@ public abstract class EdixorTab
     // Остальные поля, не нужные для показа в инспекторе:
     protected VisualElement ParentContainer;
     protected VisualElement root;
+    protected EdixorWindow window;
+
 
     protected EdixorTab(VisualElement ParentContainer, string tabName, string pathUxml, string pathUss)
     {
@@ -42,6 +44,8 @@ public abstract class EdixorTab
     /// Путь к USS файлу
     /// </summary>
     public string PathUss => pathUss;
+
+    public abstract void Init();
 
     public virtual void LoadUI() 
     {
@@ -100,5 +104,8 @@ public abstract class EdixorTab
     public void SetParentContainer(VisualElement container)
     {
         ParentContainer = container;
+    }
+    public void SetWindow(EdixorWindow window) {
+        this.window = window;
     }
 }
