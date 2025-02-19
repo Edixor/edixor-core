@@ -18,15 +18,19 @@ public class HotKeysTab : EdixorTab
                "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml", 
                "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss")
     {
-        Init();
         this.window = window;
+        Init();
     }
 
     public override void Init() {
         hotkeyActions = window.GetSetting().GetHotKeys();
     }
 
-    public override void OnUI()
+    /// <summary>
+    /// Специфичная логика отображения UI для вкладки HotKeysTab.
+    /// Вызывается базовым OnUI() после увеличения openCount.
+    /// </summary>
+    protected override void OnTabUI()
     {
         if (hotkeyActions == null || hotkeyActions.Count == 0)
         {

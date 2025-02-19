@@ -17,15 +17,19 @@ public class SettingTab : EdixorTab
                "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml", 
                "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss")
     {
-        Init(); 
         this.window = window;
+        Init(); 
     }
 
     public override void Init() {
         this.edixorUIManager = window.GetUIManager();
     }
 
-    public override void OnUI()
+    /// <summary>
+    /// Метод, который вызывается базовым OnUI() после инкремента openCount.
+    /// Здесь реализуется специфичная логика отображения UI для вкладки.
+    /// </summary>
+    protected override void OnTabUI()
     {
         List<EdixorFunction> functions = edixorUIManager.GetDesign().GetFunctions();
 

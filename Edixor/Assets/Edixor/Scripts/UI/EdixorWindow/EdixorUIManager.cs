@@ -11,10 +11,12 @@ public class EdixorUIManager
 
     private readonly EdixorWindow window;
     private EdixorDesign design;
+    private VisualElement root;
 
     public EdixorUIManager(EdixorWindow window)
     {
         this.window = window;
+        root = window.rootVisualElement;
     }
 
     public void LoadUI()
@@ -22,12 +24,63 @@ public class EdixorUIManager
         design = window.GetSetting().GetCurrentDesign();
         design.LoadUI();
         
-        // Восстанавливаем ранее сохранённые вкладки, если они есть
-        if (!RestoreTabs())
+        // Если уже есть открытые вкладки в памяти, не восстанавливаем их заново.
+        if (tabs.Count == 0)
         {
-            // Если вкладок не было сохранено – создаём первую вкладку по умолчанию
-            AddTab(new NewTab(design.GetSection("middle-section-content")));
+            if (!RestoreTabs())
+            {
+                // Если вкладок не было сохранено – создаём первую вкладку по умолчанию
+                AddTab(new NewTab(design.GetSection("middle-section-content")), saveState: false, autoSwitch: false);
+            }
         }
+        else
+        {
+            // Если вкладки уже существуют, повторно отрисовываем активную вкладку
+            if (indexTab >= 0 && indexTab < tabs.Count)
+            {
+                tabs[indexTab].LoadUI();
+                tabs[indexTab].OnUI();
+            }
+        }
+    }
+
+    public void ShowMinimizedUI()
+    {
+        // Очищаем текущий UI.
+        root.Clear();
+
+        // Создаём контейнер для минимизированного UI.
+        VisualElement container = new VisualElement();
+        container.style.flexDirection = FlexDirection.Column;
+        container.style.alignItems = Align.Center;
+        container.style.justifyContent = Justify.Center;
+        container.style.height = new StyleLength(new Length(100, LengthUnit.Percent));
+        container.style.width = new StyleLength(new Length(100, LengthUnit.Percent));
+        
+        // Упрощённое информационное сообщение.
+        Label infoLabel = new Label("click return");
+        infoLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
+        container.Add(infoLabel);
+        
+        // Краткая информация об исходном размере.
+        Rect originalRect = window.GetSetting().GetOriginalWindowRect();
+        string sizeInfo = $"{originalRect.width} x {originalRect.height}";
+        Label sizeLabel = new Label(sizeInfo);
+        sizeLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
+        container.Add(sizeLabel);
+        
+        // Создаем кнопку "return", которая возвращает окно к исходному размеру.
+        Button restoreButton = new Button(() =>
+        {
+            window.ReturnWindowToOriginalSize();
+        })
+        {
+            text = "return"
+        };
+        container.Add(restoreButton);
+        
+        // Добавляем контейнер в корневой элемент UI.
+        root.Add(container);
     }
 
     /// <summary>
@@ -44,14 +97,13 @@ public class EdixorUIManager
             VisualElement middleSection = design.GetSection("middle-section-content");
             middleSection.Clear();
             
-            // Восстанавливаем каждую вкладку
+            // Восстанавливаем каждую вкладку без авто-переключения
             foreach (EdixorTab tab in savedTabs)
             {
                 tab.SetWindow(window);
                 tab.SetParentContainer(middleSection);
                 tab.Init();
-                // Добавляем вкладку без повторного сохранения
-                AddTab(tab, saveState: false);
+                AddTab(tab, saveState: false, autoSwitch: false);
             }
             
             // Определяем сохранённый индекс активной вкладки
@@ -64,9 +116,8 @@ public class EdixorUIManager
         return false;
     }
 
-
-    // Перегруженный метод AddTab с возможностью отключить сохранение состояния
-    public void AddTab(EdixorTab newTab, bool saveState = true)
+    // Перегруженный метод AddTab с параметрами для сохранения состояния и авто-переключения
+    public void AddTab(EdixorTab newTab, bool saveState = true, bool autoSwitch = true)
     {
         if (newTab == null) return;
 
@@ -78,12 +129,11 @@ public class EdixorUIManager
         tabContainers[newTab] = container;
         design.GetSection("tab-section").Add(container);
         
-        // При добавлении новой вкладки сохраняем обновлённое состояние, если это не восстановление из настроек
         if (saveState)
             window.GetSetting().SetTabs(tabs);
 
-        // Переключаемся на вновь добавленную вкладку
-        SwitchTab(tabs.IndexOf(newTab));
+        if (autoSwitch)
+            SwitchTab(tabs.IndexOf(newTab));
     }
 
     // Создание контейнера для вкладки с кнопками переключения и закрытия
@@ -92,7 +142,7 @@ public class EdixorUIManager
         var container = new VisualElement();
         container.style.flexDirection = FlexDirection.Row;
         container.style.alignItems = Align.Center;
-        container.style.marginRight = 4; // отступ между вкладками
+        container.style.marginRight = 0; // отступ между вкладками
 
         // Кнопка для переключения на вкладку
         var tabButton = new Button(() => SwitchTab(tabs.IndexOf(tab)))
@@ -107,7 +157,7 @@ public class EdixorUIManager
             text = "X"
         };
         closeButton.style.width = 20;
-        closeButton.style.marginLeft = 2;
+        closeButton.style.marginLeft = 0;
         container.Add(closeButton);
 
         return container;
@@ -129,7 +179,6 @@ public class EdixorUIManager
         bool wasActiveTabClosed = (indexTab == index);
         tabs.RemoveAt(index);
 
-        // Сохраняем обновлённый список вкладок
         window.GetSetting().SetTabs(tabs);
 
         if (tabs.Count == 0)
@@ -155,17 +204,18 @@ public class EdixorUIManager
 
     private void SwitchTab(int index)
     {
-        if (index < 0 || index >= tabs.Count) return;
+        if (index < 0 || index >= tabs.Count)
+            return;
 
-        // Удаляем UI предыдущей активной вкладки
+        // Если есть текущая активная вкладка, деактивируем её и удаляем её UI
         if (indexTab >= 0 && indexTab < tabs.Count)
         {
+            tabs[indexTab].Deactivate();
             tabs[indexTab].DeleteUI();
         }
         tabs[index].LoadUI();
         tabs[index].OnUI();
         indexTab = index;
-        // Сохраняем индекс активной вкладки
         window.GetSetting().SetLastActiveTabIndex(index);
     }
 

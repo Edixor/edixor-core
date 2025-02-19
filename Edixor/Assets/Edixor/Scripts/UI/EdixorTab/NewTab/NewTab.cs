@@ -15,10 +15,14 @@ public class NewTab : EdixorTab
     }
 
     public override void Init() {
-        // Инициализация новой вкладки
+        // Инициализация новой вкладки (при необходимости)
     }
 
-    public override void OnUI() 
+    /// <summary>
+    /// Специфичная логика отображения UI для вкладки NewTab.
+    /// Вызывается базовым OnUI() после увеличения openCount.
+    /// </summary>
+    protected override void OnTabUI() 
     {
         VisualElement designContainer = root.Q<VisualElement>("basic-data");
         VisualElement tabContainer = root.Q<VisualElement>("frequent-tabs");

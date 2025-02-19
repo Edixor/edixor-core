@@ -171,6 +171,18 @@ public class EdixorWindowSetting
         Save();
     }
 
+    // Методы для сохранения/получения исходной позиции окна
+    public void SetOriginalWindowRect(Rect rect)
+    {
+        settings.originalWindowRect = rect;
+        Save();
+    }
+
+    public Rect GetOriginalWindowRect()
+    {
+        return settings.originalWindowRect;
+    }
+
     public void Load()
     {
         settings = AssetDatabase.LoadAssetAtPath<EdixorSettingSave>(SettingsPath);
@@ -182,6 +194,7 @@ public class EdixorWindowSetting
             AssetDatabase.SaveAssets();
         }
     }
+
 
     public void Save()
     {

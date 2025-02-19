@@ -56,7 +56,7 @@ public class StandardDesign : EdixorDesign, IVersions
             return;
         }
 
-        commandFunctions = SeparationоfFunctions(new[] { typeof(RestartFunction)});
+        commandFunctions = SeparationоfFunctions(new[] { typeof(RestartFunction), typeof(CloseFunction) });
         otherFunctions = SeparationоfFunctions(new[] { typeof(HotKeysFunction), typeof(SettingsFunction) });
 
         AddButtonsToSection(commandSection, commandFunctions);

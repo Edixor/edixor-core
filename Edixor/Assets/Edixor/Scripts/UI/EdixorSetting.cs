@@ -17,6 +17,7 @@ public class EdixorSettingSave : ScriptableObject
     [SerializeReference] public List<EdixorTab> tabs = new List<EdixorTab>();
 
     // Новое поле для хранения индекса активной вкладки
+    public Rect originalWindowRect;
     public int lastActiveTabIndex;
 
     public bool isModified;
