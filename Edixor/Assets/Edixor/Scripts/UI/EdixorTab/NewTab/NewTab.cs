@@ -6,15 +6,8 @@ using System;
 [Serializable]
 public class NewTab : EdixorTab
 {
-    public NewTab(VisualElement ParentContainer)
-        : base(ParentContainer, "New Tab", 
-               "Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uxml", 
-               "Assets/Edixor/Scripts/UI/EdixorTab/NewTab/NewTab.uss")
-    {
-        Init();
-    }
 
-    public override void Init() {
+    public void Init(DIContainer container = null, VisualElement containerUI = null) {
         // Инициализация новой вкладки (при необходимости)
     }
 
@@ -22,7 +15,7 @@ public class NewTab : EdixorTab
     /// Специфичная логика отображения UI для вкладки NewTab.
     /// Вызывается базовым OnUI() после увеличения openCount.
     /// </summary>
-    protected override void OnTabUI() 
+    protected void OnTabUI() 
     {
         VisualElement designContainer = root.Q<VisualElement>("basic-data");
         VisualElement tabContainer = root.Q<VisualElement>("frequent-tabs");

@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public abstract class EdixorFunction
+public abstract class FunctionLogica
 {
-    public abstract Texture2D Icon { get; }
-    public abstract string Name { get; }
-    public abstract string Description { get; }
-    protected EdixorWindow Window;
+    protected DIContainer container;
 
-    protected EdixorFunction(EdixorWindow window)
+    protected FunctionLogica(DIContainer container = null)
     {
-        this.Window = window;
+        this.container = container;
     }
 
-    public void Init(EdixorWindow window) {
-        this.Window = window;
-    }
     public bool Empty() {
-        return Window == null;
+        return container == null;
+    }
+
+    public void SetContainer(DIContainer container) {
+        this.container = container;
     }
 
     public abstract void Activate();
+    public abstract void Init();
 }

@@ -4,39 +4,32 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
-public class SettingsFunction : EdixorFunction
+public class Setting : FunctionLogica
 {
-    [Header("Basic information")]
-    [SerializeField]
-    private string _functionName = "Setting";
-    public string FunctionName 
-    {
-        get { return _functionName; }
-        private set { _functionName = value; }
-    }
-    public SettingsFunction(EdixorWindow window) : base(window)
-    {
-    }
 
-    public override Texture2D Icon => AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Edixor/Texture/EdixorWindow/Functions/photo_4_2024-12-24_18-59-17.jpg");
-
-    public override string Name => "Setting";
-
-    public override string Description => "Restarts the application or resets specific functionality.";
-
+    private EdixorUIManager uiManager;
     public override void Activate()
     {
-        if (Window != null)
+        if (uiManager == null)
         {
-            VisualElement ParentContainer = Window.GetUIManager().GetDesign().GetSection("middle-section-content");
-            if (ParentContainer == null)
+            Debug.LogError("UIManager is null.");
+            return;
+        }
+        {
+            VisualElement parentContainer = uiManager.GetDesign().GetSection("middle-section-content");
+            if (parentContainer == null)
             {
                 Debug.LogError("ParentContainer is null.");
                 return;
             }
 
-            SettingTab settingTab = new SettingTab(ParentContainer, Window);
-            Window.GetUIManager().AddTab(settingTab);
+            SettingTab settingTab = new SettingTab(parentContainer, container);
+            uiManager.AddTab(settingTab);
         }
+    }
+
+    public override void Init()
+    {
+        uiManager = container.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow);
     }
 }

@@ -2,159 +2,181 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
 using System;
 
 [Serializable]
 public class SettingTab : EdixorTab
 {
     private EdixorUIManager edixorUIManager;
-    private IFunctionSetting activeFunction = null;
-    
-    // Передаём необходимые данные в базовый конструктор:
-    public SettingTab(VisualElement ParentContainer, EdixorWindow window)
-        : base(ParentContainer, 
-               "Setting", 
-               "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml", 
-               "Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss")
+    private FunctionService functionSave;
+    private IFactory factoryBuilder;
+    private StyleLogic styleLogic = new StyleLogic();
+    private StyleParameters styleParameters;
+
+    public SettingTab(VisualElement ParentContainer, DIContainer container)
     {
-        this.window = window;
-        Init(); 
+        Init(container);
     }
 
-    public override void Init() {
-        this.edixorUIManager = window.GetUIManager();
+    public void Init(DIContainer container = null, VisualElement containerUI = null) {
+        functionSave = container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting);
+        factoryBuilder = container.Resolve<IFactory>();
     }
 
-    /// <summary>
-    /// Метод, который вызывается базовым OnUI() после инкремента openCount.
-    /// Здесь реализуется специфичная логика отображения UI для вкладки.
-    /// </summary>
-    protected override void OnTabUI()
+    protected void OnTabUI()
     {
-        List<EdixorFunction> functions = edixorUIManager.GetDesign().GetFunctions();
+        SetupContainer("layout-container", AddLayoutToContainer);
+        SetupContainer("style-container", AddStyleToContainer);
 
-        VisualElement designContainer = root.Q<VisualElement>("design-container");
-        if (designContainer == null)
+        factoryBuilder.Init<FunctionData, FunctionLogica, Function>(data => data.Logica);
+        AddFunctionSettings(factoryBuilder.CreateAllFromProject().OfType<Function>().ToList());
+    }
+
+    private void SetupContainer(string containerName, Action<VisualElement> action)
+    {
+        VisualElement container = root.Q<VisualElement>(containerName);
+        if (container == null)
         {
-            Debug.LogError("Design container not found.");
+            Debug.LogError($"{containerName} not found.");
+            return;
+        }
+        action(container);
+    }
+
+    private void AddLayoutToContainer(VisualElement designContainer)
+    {
+        var layoutDatas = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetLayouts().ToArray();
+        var styleData = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetCurrentItem();
+        
+        if (layoutDatas.Length == 0)
+        {
+            Debug.LogWarning("Layouts not found.");
             return;
         }
 
-        AddDesignsToContainer(designContainer);
-        AddFunctionSettings(functions);
-    }
-
-    private void AddDesignsToContainer(VisualElement designContainer)
-    {
-        int designCount = window.GetSetting().GetDesigns().Count;
-        for (int i = 0; i < designCount; i++)
+        foreach (var (data, index) in layoutDatas.Select((data, i) => (data, i)))
         {
-            VisualElement designBox = CreateDesignBox(i);
-            designContainer.Add(designBox);
+            designContainer.Add(CreateBanner(data, styleData, index, true));
         }
     }
 
-    private VisualElement CreateDesignBox(int designIndex)
+    private void AddStyleToContainer(VisualElement styleContainer)
     {
-        VisualElement designBox = new VisualElement();
-        designBox.AddToClassList("design-box");
-        designBox.Add(new Label(window.GetSetting().GetCurrentDesign(designIndex).Name));
+        var styleDatas = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyles().ToArray();
+        var layoutData = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetCurrentItem();
 
-        VisualElement buttonRow = new VisualElement();
-        buttonRow.AddToClassList("button-row");
-        AddButtonsToRow(buttonRow, designIndex);
-
-        designBox.Add(buttonRow);
-        designBox.Add(new Label(designIndex == window.GetSetting().GetDesignIndex() ? "selected" : "not selected"));
-        designBox.Add(new Label(window.GetSetting().GetCurrentDesign(designIndex).Description));
-
-        return designBox;
-    }
-
-    private void AddButtonsToRow(VisualElement buttonRow, int designIndex)
-    {
-        EdixorDesign design = window.GetSetting().GetCurrentDesign(designIndex);
-        if (design is IVersions version)
+        if (styleDatas.Length == 0)
         {
-            if (version.countVersion == 0)
-            {
-                version.InitializeVersionActions();
-            }
-            for (int j = 0; j < version.countVersion; j++)
-            {
-                Button button = CreateButton(designIndex, j);
-                buttonRow.Add(button);
-            }
+            Debug.LogWarning("Styles not found.");
+            return;
         }
-        else
+
+        ScrollView scrollView = new ScrollView(ScrollViewMode.Horizontal);
+        scrollView.AddToClassList("banner-scroll-view");
+
+        foreach (var (data, index) in styleDatas.Select((data, i) => (data, i)))
         {
-            Debug.Log("Create button");
-            Button button = CreateButton(designIndex, 0);
-            buttonRow.Add(button);
+            scrollView.Add(CreateBanner(data, layoutData, index, false));
         }
+
+        styleContainer.Add(scrollView);
     }
 
-    private Button CreateButton(int designIndex, int buttonIndex)
+    private VisualElement CreateBanner(object data, object layoutData, int index, bool isLayout)
     {
-        Button button = new Button(() =>
-        {
-            window.GetSetting().SetDesignIndex(designIndex, buttonIndex);
-            window.RestartWindow();
-        });
+        // Создаём основной контейнер для баннера
+        VisualElement bannerContainer = new VisualElement();
+        bannerContainer.AddToClassList("banner-container");
 
-        button.AddToClassList("image-button");
-        return button;
+        // Создаём элемент баннера и настраиваем его
+        VisualElement banner = new VisualElement();
+        banner.AddToClassList("banner");
+        banner.AddToClassList("middle-section");
+
+        // Инициализируем дизайн баннера
+        EdixorDesign edixorDesign = new EdixorDesign(
+            isLayout ? (StyleData)layoutData : (StyleData)data, 
+            isLayout ? (EdixorLayoutData)data : (EdixorLayoutData)layoutData, 
+            banner, container);
+        edixorDesign.LoadUI(true);
+
+        styleParameters = isLayout ? ((StyleData)layoutData).GetAssetParameter() : ((StyleData)data).GetAssetParameter();
+        SetBannerStyle(banner, styleParameters);
+
+        // Получаем имя баннера и создаём Label для его отображения сверху
+        string bannerName = isLayout ? ((EdixorLayoutData)data).Name : ((StyleData)data).Name;
+        Label bannerNameLabel = new Label(bannerName);
+        bannerNameLabel.AddToClassList("banner-name");
+
+        // Создаём кнопку выбора отдельно (она больше не добавляется в баннер)
+        Button selectButton = new Button(() => {
+            Debug.Log($"Banner with {(isLayout ? "layout" : "style")} {bannerName} selected.");
+            if (isLayout)
+                container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).SetCurrentItem(index);
+            else
+                container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).SetCurrentItem(index);
+            
+            container.ResolveNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow).RestartWindow();
+        }) { text = "Select" };
+        selectButton.AddToClassList("select-button");
+
+        // Добавляем элементы в контейнер в нужном порядке:
+        // сверху имя баннера, затем сам баннер, и внизу кнопку выбора.
+        bannerContainer.Add(bannerNameLabel);
+        bannerContainer.Add(banner);
+        bannerContainer.Add(selectButton);
+
+        return bannerContainer;
     }
 
-    private void AddFunctionSettings(List<EdixorFunction> functions)
-    {
-        VisualElement funcionContainer = root.Q<VisualElement>("funcion-container"); 
-        VisualElement funcionSettingContainer = root.Q<VisualElement>("funcion-setting-container"); 
 
+    private void SetBannerStyle(VisualElement banner, StyleParameters parameters)
+    {
+        banner.style.borderTopColor = new StyleColor(parameters.Colors[0]);
+        banner.style.borderBottomColor = new StyleColor(parameters.Colors[0]);
+        banner.style.borderLeftColor = new StyleColor(parameters.Colors[0]);
+        banner.style.borderRightColor = new StyleColor(parameters.Colors[0]);
+        styleLogic.Init(banner, parameters);
+    }
+
+    private void AddFunctionSettings(List<Function> functions)
+    {
+        VisualElement functionContainer = root.Q<VisualElement>("funcion-container"); 
+        VisualElement functionSettingContainer = root.Q<VisualElement>("funcion-setting-container"); 
         Label infoLabel = new Label("Click on a function to configure it");
-        funcionSettingContainer.Add(infoLabel);
+        functionSettingContainer.Add(infoLabel);
 
-        foreach (EdixorFunction func in functions)
+        foreach (Function func in functions)
         {
-            if (func is IFunctionSetting settingFunc)
+            if (func.Logic is IFunctionSetting settingFunc)
             {
                 Button function = new Button(() =>
                 {
-                    if (activeFunction != settingFunc)
+                    functionSettingContainer.Clear();
+                    Label functionTitle = new Label(func.Data.Name);
+                    functionTitle.AddToClassList("function-title");
+                    functionSettingContainer.Add(functionTitle);
+
+                    if (func.Logic.Empty())
                     {
-                        if (funcionSettingContainer.Contains(infoLabel))
-                        {
-                            funcionSettingContainer.Remove(infoLabel);
-                        }
-                        else
-                        {
-                            funcionSettingContainer.Clear();
-                        }
-                        
-                        Label functionTitle = new Label(func.Name);
-                        functionTitle.AddToClassList("function-title");
-                        funcionSettingContainer.Add(functionTitle);
-
-                        if (func.Empty())
-                        {
-                            func.Init(window);
-                        }
-
-                        settingFunc.Setting(funcionSettingContainer);
-
-                        activeFunction = settingFunc;
+                        func.Logic.SetContainer(container);
+                        func.Logic.Init();
                     }
+                    settingFunc.Setting(functionSettingContainer);
                 });
 
-                function.AddToClassList("function-button");
-
-                if (func.Icon != null)
+                if (func.Data.Icon is Texture2D backgroundImage)
                 {
-                    Image icon = new Image { image = func.Icon };
-                    function.Add(icon);
+                    function.style.backgroundImage = new StyleBackground(backgroundImage);
+                }
+                else
+                {
+                    Debug.LogError("Ошибка: backgroundImage не является Texture2D");
                 }
 
-                funcionContainer.Add(function);
+                function.AddToClassList("function");
+                functionContainer.Add(function);
             }
         }
     }

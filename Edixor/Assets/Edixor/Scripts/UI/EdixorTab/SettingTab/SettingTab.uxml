@@ -1,11 +1,14 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss?fileID=7433441132597879392&amp;guid=6fa26c3804420bb4fa6b2e9901a2c381&amp;type=3#SettingTab" />
-    <engine:VisualElement class="main-container">
-        <engine:Label text="Basic Setting" class="basic-setting-label" style="height: 23px; width: 309px;" />
-        <engine:Label text="Design" class="design-label" />
-        <engine:VisualElement name="design-container" class="design-container" />
-        <engine:Label text="Function Setting" class="basic-setting-label" style="height: 25px; width: 309px;" />
-        <engine:VisualElement name="funcion-container" style="flex-grow: 1;" />
-        <engine:VisualElement name="funcion-setting-container" style="flex-grow: 1;" />
+    <engine:VisualElement name="root-setting" class="main-container" style="padding-left: 0; padding-right: 0;">
+        <engine:Label text="Basic Setting" name="h1" parse-escape-sequences="false" selectable="false" class="basic-setting-label" style="height: 23px; width: 349px; -unity-text-align: upper-center; right: 100%; left: 0; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=e2ce00b98b6dc3e4980d0db8a6fdfce3&amp;type=3#NotInter-Regular&quot;); -unity-font-style: bold;" />
+        <engine:Label text="Design" name="h2" class="basic-setting-label" style="height: 23px; width: 309px; border-left-width: 10px;" />
+        <engine:Label text="styles:" style="font-size: 22px; border-left-width: 20px; cursor: initial; margin-bottom: 2px; border-left-color: rgba(0, 0, 0, 0);" />
+        <engine:VisualElement name="style-container" class="design-container" style="border-left-width: 0; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.47);" />
+        <engine:Label text="layouts:" emoji-fallback-support="true" style="font-size: 22px; border-left-width: 20px;" />
+        <engine:VisualElement name="layout-container" class="design-container" style="border-left-width: 0; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.47); flex-direction: row;" />
+        <engine:Label text="Function Setting" class="basic-setting-label" style="height: 25px; width: 309px; border-left-width: 10px;" />
+        <engine:VisualElement name="funcion-container" style="flex-grow: 1; flex-direction: row; background-color: rgba(0, 0, 0, 0.47);" />
+        <engine:VisualElement name="funcion-setting-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.47);" />
     </engine:VisualElement>
 </engine:UXML>

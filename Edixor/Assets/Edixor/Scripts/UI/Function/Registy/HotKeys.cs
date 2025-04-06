@@ -4,51 +4,44 @@ using UnityEngine;
 using UnityEditor;
 
 
-public class HotKeysFunction : EdixorFunction, IFunctionSetting
+public class HotKeys : FunctionLogica, IFunctionSetting
 {
-    private List<KeyAction> hotkeys;
-
-    public HotKeysFunction(EdixorWindow window) : base(window) {
-        
-    }
-    public override Texture2D Icon => AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Edixor/Texture/EdixorWindow/Functions/photo_3_2024-12-24_18-59-17.jpg");
-
-    [Header("Basic information")]
-    [SerializeField]
-    private string _functionName = "HotKeys";
-    public string FunctionName
-    {
-        get { return _functionName; }
-        private set { _functionName = value; }
-    }
-
-    public override string Name => _functionName;
-
-    public override string Description => "Shows All Hotkeys in Aoplication";
+    private List<KeyActionData> hotkeys;
+    private EdixorUIManager uiManager;
 
     public override void Activate()
     {
-        if (Window != null)
+        if (uiManager == null)
         {
-            VisualElement ParentContainer = Window.GetUIManager().GetDesign().GetSection("middle-section-content");
-            if (ParentContainer == null)
+            Debug.LogError("UIManager is null.");
+            return;
+        }
+        {
+            VisualElement parentContainer = uiManager.GetDesign().GetSection("middle-section-content");
+            if (parentContainer == null)
             {
                 Debug.LogError("ParentContainer is null.");
                 return;
             }
 
-            HotKeysTab hotKeysTab = new HotKeysTab(ParentContainer, Window);
-            Window.GetUIManager().AddTab(hotKeysTab);
+            HotKeysTab hotKeysTab = new HotKeysTab();
+            uiManager.AddTab(hotKeysTab);
         }
+    }
+
+    public override void Init()
+    {
+        uiManager = container.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow);
     }
 
     public void Setting(VisualElement root)
     {
-        Debug.Log(Window == null);
+        if (hotkeys == null || hotkeys.Count == 0)
+        {
+            hotkeys = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting).GetHotKeys();
+        }
 
-        hotkeys = Window.GetSetting().GetHotKeys();
-
-        foreach (KeyAction key in hotkeys)
+        foreach (KeyActionData key in hotkeys)
         {
             string combination = string.Join(" + ", key.Combination); 
 

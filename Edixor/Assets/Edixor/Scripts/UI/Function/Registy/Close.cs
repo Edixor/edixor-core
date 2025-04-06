@@ -4,32 +4,24 @@ using UnityEngine;
 using UnityEditor;
 
 
-public class CloseFunction : EdixorFunction, IFunctionSetting
+public class Close : FunctionLogica, IFunctionSetting
 {
-    public CloseFunction(EdixorWindow window) : base(window) {
-        
-    }
-    public override Texture2D Icon => AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Edixor/Texture/EdixorWindow/Functions/photo_3_2024-12-24_18-59-17.jpg");
-
-    [Header("Basic information")]
-    [SerializeField]
-    private string _functionName = "Close";
-    public string FunctionName
-    {
-        get { return _functionName; }
-        private set { _functionName = value; }
-    }
-
-    public override string Name => _functionName;
-
-    public override string Description => "Shows All Hotkeys in Aoplication";
-
+    private IMinimizable window;
     public override void Activate()
     {
-        if (Window != null)
+        if (window != null)
         {
-            Window.MinimizeWindow();
+            window.MinimizeWindow();
         }
+        else
+        {
+            Debug.LogError("Window is null in Close action");
+        }
+    }
+
+    public override void Init()
+    {
+        window = container.ResolveNamed<IMinimizable>(ServiceNames.IMinimizable_EdixorWindow);
     }
 
     public void Setting(VisualElement root)

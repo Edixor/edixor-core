@@ -4,20 +4,9 @@ using UnityEditor;
 using UnityEngine.UIElements;
 
 [Serializable]
-public class RestartFunction : EdixorFunction, IFunctionSetting
+public class Restart : FunctionLogica, IFunctionSetting
 {
-    // Отображаем имя функции в инспекторе.
-    // Можно, если нужно, сделать его редактируемым или только для чтения.
-    [Header("Basic information")]
-    [SerializeField]
-    private string _functionName = "Restart";
-    public string FunctionName
-    {
-        get { return _functionName; }
-        private set { _functionName = value; }
-    }
-
-    // Поле для настройки "Tab cleaning" с заголовком "Настройки"
+    private IRestartable window;
     [Header("Settings options")]
     [SerializeField]
     private bool _tabCleaning;
@@ -35,29 +24,32 @@ public class RestartFunction : EdixorFunction, IFunctionSetting
         set { _clearCache = value; }
     }
 
-    public RestartFunction(EdixorWindow window) : base(window)
+    public Restart(DIContainer container) : base(container)
     {
+        window = container.ResolveNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow);
     }
 
-    public override Texture2D Icon =>
-        AssetDatabase.LoadAssetAtPath<Texture2D>(
-            "Assets/Edixor/Texture/EdixorWindow/Functions/photo_2_2024-12-24_18-59-17.jpg");
+    public override void Init()
+    {
+        window = container.ResolveNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow);
+    }
 
-    // Переопределённое свойство Name возвращает значение нашего поля
-    public override string Name => FunctionName;
-
-    public override string Description => "Restarts the application or resets specific functionality.";
+    public Restart() : base()
+    {
+    }
 
     public override void Activate()
     {
-        if (Window != null)
+        if (window != null)
         {
-            Window.RestartWindow();
+            window.RestartWindow();
+        }
+        else
+        {
+            Debug.LogError("Window is null in Restart action");
         }
     }
 
-    // Метод для построения настроек через UIElements.
-    // Здесь можно создать визуальное представление, используя заголовки и привязку к свойствам.
     public void Setting(VisualElement root)
     {
         Toggle tabCleaningToggle = new Toggle("Tab cleaning");

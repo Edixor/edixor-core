@@ -8,34 +8,33 @@ using System.Linq;
 [Serializable]
 public class HotKeysTab : EdixorTab
 {
-    private List<KeyAction> hotkeyActions;
+    private HotKeyService hotKeySetting;
+    private List<KeyActionData> hotkeyActions;
     private VisualElement designContainer;
 
-    // Передаём необходимые данные в базовый конструктор:
-    public HotKeysTab(VisualElement ParentContainer, EdixorWindow window)
-        : base(ParentContainer, 
-               "HotKey", 
-               "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml", 
-               "Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss")
+    public void OnEnable()
     {
-        this.window = window;
-        Init();
+        Debug.Log("HotKeysTab OnEnable called.");
+        // Логика для OnEnable
     }
 
-    public override void Init(DIContainer container = null) {
-        hotkeyActions = container.ResolveNamed<IAdvancedFactoryService<KeyActionData, KeyActionLogica, KeyAction>>(ServiceNames.KeyActionFactory).GetAllData();
-        hotKeySetting = container.ResolveNamed<EdixorSetting<HotKeySaveAsset>>(ServiceNames.HotKeySetting);
+    public void Awake()
+    {
+        Debug.Log("HotKeysTab Awake called.");
+        // Логика для Awake
     }
 
-    /// <summary>
-    /// Специфичная логика отображения UI для вкладки HotKeysTab.
-    /// Вызывается базовым OnUI() после увеличения openCount.
-    /// </summary>
-    protected override void OnTabUI()
+    public void OnDisable()
+    {
+        Debug.Log("HotKeysTab OnDisable called.");
+        // Логика для OnDisable
+    }
+
+    protected void Start()
     {
         if (hotkeyActions == null || hotkeyActions.Count == 0)
         {
-            hotkeyActions = window.GetSetting().GetHotKeys();
+  
         }
 
         designContainer = root.Q<VisualElement>("hotkeys-container");
@@ -103,33 +102,20 @@ public class HotKeysTab : EdixorTab
     private void ChangeHotkey(int index)
     {
         Debug.Log($"Изменение горячей клавиши: {hotkeyActions[index].Name}");
-
-        window.StartHotkeyCapture((List<KeyCode> newCombination) =>
-        {
-            Debug.Log("Новая комбинация: " + string.Join(" + ", newCombination.Select(k => k.ToString())));
-            hotkeyActions[index].Combination.Clear();
-            hotkeyActions[index].Combination.AddRange(newCombination);
-            window.GetSetting().SetHotKeys(hotkeyActions[index], index);
-
-            Label hotkeyContent = designContainer.Q<Label>("hotkeyContent" + index);
-            if (hotkeyContent != null)
-            {
-                hotkeyContent.text = string.Join(" + ", hotkeyActions[index].Combination.Select(k => k.ToString()));
-            }
-        });
+        // Логика для изменения горячей клавиши
     }
 
     private void EnableHotkey(int index)
     {
         Debug.Log($"Включение горячей клавиши: {hotkeyActions[index].Name}");
         hotkeyActions[index].enable = true;
-        window.GetSetting().SetHotKeys(hotkeyActions[index], index);
+        hotKeySetting.GetSettings().SaveItems[index] = hotkeyActions[index];
     }
 
     private void DisableHotkey(int index)
     {
         Debug.Log($"Отключение горячей клавиши: {hotkeyActions[index].Name}");
         hotkeyActions[index].enable = false;
-        window.GetSetting().SetHotKeys(hotkeyActions[index], index);
+        hotKeySetting.GetSettings().SaveItems[index] = hotkeyActions[index];
     }
 }

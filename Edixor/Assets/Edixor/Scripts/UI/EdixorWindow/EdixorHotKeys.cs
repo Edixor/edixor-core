@@ -1,49 +1,110 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class EdixorHotKeys
 {
-    private readonly EdixorWindow window;
+    private DIContainer container;
+    private HotKeyService keyService;
+    private IFactory factoryBuilder;
     private List<KeyAction> hotkeyActions;
     private HashSet<KeyCode> currentlyPressedKeys;
     private HashSet<List<KeyCode>> activatedCombinations;
+    private bool isInitialized = false;
 
-    public EdixorHotKeys(EdixorWindow window)
+    public EdixorHotKeys(DIContainer container)
     {
-        this.window = window;
-        hotkeyActions = window.GetSetting().GetHotKeys();
+        this.container = container;
+    }
 
-        // Передаём окно в каждое действие
-        foreach (var action in hotkeyActions)
+    public void InitHotKeys()
+    {
+        Debug.Log("EdixorHotKeys: Инициализация...");
+
+        keyService = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
+        if (keyService == null)
         {
-            action.SetWindow(window);
+            Debug.LogError("EdixorHotKeys: HotKeyService не был найден в контейнере!");
+            return;
         }
 
-        // Сортировка по длине комбинации (опционально)
-        hotkeyActions = hotkeyActions.OrderByDescending(a => a.Combination.Count).ToList();
+        // Получаем фабрику один раз
+        factoryBuilder = container.Resolve<IFactory>();
+        // Инициализируем фабрику для создания KeyAction
+        factoryBuilder.Init<KeyActionData, KeyActionLogica, KeyAction>(data => data.Logica);
+
+        // Создаем все действия горячих клавиш
+        hotkeyActions = factoryBuilder.CreateAllFromProject()
+            .Cast<KeyAction>()
+            .Where(a => a?.keyActionData?.Combination != null)
+            .OrderByDescending(a => a.keyActionData.Combination.Count)
+            .ToList();
+
+        Debug.Log($"EdixorHotKeys: Получено {hotkeyActions.Count} горячих клавиш.");
+
+        foreach (var action in hotkeyActions)
+        {
+            if (action == null)
+            {
+                Debug.LogWarning("EdixorHotKeys: Найден null-элемент в hotkeyActions.");
+                continue;
+            }
+            if (action.KeyActionLogica != null)
+            {
+                action.KeyActionLogica.SetContainer(container);
+            }
+            else
+            {
+                Debug.LogWarning($"EdixorHotKeys: У действия {action} отсутствует KeyActionLogica.");
+            }
+        }
 
         currentlyPressedKeys = new HashSet<KeyCode>();
         activatedCombinations = new HashSet<List<KeyCode>>(new KeyCombinationComparer());
+
+        isInitialized = true;
+    }
+
+    public bool IsHotKeyEnabled()
+    {
+        return isInitialized;
     }
 
     public void OnKeys()
     {
         Event e = Event.current;
+        if (e == null) return;
 
         if (e.type == EventType.KeyDown && !currentlyPressedKeys.Contains(e.keyCode))
         {
             currentlyPressedKeys.Add(e.keyCode);
+
             foreach (var action in hotkeyActions)
             {
-                if (IsCombinationPressed(action.Combination) && !activatedCombinations.Contains(action.Combination))
+                if (action?.keyActionData?.Combination == null)
                 {
-                    if (action.enable)
+                    Debug.LogWarning($"EdixorHotKeys: Пропущено действие {action} с null-комбинацией.");
+                    continue;
+                }
+
+                // Если комбинация нажата и еще не была активирована
+                if (IsCombinationPressed(action.keyActionData.Combination) &&
+                    !activatedCombinations.Contains(action.keyActionData.Combination))
+                {
+                    Debug.Log($"EdixorHotKeys: Комбинация {string.Join(" + ", action.keyActionData.Combination)} активирована.");
+
+                    if (action.keyActionData.enable)
                     {
+                        Debug.Log($"EdixorHotKeys: Выполняем действие {action}.");
                         action.Execute();
-                        activatedCombinations.Add(action.Combination);
+                        activatedCombinations.Add(action.keyActionData.Combination);
                         e.Use();
                         return;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"EdixorHotKeys: Действие {action} отключено.");
                     }
                 }
             }
@@ -51,25 +112,31 @@ public class EdixorHotKeys
         else if (e.type == EventType.KeyUp && currentlyPressedKeys.Contains(e.keyCode))
         {
             currentlyPressedKeys.Remove(e.keyCode);
+            Debug.Log($"EdixorHotKeys: Отпущена клавиша {e.keyCode}, очищаем активные комбинации.");
             activatedCombinations.RemoveWhere(combination => combination.Contains(e.keyCode));
         }
     }
 
     private bool IsCombinationPressed(List<KeyCode> combination)
     {
-        return combination.All(key => currentlyPressedKeys.Contains(key));
+        bool result = combination != null && combination.All(key => currentlyPressedKeys.Contains(key));
+        Debug.Log($"EdixorHotKeys: Проверка комбинации {string.Join(" + ", combination)} - {(result ? "нажата" : "не нажата")}");
+        return result;
     }
 
-    public List<KeyAction> GetKeys() {
+    public List<KeyAction> GetKeys()
+    {
         return hotkeyActions;
     }
 
+    // Класс для сравнения списков клавиш (учитывая порядок)
     private class KeyCombinationComparer : IEqualityComparer<List<KeyCode>>
     {
         public bool Equals(List<KeyCode> x, List<KeyCode> y)
         {
             if (x == null || y == null || x.Count != y.Count)
                 return false;
+
             for (int i = 0; i < x.Count; i++)
             {
                 if (x[i] != y[i])
@@ -82,6 +149,7 @@ public class EdixorHotKeys
         {
             if (obj == null)
                 return 0;
+
             int hash = 17;
             foreach (var key in obj)
             {

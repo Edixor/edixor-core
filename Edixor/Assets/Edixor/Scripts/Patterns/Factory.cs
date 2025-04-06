@@ -1,82 +1,108 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
+using System.Linq;
 using UnityEngine;
+using System;
 
-public class Factory<TBase, TContext>
+public class Factory : IFactory
 {
-    private List<TBase> _registeredItems = new List<TBase>();
-    private List<string> _registeredPaths = new List<string>();
+    private Type _dataType;
+    private Type _logicType;
+    private Type _fullType;
+    private Func<ScriptableObject, string> _logicPathSelector;
+    private bool _hasFullType;
+    private static Dictionary<string, Type> typeCache = new Dictionary<string, Type>();
+    private static Assembly[] assembliesCache;
 
-    public void RegisterAll(TContext context)
+    public void Init<TData, TLogic>(Func<TData, string> logicPathSelector)
+        where TData : ScriptableObject
+        where TLogic : class
     {
-        _registeredItems.Clear();
-        _registeredPaths.Clear();
+        _dataType = typeof(TData);
+        _logicType = typeof(TLogic);
+        _logicPathSelector = data => logicPathSelector((TData)data);
+        _hasFullType = false;
+    }
 
-        var sortedTypes = Assembly.GetExecutingAssembly()
-            .GetTypes()
-            .Where(t => t.IsSubclassOf(typeof(TBase)) && !t.IsAbstract)
-            .Select(type => new
-            {
-                Type = type,
-                Order = type.GetCustomAttribute<OrderAttributeFactory>()?.Order ?? int.MaxValue // Если нет атрибута — ставим в конец
-            })
-            .OrderBy(x => x.Order) // Сортируем по порядку
-            .Select(x => x.Type)
-            .ToList();
+    public void Init<TData, TLogic, TFull>(Func<TData, string> logicPathSelector)
+        where TData : ScriptableObject
+        where TLogic : class
+        where TFull : class
+    {
+        _dataType = typeof(TData);
+        _logicType = typeof(TLogic);
+        _fullType = typeof(TFull);
+        _logicPathSelector = data => logicPathSelector((TData)data);
+        _hasFullType = true;
+    }
 
-        foreach (var itemType in sortedTypes)
+    public object CreateLogic(ScriptableObject data)
+    {
+        string logicPath = _logicPathSelector(data);
+        logicPath = PathResolver.ResolvePath(logicPath);
+
+        if (string.IsNullOrEmpty(logicPath))
         {
-            var constructor = itemType.GetConstructor(new Type[] { typeof(TContext) });
-            if (constructor == null)
-                throw new InvalidOperationException($"Класс {itemType.Name} должен иметь конструктор с параметром {typeof(TContext).Name}.");
+            throw new InvalidOperationException("Не удалось разрешить путь к типу логики.");
+        }
 
-            var instance = (TBase)constructor.Invoke(new object[] { context });
-            _registeredItems.Add(instance);
+        string className = System.IO.Path.GetFileNameWithoutExtension(logicPath);
+        Type logicType = FindTypeInAssemblies(className);
 
-            string assetPath = "Не найден";
-#if UNITY_EDITOR
-            // Ищем MonoScript, который соответствует данному типу
-            var script = MonoImporter.GetAllRuntimeMonoScripts()
-                .FirstOrDefault(ms => ms.GetClass() == itemType);
-            if (script != null)
+        if (logicType == null)
+        {
+            throw new InvalidOperationException($"Не удалось найти тип логики: {className}");
+        }
+
+        return Activator.CreateInstance(logicType);
+    }
+
+    private Type FindTypeInAssemblies(string className)
+    {
+        if (typeCache.TryGetValue(className, out Type cachedType))
+            return cachedType;
+
+        if (assembliesCache == null)
+            assembliesCache = AppDomain.CurrentDomain.GetAssemblies();
+
+        foreach (var assembly in assembliesCache)
+        {
+            var type = assembly.GetTypes().FirstOrDefault(t => t.Name == className);
+            if (type != null)
             {
-                assetPath = AssetDatabase.GetAssetPath(script);
+                typeCache[className] = type;
+                return type;
             }
-#endif
-            _registeredPaths.Add(assetPath);
         }
-
-        // Выводим пути в консоль
-#if UNITY_EDITOR
-        Debug.Log("Зарегистрированные классы:");
-        foreach (var path in _registeredPaths)
-        {
-            Debug.Log(path);
-        }
-#else
-        Console.WriteLine("Зарегистрированные классы:");
-        foreach (var path in _registeredPaths)
-        {
-            Console.WriteLine(path);
-        }
-#endif
+        return null;
     }
 
-    public List<TBase> GetAllItems() => _registeredItems;
-
-    // Метод для получения объекта по его типу
-    public T GetItem<T>() where T : TBase
+    public object Create(ScriptableObject data)
     {
-        var item = _registeredItems.OfType<T>().FirstOrDefault();
-        if (item == null)
-            throw new InvalidOperationException($"Объект типа {typeof(T).Name} не найден.");
-        return item;
+        if (_dataType == null || _logicType == null)
+            throw new InvalidOperationException("Factory не инициализирована. Вызовите Init() перед использованием.");
+
+        object logic = CreateLogic(data);
+
+        if (!_hasFullType)
+            return logic;
+
+        return Activator.CreateInstance(_fullType, data, logic);
     }
 
-    public string[] GetPaths() => _registeredPaths.ToArray();
+    public List<object> CreateAllFromProject()
+    {
+        if (_dataType == null)
+            throw new InvalidOperationException("Factory не инициализирована. Вызовите Init() перед использованием.");
+
+        var dataList = FindAllData();
+        return dataList.Select(Create).ToList();
+    }
+
+    private List<ScriptableObject> FindAllData()
+    {
+        return Resources.FindObjectsOfTypeAll(_dataType)
+                        .Cast<ScriptableObject>()
+                        .ToList();
+    }
 }

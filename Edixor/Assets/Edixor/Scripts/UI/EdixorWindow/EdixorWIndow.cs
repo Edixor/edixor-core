@@ -4,38 +4,86 @@ using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
 
-public class EdixorWindow : EditorWindow
+public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 {
     public static EdixorWindow CurrentWindow { get; private set; }
-    private EdixorUIManager uiManager;
-    private EdixorWindowSetting setting;
-    private EdixorHotKeys hotKeys;
+    protected DIContainer container;
+    protected Rect originalWindowRect;
+    protected readonly Vector2 minimalSizeThreshold = new Vector2(150, 60);
+    private WindowStateService _windowStateService;
+    protected WindowStateService WindowStateService
+    {
+        get
+        {
+            if (_windowStateService == null)
+            {
+                _windowStateService = container.ResolveNamed<WindowStateService>(ServiceNames.WindowStateSetting);
+                _windowStateService.SetRootElement(rootVisualElement);
+            }
+            return _windowStateService;
+        }
+    }
 
-    // Обработчик горячих клавиш
-    private HotkeyCaptureHandler hotkeyCaptureHandler = new HotkeyCaptureHandler();
+    private EdixorUIManager _uiManager;
+    protected EdixorUIManager UIManager
+    {
+        get
+        {
+            if (_uiManager == null)
+            {
+                WindowStateService.SetRootElement(rootVisualElement);
+                _uiManager = container.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow);
+            }
+            return _uiManager;
+        }
+    }
 
-    // Исходный Rect окна перед минимизацией
-    private Rect originalWindowRect;
-
-    // Порог минимального размера окна
-    private readonly Vector2 minimalSizeThreshold = new Vector2(150, 60);
-
-    // Флаг, указывающий, что окно уже было минимизировано (и исходный Rect сохранён)
-    private bool isMinimized = false;
+    private EdixorHotKeys _hotKeys;
+    protected EdixorHotKeys HotKeys
+    {
+        get
+        {
+            if (_hotKeys == null)
+            {
+                _hotKeys = container.ResolveNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_EdixorWindow);
+            }
+            return _hotKeys;
+        }
+    }
 
     [MenuItem("Window/EdixorWindow")]
     public static void ShowWindow()
     {
-        CurrentWindow = GetWindow<EdixorWindow>("EdixorWindow");
+        var container = LoadOrCreateContainer();
+        var window = GetWindow<EdixorWindow>("EdixorWindow");
+        window.Initialize(container);
     }
 
-    private void OnEnable()
+    private static DIContainer LoadOrCreateContainer()
     {
+        string containerPath = PathResolver.ResolvePath("Assets/Edixor/DIContainer.asset");
+        var container = AssetDatabase.LoadAssetAtPath<DIContainer>(containerPath);
+
+        if (container == null)
+        {
+            container = ScriptableObject.CreateInstance<DIContainer>();
+            AssetDatabase.CreateAsset(container, containerPath);
+            AssetDatabase.SaveAssets();
+        }
+
+        return container;
+    }
+
+    public void Initialize(DIContainer container)
+    {
+        this.container = container;
+
+        container.RegisterNamed<IClosable>(ServiceNames.IClosable_EdixorWindow, this);
+        container.RegisterNamed<IMinimizable>(ServiceNames.IMinimizable_EdixorWindow, this);
+        container.RegisterNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow, this);
+
         CurrentWindow = this;
 
-        InitializeSettings();
-
-        // Если исходный Rect не задан, сохраняем текущий размер окна как исходный.
         if (originalWindowRect.width == 0 || originalWindowRect.height == 0)
         {
             originalWindowRect = position;
@@ -43,78 +91,65 @@ public class EdixorWindow : EditorWindow
 
         InitializeUI();
         InitializeHotKeys();
+        SubscribeToEvents();
 
-        // Если окно открывается и его размер уже минимален, показываем минимизированный UI.
+        // Если окно сразу минимизировано по размерам, выставляем соответствующее состояние
         if (position.width <= minimalSizeThreshold.x && position.height <= minimalSizeThreshold.y)
         {
-            isMinimized = true;
-            uiManager?.ShowMinimizedUI();
+            WindowStateService.SetMinimized(true);
+            //UIManager?.ShowMinimizedUI();
         }
-    }
+        else
+        {
+            WindowStateService.SetWindowOpen(true);
+        }
+    } 
 
-    private void OnGUI()
+    /// <summary>
+    /// Подписка на события UIElements.
+    /// </summary>
+    private void SubscribeToEvents()
     {
-        // Обработка горячей клавиши (если происходит)
-        if (hotkeyCaptureHandler.IsCapturing())
+        // Событие, отслеживающее изменение размеров окна
+        rootVisualElement.RegisterCallback<GeometryChangedEvent>(evt =>
         {
-            hotkeyCaptureHandler.Process(Event.current);
-            EditorGUILayout.LabelField("Capturing Hotkey: " + hotkeyCaptureHandler.GetCurrentCombinationString());
-            return;
-        }
-
-        // Если окно стало минимальным (вручную или программно) и ещё не помечено как минимизированное,
-        // сохраняем исходный Rect и отображаем минимизированный UI.
-        if (!isMinimized && position.width <= minimalSizeThreshold.x && position.height <= minimalSizeThreshold.y)
-        {
-            isMinimized = true;
-            originalWindowRect = setting.GetOriginalWindowRect().width > 0 
-                                    ? setting.GetOriginalWindowRect() 
-                                    : position;
-            setting.SetOriginalWindowRect(originalWindowRect);
-            uiManager?.SaveTabsState();
-            uiManager?.ShowMinimizedUI();
-        }
-
-        // Остальная логика обработки горячих клавиш
-        if (hotKeys == null)
-            InitializeHotKeys();
-        hotKeys.OnKeys();
-    }
-
-    private void InitializeSettings()
-    {
-        if (setting == null)
-        {
-            setting = new EdixorWindowSetting(this);
-        }
-        setting.Load();
-
-        // Передаём окно в каждое горячее действие
-        if (setting.GetHotKeys() != null)
-        {
-            foreach (var action in setting.GetHotKeys())
+            // Если размеры окна меньше пороговых значений и окно не в состоянии "минимизировано"
+            if (!WindowStateService.GetMinimized() &&
+                (position.width <= minimalSizeThreshold.x || position.height <= minimalSizeThreshold.y))
             {
-                action.SetWindow(this);
+                MinimizeWindow();
             }
-        }
+            // Если окно было минимизировано, а теперь его размер увеличился
+            else if (WindowStateService.GetMinimized() &&
+                     (position.width > minimalSizeThreshold.x && position.height > minimalSizeThreshold.y))
+            {
+                ReturnWindowToOriginalSize();
+            }
+        });
 
-        setting.SetWindowOpen(true);
+        // Событие для обработки нажатий клавиш
+        rootVisualElement.RegisterCallback<KeyDownEvent>(evt =>
+        {
+            if (HotKeys != null && HotKeys.IsHotKeyEnabled())
+            {
+                HotKeys.OnKeys();
+            }
+        });
     }
 
-    private void InitializeUI()
+    protected void InitializeUI()
     {
-        uiManager = new EdixorUIManager(this);
-        uiManager.LoadUI();
+        UIManager.LoadUI();
     }
 
-    private void InitializeHotKeys()
+    protected void InitializeHotKeys()
     {
-        hotKeys = new EdixorHotKeys(this);
+        HotKeys.InitHotKeys();
     }
 
     public void RestartWindow()
     {
-        if (!setting.IsWindowOpen())
+        if (!WindowStateService.IsWindowOpen())
         {
             Debug.LogWarning("Window is not open, skipping restart.");
             return;
@@ -126,64 +161,47 @@ public class EdixorWindow : EditorWindow
             ShowWindow();
         };
     }
-    
-    /// <summary>
-    /// Программно минимизирует окно до минимального размера.
-    /// Сохраняется исходный Rect перед изменением, после чего окно становится минимальным.
-    /// </summary>
+
     public void MinimizeWindow()
     {
-        // Сохраняем текущий (исходный) Rect
-        originalWindowRect = position;
-        setting.SetOriginalWindowRect(originalWindowRect);
+        // Сохраняем оригинальные размеры, если они еще не сохранены
+        if (position.width > minimalSizeThreshold.x && position.height > minimalSizeThreshold.y)
+        {
+            originalWindowRect = position;
+            WindowStateService.SetOriginalWindowRect(originalWindowRect);
+        }
 
-        isMinimized = true;
-
-        // Устанавливаем минимальный размер
+        WindowStateService.SetMinimized(true);
         minSize = minimalSizeThreshold;
         position = new Rect(position.x, position.y, minimalSizeThreshold.x, minimalSizeThreshold.y);
         Debug.Log("Window minimized to minimal size: " + minimalSizeThreshold);
-        
-        uiManager?.SaveTabsState();
-        uiManager?.ShowMinimizedUI();
+
+        //UIManager?.SaveTabsState();
+        //UIManager?.ShowMinimizedUI();
     }
-    
-    /// <summary>
-    /// Возвращает окно к Rect, который был сохранён перед минимизацией.
-    /// После восстановления флаг минимизации сбрасывается.
-    /// </summary>
+
     public void ReturnWindowToOriginalSize()
     {
         position = originalWindowRect;
         Debug.Log("Window returned to rect: " + originalWindowRect);
-        setting.SetOriginalWindowRect(originalWindowRect);
-
-        isMinimized = false;
-
+        WindowStateService.SetOriginalWindowRect(originalWindowRect);
+        WindowStateService.SetMinimized(false);
         rootVisualElement.Clear();
         InitializeUI();
     }
 
-    /// <summary>
-    /// Разворачивает окно на весь экран (максимизация).
-    /// </summary>
-    public void ExpandWindowToFullScreen()
+    public void CloseWindow()
     {
-        this.maximized = true;
-        Debug.Log("Window expanded to full screen.");
+        Close();
     }
 
-    public EdixorWindowSetting GetSetting() => setting;
-    public EdixorUIManager GetUIManager() => uiManager;
-    public EdixorHotKeys GetHotKey() => hotKeys;
-    public void UpdateUI() => uiManager?.LoadUI();
-
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         if (CurrentWindow != this) return;
+
         try 
         { 
-            uiManager?.SaveTabsState();
+            //UIManager?.SaveTabsState();
             SaveSettings();
         }
         catch (System.Exception e) 
@@ -191,21 +209,12 @@ public class EdixorWindow : EditorWindow
             Debug.LogError("Failed to save settings: " + e.Message); 
         }
         
-        setting.SetWindowOpen(false);
+        WindowStateService.SetWindowOpen(false);
         CurrentWindow = null;
     }
 
-    private void SaveSettings()
+    protected void SaveSettings()
     {
-        setting?.Save();
-    }
-
-    /// <summary>
-    /// Вызывается для начала захвата новой комбинации клавиш.
-    /// Делегирует захват специализированному обработчику.
-    /// </summary>
-    public void StartHotkeyCapture(System.Action<List<KeyCode>> onHotkeyCaptured)
-    {
-        hotkeyCaptureHandler.StartCapture(onHotkeyCaptured);
+        WindowStateService?.Save();
     }
 }
