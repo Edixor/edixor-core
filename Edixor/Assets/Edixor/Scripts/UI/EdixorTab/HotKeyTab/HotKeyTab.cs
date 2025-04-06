@@ -22,8 +22,9 @@ public class HotKeysTab : EdixorTab
         Init();
     }
 
-    public override void Init() {
-        hotkeyActions = window.GetSetting().GetHotKeys();
+    public override void Init(DIContainer container = null) {
+        hotkeyActions = container.ResolveNamed<IAdvancedFactoryService<KeyActionData, KeyActionLogica, KeyAction>>(ServiceNames.KeyActionFactory).GetAllData();
+        hotKeySetting = container.ResolveNamed<EdixorSetting<HotKeySaveAsset>>(ServiceNames.HotKeySetting);
     }
 
     /// <summary>
