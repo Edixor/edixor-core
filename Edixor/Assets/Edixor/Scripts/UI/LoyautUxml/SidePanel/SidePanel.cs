@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System;
 
-public class SidePanel : LayoutLogica
+public class SidePanel : LayoutLogic
 {
     protected override Function[][] functions => new Function[][] 
     {
-        new Function[] {LoadFucntion("Restart"), LoadFucntion("Close")},
-        new Function[] {LoadFucntion("HotKey"), LoadFucntion("Setting")} 
+        new Function[] {LoadFunction("Restart"), LoadFunction("Close")},
+        new Function[] {LoadFunction("HotKey"), LoadFunction("Setting")} 
     };
 
     protected override Dictionary<string, Function[]> elements => new Dictionary<string, Function[]>

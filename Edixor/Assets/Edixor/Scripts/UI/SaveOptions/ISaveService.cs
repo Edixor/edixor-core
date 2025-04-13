@@ -3,27 +3,27 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-// Интерфейс для базовых сохранений (хранит список данных)
+
 public interface ISaveAsset<TData>
 {
     List<TData> SaveItems { get; set; }
 }
 
-// Интерфейс для сохранения текущего выбранного элемента
+
 public interface ISaveCurrentAsset<TData> : ISaveAsset<TData>
 {
     int CurrentIndex { get; set; }
 }
 
 
-// Интерфейс для сервисов сохранений
+
 public interface ISaveService
 {
     void Save();
     void Load();
 }
 
-// Базовый класс для всех настроек (работает с ScriptableObject)
+
 public abstract class EdixorSetting<T> : ISaveService where T : ScriptableObject
 {
     protected T settings;

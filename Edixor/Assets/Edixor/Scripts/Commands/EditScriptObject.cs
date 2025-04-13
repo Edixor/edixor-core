@@ -62,7 +62,7 @@ namespace Commands {
                 else
                 {
                     Debug.LogWarning($"Элемент на индексе {i} равен null.");
-                    continue; // Переход к следующей итерации, если элемент равен null
+                    continue;
                 }
 
                 if (fields[i].FieldType == data[i].GetType())

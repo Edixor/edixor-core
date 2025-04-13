@@ -76,7 +76,7 @@ namespace Commands {
 
             scriptObject = createScriptObject.Get<T>("CreateScriptObject`1");
             createScriptObject.CallAction(TcrAction);
-            //TcrAction.Invoke();
+
         }
 
         public override U Get<U>(string clarifications = null)

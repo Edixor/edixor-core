@@ -15,4 +15,4 @@ MonoBehaviour:
   layoutName: Standart
   pathUss: Assets/Edixor/Scripts/UI/LoyautUxml/Standart/Standart.uss
   pathUxml: Assets/Edixor/Scripts/UI/LoyautUxml/Standart/Standart.uxml
-  Logica: Assets/Edixor/Scripts/UI/LoyautUxml/Standart/Standart.cs
+  Logic: Assets/Edixor/Scripts/UI/LoyautUxml/Standart/Standart.cs

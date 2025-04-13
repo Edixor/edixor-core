@@ -7,7 +7,7 @@ public class FunctionData : ScriptableObject
     [SerializeField] private string functionDescription;
     [SerializeField] private Texture functionIcon;
     [TextArea][SerializeField] private string functionIconPath;
-    [TextArea][SerializeField] private string functionLogica;
+    [TextArea][SerializeField] private string FunctionLogic;
 
     public string Name => functionName;
     public Texture Icon
@@ -26,5 +26,5 @@ public class FunctionData : ScriptableObject
         }
     }
     public string Description => functionDescription;
-    public string Logica => functionLogica;
+    public string Logic => FunctionLogic;
 }

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 
 [Serializable]
-public class Restart : FunctionLogica, IFunctionSetting
+public class Restart : FunctionLogic, IFunctionSetting
 {
     private IRestartable window;
     [Header("Settings options")]

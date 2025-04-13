@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionName: Exit
   _enable: 1
-  _combination: 0900000065000000
-  Logica: Assets/Edixor/Scripts/UI/HotKeys/Registy/Exit.cs
+  _combination: 3001000065000000
+  logicKey: Exit

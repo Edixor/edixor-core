@@ -37,13 +37,13 @@ namespace Commands
                 currentTime = DateTime.Now; 
                 createdFolderPath = Path.Combine(pathPaste, nameNewFolder);
 
-                // Проверка существования директории
+
                 if (!AssetDatabase.IsValidFolder(createdFolderPath))
                 {
                     AssetDatabase.CreateFolder(pathPaste, nameNewFolder);
                     AssetDatabase.Refresh();
 
-                    // Копирование содержимого из шаблонной папки
+
                     FileUtil.CopyFileOrDirectory(pathCopy, createdFolderPath);
                     AssetDatabase.Refresh();
 
@@ -95,12 +95,12 @@ namespace Commands
 
         public override void CallAction(Action action = null) 
         {
-            // Оставляем пустым или добавляем логику, если нужно
+
         }
 
         public override void RollbackAction(Action action = null) 
         {
-            // Оставляем пустым или добавляем логику, если нужно
+
         }
 
         public override T Get<T>(string clarifications = null)

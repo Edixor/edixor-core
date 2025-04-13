@@ -17,18 +17,18 @@ public class EdixorData : Edixor
             if (component is BFPStyleComponent componentWindow)
             {
                 styleWindow = componentWindow;
-                //styleWindow.ComponentInitialization(true);
+
             }
         }
 
         BFPLayout.Background(new Rect(0, 0, 5000, 5000));
 
-        //var labelStyle = styleWindow.GetElementGUI("label", "normal");
-        //var textFieldStyle = styleWindow.GetElementGUI("label", "textField");
 
-        //var buttonStyle = styleWindow.GetElementGUI("button", "normal");
 
-        //var boxStyle = styleWindow.GetElementGUI("box", "normal");
+
+
+
+
 
         GUI.skin.label = styleWindow.GetElementGUI(TypeElements.label, "norm");
 
@@ -45,7 +45,7 @@ public class EdixorData : Edixor
         {
             foreach (var language in baseDataPlagin.Languages)
             {
-                EditorGUILayout.BeginVertical(); // Начало бокса для языка
+                EditorGUILayout.BeginVertical();
                 EditorGUILayout.BeginHorizontal(GUILayout.Height(30));
 
                 GUILayout.FlexibleSpace();
@@ -64,7 +64,7 @@ public class EdixorData : Edixor
                 GUILayout.FlexibleSpace();
 
                 EditorGUILayout.EndHorizontal();
-                EditorGUILayout.EndVertical(); // Конец бокса для языка
+                EditorGUILayout.EndVertical();
             }
         }
         else
@@ -79,7 +79,7 @@ public class EdixorData : Edixor
         {
             foreach (var style in baseDataPlagin.Styles)
             {
-                EditorGUILayout.BeginVertical(); // Начало бокса для стиля
+                EditorGUILayout.BeginVertical();
                 EditorGUILayout.BeginHorizontal(GUILayout.Height(30));
 
                 GUILayout.FlexibleSpace();
@@ -98,7 +98,7 @@ public class EdixorData : Edixor
 
                     if (component is BFPStyleComponent newStyleWindow)
                     {
-                        //newStyleWindow.ComponentInitialization(true);
+
                     }
                 }
                 EditorGUILayout.EndVertical();
@@ -119,8 +119,8 @@ public class EdixorData : Edixor
                 GUILayout.Label("Path", GUILayout.Width(40));
                 GUILayout.Space(5);
 
-                // Устанавливаем фиксированную ширину текстового поля
-                float textFieldWidth = EditorGUIUtility.currentViewWidth - 102; // 60 для учета ширины метки и отступов
+
+                float textFieldWidth = EditorGUIUtility.currentViewWidth - 102;
                 baseDataPlagin.SetMainPath(GUILayout.TextField(baseDataPlagin.MainPath ?? "Not initialized", GUILayout.Width(textFieldWidth)));
 
                 GUILayout.EndHorizontal();
@@ -137,7 +137,7 @@ public class EdixorData : Edixor
             GUILayout.Label("none");
         }
 
-        // Раздел: Остальное
+
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Info");
         GUI.enabled = baseDataPlagin.developerMode;
@@ -154,8 +154,8 @@ public class EdixorData : Edixor
         baseDataPlagin.SetMainPath(GUILayout.TextField(baseDataPlagin.MainPath ?? "Not initialized"));
         GUILayout.EndHorizontal();
 
-        //EditorGUILayout.TextField("Version", baseDataPlagin.Version ?? "Not specified", textStyle);
-        //EditorGUILayout.TextField("Path", baseDataPlagin.MainPath ?? "Not initialized", textStyle);
+
+
         GUI.enabled = true;
 
         EditorGUILayout.Space();

@@ -29,4 +29,4 @@ MonoBehaviour:
     Indices: 0000000001000000
   functionIconColors: {r: 0.66314256, g: 0.48584908, b: 1, a: 1}
   functionBackgroundColors: {r: 0.13333334, g: 0.08235294, b: 0.2, a: 1}
-  font: {fileID: 12800000, guid: 759532e118cf5d64cb43bd2e472962f5, type: 3}
+  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

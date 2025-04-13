@@ -5,23 +5,49 @@ using UnityEngine;
 public class KeyAction
 {
     public KeyActionData keyActionData { get; set; }
-    public KeyActionLogica KeyActionLogica { get; set; }
+    public KeyActionLogic keyActionLogic { get; set; }
 
-    public KeyAction(KeyActionData keyActionData, KeyActionLogica keyActionLogica)
+    public KeyAction(KeyActionData keyActionData, KeyActionLogic keyActionLogic)
     {
+        if (keyActionData == null)
+        {
+            Debug.LogError("KeyActionData is null in KeyAction constructor.");
+            return;
+        }
         this.keyActionData = keyActionData;
-        this.KeyActionLogica = keyActionLogica;
+        if (keyActionLogic == null)
+        {
+            Debug.LogError("KeyActionLogic is null in KeyAction constructor.");
+            return;
+        }
+        this.keyActionLogic = keyActionLogic;
+    }
+
+    public KeyAction(KeyActionData keyActionData, DIContainer container)
+    {
+        if (keyActionData == null)
+        {
+            Debug.LogError("KeyActionData is null in KeyAction constructor.");
+            return;
+        }
+        this.keyActionData = keyActionData;
+        keyActionLogic = container.ResolveNamed<KeyActionLogic>(keyActionData.LogicKey);
+        if (keyActionLogic == null)
+        {
+            Debug.LogError($"KeyActionLogic not found for {keyActionData.LogicKey} in KeyAction constructor.");
+            return;
+        }
     }
 
     public void Execute()
     {
-        if (KeyActionLogica != null)
+        if (keyActionLogic != null)
         {
-            KeyActionLogica.Execute();
+            keyActionLogic.Execute();
         }
         else
         {
-            Debug.LogError("KeyActionLogica is null in container: " + keyActionData.Name);
+            Debug.LogError("KeyActionLogic is null in container: " + keyActionData.Name);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
-public class Setting : FunctionLogica
+public class Setting : FunctionLogic
 {
 
     private EdixorUIManager uiManager;
@@ -23,7 +23,7 @@ public class Setting : FunctionLogica
                 return;
             }
 
-            SettingTab settingTab = new SettingTab(parentContainer, container);
+            SettingTab settingTab = new SettingTab();
             uiManager.AddTab(settingTab);
         }
     }

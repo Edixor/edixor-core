@@ -8,7 +8,7 @@ public static class PathResolver
     {
         if (File.Exists(path))
         {
-            return path; // Путь уже корректен
+            return path;
         }
 
         string fileName = Path.GetFileName(path);

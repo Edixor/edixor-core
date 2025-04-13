@@ -14,22 +14,27 @@ public class SettingTab : EdixorTab
     private StyleLogic styleLogic = new StyleLogic();
     private StyleParameters styleParameters;
 
-    public SettingTab(VisualElement ParentContainer, DIContainer container)
+    [MenuItem("Window/Edixor Tab/Setting")]
+    public static void ShowTab()
     {
-        Init(container);
+        ShowTab<SettingTab>();
     }
 
-    public void Init(DIContainer container = null, VisualElement containerUI = null) {
+    private void Awake()
+    {
+        tabName = "Setting";
+        LoadUxml("Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uxml");
+        LoadUss("Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss");
+    }
+
+    private void Start() {
         functionSave = container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting);
         factoryBuilder = container.Resolve<IFactory>();
-    }
 
-    protected void OnTabUI()
-    {
         SetupContainer("layout-container", AddLayoutToContainer);
         SetupContainer("style-container", AddStyleToContainer);
 
-        factoryBuilder.Init<FunctionData, FunctionLogica, Function>(data => data.Logica);
+        factoryBuilder.Init<FunctionData, FunctionLogic, Function>(data => data.Logic);
         AddFunctionSettings(factoryBuilder.CreateAllFromProject().OfType<Function>().ToList());
     }
 
@@ -46,16 +51,16 @@ public class SettingTab : EdixorTab
 
     private void AddLayoutToContainer(VisualElement designContainer)
     {
-        var layoutDatas = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetLayouts().ToArray();
+        var layoutDataArray = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetLayouts().ToArray();
         var styleData = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetCurrentItem();
         
-        if (layoutDatas.Length == 0)
+        if (layoutDataArray.Length == 0)
         {
             Debug.LogWarning("Layouts not found.");
             return;
         }
 
-        foreach (var (data, index) in layoutDatas.Select((data, i) => (data, i)))
+        foreach (var (data, index) in layoutDataArray.Select((data, i) => (data, i)))
         {
             designContainer.Add(CreateBanner(data, styleData, index, true));
         }
@@ -63,10 +68,10 @@ public class SettingTab : EdixorTab
 
     private void AddStyleToContainer(VisualElement styleContainer)
     {
-        var styleDatas = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyles().ToArray();
+        var styleDataArray = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyles().ToArray();
         var layoutData = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetCurrentItem();
 
-        if (styleDatas.Length == 0)
+        if (styleDataArray.Length == 0)
         {
             Debug.LogWarning("Styles not found.");
             return;
@@ -75,7 +80,7 @@ public class SettingTab : EdixorTab
         ScrollView scrollView = new ScrollView(ScrollViewMode.Horizontal);
         scrollView.AddToClassList("banner-scroll-view");
 
-        foreach (var (data, index) in styleDatas.Select((data, i) => (data, i)))
+        foreach (var (data, index) in styleDataArray.Select((data, i) => (data, i)))
         {
             scrollView.Add(CreateBanner(data, layoutData, index, false));
         }
@@ -85,16 +90,16 @@ public class SettingTab : EdixorTab
 
     private VisualElement CreateBanner(object data, object layoutData, int index, bool isLayout)
     {
-        // Создаём основной контейнер для баннера
+
         VisualElement bannerContainer = new VisualElement();
         bannerContainer.AddToClassList("banner-container");
 
-        // Создаём элемент баннера и настраиваем его
+
         VisualElement banner = new VisualElement();
         banner.AddToClassList("banner");
         banner.AddToClassList("middle-section");
 
-        // Инициализируем дизайн баннера
+
         EdixorDesign edixorDesign = new EdixorDesign(
             isLayout ? (StyleData)layoutData : (StyleData)data, 
             isLayout ? (EdixorLayoutData)data : (EdixorLayoutData)layoutData, 
@@ -104,12 +109,12 @@ public class SettingTab : EdixorTab
         styleParameters = isLayout ? ((StyleData)layoutData).GetAssetParameter() : ((StyleData)data).GetAssetParameter();
         SetBannerStyle(banner, styleParameters);
 
-        // Получаем имя баннера и создаём Label для его отображения сверху
+
         string bannerName = isLayout ? ((EdixorLayoutData)data).Name : ((StyleData)data).Name;
         Label bannerNameLabel = new Label(bannerName);
         bannerNameLabel.AddToClassList("banner-name");
 
-        // Создаём кнопку выбора отдельно (она больше не добавляется в баннер)
+
         Button selectButton = new Button(() => {
             Debug.Log($"Banner with {(isLayout ? "layout" : "style")} {bannerName} selected.");
             if (isLayout)
@@ -121,8 +126,8 @@ public class SettingTab : EdixorTab
         }) { text = "Select" };
         selectButton.AddToClassList("select-button");
 
-        // Добавляем элементы в контейнер в нужном порядке:
-        // сверху имя баннера, затем сам баннер, и внизу кнопку выбора.
+
+
         bannerContainer.Add(bannerNameLabel);
         bannerContainer.Add(banner);
         bannerContainer.Add(selectButton);
@@ -142,8 +147,8 @@ public class SettingTab : EdixorTab
 
     private void AddFunctionSettings(List<Function> functions)
     {
-        VisualElement functionContainer = root.Q<VisualElement>("funcion-container"); 
-        VisualElement functionSettingContainer = root.Q<VisualElement>("funcion-setting-container"); 
+        VisualElement functionContainer = root.Q<VisualElement>("function-container"); 
+        VisualElement functionSettingContainer = root.Q<VisualElement>("function-setting-container"); 
         Label infoLabel = new Label("Click on a function to configure it");
         functionSettingContainer.Add(infoLabel);
 
@@ -172,7 +177,7 @@ public class SettingTab : EdixorTab
                 }
                 else
                 {
-                    Debug.LogError("Ошибка: backgroundImage не является Texture2D");
+                    Debug.LogError("no icon found for function: " + func.Data.Name);
                 }
 
                 function.AddToClassList("function");

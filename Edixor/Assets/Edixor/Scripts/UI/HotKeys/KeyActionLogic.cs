@@ -2,17 +2,22 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [Serializable]
-public abstract class KeyActionLogica
+public abstract class KeyActionLogic
 {
     [NonSerialized]
     protected DIContainer container;
+
+    protected Action Action;
 
     public void SetContainer(DIContainer container)
     {
         this.container = container;
         Init();
     }
+
+    public bool IsInitialized() => container != null;
 
     protected abstract void Init();
 
@@ -26,12 +31,17 @@ public abstract class KeyActionLogica
         Action?.Invoke();
     }
 
-    public virtual Action Action { get; }
+    public Action action
+    {
+        get => Action;
+        set => Action = value;
+    }
 
-    protected KeyActionLogica() { }
+    public KeyActionLogic() { }
 
-    protected KeyActionLogica(DIContainer container)
+    public KeyActionLogic(DIContainer container)
     {
         this.container = container;
+        Init();
     }
 }

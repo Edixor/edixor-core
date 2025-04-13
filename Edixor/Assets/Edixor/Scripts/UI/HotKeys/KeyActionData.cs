@@ -1,21 +1,23 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Reflection;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "KeyActionData", menuName = "Edixor/HK", order = 1)]
 public class KeyActionData : ScriptableObject
 {
-    [Header("Basic Information")]
     [SerializeField]
     private string _actionName = "Default Action Name";
 
     public string Name
     {
-        get { return _actionName; }
-        set { _actionName = value; }
+        get => _actionName;
+        set => _actionName = value;
     }
 
-    [Header("Setting Options")]
+
     [SerializeField]
     private bool _enable = true;
     public bool enable
@@ -32,6 +34,12 @@ public class KeyActionData : ScriptableObject
         set => _combination = value;
     }
 
-    [TextArea] 
-    public string Logica;
+    [SerializeField]
+    private string logicKey;
+
+    public string LogicKey
+    {
+        get => logicKey;
+        set => logicKey = value;
+    }
 }

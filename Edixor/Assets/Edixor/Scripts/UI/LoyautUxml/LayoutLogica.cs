@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using System;
 
-public abstract class LayoutLogica
+public abstract class LayoutLogic
 {
     protected DIContainer container;
     protected abstract Function[][] functions { get; }
@@ -136,18 +136,18 @@ public abstract class LayoutLogica
     }
 
 
-    protected Function LoadFucntion(string name) {
-        FunctionData functionData = LoadFucntionData(name);
+    protected Function LoadFunction(string name) {
+        FunctionData functionData = LoadFunctionData(name);
 
         if (functionData == null) {
             throw new ArgumentNullException(nameof(functionData), $"Функция с именем '{name}' не найдена.");
         }
 
         factoryBuilder = container.Resolve<IFactory>();
-        factoryBuilder.Init<FunctionData, FunctionLogica, Function>(data => data.Logica);
+        factoryBuilder.Init<FunctionData, FunctionLogic, Function>(data => data.Logic);
         return (Function)factoryBuilder.Create(functionData);
     }
-    protected FunctionData LoadFucntionData(string name) {
+    protected FunctionData LoadFunctionData(string name) {
         return container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting).GetCorrectFunction(name);
     }
 

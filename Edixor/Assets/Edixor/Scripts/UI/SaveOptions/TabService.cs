@@ -18,4 +18,10 @@ public class TabService : EdixorCurrentSetting<TabSaveAsset, EdixorTab>
         settings.SaveItems = newTabs;
         Save();
     }
+
+    public void AddTabs(string id, EdixorTab newTab)
+    {
+        settings.SaveItems.Add(newTab);
+        Save();
+    }
 }

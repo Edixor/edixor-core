@@ -29,7 +29,7 @@ public class StyleLogic
             return;
         }
 
-        // Применяем стили из ElementStyles
+
         foreach (var styleRule in _parameters.ElementStyles)
         {
             string className = styleRule.Key;

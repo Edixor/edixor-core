@@ -15,4 +15,4 @@ MonoBehaviour:
   styles:
   - {fileID: 11400000, guid: 8d9ba648d4b8f7a46a187cb9eb650e2e, type: 2}
   - {fileID: 11400000, guid: f9da887309ef9db49a5b61e26028cfa8, type: 2}
-  styleIndex: 1
+  styleIndex: 0

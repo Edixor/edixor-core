@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 public class Function
 {
     public FunctionData Data { get; private set; }
-    public FunctionLogica Logic { get; private set; }
+    public FunctionLogic Logic { get; private set; }
 
-    public Function(FunctionData data, FunctionLogica logic)
+    public Function(FunctionData data, FunctionLogic logic)
     {
         Data = data;
         Logic = logic;

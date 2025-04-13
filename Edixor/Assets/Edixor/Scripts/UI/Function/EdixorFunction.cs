@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public abstract class FunctionLogica
+public abstract class FunctionLogic
 {
     protected DIContainer container;
 
-    protected FunctionLogica(DIContainer container = null)
+    protected FunctionLogic(DIContainer container = null)
     {
         this.container = container;
     }

@@ -5,7 +5,7 @@ using System.Linq;
 
 public class FunctionService : EdixorSetting<FunctionSaveAsset>
 {
-    public FunctionService() : base(PathResolver.ResolvePath("Assets/Edixor/Scripts/Settings/FunctionLogicaSettings.asset")) { }
+    public FunctionService() : base(PathResolver.ResolvePath("Assets/Edixor/Scripts/Settings/FunctionLogicSettings.asset")) { }
 
     public List<FunctionData> GetFunctions() => settings.SaveItems;
 

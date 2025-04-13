@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ddc0b3a9bdc7024a913830d9397fb06, type: 3}
-  m_Name: DIContainer
+  m_Script: {fileID: 11500000, guid: 94302e691623b814abb334cb245e9ef1, type: 3}
+  m_Name: Restart
   m_EditorClassIdentifier: 
+  _actionName: Restart
+  _enable: 1
+  _combination: 3001000072000000
+  logicKey: Restart

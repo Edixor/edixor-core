@@ -12,17 +12,17 @@ public static class ClueManager
         {
             if (!isClueInitialized || clueWindow == null)
             {
-                // Создаём или активируем окно CustomClue
-                //clueWindow = CustomEditorWindow.GetOrCreateClueWindow();
+
+
                 clueWindow.SetLabelRect(labelRect);
-                clueWindow.ShowUtility(); // Открытие как Utility окно
+                clueWindow.ShowUtility();
                 isClueInitialized = true;
                 isClueOpen = true;
             }
             else if (!isClueOpen)
             {
-                // Показываем окно, если оно было инициализировано, но закрыто
-                clueWindow.ShowUtility(); // Открытие как Utility окно
+
+                clueWindow.ShowUtility();
                 isClueOpen = true;
             }
         }
@@ -30,10 +30,10 @@ public static class ClueManager
         {
             if (isClueOpen && clueWindow != null)
             {
-                // Закрываем окно CustomClue и сбрасываем инициализацию
+
                 clueWindow.Close();
                 isClueOpen = false;
-                isClueInitialized = false;  // Сброс состояния для возможности повторного создания
+                isClueInitialized = false;
             }
         }
     }

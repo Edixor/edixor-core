@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "FunctionLogicaSettings", menuName = "Edixor/FunctionSettings", order = 1)]
+[CreateAssetMenu(fileName = "FunctionLogicSettings", menuName = "Edixor/FunctionSettings", order = 1)]
 public class FunctionSaveAsset : ScriptableObject, ISaveAsset<FunctionData>
 {
     [SerializeField]

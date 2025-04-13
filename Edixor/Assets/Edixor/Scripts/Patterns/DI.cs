@@ -33,7 +33,7 @@ public class DIContainer : ScriptableObject
     }
 
 
-    // Регистрация с именем
+
     public void RegisterNamed<T>(string name, T service)
     {
         namedInstances[(typeof(T), name)] = service;
@@ -52,7 +52,7 @@ public class DIContainer : ScriptableObject
         throw new Exception($"Dependency of type {type} is not registered in DIContainer.");
     }
 
-    // Разрешение с именем
+
     public T ResolveNamed<T>(string name)
     {
         var key = (typeof(T), name);

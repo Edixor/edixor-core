@@ -15,7 +15,7 @@ namespace Commands
         private string nameNewFolder;
         private string createdFolderPath;
 
-        public CreateFolder(string folderPath, string nameNewFolder, string name = null) // Имя конструктора совпадает с именем класса
+        public CreateFolder(string folderPath, string nameNewFolder, string name = null)
         {
             this.folderPath = folderPath;
             this.nameNewFolder = nameNewFolder;

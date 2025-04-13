@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94302e691623b814abb334cb245e9ef1, type: 3}
-  m_Name: Close
+  m_Name: KeyActionData
   m_EditorClassIdentifier: 
-  _actionName: Close
+  _actionName: Default Action Name
   _enable: 1
-  _combination: 0900000063000000
-  Logica: Assets/Edixor/Scripts/UI/HotKeys/Registy/Minimizable.cs
+  _combination: 3001000071000000
+  logicKey: Restart

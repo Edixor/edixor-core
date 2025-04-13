@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalWindowRect:
     serializedVersion: 2
-    x: 237
-    y: 112
-    width: 715
-    height: 561
+    x: 0
+    y: 0
+    width: 320
+    height: 550
   isWindowOpen: 0
   isMinimized: 0
   isMaximized: 0

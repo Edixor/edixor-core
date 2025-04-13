@@ -77,7 +77,7 @@ namespace Commands {
             } 
             else
             {
-                Debug.LogError("///");
+                Debug.LogError("Parent game object not found.");
             }
         }
 

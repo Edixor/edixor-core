@@ -7,7 +7,7 @@ public class CMItemMenu : ICMItem
     public string Name { get; }
     public bool IsInteractive { get; set; }
     public CustomMenu Menu { get; private set; }
-    public bool IsSelected { get; private set; } // Added property for selection state
+    public bool IsSelected { get; private set; }
 
     private string interactiveKey;
 

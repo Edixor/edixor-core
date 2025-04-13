@@ -16,4 +16,4 @@ MonoBehaviour:
   layoutDescription: dfdbfv
   pathUss: Assets/Edixor/Scripts/UI/LoyautUxml/SidePanel/SidePanel.uss
   pathUxml: Assets/Edixor/Scripts/UI/LoyautUxml/SidePanel/SidePanel.uxml
-  Logica: Assets/Edixor/Scripts/UI/LoyautUxml/SidePanel/SidePanel.cs
+  Logic: Assets/Edixor/Scripts/UI/LoyautUxml/SidePanel/SidePanel.cs

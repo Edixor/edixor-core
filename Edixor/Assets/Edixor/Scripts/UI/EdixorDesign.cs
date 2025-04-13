@@ -40,16 +40,16 @@ public class EdixorDesign {
         if (factoryBuilder == null)
             factoryBuilder = Container.Resolve<IFactory>();
 
-        factoryBuilder.Init<EdixorLayoutData, LayoutLogica>(data => data.Logica);
-        LayoutLogica layoutLogica = (LayoutLogica)factoryBuilder.CreateLogic(Layout);
-        layoutLogica.SetContainer(Container);
+        factoryBuilder.Init<EdixorLayoutData, LayoutLogic>(data => data.Logic);
+        LayoutLogic layoutLogic = (LayoutLogic)factoryBuilder.CreateLogic(Layout);
+        layoutLogic.SetContainer(Container);
 
         parameters = Style.GetAssetParameter();
 
         if (demo)
-            layoutLogica.DemoInit(rootElement, parameters.FunctionIconColors, parameters.FunctionBackgroundColors);
+            layoutLogic.DemoInit(rootElement, parameters.FunctionIconColors, parameters.FunctionBackgroundColors);
         else
-            layoutLogica.Init(rootElement);
+            layoutLogic.Init(rootElement);
 
         layoutSheet = LoadStyleSheet(Layout.PathUss);
 
@@ -58,7 +58,7 @@ public class EdixorDesign {
         parameters = Style.GetAssetParameter();
         
         styleLogic.Init();
-        styleLogic.FunctionStyling(layoutLogica.GetFunctions());
+        styleLogic.FunctionStyling(layoutLogic.GetFunctions());
     }
 
 

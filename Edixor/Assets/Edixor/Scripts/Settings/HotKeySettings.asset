@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157d39fed506d004f8fa2772b131ce92, type: 3}
   m_Name: HotKeySettings
   m_EditorClassIdentifier: 
-  hotKeys:
-  - {fileID: 11400000, guid: b7fa16af6a259c544903ed2afda0f767, type: 2}
-  - {fileID: 11400000, guid: 77b6218ea9dab5742a1374c5e5e58c5a, type: 2}
-  - {fileID: 11400000, guid: 88d04062f97a5bc4d9692d7c4f37b024, type: 2}
+  hotKeyDictionaryEntries:
+  - Key: Window
+    Values:
+    - {fileID: 11400000, guid: b7fa16af6a259c544903ed2afda0f767, type: 2}
+    - {fileID: 11400000, guid: 88d04062f97a5bc4d9692d7c4f37b024, type: 2}
+    - {fileID: 11400000, guid: 77b6218ea9dab5742a1374c5e5e58c5a, type: 2}
+    enable: 1
+  - Key: My Custom Tab
+    Values:
+    - {fileID: 11400000, guid: e81f16ddd48b7ae4e8367fc989b0e79a, type: 2}
+    enable: 1

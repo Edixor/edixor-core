@@ -20,7 +20,7 @@ public class EdixorLayoutData : ScriptableObject
     public string PathUxml => pathUxml;
     
     [TextArea] 
-    public string Logica;
+    public string Logic;
 
 
 }

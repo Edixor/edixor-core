@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44ef9f5ee8974624d8008c50f6f95a1c, type: 3}
-  m_Name: FunctionLogicaSettings
+  m_Name: FunctionLogicSettings
   m_EditorClassIdentifier: 
   functions:
   - {fileID: 11400000, guid: 6d27ea882b7c6854a87fe5159f35a60a, type: 2}

@@ -1,23 +1,23 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyRestart : KeyActionLogica
+public class KeyRestart : KeyActionLogic
 {
     private IRestartable window;
-    public override Action Action => () =>
-    {
-        if (window != null)
-        {
-            window.RestartWindow();
-        }
-        else
-        {
-            Debug.LogError("Window is null in Restart action");
-        }
-    };
 
-    protected override void Init() { 
+    protected override void Init()
+    {
         window = container.ResolveNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow);
+        action = () =>
+        {
+            if (window != null)
+            {
+                window.RestartWindow();
+            }
+            else
+            {
+                Debug.LogError("Window is null in Restart action");
+            }
+        };
     }
 }

@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 {
@@ -10,6 +11,8 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
     protected DIContainer container;
     protected Rect originalWindowRect;
     protected readonly Vector2 minimalSizeThreshold = new Vector2(150, 60);
+    private bool _initialized = false; // Защита от повторной инициализации
+
     private WindowStateService _windowStateService;
     protected WindowStateService WindowStateService
     {
@@ -51,15 +54,26 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         }
     }
 
-    [MenuItem("Window/EdixorWindow")]
-    public static void ShowWindow()
+    public static void ShowWindow<T>(string title) where T : EdixorWindow
     {
-        var container = LoadOrCreateContainer();
-        var window = GetWindow<EdixorWindow>("EdixorWindow");
-        window.Initialize(container);
+        var window = GetWindow<T>(title);
+        window.Show();
     }
 
-    private static DIContainer LoadOrCreateContainer()
+    protected virtual void OnEnable()
+    {
+        if (_initialized) return; // Предотвращаем повторную инициализацию
+
+        container = LoadOrCreateContainer();
+        Initialize();
+        _initialized = true;
+    }
+
+    protected virtual void Awake() {
+
+    }
+
+    protected static DIContainer LoadOrCreateContainer()
     {
         string containerPath = PathResolver.ResolvePath("Assets/Edixor/DIContainer.asset");
         var container = AssetDatabase.LoadAssetAtPath<DIContainer>(containerPath);
@@ -74,10 +88,8 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         return container;
     }
 
-    public void Initialize(DIContainer container)
+    private void Initialize()
     {
-        this.container = container;
-
         container.RegisterNamed<IClosable>(ServiceNames.IClosable_EdixorWindow, this);
         container.RegisterNamed<IMinimizable>(ServiceNames.IMinimizable_EdixorWindow, this);
         container.RegisterNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow, this);
@@ -93,41 +105,47 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         InitializeHotKeys();
         SubscribeToEvents();
 
-        // Если окно сразу минимизировано по размерам, выставляем соответствующее состояние
         if (position.width <= minimalSizeThreshold.x && position.height <= minimalSizeThreshold.y)
         {
             WindowStateService.SetMinimized(true);
-            //UIManager?.ShowMinimizedUI();
         }
         else
         {
             WindowStateService.SetWindowOpen(true);
         }
-    } 
 
-    /// <summary>
-    /// Подписка на события UIElements.
-    /// </summary>
+        FileDragHandler.RegisterDragHandlers(rootVisualElement, OnTabAddedFromDrag);
+    }
+
+    private void OnTabAddedFromDrag(string filePath, string className)
+    {
+        Debug.Log($"Tab {className} is being added from file: {filePath}");
+
+        FileDragHandler.AddTabFromFile(filePath, className, (file, tabType) =>
+        {
+            EdixorTab tab = (EdixorTab)Activator.CreateInstance(tabType);
+            UIManager.AddTab(tab, saveState: false, autoSwitch: true);
+        });
+    }
+
     private void SubscribeToEvents()
     {
-        // Событие, отслеживающее изменение размеров окна
+        rootVisualElement.focusable = true;
+        rootVisualElement.pickingMode = PickingMode.Position;
         rootVisualElement.RegisterCallback<GeometryChangedEvent>(evt =>
         {
-            // Если размеры окна меньше пороговых значений и окно не в состоянии "минимизировано"
             if (!WindowStateService.GetMinimized() &&
                 (position.width <= minimalSizeThreshold.x || position.height <= minimalSizeThreshold.y))
             {
                 MinimizeWindow();
             }
-            // Если окно было минимизировано, а теперь его размер увеличился
             else if (WindowStateService.GetMinimized() &&
-                     (position.width > minimalSizeThreshold.x && position.height > minimalSizeThreshold.y))
+                    (position.width > minimalSizeThreshold.x && position.height > minimalSizeThreshold.y))
             {
                 ReturnWindowToOriginalSize();
             }
         });
 
-        // Событие для обработки нажатий клавиш
         rootVisualElement.RegisterCallback<KeyDownEvent>(evt =>
         {
             if (HotKeys != null && HotKeys.IsHotKeyEnabled())
@@ -135,6 +153,21 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
                 HotKeys.OnKeys();
             }
         });
+
+        rootVisualElement.Focus();
+    }
+
+    private void OnGUI()
+    {
+        if (container != null || UIManager != null)
+        {
+            if (WindowStateService.GetMinimized())
+            {
+                return;
+            }
+
+            UIManager.OnGUI();
+        }
     }
 
     protected void InitializeUI()
@@ -158,13 +191,12 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         EditorApplication.delayCall += () =>
         {
             Close();
-            ShowWindow();
+            ShowWindow<EdixorWindow>("EdixorWindow");
         };
     }
 
     public void MinimizeWindow()
     {
-        // Сохраняем оригинальные размеры, если они еще не сохранены
         if (position.width > minimalSizeThreshold.x && position.height > minimalSizeThreshold.y)
         {
             originalWindowRect = position;
@@ -175,15 +207,11 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         minSize = minimalSizeThreshold;
         position = new Rect(position.x, position.y, minimalSizeThreshold.x, minimalSizeThreshold.y);
         Debug.Log("Window minimized to minimal size: " + minimalSizeThreshold);
-
-        //UIManager?.SaveTabsState();
-        //UIManager?.ShowMinimizedUI();
     }
 
     public void ReturnWindowToOriginalSize()
     {
         position = originalWindowRect;
-        Debug.Log("Window returned to rect: " + originalWindowRect);
         WindowStateService.SetOriginalWindowRect(originalWindowRect);
         WindowStateService.SetMinimized(false);
         rootVisualElement.Clear();
@@ -199,16 +227,16 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
     {
         if (CurrentWindow != this) return;
 
-        try 
-        { 
-            //UIManager?.SaveTabsState();
+        try
+        {
             SaveSettings();
         }
-        catch (System.Exception e) 
-        { 
-            Debug.LogError("Failed to save settings: " + e.Message); 
+        catch (System.Exception e)
+        {
+            Debug.LogError("Failed to save settings: " + e.Message);
         }
-        
+
+        UIManager.OnWindowClose();
         WindowStateService.SetWindowOpen(false);
         CurrentWindow = null;
     }

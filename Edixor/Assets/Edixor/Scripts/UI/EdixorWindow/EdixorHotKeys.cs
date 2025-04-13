@@ -8,7 +8,7 @@ public class EdixorHotKeys
     private DIContainer container;
     private HotKeyService keyService;
     private IFactory factoryBuilder;
-    private List<KeyAction> hotkeyActions;
+    private List<KeyAction> hotkeyActions = new List<KeyAction>();
     private HashSet<KeyCode> currentlyPressedKeys;
     private HashSet<List<KeyCode>> activatedCombinations;
     private bool isInitialized = false;
@@ -29,16 +29,8 @@ public class EdixorHotKeys
             return;
         }
 
-        // Получаем фабрику один раз
-        factoryBuilder = container.Resolve<IFactory>();
-        // Инициализируем фабрику для создания KeyAction
-        factoryBuilder.Init<KeyActionData, KeyActionLogica, KeyAction>(data => data.Logica);
-
-        // Создаем все действия горячих клавиш
-        hotkeyActions = factoryBuilder.CreateAllFromProject()
-            .Cast<KeyAction>()
-            .Where(a => a?.keyActionData?.Combination != null)
-            .OrderByDescending(a => a.keyActionData.Combination.Count)
+        hotkeyActions = keyService.GetAllHotKeys()
+            .Select(hotKeyData => new KeyAction(hotKeyData, container))
             .ToList();
 
         Debug.Log($"EdixorHotKeys: Получено {hotkeyActions.Count} горячих клавиш.");
@@ -50,13 +42,13 @@ public class EdixorHotKeys
                 Debug.LogWarning("EdixorHotKeys: Найден null-элемент в hotkeyActions.");
                 continue;
             }
-            if (action.KeyActionLogica != null)
+            if (action.keyActionLogic != null)
             {
-                action.KeyActionLogica.SetContainer(container);
+                action.keyActionLogic.SetContainer(container);
             }
             else
             {
-                Debug.LogWarning($"EdixorHotKeys: У действия {action} отсутствует KeyActionLogica.");
+                Debug.LogWarning($"EdixorHotKeys: У действия {action} отсутствует KeyActionLogic.");
             }
         }
 
@@ -75,6 +67,7 @@ public class EdixorHotKeys
     {
         Event e = Event.current;
         if (e == null) return;
+        
 
         if (e.type == EventType.KeyDown && !currentlyPressedKeys.Contains(e.keyCode))
         {
@@ -88,7 +81,7 @@ public class EdixorHotKeys
                     continue;
                 }
 
-                // Если комбинация нажата и еще не была активирована
+
                 if (IsCombinationPressed(action.keyActionData.Combination) &&
                     !activatedCombinations.Contains(action.keyActionData.Combination))
                 {
@@ -124,12 +117,23 @@ public class EdixorHotKeys
         return result;
     }
 
+    public void AddKey(KeyAction key)
+    {
+        if (key == null || key.keyActionData?.Combination == null)
+        {
+            Debug.LogWarning("EdixorHotKeys: Попытка добавить null-элемент или элемент без комбинации.");
+            return;
+        }
+
+        hotkeyActions.Add(key);
+    }
+
     public List<KeyAction> GetKeys()
     {
         return hotkeyActions;
     }
 
-    // Класс для сравнения списков клавиш (учитывая порядок)
+
     private class KeyCombinationComparer : IEqualityComparer<List<KeyCode>>
     {
         public bool Equals(List<KeyCode> x, List<KeyCode> y)

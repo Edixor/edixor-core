@@ -6,14 +6,14 @@ using System;
 public abstract class Menu<T, I> : EditorWindow where T : Menu<T, I> where I : ICMItem
 {
     protected List<I> menuItems = new List<I>();
-    //protected BFPStyle style;
+
     protected bool isOpen = false;
     protected float itemHeight = 20f;
     protected static T activeMenu;
     
-    // Dictionary to store groups of CMItemBool
+
     protected Dictionary<int, List<CMItemBool>> cmItemBoolGroups = new Dictionary<int, List<CMItemBool>>();
-    //private int nextGroupId = 0;
+
 
     public void AddItem(I typeItem) {
         menuItems.Add(typeItem);
@@ -54,12 +54,12 @@ public abstract class Menu<T, I> : EditorWindow where T : Menu<T, I> where I : I
 
         if (!isOpen) return;
 
-        //if (/*style.button,*/ == null)
-        //{
-        //    style.InitializationStyle();
-        //}
 
-        //style.Background(new Rect(0, 0, position.width, position.height));
+
+
+
+
+
     }
 
     public virtual void HandleItemSelection(ICMItem selectedItem)
@@ -80,7 +80,7 @@ public abstract class Menu<T, I> : EditorWindow where T : Menu<T, I> where I : I
         }
         else if (selectedItem is CMItemAction actionItem)
         {
-            // Обработка выбора CMItemAction
+
             foreach (var item in menuItems)
             {
                 if (item is CMItemAction currentItem)

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 
-public class HotKeys : FunctionLogica, IFunctionSetting
+public class HotKeys : FunctionLogic, IFunctionSetting
 {
     private List<KeyActionData> hotkeys;
     private EdixorUIManager uiManager;
@@ -24,7 +24,7 @@ public class HotKeys : FunctionLogica, IFunctionSetting
                 return;
             }
 
-            HotKeysTab hotKeysTab = new HotKeysTab();
+            HotKeyTab hotKeysTab = new HotKeyTab();
             uiManager.AddTab(hotKeysTab);
         }
     }
@@ -38,7 +38,7 @@ public class HotKeys : FunctionLogica, IFunctionSetting
     {
         if (hotkeys == null || hotkeys.Count == 0)
         {
-            hotkeys = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting).GetHotKeys();
+            hotkeys = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting).GetAllHotKeys();
         }
 
         foreach (KeyActionData key in hotkeys)

@@ -16,11 +16,11 @@ namespace Commands
             this.content = content;
             this.name = string.IsNullOrEmpty(name) ? "Create script(" + nameScript + ")" : name;
             this.nameScript = nameScript;
-            // Use nameScript for the actual script filename
+
             this.filePath = Path.Combine(Application.dataPath, $"{this.nameScript}.cs");
         }
 
-        // Override the Tasks method to create the script file
+
         public override void Tasks()
         {
             try
@@ -47,7 +47,7 @@ namespace Commands
             }
         }
 
-        // Rollback by deleting the created script if needed
+
         public override void JobRollback()
         {
             try
@@ -68,19 +68,19 @@ namespace Commands
             }
         }
 
-        // You can define what actions to call upon executing this command
+
         public override void CallAction(Action action = null)
         {
             action?.Invoke();
         }
 
-        // Handle rollback action if specified
+
         public override void RollbackAction(Action action = null)
         {
             action?.Invoke();
         }
 
-        // Get specific information based on the provided clarifications
+
         public override T Get<T>(string clarifications = null)
         {
             if (clarifications == "taskName")

@@ -1,4 +1,4 @@
-using System.Collections.Generic; 
+using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
@@ -13,6 +13,9 @@ public class EdixorUIManager
     private EdixorDesign design;
     private VisualElement root;
 
+    // Фабрика для создания UI вкладок
+    private TabFactory tabFactory;
+
     private WindowStateService WindowStateService =>
         container.ResolveNamed<WindowStateService>(ServiceNames.WindowStateSetting);
     private TabService TabService =>
@@ -25,6 +28,8 @@ public class EdixorUIManager
     public EdixorUIManager(DIContainer container)
     {
         this.container = container;
+        // Инициализация фабрики (можно внедрить через DI, если необходимо)
+        this.tabFactory = new TabFactory();
     }
 
     public void LoadUI()
@@ -46,37 +51,38 @@ public class EdixorUIManager
         {
             if (indexTab >= 0 && indexTab < tabs.Count)
             {
-                tabs[indexTab].InvokeAwake();
-                tabs[indexTab].Initialize(design.GetSection("middle-section-content"), container, tabs[indexTab].Title, tabs[indexTab].PathUxml, tabs[indexTab].PathUss);
-                tabs[indexTab].InvokeOnEnable();
-                tabs[indexTab].InvokeStart();
-                tabs[indexTab].InvokeOnUI();
+                SwitchTab(indexTab);
             }
         }
     }
 
     private bool RestoreTabs()
     {
+        tabs.Clear();
+        tabContainers.Clear();
+
         List<EdixorTab> savedTabs = TabService.GetTabs();
         if (savedTabs != null && savedTabs.Count > 0)
         {
-            design.GetSection("tab-section").Clear();
+            VisualElement tabSection = design.GetSection("tab-section");
+        while (tabSection.childCount > 1)
+        {
+            tabSection.RemoveAt(1);
+        }
+
+
             VisualElement middleSection = design.GetSection("middle-section-content");
             middleSection.Clear();
 
             foreach (EdixorTab tab in savedTabs)
             {
-                tab.InvokeAwake();
-                // Вместо старого tab.Init(...) вызываем Initialize.
-                // Предполагается, что tab уже содержит корректные пути и имя.
-                tab.Initialize(middleSection, container, tab.Title, tab.PathUxml, tab.PathUss);
-                tab.InvokeStart();
                 AddTab(tab, saveState: false, autoSwitch: false);
             }
 
             int savedActiveIndex = TabService.GetActiveTab();
             if (savedActiveIndex < 0 || savedActiveIndex >= tabs.Count)
                 savedActiveIndex = 0;
+
             SwitchTab(savedActiveIndex);
             return true;
         }
@@ -89,9 +95,16 @@ public class EdixorUIManager
 
         ClearEmptyStateUI();
 
+        newTab.Initialize(design.GetSection("middle-section-content"), container);
         newTab.InvokeAwake();
         tabs.Add(newTab);
-        var tabContainer = CreateTabContainer(newTab);
+
+        // Используем фабрику для создания контейнера вкладки
+        VisualElement tabContainer = tabFactory.CreateTabContainer(
+            newTab,
+            onSwitch: () => SwitchTab(tabs.IndexOf(newTab)),
+            onClose: () => CloseTab(tabs.IndexOf(newTab))
+        );
         tabContainers[newTab] = tabContainer;
         design.GetSection("tab-section").Add(tabContainer);
 
@@ -113,15 +126,37 @@ public class EdixorUIManager
         {
             tabs[indexTab].InvokeOnDisable();
         }
-        
+
         tabs[index].InvokeAwake();
-        tabs[index].Initialize(design.GetSection("middle-section-content"), container, tabs[index].Title, tabs[index].PathUxml, tabs[index].PathUss);
+        tabs[index].Initialize(design.GetSection("middle-section-content"), container);
         tabs[index].InvokeStart();
         tabs[index].InvokeOnEnable();
-        // После инициализации можно также вызвать InvokeOnUI() для обновления контента вкладки.
-        tabs[index].InvokeOnUI();
+  
+
         indexTab = index;
         TabService.SetLastActiveTabIndex(index);
+    }
+
+    public void CloseAllTabs()
+    {
+        foreach (var tab in tabs)
+        {
+            tab.InvokeOnDisable();
+            tab.InvokeOnDestroy();
+            tab.DeleteUI();
+        }
+
+        tabs.Clear();
+        indexTab = -1;
+        ShowEmptyStateUI();
+    }
+
+    public void OnGUI()
+    {
+        if (indexTab >= 0 && indexTab < tabs.Count)
+        {
+            tabs[indexTab].InvokeUpdateGUI();
+        }
     }
 
     public void CloseTab(int index)
@@ -165,23 +200,19 @@ public class EdixorUIManager
         }
     }
 
-    // Заглушка: очистка UI для состояния "нет вкладок"
     private void ClearEmptyStateUI()
     {
-        // Реализуйте очистку секции, если необходимо.
+        // Реализуйте очистку UI для пустого состояния, если необходимо.
     }
 
-    // Заглушка: создание контейнера для вкладки
-    private VisualElement CreateTabContainer(EdixorTab tab)
-    {
-        // Можно создать и вернуть новый VisualElement с необходимой разметкой для вкладки.
-        return new VisualElement();
-    }
-
-    // Заглушка: показать UI пустого состояния
     private void ShowEmptyStateUI()
     {
-        // Реализуйте показ UI, если нет вкладок.
+        // Реализуйте отображение UI для пустого состояния, если необходимо.
+    }
+
+    public void OnWindowClose()
+    {
+        TabService.SetTabs(tabs);
     }
 
     public EdixorDesign GetDesign()
