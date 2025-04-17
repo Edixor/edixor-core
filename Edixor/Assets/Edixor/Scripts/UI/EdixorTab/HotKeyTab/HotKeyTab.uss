@@ -1,15 +1,56 @@
-.title {
-    font-size: 15px;
-    margin-top: 10px;
-}
-
-.hotkeys-box {
+.hotkey-table-header,
+.hotkey-table-row {
     display: flex;
     flex-direction: row;
-    align-items: center; 
-    margin-bottom: 2px;
+    align-items: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-bottom-width: 1px;
+    border-bottom-color: #444;
 }
 
-.edit-button {
+.hotkey-table-header {
+    background-color: #222;
+    color: #ddd;
+}
 
+.row-odd {
+    background-color: #2a2a2a;
+}
+.row-even {
+    background-color: #1f1f1f;
+}
+
+#column-index,
+#column-key,
+#column-name,
+#column-combo,
+#column-options {
+    padding-left: 8px;
+    padding-right: 8px;
+    min-width: 100px;
+    flex-shrink: 0;
+}
+
+#column-combo {
+    flex-grow: 1;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.options-container > .edit-button,
+.options-container > .toggle-button {
+    margin-right: 6px;
+}
+
+.edit-button,
+.toggle-button {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 12px;
 }

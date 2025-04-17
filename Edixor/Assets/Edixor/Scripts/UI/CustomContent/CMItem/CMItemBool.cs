@@ -1,14 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 
-public class CMItemBool : ICMItem
+public class CMItemBool : BaseCMItem
 {
-    public string Name { get; }
-    public bool IsInteractive { get; set; }
     public bool IsSelected { get; private set; }
-
     private string selectedKey;
-    private string interactiveKey;
 
     public CMItemBool(string name, bool isInteractive, bool value, string key)
     {
@@ -27,13 +23,13 @@ public class CMItemBool : ICMItem
         SaveState();
     }
 
-    public void SaveState()
+    public override void SaveState()
     {
         EditorPrefs.SetBool(interactiveKey, IsInteractive);
         EditorPrefs.SetBool(selectedKey, IsSelected);
     }
 
-    public void LoadState()
+    public override void LoadState()
     {
         if (EditorPrefs.HasKey(interactiveKey))
         {
@@ -46,20 +42,15 @@ public class CMItemBool : ICMItem
         }
     }
 
-    public void Draw<T, I>(Menu<T, I> menu, float itemHeight, GUIStyle style) where T : Menu<T, I> where I : ICMItem
+    public override void Draw()
     {
-        string displayText = IsSelected ? $"{Name} - On" : $"{Name} - Off";
-
-        if (IsInteractive)
+        GUILayout.BeginHorizontal();
+        GUILayout.Label(Name, GUILayout.Width(150));
+        bool newValue = GUILayout.Toggle(IsSelected, "");
+        if (newValue != IsSelected)
         {
-            if (GUILayout.Button(displayText, style, GUILayout.Height(itemHeight)))
-            {
-                menu.HandleItemSelection(this);
-            }
+            SetSelected(newValue);
         }
-        else
-        {
-            GUILayout.Label(displayText, style, GUILayout.Height(itemHeight));
-        }
+        GUILayout.EndHorizontal();
     }
 }

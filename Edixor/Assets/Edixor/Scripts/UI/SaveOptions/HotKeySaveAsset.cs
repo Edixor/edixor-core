@@ -50,12 +50,8 @@ public class HotKeySaveAsset : ScriptableObject
     {
         public string Key;
         public KeyActionData[] Values;
-
-        // Добавляем необходимые свойства
-        public bool enable = true;
         public string Name => Key;
 
-        // Если KeyActionData содержит набор комбинаций клавиш, можно добавить:
         public IEnumerable<string> Combination
         {
             get

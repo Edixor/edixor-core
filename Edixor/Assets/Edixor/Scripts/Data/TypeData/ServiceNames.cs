@@ -18,5 +18,6 @@ public static class ServiceNames
     public const string IMinimizable_EdixorWindow = "IMinimizable_EdixorWindow";
     public const string IRestartable_EdixorWindow = "IRestartable_EdixorWindow";
     public const string IRestartable_Edixor = "IRestartable_Edixor";
+    public const string IHotkeyCaptureHandler = "IHotkeyCaptureHandler";
 
 }

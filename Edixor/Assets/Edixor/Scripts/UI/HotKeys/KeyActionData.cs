@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using System.Reflection;
 using UnityEditor;
 
 [CreateAssetMenu(fileName = "KeyActionData", menuName = "Edixor/HK", order = 1)]
@@ -16,7 +14,6 @@ public class KeyActionData : ScriptableObject
         get => _actionName;
         set => _actionName = value;
     }
-
 
     [SerializeField]
     private bool _enable = true;
@@ -36,10 +33,14 @@ public class KeyActionData : ScriptableObject
 
     [SerializeField]
     private string logicKey;
-
     public string LogicKey
     {
         get => logicKey;
         set => logicKey = value;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name}: {string.Join(" + ", Combination)}";
     }
 }

@@ -59,6 +59,7 @@ public static class ProjectStartupHandler
 
         container.RegisterNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_Edixor, new EdixorHotKeys(container));
         container.RegisterNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_EdixorWindow, new EdixorHotKeys(container));
+        container.RegisterNamed<IHotkeyCaptureHandler>(ServiceNames.IHotkeyCaptureHandler, new HotkeyCaptureHandler());
 
         container.RegisterNamed<KeyActionLogic>(HotKeyNames.Restart, new KeyRestart());
         container.RegisterNamed<KeyActionLogic>(HotKeyNames.Minimizable, new Minimizable());

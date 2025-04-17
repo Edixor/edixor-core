@@ -4,6 +4,7 @@ using UnityEditor;
 using System;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Linq;
 
 [Serializable]
 public abstract class EdixorTab
@@ -12,15 +13,14 @@ public abstract class EdixorTab
     [SerializeField] protected int openCount = 0;
     [SerializeField] private string pathUxml;
     [SerializeField] private string pathUss;
+
     private EdixorHotKeys _hotKeyController;
     private EdixorHotKeys hotKeyController
     {
         get
         {
             if (_hotKeyController == null)
-            {
                 _hotKeyController = container.ResolveNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_EdixorWindow);
-            }
             return _hotKeyController;
         }
     }
@@ -35,57 +35,28 @@ public abstract class EdixorTab
     public int OpenCount => openCount;
 
     public event Action<HotKeyTabInfo> OnHotKeyAdded;
+
     private Action childAwake;
     private Action childStart;
     private Action childOnEnable;
     private Action childOnDisable;
     private Action childOnDestroy;
     private Action childUpdate;
-
     private bool lifecycleDelegatesSet = false;
 
-    public void Initialize(VisualElement ParentContainer, DIContainer container)
+    public void Initialize(VisualElement parent, DIContainer cont)
     {
-        this.ParentContainer = ParentContainer;
-        this.container = container;
-
-        SetupLifecycleDelegates();
-    }
-
-    protected void Initialize(string tabName, string pathUxml = null, string pathUss = null)
-    {
-        this.tabName = tabName;
-        if (!string.IsNullOrEmpty(pathUxml))
-        {
-            this.pathUxml = pathUxml;
-            LoadUxml(pathUxml);
-        }
-        if (!string.IsNullOrEmpty(pathUss))
-        {
-            this.pathUss = pathUss;
-            LoadUss(pathUss);
-        }
-
+        ParentContainer = parent;
+        container = cont;
         SetupLifecycleDelegates();
     }
 
     public static void ShowTab<T>() where T : EdixorTab, new()
     {
-        DIContainer container = LoadOrCreateContainer();
-
-        EdixorWindow window;
-        if (EdixorWindow.CurrentWindow == null)
-        {
-            window = EditorWindow.GetWindow<EdixorWindow>("EdixorWindow");
-        }
-        else
-        {
-            window = EdixorWindow.CurrentWindow;
-            window.Focus();
-        }
-
-        container.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow)
-            .AddTab(new T(), saveState: false, autoSwitch: true);
+        DIContainer cnt = LoadOrCreateContainer();
+        EdixorWindow wnd = EdixorWindow.CurrentWindow ?? EditorWindow.GetWindow<EdixorWindow>("EdixorWindow");
+        cnt.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow)
+           .AddTab(new T(), saveState: false, autoSwitch: true);
     }
 
     protected static DIContainer LoadOrCreateContainer()
@@ -103,203 +74,125 @@ public abstract class EdixorTab
         return container;
     }
 
-
     private void SetupLifecycleDelegates()
     {
-        if (lifecycleDelegatesSet)
-            return;
-
-        Type childType = this.GetType();
-
-        MethodInfo mi = childType.GetMethod("Awake", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-        if (IsValidLifecycleMethod(mi))
-            childAwake = (Action)Delegate.CreateDelegate(typeof(Action), this, mi);
-
-        mi = childType.GetMethod("Start", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-        if (IsValidLifecycleMethod(mi))
-            childStart = (Action)Delegate.CreateDelegate(typeof(Action), this, mi);
-
-        mi = childType.GetMethod("OnEnable", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-        if (IsValidLifecycleMethod(mi))
-            childOnEnable = (Action)Delegate.CreateDelegate(typeof(Action), this, mi);
-
-        mi = childType.GetMethod("OnDisable", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-        if (IsValidLifecycleMethod(mi))
-            childOnDisable = (Action)Delegate.CreateDelegate(typeof(Action), this, mi);
-
-        mi = childType.GetMethod("OnDestroy", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-        if (IsValidLifecycleMethod(mi))
-            childOnDestroy = (Action)Delegate.CreateDelegate(typeof(Action), this, mi);
-
-        mi = childType.GetMethod("UpdateGUI", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-        if (IsValidLifecycleMethod(mi))
-            childUpdate = (Action)Delegate.CreateDelegate(typeof(Action), this, mi);
-
+        if (lifecycleDelegatesSet) return;
+        Type childType = GetType();
+        childAwake     = CreateDelegateIfExists(childType, "Awake");
+        childStart     = CreateDelegateIfExists(childType, "Start");
+        childOnEnable  = CreateDelegateIfExists(childType, "OnEnable");
+        childOnDisable = CreateDelegateIfExists(childType, "OnDisable");
+        childOnDestroy = CreateDelegateIfExists(childType, "OnDestroy");
+        childUpdate    = CreateDelegateIfExists(childType, "UpdateGUI");
         lifecycleDelegatesSet = true;
     }
 
-    private bool IsValidLifecycleMethod(MethodInfo mi)
+    private Action CreateDelegateIfExists(Type type, string methodName)
     {
-        return mi != null && mi.GetParameters().Length == 0 && mi.ReturnType == typeof(void);
+        MethodInfo mi = type.GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (mi != null && mi.GetParameters().Length == 0 && mi.ReturnType == typeof(void))
+            return (Action)Delegate.CreateDelegate(typeof(Action), this, mi);
+        return null;
     }
 
-    public void InvokeAwake()
+    public void InvokeAwake()    { LoadUxml(pathUxml); childAwake?.Invoke(); }
+    public void InvokeStart()    { childStart?.Invoke(); }
+    public void InvokeOnEnable(){ childOnEnable?.Invoke(); }
+    public void InvokeOnDisable(){ childOnDisable?.Invoke(); }
+    public void InvokeOnDestroy(){ childOnDestroy?.Invoke(); }
+    public void InvokeUpdateGUI(){ childUpdate?.Invoke(); }
+
+    protected void LoadUxml(string path)
     {
-        LoadUxml(pathUxml);
-
-        if (!lifecycleDelegatesSet)
-            SetupLifecycleDelegates();
-        childAwake?.Invoke();
-    }
-
-    public void InvokeStart()
-    {
-        childStart?.Invoke();
-    }
-
-    public void InvokeOnEnable()
-    {
-        childOnEnable?.Invoke();
-    }
-
-    public void InvokeOnDisable()
-    {
-        childOnDisable?.Invoke();
-    }
-
-    public void InvokeOnDestroy()
-    {
-        childOnDestroy?.Invoke();
-    }
-
-    public void InvokeUpdateGUI()
-    {
-        childUpdate?.Invoke();
-    }
-
-    protected void LoadUxml(string pathUxml)
-    {
-        // Если путь пустой или null, подставляем дефолтный
-        if (string.IsNullOrEmpty(pathUxml))
-        {
-            pathUxml = "Assets/Edixor/Scripts/UI/EdixorTab/default.uxml";
-            Debug.Log($"Путь к UXML не указан. Используем дефолтный: {pathUxml}");
-        }
-        else
-        {
-            this.pathUxml = pathUxml;
-        }
-
-        VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(pathUxml);
+        if (string.IsNullOrEmpty(path))
+            path = "Assets/Edixor/Scripts/UI/EdixorTab/default.uxml";
+        VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
         if (visualTree == null)
         {
-            Debug.LogError($"UI файл не найден по пути: {pathUxml}");
+            Debug.LogError($"UI файл не найден по пути: {path}");
             return;
         }
-
         root = visualTree.Instantiate();
         root.style.height = new StyleLength(Length.Percent(100));
-
         if (ParentContainer == null)
         {
             Debug.LogError("ParentContainer равен null. Невозможно загрузить UI.");
             return;
         }
-
         ParentContainer.Clear();
         ParentContainer.Add(root);
-
-        Debug.Log($"UI успешно загружен из {pathUxml}");
     }
 
-    protected void LoadUss(string pathUss)
+    protected void LoadUss(string path)
     {
-        if (!string.IsNullOrEmpty(pathUss))
+        if (string.IsNullOrEmpty(path)) return;
+        StyleSheet sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(path);
+        if (sheet == null)
         {
-            this.pathUss = pathUss;
-            StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(pathUss);
-            if (styleSheet == null)
-            {
-                Debug.LogError("StyleSheet file not found at " + pathUss);
-                return;
-            }
-            root.styleSheets.Add(styleSheet);
+            Debug.LogError($"StyleSheet не найден по пути: {path}");
+            return;
         }
+        root.styleSheets.Add(sheet);
     }
 
     protected void LoadHotKey(string path, Action action)
     {
         if (string.IsNullOrEmpty(path))
         {
-            Debug.LogError("Путь к горячей клавише пустой или null. Невозможно добавить горячую клавишу.");
-            return;
+            Debug.LogError("Путь к горячей клавише пустой или null."); return;
         }
-
-        KeyActionData keyActionData = AssetDatabase.LoadAssetAtPath<KeyActionData>(path);
-        if (keyActionData == null)
+        KeyActionData data = AssetDatabase.LoadAssetAtPath<KeyActionData>(path);
+        if (data == null)
         {
-            Debug.LogError($"KeyActionData не найден по пути: {path}");
-            return;
+            Debug.LogError($"KeyActionData не найден по пути: {path}"); return;
         }
-
-        KeyActionLogic logic = new CustomKeyAction(container, action);
-        hotKeyController.AddKey(new KeyAction(keyActionData, logic));
-
-        container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting).AddHotKeyToDictionary(Title, new[] { keyActionData });
-
+        var service = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
+        if (!service.TryAddHotKey(Title, data))
+        {
+            Debug.Log($"[Skip] Дубликат '{data.Name}' для '{Title}'."); return;
+        }
+        var logic = new CustomKeyAction(container, action);
+        hotKeyController.AddKey(new KeyAction(data, logic));
         OnHotKeyAdded?.Invoke(new HotKeyTabInfo(tabName));
-        Debug.Log($"Горячая клавиша '{keyActionData.Name}' успешно добавлена.");
     }
 
     protected void LoadHotKeys(string[] paths, Action[] actions)
     {
-        Debug.Log("SSSSSSSSSSSSSS1");
-        if (paths == null || paths.Length == 0)
-        {
-            Debug.LogError("Path array is null or empty. Cannot load hotkeys.");
-            return;
-        }
-
-        List<KeyActionData> loadedKeys = new List<KeyActionData>();
-
+        if (paths == null || paths.Length == 0) { Debug.LogError("Path array is null or empty."); return; }
+        var service = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
+        var newLoads = new List<KeyActionData>();
         for (int i = 0; i < paths.Length; i++)
         {
-            if (string.IsNullOrEmpty(paths[i]))
-            {
-                Debug.LogWarning("Один из путей пустой. Пропускаем.");
-                continue;
-            }
-
-            KeyActionData keyActionData = AssetDatabase.LoadAssetAtPath<KeyActionData>(paths[i]);
-            if (keyActionData == null)
-            {
-                Debug.LogError($"KeyActionData not found at {paths[i]}");
-                continue;
-            }
-
-            KeyActionLogic logic = new CustomKeyAction(container, actions[i]);
-            hotKeyController.AddKey(new KeyAction(keyActionData, logic));
-            loadedKeys.Add(keyActionData);
+            var p = paths[i]; var a = actions != null && i < actions.Length ? actions[i] : null;
+            if (string.IsNullOrEmpty(p)) continue;
+            KeyActionData d = AssetDatabase.LoadAssetAtPath<KeyActionData>(p);
+            if (d == null) continue;
+            if (!service.TryAddHotKey(Title, d)) { Debug.Log($"[Skip] Дубликат '{d.Name}' для '{Title}'."); continue; }
+            newLoads.Add(d);
+            hotKeyController.AddKey(new KeyAction(d, new CustomKeyAction(container, a)));
         }
-
-        if (loadedKeys.Count > 0)
+        if (newLoads.Count > 0)
         {
-            container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting).AddHotKeyToDictionary(Title, loadedKeys.ToArray());
             OnHotKeyAdded?.Invoke(new HotKeyTabInfo(tabName));
+            Debug.Log($"Добавлено {newLoads.Count} новых горячих клавиш для '{Title}'.");
         }
-        else
-        {
-            Debug.LogWarning("Ни одной горячей клавиши не было загружено.");
-        }
+        else Debug.LogWarning("Новых горячих клавиш не было загружено.");
+    }
+
+    // Восстанавливаем методы, используемые SettingTab
+    protected void ChangeStyle(int index)
+    {
+        container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).SetCurrentItem(index);
+    }
+
+    protected void ChangeLayout(int index)
+    {
+        container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).SetCurrentItem(index);
     }
 
     public void DeleteUI()
     {
-        if (root != null)
-        {
-            root = null;
-        }
-
+        root = null;
         InvokeOnDestroy();
     }
 }

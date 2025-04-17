@@ -2,44 +2,68 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "EdixorStyle", menuName = "Edixor/Style/Data", order = 0)]
 public class StyleData : ScriptableObject
 {
     [SerializeField] private string styleName;
     [TextArea] [SerializeField] private string pathParameter;
-    [SerializeField] private StyleParameters assetParameter;
+    [SerializeField] private List<StyleParameters> assetParameters = new List<StyleParameters>();
 
     public string Name => styleName;
 
-    public StyleParameters GetAssetParameter()
+    public List<StyleParameters> GetAssetParameters()
     {
-        if (assetParameter == null)
+        if (assetParameters == null || assetParameters.Count == 0)
         {
-            assetParameter = AssetDatabase.LoadAssetAtPath<StyleParameters>(PathResolver.ResolvePath(pathParameter));
-            if (assetParameter == null)
+            assetParameters = LoadParametersFromPath(pathParameter);
+            if (assetParameters == null || assetParameters.Count == 0)
             {
-                Debug.LogError($"Style parameter not found at path: {pathParameter}");
+                Debug.LogError($"No style parameters found at path: {pathParameter}");
             }
         }
         else
         {
-            Debug.Log($"Style parameter already loaded: {assetParameter}");
+            Debug.Log($"Style parameters already loaded: {assetParameters.Count} items.");
             if (string.IsNullOrWhiteSpace(pathParameter))
             {
-                pathParameter = AssetDatabase.GetAssetPath(assetParameter);
+                pathParameter = AssetDatabase.GetAssetPath(assetParameters[0]);
             }
         }
-        return assetParameter;
+        return assetParameters;
     }
 
-    public void SetParameter(StyleParameters newParameter)
+    public void SetParameters(List<StyleParameters> newParameters)
     {
-        if (newParameter == null)
+        if (newParameters == null || newParameters.Count == 0)
         {
-            Debug.Log("Style parameter is null. Cannot set it.");
+            Debug.Log("Style parameters list is null or empty. Cannot set it.");
             return;
         }
-        assetParameter = newParameter;
+        assetParameters = newParameters;
+    }
+
+    private List<StyleParameters> LoadParametersFromPath(string path)
+    {
+        List<StyleParameters> parameters = new List<StyleParameters>();
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            Debug.LogError("Path is empty or null. Cannot load style parameters.");
+            return parameters;
+        }
+
+        string[] guids = AssetDatabase.FindAssets("t:StyleParameters", new[] { path });
+        foreach (string guid in guids)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+            StyleParameters parameter = AssetDatabase.LoadAssetAtPath<StyleParameters>(assetPath);
+            if (parameter != null)
+            {
+                parameters.Add(parameter);
+            }
+        }
+
+        return parameters;
     }
 }

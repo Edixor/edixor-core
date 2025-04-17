@@ -7,7 +7,7 @@ public class StyleParameters : ScriptableObject
     [SerializeField] private Color[] colors;
     [SerializeField] private Color[] backgroundColors;
     [SerializeField] private Color[] borderColors;
-    [SerializeField] private List<ElementStyleEntry> elementStylesList;
+    [SerializeField] private List<StyleObject> styleObjects; 
     [SerializeField] private Color functionIconColors;
     [SerializeField] private Color functionBackgroundColors;
     [SerializeField] private Font font;
@@ -25,9 +25,12 @@ public class StyleParameters : ScriptableObject
             if (elementStyles == null)
             {
                 elementStyles = new Dictionary<string, int[]>();
-                foreach (var entry in elementStylesList)
+                foreach (var styleObject in styleObjects)
                 {
-                    elementStyles[entry.Key] = entry.Indices;
+                    foreach (var entry in styleObject.ElementStyles)
+                    {
+                        elementStyles[entry.Key] = entry.Indices;
+                    }
                 }
             }
             return elementStyles;
@@ -41,7 +44,14 @@ public class StyleParameters : ScriptableObject
     public class ElementStyleEntry
     {
         public string Key;
-        public int[] Indices = new int[2]; 
+        public int[] Indices = new int[2];
+    }
+
+    [System.Serializable]
+    public class StyleObject
+    {
+        public string Type;
+        public List<ElementStyleEntry> ElementStyles = new List<ElementStyleEntry>();
     }
 }
 

@@ -1,9 +1,6 @@
-<UXML xmlns="UnityEngine.UIElements">
-    <Style src="project://database/Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss?fileID=7433441132597879392&amp;guid=49d01c32c3ce42f44a58952ea8a2b7f4&amp;type=3#HotKeyTab" />
+<UXML xmlns="UnityEngine.UIElements" editor-extension-mode="False">
     <VisualElement name="VisualElement" style="flex-grow: 1;">
         <Label text="Hotkeys" style="-unity-text-align: center; font-size: 20px; -unity-font-style: bold;" />
         <VisualElement name="hotkeys-container" style="flex-grow: 1;" />
-        <Label text="Want to change keyboard shortcuts? Change them in settings" name="setting" style="align-self: stretch; align-items: auto;" />
-        <Button name="Setting-button" style="width: 23px; height: 23px; white-space: pre; -unity-text-align: middle-center;" />
     </VisualElement>
 </UXML>

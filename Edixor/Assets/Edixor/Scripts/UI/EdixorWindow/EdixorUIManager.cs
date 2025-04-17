@@ -96,17 +96,7 @@ public class EdixorUIManager
         ClearEmptyStateUI();
 
         newTab.Initialize(design.GetSection("middle-section-content"), container);
-        newTab.InvokeAwake();
         tabs.Add(newTab);
-
-        // Используем фабрику для создания контейнера вкладки
-        VisualElement tabContainer = tabFactory.CreateTabContainer(
-            newTab,
-            onSwitch: () => SwitchTab(tabs.IndexOf(newTab)),
-            onClose: () => CloseTab(tabs.IndexOf(newTab))
-        );
-        tabContainers[newTab] = tabContainer;
-        design.GetSection("tab-section").Add(tabContainer);
 
         if (saveState)
             TabService.SetTabs(tabs);
@@ -131,7 +121,15 @@ public class EdixorUIManager
         tabs[index].Initialize(design.GetSection("middle-section-content"), container);
         tabs[index].InvokeStart();
         tabs[index].InvokeOnEnable();
-  
+
+        VisualElement tabContainer = tabFactory.CreateTabContainer(
+            tabs[index],
+            onSwitch: () => SwitchTab(tabs.IndexOf(tabs[index])),
+            onClose: () => CloseTab(tabs.IndexOf(tabs[index]))
+        );
+
+        tabContainers[tabs[index]] = tabContainer;
+        design.GetSection("tab-section").Add(tabContainer);
 
         indexTab = index;
         TabService.SetLastActiveTabIndex(index);

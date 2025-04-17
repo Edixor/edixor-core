@@ -118,9 +118,9 @@ public class SettingTab : EdixorTab
         Button selectButton = new Button(() => {
             Debug.Log($"Banner with {(isLayout ? "layout" : "style")} {bannerName} selected.");
             if (isLayout)
-                container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).SetCurrentItem(index);
+                ChangeLayout(index);
             else
-                container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).SetCurrentItem(index);
+                ChangeStyle(index);
             
             container.ResolveNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow).RestartWindow();
         }) { text = "Select" };

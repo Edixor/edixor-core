@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class HotkeyCaptureHandler
+public class HotkeyCaptureHandler : IHotkeyCaptureHandler
 {
     private bool isCapturing = false;
     private List<KeyCode> capturedKeys = new List<KeyCode>();
     private Action<List<KeyCode>> onCaptureComplete;
 
-
-
+    // Реализация свойства для обновления UI
+    public Action<List<KeyCode>> OnCaptureChanged { get; set; }
 
     public void StartCapture(Action<List<KeyCode>> captureCompleteCallback)
     {
         isCapturing = true;
         capturedKeys.Clear();
         onCaptureComplete = captureCompleteCallback;
+        // При старте обновляем UI (даже если комбинация пустая)
+        OnCaptureChanged?.Invoke(new List<KeyCode>(capturedKeys));
     }
-
-
-
 
     public void Process(Event e)
     {
@@ -29,7 +28,6 @@ public class HotkeyCaptureHandler
 
         if (e.type == EventType.KeyDown)
         {
-
             if (e.keyCode == KeyCode.None)
             {
                 if (capturedKeys.Contains(KeyCode.None))
@@ -37,7 +35,6 @@ public class HotkeyCaptureHandler
                 e.Use();
                 return;
             }
-
 
             if (e.keyCode == KeyCode.Return)
             {
@@ -47,7 +44,6 @@ public class HotkeyCaptureHandler
                 return;
             }
 
-
             if (capturedKeys.Count >= 3)
             {
                 onCaptureComplete?.Invoke(new List<KeyCode>(capturedKeys));
@@ -56,11 +52,11 @@ public class HotkeyCaptureHandler
                 return;
             }
 
-
             if (!capturedKeys.Contains(e.keyCode))
             {
                 capturedKeys.Add(e.keyCode);
-
+                // Обновляем UI после каждого нового нажатия
+                OnCaptureChanged?.Invoke(new List<KeyCode>(capturedKeys));
 
                 if (capturedKeys.Count == 3)
                 {
@@ -75,16 +71,13 @@ public class HotkeyCaptureHandler
         }
     }
 
-    private void FinishCapture()
+    public void FinishCapture()
     {
         isCapturing = false;
         capturedKeys.Clear();
     }
 
     public bool IsCapturing() => isCapturing;
-
-
-
 
     public string GetCurrentCombinationString() => string.Join(" + ", capturedKeys);
 }

@@ -3,18 +3,13 @@ using UnityEditor;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 [Serializable]
 public class HotKeyTab : EdixorTab
 {
-    private HotKeyService hotKeySetting;
-    // Список записей, каждая из которых содержит ключ и массив горячих клавиш (данных)
+    private HotKeyService hotKeyService;
     private List<HotKeySaveAsset.KeyActionDictionaryEntry> hotkeyEntries;
     private VisualElement designContainer;
-
-    // Храним данные, полученные из события (при необходимости можно расширять)
-    private string receivedTitle;
 
     [MenuItem("Window/Edixor Tab/Hot Keys")]
     public static void ShowTab()
@@ -28,7 +23,6 @@ public class HotKeyTab : EdixorTab
         LoadUxml("Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uxml");
         LoadUss("Assets/Edixor/Scripts/UI/EdixorTab/HotKeyTab/HotKeyTab.uss");
 
-        // Подписываемся на событие добавления горячей клавиши
         OnHotKeyAdded += TabProcessing;
     }
 
@@ -36,113 +30,173 @@ public class HotKeyTab : EdixorTab
     {
         Debug.Log("HotKeysTab OnEnable called.");
         RefreshHotKeysUI();
+        root.RegisterCallback<KeyDownEvent>(OnKeyDown);
     }
 
     public void OnDisable()
     {
         Debug.Log("HotKeysTab OnDisable called.");
         OnHotKeyAdded -= TabProcessing;
+        root.UnregisterCallback<KeyDownEvent>(OnKeyDown);
     }
 
     protected void Start()
     {
-        hotKeySetting = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
-        hotkeyEntries = hotKeySetting.GetAllEntries();
+        hotKeyService = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
+        hotkeyEntries = hotKeyService.GetAllEntries();
 
         designContainer = root.Q<VisualElement>("hotkeys-container");
         RefreshHotKeysUI();
     }
 
-    /// <summary>
-    /// Обработчик события добавления новой горячей клавиши.
-    /// При получении события обновляется UI.
-    /// </summary>
+    private void OnKeyDown(KeyDownEvent evt)
+    {
+        var hotkeyHandler = container
+            .ResolveNamed<IHotkeyCaptureHandler>(ServiceNames.IHotkeyCaptureHandler);
+        if (hotkeyHandler.IsCapturing())
+        {
+            hotkeyHandler.Process(evt.imguiEvent);
+
+            evt.StopPropagation();
+        }
+    }
+
+
+
+
     private void TabProcessing(HotKeyTabInfo info)
     {
-        receivedTitle = info.TabName;
         Debug.Log("Получено событие добавления горячей клавиши для вкладки: " + info.TabName);
         RefreshHotKeysUI();
     }
 
-    /// <summary>
-    /// Обновляет UI: получает актуальные записи из настроек и заново отрисовывает все элементы.
-    /// Для каждого элемента, получаемого из настроек, заголовок – это Key,
-    /// а под заголовком отрисовывается список горячих клавиш (данных) по данному ключу.
-    /// </summary>
     private void RefreshHotKeysUI()
     {
-        // Обновляем данные из сервиса
-        hotkeyEntries = hotKeySetting.GetAllEntries();
+        hotkeyEntries = hotKeyService.GetAllEntries();
 
-        // Очищаем контейнер, чтобы заново построить список
         if (designContainer != null)
         {
             designContainer.Clear();
 
-            // Обходим каждую запись
+            // Добавим заголовки таблицы
+            VisualElement headerRow = new VisualElement();
+            headerRow.AddToClassList("hotkey-table-header");
+
+            headerRow.Add(new Label("Index") { name = "column-index" });
+            headerRow.Add(new Label("Key") { name = "column-key" });
+            headerRow.Add(new Label("Name") { name = "column-name" });
+            headerRow.Add(new Label("Combination") { name = "column-combo" });
+            headerRow.Add(new Label("Options") { name = "column-options" });
+
+            designContainer.Add(headerRow);
+
+            int globalIndex = 1;
             foreach (var entry in hotkeyEntries)
             {
-                // Создаём контейнер для группы, соответствующей данному ключу
-                VisualElement groupContainer = new VisualElement();
-                groupContainer.AddToClassList("hotkey-group");
-
-                // Заголовок группы: используем значение Key
-                Label groupHeader = new Label(entry.Key);
-                groupHeader.AddToClassList("title");
-                groupContainer.Add(groupHeader);
-
-                // Если в записи имеются данные, проходим по массиву Values
                 if (entry.Values != null)
                 {
                     for (int i = 0; i < entry.Values.Length; i++)
                     {
-                        // Добавляем UI-элемент для отдельной горячей клавиши внутри группы
-                        groupContainer.Add(CreateHotKeyItem(entry, i));
+                        designContainer.Add(CreateTableRow(entry, i, globalIndex));
+                        globalIndex++;
                     }
                 }
-
-                designContainer.Add(groupContainer);
             }
         }
     }
 
-    private VisualElement CreateHotKeyItem(HotKeySaveAsset.KeyActionDictionaryEntry entry, int dataIndex)
+    private VisualElement CreateTableRow(HotKeySaveAsset.KeyActionDictionaryEntry entry, int dataIndex, int globalIndex)
     {
-        // Контейнер для строки элемента (используем класс hotkeys-box из USS)
-        VisualElement hotkeysBox = new VisualElement();
-        hotkeysBox.AddToClassList("hotkeys-box");
+        var keyData = entry.Values[dataIndex];
 
-        // Отображаем заголовок элемента (например, порядковый номер или другой идентификатор)
-        Label itemHeader = new Label($"Item {dataIndex + 1}");
-        itemHeader.AddToClassList("hotkey-item-header");
-        hotkeysBox.Add(itemHeader);
+        VisualElement row = new VisualElement();
+        row.AddToClassList("hotkey-table-row");
 
-        // Отображаем содержимое (описание или комбинацию) горячей клавиши
-        string description = entry.Values[dataIndex].ToString();
-        Label itemContent = new Label(description);
-        itemContent.AddToClassList("hotkey-item-content");
-        hotkeysBox.Add(itemContent);
+        row.Add(new Label(globalIndex.ToString()) { name = "column-index" });
+        row.Add(new Label(entry.Key) { name = "column-key" });
+        row.Add(new Label(keyData.Name) { name = "column-name" });
 
-        // Кнопка "Edit" — выравнивается в той же строке и имеет высоту 40 пикселей
-        Button editButton = new Button(() => EditHotKey(entry, dataIndex))
-        {
-            text = "Edit"
-        };
+        var comboText = string.Join(" + ", keyData.Combination);
+        row.Add(new Label(comboText) { name = "column-combo" });
+
+        // Options buttons
+        VisualElement optionsContainer = new VisualElement();
+        optionsContainer.AddToClassList("options-container");
+
+        Button editButton = new Button(() => EditHotKey(entry, dataIndex, null)) { text = "Edit" };
         editButton.AddToClassList("edit-button");
-        hotkeysBox.Add(editButton);
 
-        return hotkeysBox;
+        Button toggleButton = new Button(() => ToggleHotKeyItem(entry, dataIndex, toggleButton: null))
+        {
+            text = keyData.enable ? "Disable" : "Enable"
+        };
+        toggleButton.AddToClassList("toggle-button");
+
+        optionsContainer.Add(editButton);
+        optionsContainer.Add(toggleButton);
+        row.Add(optionsContainer);
+
+        return row;
     }
 
-    /// <summary>
-    /// Метод для редактирования конкретной горячей клавиши.
-    /// Здесь реализуется логика открытия панели редактирования или модального окна.
-    /// </summary>
-    /// <param name="entry">Запись горячей клавиши.</param>
-    /// <param name="dataIndex">Индекс элемента, который требуется отредактировать.</param>
-    private void EditHotKey(HotKeySaveAsset.KeyActionDictionaryEntry entry, int dataIndex)
+
+    private void EditHotKey(HotKeySaveAsset.KeyActionDictionaryEntry entry, int dataIndex, Label liveLabel)
     {
         Debug.Log($"Редактирование горячей клавиши для ключа: {entry.Key}, индекс: {dataIndex}");
-        // Здесь можно открыть окно или форму для изменения данных конкретной горячей клавиши
+
+        var hotkeyHandler = container.ResolveNamed<IHotkeyCaptureHandler>(ServiceNames.IHotkeyCaptureHandler);
+        hotkeyHandler.OnCaptureChanged = (keys) =>
+        {
+            if (liveLabel != null)
+            {
+                liveLabel.text = keys.Count > 0
+                    ? "Текущая комбинация: " + string.Join(" + ", keys)
+                    : "Введите комбинацию...";
+            }
+        };
+
+        if (liveLabel != null)
+            liveLabel.text = "Введите комбинацию...";
+
+        hotkeyHandler.StartCapture((keys) =>
+        {
+            if (liveLabel != null)
+                liveLabel.text = "";
+
+            entry.Values[dataIndex].Combination = new List<KeyCode>(keys);
+            Debug.Log($"Горячая клавиша обновлена: {string.Join(" + ", keys)}");
+
+            hotKeyService.UpdateHotKeyInDictionary(entry.Key, entry.Values);
+            RefreshHotKeysUI();
+        });
+    }
+
+    private void ToggleHotKeyItem(HotKeySaveAsset.KeyActionDictionaryEntry entry, int dataIndex, Button toggleButton)
+    {
+        KeyActionData keyData = entry.Values[dataIndex];
+        keyData.enable = !keyData.enable;
+        Debug.Log($"Горячая клавиша для {entry.Key}, item {dataIndex + 1} теперь {(keyData.enable ? "Включена" : "Выключена")}");
+        hotKeyService.UpdateHotKeyInDictionary(entry.Key, entry.Values);
+        if (toggleButton != null)
+            toggleButton.text = keyData.enable ? "Disable" : "Enable";
+        RefreshHotKeysUI();
+    }
+
+    private void ToggleGroup(HotKeySaveAsset.KeyActionDictionaryEntry entry, Button groupToggleButton)
+    {
+        foreach (var keyData in entry.Values)
+        {
+            keyData.enable = !keyData.enable;
+        }
+        Debug.Log($"Группа '{entry.Key}' теперь {(entry.Values[0].enable ? "Включена" : "Выключена")}");
+        hotKeyService.UpdateHotKeyInDictionary(entry.Key, entry.Values);
+        RefreshHotKeysUI();
+    }
+
+    private void DeleteGroup(string key)
+    {
+        Debug.Log($"Удаляем группу '{key}'");
+        hotKeyService.RemoveHotKeyFromDictionary(key);
+        RefreshHotKeysUI();
     }
 }

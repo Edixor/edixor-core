@@ -44,7 +44,7 @@ public class EdixorDesign {
         LayoutLogic layoutLogic = (LayoutLogic)factoryBuilder.CreateLogic(Layout);
         layoutLogic.SetContainer(Container);
 
-        parameters = Style.GetAssetParameter();
+        parameters = Style.GetStyleParameter();
 
         if (demo)
             layoutLogic.DemoInit(rootElement, parameters.FunctionIconColors, parameters.FunctionBackgroundColors);
