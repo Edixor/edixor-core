@@ -7,31 +7,37 @@ using UnityEditor;
 public class HotKeys : FunctionLogic, IFunctionSetting
 {
     private List<KeyActionData> hotkeys;
-    private EdixorUIManager uiManager;
+    private ITabController tabController;
+    private IUIController uiBase;
 
     public override void Activate()
     {
-        if (uiManager == null)
+        if (tabController == null)
         {
-            Debug.LogError("UIManager is null.");
+            Debug.LogError("TabController is null.");
             return;
         }
+        if (uiBase == null)
         {
-            VisualElement parentContainer = uiManager.GetDesign().GetSection("middle-section-content");
-            if (parentContainer == null)
-            {
-                Debug.LogError("ParentContainer is null.");
-                return;
-            }
-
-            HotKeyTab hotKeysTab = new HotKeyTab();
-            uiManager.AddTab(hotKeysTab);
+            Debug.LogError("UIController is null.");
+            return;
         }
+
+        VisualElement parentContainer = uiBase.GetElement("middle-section-content");
+        if (parentContainer == null)
+        {
+            Debug.LogError("ParentContainer is null.");
+            return;
+        }
+
+        HotKeyTab hotKeysTab = new HotKeyTab();
+        tabController.AddTab(hotKeysTab);
     }
 
     public override void Init()
     {
-        uiManager = container.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow);
+        uiBase = container.Resolve<IUIController>();
+        tabController = container.Resolve<ITabController>();
     }
 
     public void Setting(VisualElement root)

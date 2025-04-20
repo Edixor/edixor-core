@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   styleName: BlueNeon
   pathParameter: Assets/Edixor/Scripts/UI/Style/Resources/NeonBlue/NeonBlueParameter.asset
-  assetParameter: {fileID: 11400000, guid: 2dfb783152d3fe242a307b5e58421ce4, type: 2}
+  assetParameters:
+  - {fileID: 11400000, guid: b0a25f59a801fd24eb52bd637fc1e551, type: 2}
+  - {fileID: 11400000, guid: 8a380231538166046bf2fc4d270f383e, type: 2}

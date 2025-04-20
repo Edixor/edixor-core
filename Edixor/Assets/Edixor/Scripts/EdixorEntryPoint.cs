@@ -3,11 +3,11 @@ using UnityEngine;
 using System.IO;
 
 [InitializeOnLoad]
-public static class ProjectStartupHandler
+public static class EdixorEntryPoint
 {
     private static DIContainer _container;
 
-    static ProjectStartupHandler()
+    static EdixorEntryPoint()
     {
         Debug.Log("Проект открыт! Запускаем свою логику.");
 
@@ -54,11 +54,25 @@ public static class ProjectStartupHandler
 
         container.RegisterSingleton<HotkeyCaptureHandler, HotkeyCaptureHandler>();
 
-        container.RegisterNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_Edixor, new EdixorUIManager(container));
-        container.RegisterNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow, new EdixorUIManager(container));
+        container.Register<IUIController>(new UIController());
+        container.Register<ITabController>(new TabController(container));
+        container.Register<IFunctionController>(new FunctionController());
+        container.Register<IHotKeyController>(new HotKeyController(container));
 
-        container.RegisterNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_Edixor, new EdixorHotKeys(container));
-        container.RegisterNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_EdixorWindow, new EdixorHotKeys(container));
+        container.RegisterNamed<IEdixorInterfaceFacade>(ServiceNames.EdixorUIManager_Edixor,
+        new EdixorInterfaceFacade(
+            container.Resolve<ITabController>(),
+            container.Resolve<IUIController>(),
+            container.Resolve<IFunctionController>(),
+            container.Resolve<IHotKeyController>()));
+            
+        container.RegisterNamed<IEdixorInterfaceFacade>(ServiceNames.EdixorUIManager_EdixorWindow,
+        new EdixorInterfaceFacade(
+            container.Resolve<ITabController>(),
+            container.Resolve<IUIController>(),
+            container.Resolve<IFunctionController>(),
+            container.Resolve<IHotKeyController>()));
+
         container.RegisterNamed<IHotkeyCaptureHandler>(ServiceNames.IHotkeyCaptureHandler, new HotkeyCaptureHandler());
 
         container.RegisterNamed<KeyActionLogic>(HotKeyNames.Restart, new KeyRestart());

@@ -14,31 +14,44 @@ public class MyTab : EdixorTab
     private void Awake()
     {
         tabName = "My Custom Tab";
-        LoadHotKey("Assets/Test/KeyActionData.asset", OnButtonClick);
     }
 
     private void Start()
     {
-        Button myButton = new Button(() => OnButtonClick())
+        Button buttonCustomMenu = new Button(() => MenuDemonstration())
         {
-            text = "Нажми меня"
+            text = "Custom Menu"
         };
-        
-        ParentContainer.Q<VisualElement>("root").Add(myButton);
+        root.Q<VisualElement>("root").Add(buttonCustomMenu);
+
+        Button buttonGenericMenu = new Button(() => GenericMenuDemonstration())
+        {
+            text = "Generic Menu"
+        };
+        root.Q<VisualElement>("root").Add(buttonGenericMenu);
     }
 
-    private void OnButtonClick()
+    private void MenuDemonstration()
     {
         CustomMenu menu = ScriptableObject.CreateInstance<CustomMenu>();
-        CustomMenu menu2 = ScriptableObject.CreateInstance<CustomMenu>();
 
-        menu2.AddItem(new CMItemAction("Action 1", true, () => Debug.Log("Action 1 executed"), "action1"));
-        menu2.AddItem(new CMItemAction("Action 2", true, () => Debug.Log("Action 2 executed"), "action2"));
+        menu.AddItem(new CMItemAction("Option 1", true, () => Debug.Log("Option 1 selected")));
+        menu.AddItem(new CMItemAction("Option 2", true, () => Debug.Log("Option 2 selected")));
+        menu.AddItem(new CMItemAction("Option 3", true, () => Debug.Log("Option 3 selected")));
 
-        menu.AddItem(new CMItemAction("Action 1", true, () => Debug.Log("Action 1 executed"), "action1"));
-        menu.AddItem(new CMItemBool("Action 2", true, false, "action2"));
-        menu.AddItem(new CMItemMenu("Action 3", true, menu2, "action3"));
+        menu.AddStyle(container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyleParameter<MenuParameters>());
 
         menu.ShowMenu();
+    }
+
+    private void GenericMenuDemonstration()
+    {
+        GenericMenu menu = new GenericMenu();
+
+        menu.AddItem(new GUIContent("Option 1"), false, () => Debug.Log("Option 1 selected"));
+        menu.AddItem(new GUIContent("Option 2"), false, () => Debug.Log("Option 2 selected"));
+        menu.AddItem(new GUIContent("Option 3"), false, () => Debug.Log("Option 3 selected"));
+
+        menu.ShowAsContext();
     }
 }

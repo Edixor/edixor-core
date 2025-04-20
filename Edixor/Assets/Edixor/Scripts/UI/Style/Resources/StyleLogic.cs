@@ -6,11 +6,13 @@ public class StyleLogic
 {
     private StyleParameters _parameters;
     private VisualElement _root;
+
     public StyleLogic(VisualElement root = null, StyleParameters parameter = null)
     {
         this._root = root;
         this._parameters = parameter;
     }
+
     public void Init(VisualElement root = null, StyleParameters parameter = null)
     {
         if (root != null)
@@ -29,7 +31,6 @@ public class StyleLogic
             return;
         }
 
-
         foreach (var styleRule in _parameters.ElementStyles)
         {
             string className = styleRule.Key;
@@ -38,8 +39,20 @@ public class StyleLogic
 
             var styledElements = _root.Query<VisualElement>(className).ToList();
 
+            if (styledElements == null || styledElements.Count == 0)
+            {
+                Debug.LogWarning($"No elements found with class '{className}' for styling.");
+                continue;
+            }
+
             foreach (var element in styledElements)
             {
+                if (element == null)
+                {
+                    Debug.LogWarning($"Null element found for class '{className}'.");
+                    continue;
+                }
+
                 element.style.color = _parameters.Colors[textColorIndex];
                 element.style.backgroundColor = _parameters.BackgroundColors[backgroundColorIndex];
             }
@@ -48,7 +61,7 @@ public class StyleLogic
 
     public void FunctionStyling(List<Button> list)
     {
-        if (list == null || _parameters == null)
+        /*if (list == null || _parameters == null)
         {
             Debug.LogError("List or parameters are null.");
             return;
@@ -56,11 +69,17 @@ public class StyleLogic
 
         foreach (var button in list)
         {
-            if (button == null) continue;
-            Debug.Log("Init button");
+            if (button == null)
+            {
+                Debug.LogWarning("Null button encountered in FunctionStyling.");
+                continue;
+            }
+
+            Debug.Log($"Styling button: {button.name}");
 
             button.style.backgroundColor = _parameters.FunctionBackgroundColors;
             button.style.unityBackgroundImageTintColor = _parameters.FunctionIconColors;
         }
+        */
     }
 }

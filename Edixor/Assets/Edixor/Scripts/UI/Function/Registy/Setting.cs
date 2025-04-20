@@ -7,29 +7,34 @@ using System;
 public class Setting : FunctionLogic
 {
 
-    private EdixorUIManager uiManager;
+    private ITabController tabController;
+    private IUIController uiBase;
     public override void Activate()
     {
-        if (uiManager == null)
+        if (tabController == null)
         {
-            Debug.LogError("UIManager is null.");
+            Debug.LogError("TabController is null.");
             return;
         }
+        if (uiBase == null)
         {
-            VisualElement parentContainer = uiManager.GetDesign().GetSection("middle-section-content");
-            if (parentContainer == null)
-            {
-                Debug.LogError("ParentContainer is null.");
-                return;
-            }
-
-            SettingTab settingTab = new SettingTab();
-            uiManager.AddTab(settingTab);
+            Debug.LogError("UIController is null.");
+            return;
         }
+        VisualElement parentContainer = uiBase.GetElement("middle-section-content");
+        if (parentContainer == null)
+        {
+            Debug.LogError("ParentContainer is null.");
+            return;
+        }
+
+        SettingTab settingTab = new SettingTab();
+        tabController.AddTab(settingTab);
     }
 
     public override void Init()
     {
-        uiManager = container.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow);
+        uiBase = container.Resolve<IUIController>();
+        tabController = container.Resolve<ITabController>();
     }
 }

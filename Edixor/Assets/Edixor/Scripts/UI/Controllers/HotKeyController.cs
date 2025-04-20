@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EdixorHotKeys
+public class HotKeyController : IHotKeyController
 {
     private DIContainer container;
     private HotKeyService keyService;
@@ -13,19 +13,19 @@ public class EdixorHotKeys
     private HashSet<List<KeyCode>> activatedCombinations;
     private bool isInitialized = false;
 
-    public EdixorHotKeys(DIContainer container)
+    public HotKeyController(DIContainer container)
     {
         this.container = container;
     }
 
     public void InitHotKeys()
     {
-        Debug.Log("EdixorHotKeys: Инициализация...");
+        Debug.Log("HotKeyController: Инициализация...");
 
         keyService = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
         if (keyService == null)
         {
-            Debug.LogError("EdixorHotKeys: HotKeyService не был найден в контейнере!");
+            Debug.LogError("HotKeyController: HotKeyService не был найден в контейнере!");
             return;
         }
 
@@ -33,13 +33,13 @@ public class EdixorHotKeys
             .Select(hotKeyData => new KeyAction(hotKeyData, container))
             .ToList();
 
-        Debug.Log($"EdixorHotKeys: Получено {hotkeyActions.Count} горячих клавиш.");
+        Debug.Log($"HotKeyController: Получено {hotkeyActions.Count} горячих клавиш.");
 
         foreach (var action in hotkeyActions)
         {
             if (action == null)
             {
-                Debug.LogWarning("EdixorHotKeys: Найден null-элемент в hotkeyActions.");
+                Debug.LogWarning("HotKeyController: Найден null-элемент в hotkeyActions.");
                 continue;
             }
             if (action.keyActionLogic != null)
@@ -48,7 +48,7 @@ public class EdixorHotKeys
             }
             else
             {
-                Debug.LogWarning($"EdixorHotKeys: У действия {action} отсутствует KeyActionLogic.");
+                Debug.LogWarning($"HotKeyController: У действия {action} отсутствует KeyActionLogic.");
             }
         }
 
@@ -77,7 +77,7 @@ public class EdixorHotKeys
             {
                 if (action?.keyActionData?.Combination == null)
                 {
-                    Debug.LogWarning($"EdixorHotKeys: Пропущено действие {action} с null-комбинацией.");
+                    Debug.LogWarning($"HotKeyController: Пропущено действие {action} с null-комбинацией.");
                     continue;
                 }
 
@@ -85,11 +85,11 @@ public class EdixorHotKeys
                 if (IsCombinationPressed(action.keyActionData.Combination) &&
                     !activatedCombinations.Contains(action.keyActionData.Combination))
                 {
-                    Debug.Log($"EdixorHotKeys: Комбинация {string.Join(" + ", action.keyActionData.Combination)} активирована.");
+                    Debug.Log($"HotKeyController: Комбинация {string.Join(" + ", action.keyActionData.Combination)} активирована.");
 
                     if (action.keyActionData.enable)
                     {
-                        Debug.Log($"EdixorHotKeys: Выполняем действие {action}.");
+                        Debug.Log($"HotKeyController: Выполняем действие {action}.");
                         action.Execute();
                         activatedCombinations.Add(action.keyActionData.Combination);
                         e.Use();
@@ -97,7 +97,7 @@ public class EdixorHotKeys
                     }
                     else
                     {
-                        Debug.LogWarning($"EdixorHotKeys: Действие {action} отключено.");
+                        Debug.LogWarning($"HotKeyController: Действие {action} отключено.");
                     }
                 }
             }
@@ -105,7 +105,7 @@ public class EdixorHotKeys
         else if (e.type == EventType.KeyUp && currentlyPressedKeys.Contains(e.keyCode))
         {
             currentlyPressedKeys.Remove(e.keyCode);
-            Debug.Log($"EdixorHotKeys: Отпущена клавиша {e.keyCode}, очищаем активные комбинации.");
+            Debug.Log($"HotKeyController: Отпущена клавиша {e.keyCode}, очищаем активные комбинации.");
             activatedCombinations.RemoveWhere(combination => combination.Contains(e.keyCode));
         }
     }
@@ -113,7 +113,7 @@ public class EdixorHotKeys
     private bool IsCombinationPressed(List<KeyCode> combination)
     {
         bool result = combination != null && combination.All(key => currentlyPressedKeys.Contains(key));
-        Debug.Log($"EdixorHotKeys: Проверка комбинации {string.Join(" + ", combination)} - {(result ? "нажата" : "не нажата")}");
+        Debug.Log($"HotKeyController: Проверка комбинации {string.Join(" + ", combination)} - {(result ? "нажата" : "не нажата")}");
         return result;
     }
 
@@ -121,7 +121,7 @@ public class EdixorHotKeys
     {
         if (key == null || key.keyActionData?.Combination == null)
         {
-            Debug.LogWarning("EdixorHotKeys: Попытка добавить null-элемент или элемент без комбинации.");
+            Debug.LogWarning("HotKeyController: Попытка добавить null-элемент или элемент без комбинации.");
             return;
         }
 

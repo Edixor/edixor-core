@@ -14,13 +14,13 @@ public abstract class EdixorTab
     [SerializeField] private string pathUxml;
     [SerializeField] private string pathUss;
 
-    private EdixorHotKeys _hotKeyController;
-    private EdixorHotKeys hotKeyController
+    private HotKeyController _hotKeyController;
+    private HotKeyController hotKeyController
     {
         get
         {
             if (_hotKeyController == null)
-                _hotKeyController = container.ResolveNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_EdixorWindow);
+                _hotKeyController = container.ResolveNamed<HotKeyController>(ServiceNames.HotKeyController_EdixorWindow);
             return _hotKeyController;
         }
     }
@@ -55,8 +55,8 @@ public abstract class EdixorTab
     {
         DIContainer cnt = LoadOrCreateContainer();
         EdixorWindow wnd = EdixorWindow.CurrentWindow ?? EditorWindow.GetWindow<EdixorWindow>("EdixorWindow");
-        cnt.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow)
-           .AddTab(new T(), saveState: false, autoSwitch: true);
+        cnt.ResolveNamed<ITabController>(ServiceNames.TabSetting)
+           .AddTab(new T(), saveState: true, autoSwitch: true);
     }
 
     protected static DIContainer LoadOrCreateContainer()

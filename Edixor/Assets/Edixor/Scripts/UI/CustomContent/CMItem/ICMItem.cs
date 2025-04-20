@@ -1,5 +1,4 @@
-using UnityEditor;
-using UnityEngine;
+using UnityEngine.UIElements;
 
 public interface ICMItem
 {
@@ -11,5 +10,5 @@ public interface ICMItem
 
     void LoadState();
 
-    void Draw();
+    VisualElement Draw();
 }

@@ -1,3 +1,4 @@
+using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
 
@@ -42,15 +43,9 @@ public class CMItemBool : BaseCMItem
         }
     }
 
-    public override void Draw()
+    public override VisualElement Draw()
     {
-        GUILayout.BeginHorizontal();
-        GUILayout.Label(Name, GUILayout.Width(150));
-        bool newValue = GUILayout.Toggle(IsSelected, "");
-        if (newValue != IsSelected)
-        {
-            SetSelected(newValue);
-        }
-        GUILayout.EndHorizontal();
+        root = CreateRootElement();
+        return root;
     }
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56dea8e882ee824f93a5a93ba14a7ab, type: 3}
   m_Name: EdixorTabSettings
   m_EditorClassIdentifier: 
-  tabIndex: 1
+  tabIndex: 2

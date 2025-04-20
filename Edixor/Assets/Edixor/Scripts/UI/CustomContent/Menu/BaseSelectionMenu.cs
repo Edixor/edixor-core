@@ -1,12 +1,15 @@
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
 
 public abstract class BaseSelectionMenu : EditorWindow
 {
     protected List<ICMItem> menuItems = new List<ICMItem>();
     protected Vector2 popupPosition;
-    protected float itemHeight = 25f; // высота одного пункта меню
+    protected float itemHeight = 20f;
+    protected StyleLogic styleLogic = new StyleLogic();
+    protected StyleParameters styleParameters;
 
     public static BaseSelectionMenu activeMenu;
 
@@ -16,13 +19,13 @@ public abstract class BaseSelectionMenu : EditorWindow
             menuItems.Add(item);
     }
 
-    /// <summary>
-    /// Открывает меню. Если позиция не передана, используется позиция мыши из Event.current.
-    /// Важно: вызов должен осуществляться из OnGUI, чтобы Event.current был доступен.
-    /// </summary>
+    public void AddStyle(StyleParameters styleParameters) {
+        if(styleParameters != null)
+            this.styleParameters = styleParameters;
+    }
+
     public void ShowMenu(Vector2? position = null)
     {
-        // Если уже существует активное меню – закрываем его
         if (activeMenu != null)
         {
             BaseSelectionMenu menuToClose = activeMenu;
@@ -35,25 +38,31 @@ public abstract class BaseSelectionMenu : EditorWindow
             ? position.Value 
             : GUIUtility.GUIToScreenPoint(Event.current.mousePosition);
 
-        // Вычисляем высоту как сумму высот всех пунктов меню без дополнительного отступа
-        float height = menuItems.Count * itemHeight;
+        float height = menuItems.Count * itemHeight + 3f;
         float width = 200;
         Vector2 windowSize = new Vector2(width, height);
 
-        // Создаём Rect с нулевым размером; именно эта точка будет «якорем» окна
         Rect anchorRect = new Rect(popupPosition.x, popupPosition.y, 0, 0);
         ShowAsDropDown(anchorRect, windowSize);
+
+        CreateUI();
     }
 
-    protected virtual void OnGUI()
+    protected virtual void CreateUI()
     {
-        // Рисуем все пункты меню
-        foreach (var menuItem in menuItems)
-            menuItem.Draw();
+        VisualElement root = rootVisualElement;
+        root.Clear(); 
+        root.AddToClassList("menu-root");
+        root.name = "menu-root";
 
-        // Если произошёл клик вне области окна меню, закрываем его
-        if (Event.current.type == EventType.MouseDown && !position.Contains(Event.current.mousePosition))
-            CloseMenu();
+        foreach (ICMItem item in menuItems)
+        {
+            VisualElement element = item.Draw(); 
+            if (element != null)
+                root.Add(element);
+        }
+
+        styleLogic.Init(root, styleParameters);
     }
 
     protected void CloseMenu()

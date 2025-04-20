@@ -1,30 +1,39 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class StyleService : EdixorCurrentSetting<StyleSaveAsset, StyleData>
 {
-    public StyleService(IRegister register) : base(PathResolver.ResolvePath("Assets/Edixor/Scripts/Settings/EdixorStyleSettings.asset"), register) { }
+    public StyleService(IRegister register)
+        : base(PathResolver.ResolvePath("Assets/Edixor/Scripts/Settings/EdixorStyleSettings.asset"), register)
+    { }
 
     public List<StyleData> GetStyles() => GetSettings().SaveItems;
 
     public void SetStyle(int index) => SetCurrentItem(index);
 
-    public StyleParameters GetStyleParameter(int styleIndex, int parameterIndex)
+    public T GetStyleParameter<T>(int? styleIndex = null) where T : StyleParameters
     {
-        var styles = GetStyles();
-        if (styleIndex < 0 || styleIndex >= styles.Count)
+        int actualStyleIndex = styleIndex ?? GetSettings().CurrentIndex;
+
+        if (!IsValidIndex(actualStyleIndex, GetStyles().Count))
         {
-            UnityEngine.Debug.LogError($"Style index {styleIndex} is out of range.");
+            Debug.LogError($"Style index {actualStyleIndex} is out of range.");
             return null;
         }
 
-        var styleData = styles[styleIndex];
-        var parameters = styleData.GetAssetParameters();
-        if (parameterIndex < 0 || parameterIndex >= parameters.Count)
+        var styleData = GetStyles()[actualStyleIndex];
+        foreach (var param in styleData.AssetParameters)
         {
-            UnityEngine.Debug.LogError($"Parameter index {parameterIndex} is out of range for style {styleData.Name}.");
-            return null;
+            if (param is T typedParam)
+                return typedParam;
         }
 
-        return parameters[parameterIndex];
+        Debug.LogError($"No parameter of type {typeof(T).Name} found in style '{styleData.Name}'.");
+        return null;
+    }
+
+    private bool IsValidIndex(int index, int count)
+    {
+        return index >= 0 && index < count;
     }
 }

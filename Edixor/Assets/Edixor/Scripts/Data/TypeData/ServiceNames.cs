@@ -12,12 +12,14 @@ public static class ServiceNames
     public const string WindowStateSetting = "WindowStateSetting";
     public const string EdixorUIManager_Edixor = "EdixorUIManager_Edixor";
     public const string EdixorUIManager_EdixorWindow = "EdixorUIManager_EdixorWindow";
-    public const string EdixorHotKeys_Edixor = "EdixorHotKeys_Edixor";
-    public const string EdixorHotKeys_EdixorWindow = "EdixorHotKeys_EdixorWindow";
+    public const string HotKeyController_Edixor = "HotKeyController_Edixor";
+    public const string HotKeyController_EdixorWindow = "HotKeyController_EdixorWindow";
     public const string IClosable_EdixorWindow = "IClosable_EdixorWindow";
     public const string IMinimizable_EdixorWindow = "IMinimizable_EdixorWindow";
     public const string IRestartable_EdixorWindow = "IRestartable_EdixorWindow";
     public const string IRestartable_Edixor = "IRestartable_Edixor";
     public const string IHotkeyCaptureHandler = "IHotkeyCaptureHandler";
+    public const string UIController = "UIController";
+    public const string TabController = "TabController";
 
 }

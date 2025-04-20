@@ -11,9 +11,12 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
     protected DIContainer container;
     protected Rect originalWindowRect;
     protected readonly Vector2 minimalSizeThreshold = new Vector2(150, 60);
-    private bool _initialized = false; // Защита от повторной инициализации
+    private bool _initialized = false;
 
     private WindowStateService _windowStateService;
+    private HotKeyController _hotKeys;
+    private ITabController _tabService;
+
     protected WindowStateService WindowStateService
     {
         get
@@ -27,30 +30,17 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         }
     }
 
-    private EdixorUIManager _uiManager;
-    protected EdixorUIManager UIManager
-    {
-        get
-        {
-            if (_uiManager == null)
-            {
-                WindowStateService.SetRootElement(rootVisualElement);
-                _uiManager = container.ResolveNamed<EdixorUIManager>(ServiceNames.EdixorUIManager_EdixorWindow);
-            }
-            return _uiManager;
-        }
-    }
+    private IEdixorInterfaceFacade _setting;
 
-    private EdixorHotKeys _hotKeys;
-    protected EdixorHotKeys HotKeys
+    protected IEdixorInterfaceFacade setting 
     {
         get
         {
-            if (_hotKeys == null)
+            if (_setting == null)
             {
-                _hotKeys = container.ResolveNamed<EdixorHotKeys>(ServiceNames.EdixorHotKeys_EdixorWindow);
+                _setting = container.ResolveNamed<IEdixorInterfaceFacade>(ServiceNames.EdixorUIManager_EdixorWindow);
             }
-            return _hotKeys;
+            return _setting;
         }
     }
 
@@ -62,15 +52,15 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 
     protected virtual void OnEnable()
     {
-        if (_initialized) return; // Предотвращаем повторную инициализацию
+        if (_initialized) return;
 
         container = LoadOrCreateContainer();
         Initialize();
         _initialized = true;
     }
 
-    protected virtual void Awake() {
-
+    protected virtual void Options() {
+        
     }
 
     protected static DIContainer LoadOrCreateContainer()
@@ -100,9 +90,8 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         {
             originalWindowRect = position;
         }
-
-        InitializeUI();
-        InitializeHotKeys();
+        setting.InitOptions(rootVisualElement, container);
+        setting.Initialize();
         SubscribeToEvents();
 
         if (position.width <= minimalSizeThreshold.x && position.height <= minimalSizeThreshold.y)
@@ -124,7 +113,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         FileDragHandler.AddTabFromFile(filePath, className, (file, tabType) =>
         {
             EdixorTab tab = (EdixorTab)Activator.CreateInstance(tabType);
-            UIManager.AddTab(tab, saveState: false, autoSwitch: true);
+            setting.AddTab(tab, saveState: false, autoSwitch: true);
         });
     }
 
@@ -132,6 +121,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
     {
         rootVisualElement.focusable = true;
         rootVisualElement.pickingMode = PickingMode.Position;
+
         rootVisualElement.RegisterCallback<GeometryChangedEvent>(evt =>
         {
             if (!WindowStateService.GetMinimized() &&
@@ -140,7 +130,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
                 MinimizeWindow();
             }
             else if (WindowStateService.GetMinimized() &&
-                    (position.width > minimalSizeThreshold.x && position.height > minimalSizeThreshold.y))
+                     (position.width > minimalSizeThreshold.x && position.height > minimalSizeThreshold.y))
             {
                 ReturnWindowToOriginalSize();
             }
@@ -148,10 +138,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 
         rootVisualElement.RegisterCallback<KeyDownEvent>(evt =>
         {
-            if (HotKeys != null && HotKeys.IsHotKeyEnabled())
-            {
-                HotKeys.OnKeys();
-            }
+            setting.OnKeys();
         });
 
         rootVisualElement.Focus();
@@ -159,25 +146,15 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 
     private void OnGUI()
     {
-        if (container != null || UIManager != null)
+        if (container != null)
         {
             if (WindowStateService.GetMinimized())
             {
                 return;
             }
 
-            UIManager.OnGUI();
+            setting.Update();
         }
-    }
-
-    protected void InitializeUI()
-    {
-        UIManager.LoadUI();
-    }
-
-    protected void InitializeHotKeys()
-    {
-        HotKeys.InitHotKeys();
     }
 
     public void RestartWindow()
@@ -187,6 +164,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
             Debug.LogWarning("Window is not open, skipping restart.");
             return;
         }
+
         Debug.Log("Restarting window...");
         EditorApplication.delayCall += () =>
         {
@@ -215,7 +193,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         WindowStateService.SetOriginalWindowRect(originalWindowRect);
         WindowStateService.SetMinimized(false);
         rootVisualElement.Clear();
-        InitializeUI();
+        setting.Initialize();
     }
 
     public void CloseWindow()
@@ -236,7 +214,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
             Debug.LogError("Failed to save settings: " + e.Message);
         }
 
-        UIManager.OnWindowClose();
+        setting.OnWindowClose();
         WindowStateService.SetWindowOpen(false);
         CurrentWindow = null;
     }

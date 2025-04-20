@@ -8,11 +8,11 @@ using System;
 [Serializable]
 public class SettingTab : EdixorTab
 {
-    private EdixorUIManager edixorUIManager;
     private FunctionService functionSave;
     private IFactory factoryBuilder;
     private StyleLogic styleLogic = new StyleLogic();
     private StyleParameters styleParameters;
+    private StyleService styleService;
 
     [MenuItem("Window/Edixor Tab/Setting")]
     public static void ShowTab()
@@ -27,9 +27,11 @@ public class SettingTab : EdixorTab
         LoadUss("Assets/Edixor/Scripts/UI/EdixorTab/SettingTab/SettingTab.uss");
     }
 
-    private void Start() {
+    private void Start()
+    {
         functionSave = container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting);
         factoryBuilder = container.Resolve<IFactory>();
+        styleService = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting);
 
         SetupContainer("layout-container", AddLayoutToContainer);
         SetupContainer("style-container", AddStyleToContainer);
@@ -52,8 +54,8 @@ public class SettingTab : EdixorTab
     private void AddLayoutToContainer(VisualElement designContainer)
     {
         var layoutDataArray = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetLayouts().ToArray();
-        var styleData = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetCurrentItem();
-        
+        var styleData = styleService.GetCurrentItem();
+
         if (layoutDataArray.Length == 0)
         {
             Debug.LogWarning("Layouts not found.");
@@ -68,7 +70,7 @@ public class SettingTab : EdixorTab
 
     private void AddStyleToContainer(VisualElement styleContainer)
     {
-        var styleDataArray = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyles().ToArray();
+        var styleDataArray = styleService.GetStyles().ToArray();
         var layoutData = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetCurrentItem();
 
         if (styleDataArray.Length == 0)
@@ -90,43 +92,39 @@ public class SettingTab : EdixorTab
 
     private VisualElement CreateBanner(object data, object layoutData, int index, bool isLayout)
     {
-
         VisualElement bannerContainer = new VisualElement();
         bannerContainer.AddToClassList("banner-container");
-
 
         VisualElement banner = new VisualElement();
         banner.AddToClassList("banner");
         banner.AddToClassList("middle-section");
 
-
         EdixorDesign edixorDesign = new EdixorDesign(
-            isLayout ? (StyleData)layoutData : (StyleData)data, 
-            isLayout ? (EdixorLayoutData)data : (EdixorLayoutData)layoutData, 
+            isLayout ? (StyleData)layoutData : (StyleData)data,
+            isLayout ? (EdixorLayoutData)data : (EdixorLayoutData)layoutData,
             banner, container);
         edixorDesign.LoadUI(true);
 
-        styleParameters = isLayout ? ((StyleData)layoutData).GetAssetParameter() : ((StyleData)data).GetAssetParameter();
+        styleParameters = styleService.GetStyleParameter<EdixorParameters>(isLayout ? GetStyleIndex((StyleData)layoutData) : index);
         SetBannerStyle(banner, styleParameters);
-
 
         string bannerName = isLayout ? ((EdixorLayoutData)data).Name : ((StyleData)data).Name;
         Label bannerNameLabel = new Label(bannerName);
         bannerNameLabel.AddToClassList("banner-name");
 
-
-        Button selectButton = new Button(() => {
+        Button selectButton = new Button(() =>
+        {
             Debug.Log($"Banner with {(isLayout ? "layout" : "style")} {bannerName} selected.");
             if (isLayout)
                 ChangeLayout(index);
             else
                 ChangeStyle(index);
-            
+
             container.ResolveNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow).RestartWindow();
-        }) { text = "Select" };
+        })
+        { text = "Select" };
+
         selectButton.AddToClassList("select-button");
-
-
 
         bannerContainer.Add(bannerNameLabel);
         bannerContainer.Add(banner);
@@ -134,7 +132,6 @@ public class SettingTab : EdixorTab
 
         return bannerContainer;
     }
-
 
     private void SetBannerStyle(VisualElement banner, StyleParameters parameters)
     {
@@ -147,8 +144,8 @@ public class SettingTab : EdixorTab
 
     private void AddFunctionSettings(List<Function> functions)
     {
-        VisualElement functionContainer = root.Q<VisualElement>("function-container"); 
-        VisualElement functionSettingContainer = root.Q<VisualElement>("function-setting-container"); 
+        VisualElement functionContainer = root.Q<VisualElement>("function-container");
+        VisualElement functionSettingContainer = root.Q<VisualElement>("function-setting-container");
         Label infoLabel = new Label("Click on a function to configure it");
         functionSettingContainer.Add(infoLabel);
 
@@ -177,12 +174,23 @@ public class SettingTab : EdixorTab
                 }
                 else
                 {
-                    Debug.LogError("no icon found for function: " + func.Data.Name);
+                    Debug.LogError("No icon found for function: " + func.Data.Name);
                 }
 
                 function.AddToClassList("function");
                 functionContainer.Add(function);
             }
         }
+    }
+
+    private int GetStyleIndex(StyleData style)
+    {
+        var styles = styleService.GetStyles();
+        int index = styles.IndexOf(style);
+        if (index == -1)
+        {
+            Debug.LogError("Style not found in StyleService.");
+        }
+        return index;
     }
 }

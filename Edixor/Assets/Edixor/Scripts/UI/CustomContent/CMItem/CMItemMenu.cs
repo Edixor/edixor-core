@@ -1,3 +1,4 @@
+using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,11 +23,9 @@ public class CMItemMenu : BaseCMItem
         SaveState();
     }
 
-    public override void Draw()
+    public override VisualElement Draw()
     {
-        if (GUILayout.Button(Name))
-        {
-            menu.ShowMenu();
-        }
+        root = CreateRootElement();
+        return root;
     }
 }

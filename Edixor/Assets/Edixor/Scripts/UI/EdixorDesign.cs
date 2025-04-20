@@ -11,7 +11,7 @@ public class EdixorDesign {
     private VisualTreeAsset tree;
     private StyleSheet layoutSheet;
     private StyleLogic styleLogic;
-    private StyleParameters parameters;
+    private EdixorParameters parameters;
     private VisualElement rootElement;
     private IFactory factoryBuilder;
     private DIContainer Container;
@@ -33,6 +33,10 @@ public class EdixorDesign {
         Layout = layout;
     }
 
+    public EdixorDesign(DIContainer container) {
+        Container = container;
+    }
+
     public void LoadUI(bool demo = false)
     {
         tree = LoadUXML(Layout.PathUxml);
@@ -44,7 +48,7 @@ public class EdixorDesign {
         LayoutLogic layoutLogic = (LayoutLogic)factoryBuilder.CreateLogic(Layout);
         layoutLogic.SetContainer(Container);
 
-        parameters = Style.GetStyleParameter();
+        parameters = (EdixorParameters)Container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyleParameter<EdixorParameters>();
 
         if (demo)
             layoutLogic.DemoInit(rootElement, parameters.FunctionIconColors, parameters.FunctionBackgroundColors);
@@ -54,10 +58,8 @@ public class EdixorDesign {
         layoutSheet = LoadStyleSheet(Layout.PathUss);
 
         styleLogic = new StyleLogic(rootElement, parameters);
-        
-        parameters = Style.GetAssetParameter();
-        
         styleLogic.Init();
+        
         styleLogic.FunctionStyling(layoutLogic.GetFunctions());
     }
 
@@ -121,5 +123,10 @@ public class EdixorDesign {
     public VisualElement GetSection(string sectionName)
     {
         return rootElement?.Q(sectionName);
+    }
+
+    public VisualElement GetRoot()
+    {
+        return rootElement;
     }
 }

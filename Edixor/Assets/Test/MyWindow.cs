@@ -2,15 +2,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class MyWindow : EdixorWindow
+public class EdixorWindowDefault : EdixorWindow
 {
-    [MenuItem("Window/Edixor Window/My Window")]
+    [MenuItem("Window/Edixor Window/Default")]
     public static void ShowExample()
     {
-        GetWindow<MyWindow>("MyWindow");
+        GetWindow<EdixorWindowDefault>("MyWindow");
     }
 
-    public void CreateGUI()
+    protected override void Options()
     {
         
     }
