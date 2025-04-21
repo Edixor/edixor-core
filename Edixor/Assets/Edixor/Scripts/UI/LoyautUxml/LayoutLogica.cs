@@ -143,11 +143,25 @@ public abstract class LayoutLogic
             throw new ArgumentNullException(nameof(functionData), $"Функция с именем '{name}' не найдена.");
         }
 
-        factoryBuilder = container.Resolve<IFactory>();
-        factoryBuilder.Init<FunctionData, FunctionLogic, Function>(data => data.Logic);
-        return (Function)factoryBuilder.Create(functionData);
+        FunctionLogic functionLogic = container.ResolveNamed<FunctionLogic>(functionData.LogicKey);
+        return new Function(functionData, functionLogic);
     }
     protected FunctionData LoadFunctionData(string name) {
+        if (container == null)
+        {
+            Debug.LogError("DIContainer не установлен. Вызови SetContainer перед Init или LoadFunction.");
+        }
+        var service = container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting);
+        if (service == null)
+        {
+            Debug.LogError($"Сервис с ключом '{ServiceNames.FunctionSetting}' не найден в DIContainer.");
+        }
+        var functionData = service.GetCorrectFunction(name);
+        if (functionData == null)
+        {
+            Debug.LogError($"Функция '{name}' не найдена в FunctionService.");
+        }
+
         return container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting).GetCorrectFunction(name);
     }
 
@@ -155,7 +169,7 @@ public abstract class LayoutLogic
         this.container = container;
     }
 
-    public List<Button> GetFunctions() {
+    public List<Button> GetDataFunctions() {
         return buttonFunc;
     }
 }

@@ -19,8 +19,13 @@ public class EdixorLayoutData : ScriptableObject
     public string PathUss => pathUss;
     public string PathUxml => pathUxml;
     
-    [TextArea] 
-    public string Logic;
+    [SerializeField]
+    private string logicKey;
+    public string LogicKey
+    {
+        get => logicKey;
+        private set => logicKey = value;
+    }
 
 
 }

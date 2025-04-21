@@ -27,4 +27,12 @@ public class FunctionData : ScriptableObject
     }
     public string Description => functionDescription;
     public string Logic => FunctionLogic;
+    
+    [SerializeField]
+    private string logicKey;
+    public string LogicKey
+    {
+        get => logicKey;
+        private set => logicKey = value;
+    }
 }

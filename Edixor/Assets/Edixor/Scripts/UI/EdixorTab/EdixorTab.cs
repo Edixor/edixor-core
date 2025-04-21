@@ -14,14 +14,17 @@ public abstract class EdixorTab
     [SerializeField] private string pathUxml;
     [SerializeField] private string pathUss;
 
-    private HotKeyController _hotKeyController;
-    private HotKeyController hotKeyController
+    private IEdixorInterfaceFacade _setting;
+
+    protected IEdixorInterfaceFacade setting 
     {
         get
         {
-            if (_hotKeyController == null)
-                _hotKeyController = container.ResolveNamed<HotKeyController>(ServiceNames.HotKeyController_EdixorWindow);
-            return _hotKeyController;
+            if (_setting == null)
+            {
+                _setting = container.ResolveNamed<IEdixorInterfaceFacade>(ServiceNames.EdixorUIManager_EdixorWindow);
+            }
+            return _setting;
         }
     }
 
@@ -55,9 +58,13 @@ public abstract class EdixorTab
     {
         DIContainer cnt = LoadOrCreateContainer();
         EdixorWindow wnd = EdixorWindow.CurrentWindow ?? EditorWindow.GetWindow<EdixorWindow>("EdixorWindow");
-        cnt.ResolveNamed<ITabController>(ServiceNames.TabSetting)
-           .AddTab(new T(), saveState: true, autoSwitch: true);
+
+        T tab = new T();
+        tab.container = cnt;
+
+        tab.setting.AddTab(tab, saveState: true, autoSwitch: true);
     }
+
 
     protected static DIContainer LoadOrCreateContainer()
     {
@@ -135,51 +142,13 @@ public abstract class EdixorTab
         root.styleSheets.Add(sheet);
     }
 
-    protected void LoadHotKey(string path, Action action)
+    protected void LoadHotKey(string path, Action action = null)
     {
-        if (string.IsNullOrEmpty(path))
-        {
-            Debug.LogError("Путь к горячей клавише пустой или null."); return;
-        }
-        KeyActionData data = AssetDatabase.LoadAssetAtPath<KeyActionData>(path);
-        if (data == null)
-        {
-            Debug.LogError($"KeyActionData не найден по пути: {path}"); return;
-        }
-        var service = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
-        if (!service.TryAddHotKey(Title, data))
-        {
-            Debug.Log($"[Skip] Дубликат '{data.Name}' для '{Title}'."); return;
-        }
-        var logic = new CustomKeyAction(container, action);
-        hotKeyController.AddKey(new KeyAction(data, logic));
+        setting.LoadHotKey(path, action);
         OnHotKeyAdded?.Invoke(new HotKeyTabInfo(tabName));
     }
 
-    protected void LoadHotKeys(string[] paths, Action[] actions)
-    {
-        if (paths == null || paths.Length == 0) { Debug.LogError("Path array is null or empty."); return; }
-        var service = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
-        var newLoads = new List<KeyActionData>();
-        for (int i = 0; i < paths.Length; i++)
-        {
-            var p = paths[i]; var a = actions != null && i < actions.Length ? actions[i] : null;
-            if (string.IsNullOrEmpty(p)) continue;
-            KeyActionData d = AssetDatabase.LoadAssetAtPath<KeyActionData>(p);
-            if (d == null) continue;
-            if (!service.TryAddHotKey(Title, d)) { Debug.Log($"[Skip] Дубликат '{d.Name}' для '{Title}'."); continue; }
-            newLoads.Add(d);
-            hotKeyController.AddKey(new KeyAction(d, new CustomKeyAction(container, a)));
-        }
-        if (newLoads.Count > 0)
-        {
-            OnHotKeyAdded?.Invoke(new HotKeyTabInfo(tabName));
-            Debug.Log($"Добавлено {newLoads.Count} новых горячих клавиш для '{Title}'.");
-        }
-        else Debug.LogWarning("Новых горячих клавиш не было загружено.");
-    }
 
-    // Восстанавливаем методы, используемые SettingTab
     protected void ChangeStyle(int index)
     {
         container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).SetCurrentItem(index);

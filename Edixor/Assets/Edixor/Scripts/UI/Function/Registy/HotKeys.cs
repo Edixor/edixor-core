@@ -44,7 +44,7 @@ public class HotKeys : FunctionLogic, IFunctionSetting
     {
         if (hotkeys == null || hotkeys.Count == 0)
         {
-            hotkeys = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting).GetAllHotKeys();
+            hotkeys = container.ResolveNamed<HotKeySetting>(ServiceNames.HotKeySetting).GetAllHotKeys();
         }
 
         foreach (KeyActionData key in hotkeys)

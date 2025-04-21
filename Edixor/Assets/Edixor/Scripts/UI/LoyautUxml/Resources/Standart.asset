@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Standart
   m_EditorClassIdentifier: 
   layoutName: Standart
-  pathUss: Assets/Edixor/Scripts/UI/LoyautUxml/Standart/Standart.uss
-  pathUxml: Assets/Edixor/Scripts/UI/LoyautUxml/Standart/Standart.uxml
-  Logic: Assets/Edixor/Scripts/UI/LoyautUxml/Standart/Standart.cs
+  layoutDescription: bfbftgbhf
+  pathUss: Assets/Edixor/Scripts/UI/LoyautUxml/Standard/Standart.uss
+  pathUxml: Assets/Edixor/Scripts/UI/LoyautUxml/Standard/Standart.uxml
+  logicKey: Standard

@@ -2,7 +2,7 @@ using UnityEngine.UIElements;
 using UnityEngine;
 using UnityEditor;
 
-public class WindowStateService : EdixorSetting<WindowSaveAsset>
+public class WindowStateService : EdixorSettingTest<WindowSaveAsset>
 {
     public WindowStateService() : base(PathResolver.ResolvePath("Assets/Edixor/Scripts/Settings/EdixorWindowSettings.asset")) { }
 

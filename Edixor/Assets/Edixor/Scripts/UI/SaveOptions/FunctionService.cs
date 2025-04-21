@@ -3,11 +3,23 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq; 
 
-public class FunctionService : EdixorSetting<FunctionSaveAsset>
+public class FunctionService : EdixorSettingTest<FunctionSaveAsset>
 {
-    public FunctionService() : base(PathResolver.ResolvePath("Assets/Edixor/Scripts/Settings/FunctionLogicSettings.asset")) { }
+    private DIContainer container;
+    public FunctionService(DIContainer container) : base(PathResolver.ResolvePath("Assets/Edixor/Scripts/Settings/FunctionLogicSettings.asset")) { 
+        this.container = container;
+    }
 
-    public List<FunctionData> GetFunctions() => settings.SaveItems;
+    public List<FunctionData> GetDataFunctions() => settings.SaveItems;
+    public List<Function> GetFunctions() {
+        List<Function> functions = new List<Function>();
+        foreach (var item in settings.SaveItems)
+        {
+            FunctionLogic logic = container.ResolveNamed<FunctionLogic>(item.LogicKey);
+            functions.Add(new Function(item, logic));
+        }
+        return functions;
+    }
 
     public FunctionData GetCorrectFunction(string functionName)
     {

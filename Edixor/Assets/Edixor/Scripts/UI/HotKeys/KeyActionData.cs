@@ -36,7 +36,15 @@ public class KeyActionData : ScriptableObject
     public string LogicKey
     {
         get => logicKey;
-        set => logicKey = value;
+        private set => logicKey = value;
+    }
+
+    public KeyActionData(string name, bool enable, List<KeyCode> combination, string logicKey)
+    {
+        _actionName = name;
+        _enable = enable;
+        _combination = combination;
+        this.logicKey = logicKey;
     }
 
     public override string ToString()

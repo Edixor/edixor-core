@@ -9,7 +9,6 @@ using System;
 public class SettingTab : EdixorTab
 {
     private FunctionService functionSave;
-    private IFactory factoryBuilder;
     private StyleLogic styleLogic = new StyleLogic();
     private StyleParameters styleParameters;
     private StyleService styleService;
@@ -30,14 +29,12 @@ public class SettingTab : EdixorTab
     private void Start()
     {
         functionSave = container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting);
-        factoryBuilder = container.Resolve<IFactory>();
         styleService = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting);
 
         SetupContainer("layout-container", AddLayoutToContainer);
         SetupContainer("style-container", AddStyleToContainer);
 
-        factoryBuilder.Init<FunctionData, FunctionLogic, Function>(data => data.Logic);
-        AddFunctionSettings(factoryBuilder.CreateAllFromProject().OfType<Function>().ToList());
+        AddFunctionSettings(functionSave.GetFunctions());
     }
 
     private void SetupContainer(string containerName, Action<VisualElement> action)

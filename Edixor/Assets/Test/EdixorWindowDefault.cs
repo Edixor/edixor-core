@@ -12,7 +12,9 @@ public class EdixorWindowDefault : EdixorWindow
 
     protected override void Options()
     {
-        
+        setting.LoadHotKey("Assets/Edixor/Scripts/UI/HotKeys/Registy/Resources/Standart/Exit.asset");
+        setting.LoadHotKey("Assets/Edixor/Scripts/UI/HotKeys/Registy/Resources/Standart/Minimize.asset");
+        setting.LoadHotKey("Assets/Edixor/Scripts/UI/HotKeys/Registy/Resources/Standart/Restart.asset");
     }
 }
 

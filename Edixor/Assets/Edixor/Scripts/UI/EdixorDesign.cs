@@ -13,7 +13,7 @@ public class EdixorDesign {
     private StyleLogic styleLogic;
     private EdixorParameters parameters;
     private VisualElement rootElement;
-    private IFactory factoryBuilder;
+    private LayoutLogic layoutLogic;
     private DIContainer Container;
 
     private static Dictionary<string, VisualTreeAsset> visualTreeCache = new Dictionary<string, VisualTreeAsset>();
@@ -41,26 +41,24 @@ public class EdixorDesign {
     {
         tree = LoadUXML(Layout.PathUxml);
 
-        if (factoryBuilder == null)
-            factoryBuilder = Container.Resolve<IFactory>();
-
-        factoryBuilder.Init<EdixorLayoutData, LayoutLogic>(data => data.Logic);
-        LayoutLogic layoutLogic = (LayoutLogic)factoryBuilder.CreateLogic(Layout);
-        layoutLogic.SetContainer(Container);
+        layoutLogic = Container.ResolveNamed<LayoutLogic>(Layout.LogicKey);
 
         parameters = (EdixorParameters)Container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyleParameter<EdixorParameters>();
 
-        if (demo)
+        layoutLogic.SetContainer(Container);
+        if (demo) {
             layoutLogic.DemoInit(rootElement, parameters.FunctionIconColors, parameters.FunctionBackgroundColors);
-        else
+        }
+        else {
             layoutLogic.Init(rootElement);
+        }
 
         layoutSheet = LoadStyleSheet(Layout.PathUss);
 
         styleLogic = new StyleLogic(rootElement, parameters);
         styleLogic.Init();
         
-        styleLogic.FunctionStyling(layoutLogic.GetFunctions());
+        styleLogic.FunctionStyling(layoutLogic.GetDataFunctions());
     }
 
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 
-public class Standart : LayoutLogic
+public class Standard : LayoutLogic
 {
     protected override Function[][] functions => new Function[][] 
     {

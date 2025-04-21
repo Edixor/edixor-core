@@ -6,7 +6,7 @@ using UnityEngine;
 public class HotKeyController : IHotKeyController
 {
     private DIContainer container;
-    private HotKeyService keyService;
+    private HotKeySetting keyService;
     private IFactory factoryBuilder;
     private List<KeyAction> hotkeyActions = new List<KeyAction>();
     private HashSet<KeyCode> currentlyPressedKeys;
@@ -22,10 +22,10 @@ public class HotKeyController : IHotKeyController
     {
         Debug.Log("HotKeyController: Инициализация...");
 
-        keyService = container.ResolveNamed<HotKeyService>(ServiceNames.HotKeySetting);
+        keyService = container.ResolveNamed<HotKeySetting>(ServiceNames.HotKeySetting);
         if (keyService == null)
         {
-            Debug.LogError("HotKeyController: HotKeyService не был найден в контейнере!");
+            Debug.LogError("HotKeyController: HotKeySetting не был найден в контейнере!");
             return;
         }
 

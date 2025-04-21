@@ -24,12 +24,12 @@ public interface ISaveService
 }
 
 
-public abstract class EdixorSetting<T> : ISaveService where T : ScriptableObject
+public abstract class EdixorSettingTest<T> : ISaveService where T : ScriptableObject
 {
     protected T settings;
     private string assetPath;
 
-    protected EdixorSetting(string path)
+    protected EdixorSettingTest(string path)
     {
         assetPath = path;
         Load();
@@ -58,7 +58,7 @@ public abstract class EdixorSetting<T> : ISaveService where T : ScriptableObject
     public T GetSettings() => settings;
 }
 
-public abstract class EdixorCurrentSetting<TAsset, TData> : EdixorSetting<TAsset> 
+public abstract class EdixorCurrentSetting<TAsset, TData> : EdixorSettingTest<TAsset> 
     where TAsset : ScriptableObject, ISaveCurrentAsset<TData>
 {
     private readonly IRegister _register;

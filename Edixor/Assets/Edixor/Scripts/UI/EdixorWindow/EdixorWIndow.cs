@@ -53,9 +53,10 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
     protected virtual void OnEnable()
     {
         if (_initialized) return;
-
+        
         container = LoadOrCreateContainer();
         Initialize();
+        Options();
         _initialized = true;
     }
 

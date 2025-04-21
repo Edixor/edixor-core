@@ -17,3 +17,4 @@ MonoBehaviour:
   functionIcon: {fileID: 2800000, guid: a30a904883a5ddc41b414e2df587c0d2, type: 3}
   functionIconPath: Images/Icon/photo_2_2024-12-24_18-59-17
   FunctionLogic: Assets/Edixor/Scripts/UI/Function/Registy/Restart.cs
+  logicKey: RestartFunc
