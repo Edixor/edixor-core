@@ -6,7 +6,7 @@ using UnityEditor;
 
 public class HotKeys : FunctionLogic, IFunctionSetting
 {
-    private List<KeyActionData> hotkeys;
+    private KeyActionData[] hotkeys;
     private ITabController tabController;
     private IUIController uiBase;
 
@@ -42,9 +42,9 @@ public class HotKeys : FunctionLogic, IFunctionSetting
 
     public void Setting(VisualElement root)
     {
-        if (hotkeys == null || hotkeys.Count == 0)
+        if (hotkeys == null || hotkeys.Length == 0)
         {
-            hotkeys = container.ResolveNamed<HotKeySetting>(ServiceNames.HotKeySetting).GetAllHotKeys();
+            hotkeys = container.ResolveNamed<HotKeySetting>(ServiceNames.HotKeySetting).GetAllItem();
         }
 
         foreach (KeyActionData key in hotkeys)

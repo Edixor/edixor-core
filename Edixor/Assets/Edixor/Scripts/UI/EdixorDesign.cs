@@ -7,7 +7,7 @@ using System.IO;
 
 public class EdixorDesign {
     public StyleData Style { get; private set; }
-    public EdixorLayoutData Layout { get; private set; }
+    public LayoutData Layout { get; private set; }
     private VisualTreeAsset tree;
     private StyleSheet layoutSheet;
     private StyleLogic styleLogic;
@@ -19,7 +19,7 @@ public class EdixorDesign {
     private static Dictionary<string, VisualTreeAsset> visualTreeCache = new Dictionary<string, VisualTreeAsset>();
     private static Dictionary<string, StyleSheet> styleSheetCache = new Dictionary<string, StyleSheet>();
 
-    public EdixorDesign(StyleData style, EdixorLayoutData layout, VisualElement root, DIContainer container)
+    public EdixorDesign(StyleData style, LayoutData layout, VisualElement root, DIContainer container)
     {
         Style = style;
         Layout = layout;
@@ -27,7 +27,7 @@ public class EdixorDesign {
         Container = container;
     }
 
-    public EdixorDesign(StyleData style, EdixorLayoutData layout)
+    public EdixorDesign(StyleData style, LayoutData layout)
     {
         Style = style;
         Layout = layout;
@@ -39,27 +39,34 @@ public class EdixorDesign {
 
     public void LoadUI(bool demo = false)
     {
+        if (rootElement == null)
+            rootElement = new VisualElement();
+
+        // 1) Проверьте, что путь резолвится:
+        var uxmlResolved = PathResolver.ResolvePath(Layout.PathUxml);
+        Debug.Log($"[EdixorDesign] Resolved UXML path: {uxmlResolved}");
+
+        // 2) Загрузили ли мы дерево?
         tree = LoadUXML(Layout.PathUxml);
+        Debug.Log($"[EdixorDesign] UXML loaded: {tree != null}");
 
-        layoutLogic = Container.ResolveNamed<LayoutLogic>(Layout.LogicKey);
-
-        parameters = (EdixorParameters)Container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetStyleParameter<EdixorParameters>();
-
-        layoutLogic.SetContainer(Container);
-        if (demo) {
-            layoutLogic.DemoInit(rootElement, parameters.FunctionIconColors, parameters.FunctionBackgroundColors);
-        }
-        else {
-            layoutLogic.Init(rootElement);
-        }
-
+        // 3) Аналогично для USS:
+        var ussResolved = PathResolver.ResolvePath(Layout.PathUss);
+        Debug.Log($"[EdixorDesign] Resolved USS path: {ussResolved}");
         layoutSheet = LoadStyleSheet(Layout.PathUss);
+        Debug.Log($"[EdixorDesign] USS loaded: {layoutSheet != null}");
+
+        // Если хоть одна из вещей null — смотрите, почему PathResolver.ResolvePath
+        // не возвращает корректный путь, или файл лежит не по тому адресу.
+
+        parameters = (EdixorParameters)Container
+            .ResolveNamed<StyleService>(ServiceNames.StyleSetting)
+            .GetStyleParameter<EdixorParameters>();
 
         styleLogic = new StyleLogic(rootElement, parameters);
         styleLogic.Init();
-        
-        styleLogic.FunctionStyling(layoutLogic.GetDataFunctions());
     }
+
 
 
     private VisualTreeAsset LoadUXML(string path)

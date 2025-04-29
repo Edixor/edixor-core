@@ -15,7 +15,7 @@ C:/Users/S/Documents/GitHub/Edixor/Edixor
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59806
+53222
 -job-worker-count
 1
 -background-job-worker-count
@@ -59,12 +59,12 @@ C:/Users/S/Documents/GitHub/Edixor/Edixor
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [14664]  Target information:
+Player connection [5504]  Target information:
 
-Player connection [14664]  * "[IP] 192.168.1.46 [Port] 0 [Flags] 2 [Guid] 1784665157 [EditorId] 1784665157 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-7VPLHCL) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [5504]  * "[IP] 192.168.1.46 [Port] 0 [Flags] 2 [Guid] 2390902455 [EditorId] 2390902455 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-7VPLHCL) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [14664] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [14664] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [5504] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [5504] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 1
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -75,7 +75,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 27.54 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 81.48 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.29f1 (9fafe5c9db65)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Resources/UnitySubsystems
@@ -91,81 +91,58 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56444
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56052
 Begin MonoManager ReloadAssembly
-
-=================================================================
-	Native Crash Reporting
-=================================================================
-Got a UNKNOWN while executing native code. This usually indicates
-a fatal error in the mono runtime or one of the native libraries 
-used by your application.
-=================================================================
-
-=================================================================
-	Managed Stacktrace:
-=================================================================
-	  at <unknown> <0xffffffff>
-	  at System.IO.PathInternal:.cctor <0x00032>
-	  at System.Object:runtime_invoke_void <0x00084>
-	  at <unknown> <0xffffffff>
-	  at System.Console:.cctor <0x0004a>
-	  at System.Object:runtime_invoke_void <0x00084>
-	  at <unknown> <0xffffffff>
-	  at UnityEngine.UnityLogWriter:Init <0x0006a>
-	  at UnityEngine.ClassLibraryInitializer:Init <0x0001a>
-	  at System.Object:runtime_invoke_void <0x00084>
-=================================================================
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Registered in 0.063792 seconds.
-- Loaded All Assemblies, in 10.774 seconds
+Registered in 0.021260 seconds.
+- Loaded All Assemblies, in  4.126 seconds
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 8378 ms
+Android Extension - Scanning For ADB Devices 1939 ms
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in 14.468 seconds
-Domain Reload Profiling: 25221ms
-	BeginReloadAssembly (1613ms)
+- Finished resetting the current domain, in  5.415 seconds
+Domain Reload Profiling: 9515ms
+	BeginReloadAssembly (1703ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (6ms)
-	RebuildCommonClasses (238ms)
-	RebuildNativeTypeToScriptingClass (5542ms)
-	initialDomainReloadingComplete (2029ms)
-	LoadAllAssembliesAndSetupDomain (1327ms)
-		LoadAssemblies (1609ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (145ms)
+	RebuildNativeTypeToScriptingClass (44ms)
+	initialDomainReloadingComplete (388ms)
+	LoadAllAssembliesAndSetupDomain (1819ms)
+		LoadAssemblies (1911ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1287ms)
-			TypeCache.Refresh (1277ms)
-				TypeCache.ScanAssembly (1141ms)
+		AnalyzeDomain (1540ms)
+			TypeCache.Refresh (1525ms)
+				TypeCache.ScanAssembly (1349ms)
 			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (6ms)
-	FinalizeReload (14473ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (5417ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (14122ms)
+		SetupLoadedEditorAssemblies (4964ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9330ms)
-			SetLoadedEditorAssemblies (63ms)
-			BeforeProcessingInitializeOnLoad (158ms)
-			ProcessInitializeOnLoadAttributes (2024ms)
-			ProcessInitializeOnLoadMethodAttributes (887ms)
-			AfterProcessingInitializeOnLoad (1658ms)
-			EditorAssembliesLoaded (1ms)
+			InitializePlatformSupportModulesInManaged (2819ms)
+			SetLoadedEditorAssemblies (21ms)
+			BeforeProcessingInitializeOnLoad (48ms)
+			ProcessInitializeOnLoadAttributes (1390ms)
+			ProcessInitializeOnLoadMethodAttributes (667ms)
+			AfterProcessingInitializeOnLoad (18ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (0ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 12.540 seconds
-Refreshing native plugins compatible for Editor in 13.86 ms, found 4 plugins.
+- Loaded All Assemblies, in  8.058 seconds
+Refreshing native plugins compatible for Editor in 17.52 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
@@ -182,6 +159,102 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
 (Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 12)
 
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorLayoutDataSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+LayoutSetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/LayoutSetting.cs:10)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:46)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorStyleSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+StyleService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/StyleService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:47)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorWindowSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+WindowStateService:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/WindowService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:48)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/FunctionLogicSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+FunctionSetting:.ctor (DIContainer) (at Assets/Edixor/Scripts/UI/SaveOptions/FunctionSetting.cs:14)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:49)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorTabSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+TabService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/TabService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:50)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/HotKeySettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+HotKeySetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/HotKeySetting.cs:13)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:51)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
 Сервисы успешно зарегистрированы.
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -189,301 +262,782 @@ UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOpt
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:87)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:94)
 EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 87)
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 94)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  5.869 seconds
-Domain Reload Profiling: 18393ms
-	BeginReloadAssembly (2006ms)
+- Finished resetting the current domain, in  3.679 seconds
+Domain Reload Profiling: 11713ms
+	BeginReloadAssembly (1291ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (458ms)
+		DisableScriptedObjects (42ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (161ms)
-	RebuildCommonClasses (619ms)
-	RebuildNativeTypeToScriptingClass (99ms)
-	initialDomainReloadingComplete (271ms)
-	LoadAllAssembliesAndSetupDomain (9526ms)
-		LoadAssemblies (8504ms)
+		CreateAndSetChildDomain (163ms)
+	RebuildCommonClasses (241ms)
+	RebuildNativeTypeToScriptingClass (88ms)
+	initialDomainReloadingComplete (279ms)
+	LoadAllAssembliesAndSetupDomain (6132ms)
+		LoadAssemblies (4899ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2113ms)
-			TypeCache.Refresh (1752ms)
-				TypeCache.ScanAssembly (1625ms)
-			BuildScriptInfoCaches (303ms)
-			ResolveRequiredComponents (47ms)
-	FinalizeReload (5871ms)
+		AnalyzeDomain (2049ms)
+			TypeCache.Refresh (1737ms)
+				TypeCache.ScanAssembly (1614ms)
+			BuildScriptInfoCaches (252ms)
+			ResolveRequiredComponents (35ms)
+	FinalizeReload (3681ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (4920ms)
+		SetupLoadedEditorAssemblies (2763ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (99ms)
+			InitializePlatformSupportModulesInManaged (101ms)
 			SetLoadedEditorAssemblies (31ms)
-			BeforeProcessingInitializeOnLoad (417ms)
-			ProcessInitializeOnLoadAttributes (3935ms)
-			ProcessInitializeOnLoadMethodAttributes (365ms)
-			AfterProcessingInitializeOnLoad (71ms)
+			BeforeProcessingInitializeOnLoad (425ms)
+			ProcessInitializeOnLoadAttributes (1993ms)
+			ProcessInitializeOnLoadMethodAttributes (186ms)
+			AfterProcessingInitializeOnLoad (27ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (103ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
-Refreshing native plugins compatible for Editor in 3.92 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (20ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 4.09 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 37 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4796 unused Assets / (1.0 MB). Loaded Objects now: 5311.
-Memory consumption went from 87.9 MB to 86.9 MB.
-Total: 51.494600 ms (FindLiveObjects: 9.367700 ms CreateObjectMapping: 1.968000 ms MarkObjects: 35.205400 ms  DeleteObjects: 4.941400 ms)
+Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4798 unused Assets / (175.2 KB). Loaded Objects now: 5302.
+Memory consumption went from 87.7 MB to 87.5 MB.
+Total: 58.113200 ms (FindLiveObjects: 2.499000 ms CreateObjectMapping: 5.997700 ms MarkObjects: 38.999300 ms  DeleteObjects: 10.600900 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 454631.363274 seconds.
-  path: Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Standart.asset
-  artifactKey: Guid(a9497fc79c38c4343b5949a8f51266c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Standart.asset using Guid(a9497fc79c38c4343b5949a8f51266c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '71099164d002e5c1c8a61f7cf6ffcfb2') in 0.1807988 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000050 seconds.
-  path: Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Left.asset
-  artifactKey: Guid(3a2f0525fee1cfb4dad8c6975457949d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Left.asset using Guid(3a2f0525fee1cfb4dad8c6975457949d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '51dde0791b65f28ce948ccd343654e38') in 0.0236043 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 18.871797 seconds.
-  path: Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Standart.asset
-  artifactKey: Guid(a9497fc79c38c4343b5949a8f51266c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Standart.asset using Guid(a9497fc79c38c4343b5949a8f51266c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '944dab127cde391db5101337554426af') in 0.0096419 seconds
-Number of updated asset objects reloaded before import = 1Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.828636 seconds.
-  path: Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Standart.asset
-  artifactKey: Guid(a9497fc79c38c4343b5949a8f51266c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/UI/LoyautUxml/Resources/Standart.asset using Guid(a9497fc79c38c4343b5949a8f51266c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e10a3953c6f1fd3ae57c7848ad3a9be1') in 0.0058647 seconds
-Number of updated asset objects reloaded before import = 1Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 81.524378 seconds.
-  path: Assets/Edixor/Scripts/Settings/EdixorTabSettings.asset
-  artifactKey: Guid(f29440b5f21e251469a364e6835ce19a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/Settings/EdixorTabSettings.asset using Guid(f29440b5f21e251469a364e6835ce19a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1a30ee85eeeb665127dcb588c142731a') in 0.0162629 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000677 seconds.
-  path: Assets/Edixor/Scripts/Settings/EdixorWindowSettings.asset
-  artifactKey: Guid(ba63fafa96fa48543b4defa74a114d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Scripts/Settings/EdixorWindowSettings.asset using Guid(ba63fafa96fa48543b4defa74a114d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4da3511b6f19a817cb891d14db1d3e88') in 0.00864 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+  Time since last request: 347657.732510 seconds.
+  path: Assets/Edixor/Scripts/UI/LayoutUxml/Resources/Default.asset
+  artifactKey: Guid(919037835317c2a4d8667fc22aea6d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Edixor/Scripts/UI/LayoutUxml/Resources/Default.asset using Guid(919037835317c2a4d8667fc22aea6d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '029943d2b8921152c0dce17b98162a81') in 0.1882561 seconds
+Number of updated asset objects reloaded before import = 2Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 6.26 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4783 unused Assets / (0.6 MB). Loaded Objects now: 5314.
-Memory consumption went from 84.2 MB to 83.6 MB.
-Total: 37.935600 ms (FindLiveObjects: 2.824600 ms CreateObjectMapping: 1.437000 ms MarkObjects: 29.304300 ms  DeleteObjects: 4.352500 ms)
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  6.169 seconds
+Refreshing native plugins compatible for Editor in 7.07 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Проект открыт! Запускаем свою логику.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:12)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.77 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4783 unused Assets / (1.2 MB). Loaded Objects now: 5314.
-Memory consumption went from 84.2 MB to 83.0 MB.
-Total: 28.871900 ms (FindLiveObjects: 3.579300 ms CreateObjectMapping: 1.620000 ms MarkObjects: 19.471300 ms  DeleteObjects: 4.192700 ms)
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 12)
 
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.89 ms, found 4 plugins.
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorLayoutDataSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+LayoutSetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/LayoutSetting.cs:10)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:46)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorStyleSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+StyleService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/StyleService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:47)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorWindowSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+WindowStateService:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/WindowService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:48)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/FunctionLogicSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+FunctionSetting:.ctor (DIContainer) (at Assets/Edixor/Scripts/UI/SaveOptions/FunctionSetting.cs:14)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:49)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorTabSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+TabService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/TabService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:50)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/HotKeySettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+HotKeySetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/HotKeySetting.cs:13)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:51)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+Сервисы успешно зарегистрированы.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:94)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 94)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.121 seconds
+Domain Reload Profiling: 9310ms
+	BeginReloadAssembly (1096ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (58ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (2ms)
+		CreateAndSetChildDomain (215ms)
+	RebuildCommonClasses (258ms)
+	RebuildNativeTypeToScriptingClass (68ms)
+	initialDomainReloadingComplete (155ms)
+	LoadAllAssembliesAndSetupDomain (4608ms)
+		LoadAssemblies (4061ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1171ms)
+			TypeCache.Refresh (430ms)
+				TypeCache.ScanAssembly (5ms)
+			BuildScriptInfoCaches (686ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (3126ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2602ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (41ms)
+			SetLoadedEditorAssemblies (20ms)
+			BeforeProcessingInitializeOnLoad (161ms)
+			ProcessInitializeOnLoadAttributes (2179ms)
+			ProcessInitializeOnLoadMethodAttributes (169ms)
+			AfterProcessingInitializeOnLoad (30ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (29ms)
+Refreshing native plugins compatible for Editor in 4.19 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4783 unused Assets / (256.5 KB). Loaded Objects now: 5314.
-Memory consumption went from 84.2 MB to 84.0 MB.
-Total: 29.738200 ms (FindLiveObjects: 2.438700 ms CreateObjectMapping: 2.203800 ms MarkObjects: 21.299700 ms  DeleteObjects: 3.787700 ms)
+Unloading 4796 unused Assets / (0.8 MB). Loaded Objects now: 5308.
+Memory consumption went from 86.0 MB to 85.2 MB.
+Total: 27.641800 ms (FindLiveObjects: 2.141100 ms CreateObjectMapping: 1.649500 ms MarkObjects: 19.597600 ms  DeleteObjects: 4.241400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  6.211 seconds
-Refreshing native plugins compatible for Editor in 6.84 ms, found 4 plugins.
-The file 'MemoryStream' is corrupted! Remove it and launch unity again!
-[Position out of bounds!]
-Fatal Error! The file 'MemoryStream' is corrupted! Remove it and launch unity again!
-[Position out of bounds!]
-Crash!!!
-SymInit: Symbol-SearchPath: 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Mono;.;C:\Users\S\Documents\GitHub\Edixor\Edixor;C:\Users\S\Documents\GitHub\Edixor\Edixor\Library\BurstCache\JIT;C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor;C:\Windows;C:\Windows\system32;', symOptions: 534, UserName: 'S'
-OS-Version: 10.0.0
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Unity.exe:Unity.exe (00007FF637700000), size: 299008 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6000.0.29.45029
-C:\Windows\SYSTEM32\ntdll.dll:ntdll.dll (00007FFF0E300000), size: 2031616 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.145
-C:\Windows\System32\KERNEL32.DLL:KERNEL32.DLL (00007FFF0D160000), size: 729088 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.86
-C:\Windows\System32\KERNELBASE.dll:KERNELBASE.dll (00007FFF0B840000), size: 2764800 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.145
-C:\Windows\System32\USER32.dll:USER32.dll (00007FFF0C4C0000), size: 1650688 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\win32u.dll:win32u.dll (00007FFF0B340000), size: 135168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
-C:\Windows\System32\GDI32.dll:GDI32.dll (00007FFF0C490000), size: 155648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\gdi32full.dll:gdi32full.dll (00007FFF0B3D0000), size: 1654784 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
-C:\Windows\System32\msvcp_win.dll:msvcp_win.dll (00007FFF0B670000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\ucrtbase.dll:ucrtbase.dll (00007FFF0B740000), size: 1024000 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\IMM32.DLL:IMM32.DLL (00007FFF0C9F0000), size: 188416 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Unity.dll:Unity.dll (00007FFEDBA20000), size: 87056384 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6000.0.29.45029
-C:\Windows\System32\CRYPT32.dll:CRYPT32.dll (00007FFF0C270000), size: 1347584 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\MSASN1.dll:MSASN1.dll (00007FFF0B1E0000), size: 73728 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\ADVAPI32.dll:ADVAPI32.dll (00007FFF0E030000), size: 667648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\msvcrt.dll:msvcrt.dll (00007FFF0CA20000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.18362.1
-C:\Windows\System32\sechost.dll:sechost.dll (00007FFF0C830000), size: 618496 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\RPCRT4.dll:RPCRT4.dll (00007FFF0C8D0000), size: 1179648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\bcrypt.dll:bcrypt.dll (00007FFF0B710000), size: 155648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\ole32.dll:ole32.dll (00007FFF0CAC0000), size: 1400832 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.113
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\libfbxsdk.dll:libfbxsdk.dll (00007FFEE7890000), size: 8019968 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.7.0
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\s3tcompress.dll:s3tcompress.dll (00007FFF04B30000), size: 180224 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\etccompress.dll:etccompress.dll (00007FFEE6F50000), size: 5070848 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\ispc_texcomp.dll:ispc_texcomp.dll (00007FFEE7570000), size: 1826816 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\compress_bc7e.dll:compress_bc7e.dll (00007FFEE7730000), size: 1433600 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\FreeImage.dll:FreeImage.dll (0000000180000000), size: 5783552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.18.0.0
-C:\Windows\System32\combase.dll:combase.dll (00007FFF0D3B0000), size: 3366912 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.145
-C:\Windows\System32\bcryptPrimitives.dll:bcryptPrimitives.dll (00007FFF0B290000), size: 528384 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
-C:\Windows\System32\SETUPAPI.dll:SETUPAPI.dll (00007FFF0CCF0000), size: 4653056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\WinPixEventRuntime.dll:WinPixEventRuntime.dll (00007FFEF8D40000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.2201.24001
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\umbraoptimizer64.dll:umbraoptimizer64.dll (00007FFEE6C40000), size: 1187840 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Windows\System32\WS2_32.dll:WS2_32.dll (00007FFF0E1D0000), size: 454656 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\d3d11.dll:d3d11.dll (00007FFF087E0000), size: 2469888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\cfgmgr32.dll:cfgmgr32.dll (00007FFF0B570000), size: 303104 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\SHELL32.dll:SHELL32.dll (00007FFF0D950000), size: 7208960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
-C:\Windows\System32\shcore.dll:shcore.dll (00007FFF0D300000), size: 692224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\windows.storage.dll:windows.storage.dll (00007FFF0BAF0000), size: 7843840 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
-C:\Windows\System32\profapi.dll:profapi.dll (00007FFF0B200000), size: 126976 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\powrprof.dll:powrprof.dll (00007FFF0B240000), size: 303104 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\UMPDC.dll:UMPDC.dll (00007FFF0B1D0000), size: 65536 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Windows\System32\shlwapi.dll:shlwapi.dll (00007FFF0E140000), size: 335872 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\kernel.appcore.dll:kernel.appcore.dll (00007FFF0B220000), size: 69632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\cryptsp.dll:cryptsp.dll (00007FFF0B320000), size: 94208 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\OLEAUT32.dll:OLEAUT32.dll (00007FFF0CC20000), size: 802816 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.86
-C:\Windows\System32\WINTRUST.dll:WINTRUST.dll (00007FFF0B370000), size: 376832 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.145
-C:\Windows\SYSTEM32\d3d12.dll:d3d12.dll (00007FFEE6D70000), size: 1908736 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\dwmapi.dll:dwmapi.dll (00007FFF09B20000), size: 184320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\dxgi.dll:dxgi.dll (00007FFF09EB0000), size: 958464 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.145
-C:\Windows\SYSTEM32\HID.DLL:HID.DLL (00007FFF09DC0000), size: 57344 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\IPHLPAPI.DLL:IPHLPAPI.DLL (00007FFF0A730000), size: 237568 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\MSVCP140.dll:MSVCP140.dll (00007FFEEE3B0000), size: 581632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
-C:\Windows\SYSTEM32\VCRUNTIME140.dll:VCRUNTIME140.dll (00007FFEEE550000), size: 110592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
-C:\Windows\SYSTEM32\VCRUNTIME140_1.dll:VCRUNTIME140_1.dll (00007FFEF88B0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.34.31931.0
-C:\Windows\SYSTEM32\OPENGL32.dll:OPENGL32.dll (00007FFEE6AF0000), size: 1372160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\WINHTTP.dll:WINHTTP.dll (00007FFF01040000), size: 978944 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\WINMM.dll:WINMM.dll (00007FFF09330000), size: 147456 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\GLU32.dll:GLU32.dll (00007FFEEE440000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\SketchUpAPI.dll:SketchUpAPI.dll (00007FFEE6250000), size: 8990720 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 23.0.0.0
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\NativeProxyHelper.dll:NativeProxyHelper.dll (00007FFEE6090000), size: 1789952 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Windows\SYSTEM32\VERSION.dll:VERSION.dll (00007FFF0ACE0000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\WSOCK32.dll:WSOCK32.dll (00007FFEF8BB0000), size: 36864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\WINMMBASE.dll:WINMMBASE.dll (00007FFF09300000), size: 184320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\dxcore.dll:dxcore.dll (00007FFF09E20000), size: 131072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\SketchUpCommonPreferences.dll:SketchUpCommonPreferences.dll (00007FFEEC9D0000), size: 499712 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 23.0.0.0
-C:\Windows\SYSTEM32\Secur32.dll:Secur32.dll (00007FFEFD5A0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\SSPICLI.DLL:SSPICLI.DLL (00007FFF0B0F0000), size: 192512 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\OpenRL.dll:OpenRL.dll (00000201C1F90000), size: 12779520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.5.0.2907
-C:\Windows\SYSTEM32\MSVCP100.dll:MSVCP100.dll (0000000054400000), size: 622592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.473
-C:\Windows\SYSTEM32\MSVCR100.dll:MSVCR100.dll (0000000054320000), size: 860160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.40219.473
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\embree.dll:embree.dll (00007FFEE50A0000), size: 16711680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.14.0.0
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\tbb.dll:tbb.dll (00007FFEEE320000), size: 303104 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.2022.1111
-C:\Windows\SYSTEM32\MSWSOCK.DLL:MSWSOCK.DLL (00007FFF0A9D0000), size: 421888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\OpenRL_pthread.dll:OpenRL_pthread.dll (00000201C2BD0000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2.9.0.0
-C:\Windows\system32\uxtheme.dll:uxtheme.dll (00007FFF097B0000), size: 626688 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\system32\IconCodecService.dll:IconCodecService.dll (00007FFF05160000), size: 36864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\WindowsCodecs.dll:WindowsCodecs.dll (00007FFF06F60000), size: 1765376 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\clbcatq.dll:clbcatq.dll (00007FFF0D8A0000), size: 663552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2001.12.10941.16384
-C:\Windows\System32\netprofm.dll:netprofm.dll (00007FFF07120000), size: 253952 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\npmproxy.dll:npmproxy.dll (00007FFF00900000), size: 65536 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\NSI.dll:NSI.dll (00007FFF0E1C0000), size: 32768 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\dhcpcsvc6.DLL:dhcpcsvc6.DLL (00007FFF04E60000), size: 90112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\dhcpcsvc.DLL:dhcpcsvc.DLL (00007FFF05170000), size: 114688 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\DNSAPI.dll:DNSAPI.dll (00007FFF0A770000), size: 827392 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\system32\napinsp.dll:napinsp.dll (00007FFF07DA0000), size: 90112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\system32\pnrpnsp.dll:pnrpnsp.dll (00007FFF04A50000), size: 106496 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\winrnr.dll:winrnr.dll (00007FFF05000000), size: 57344 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\system32\NLAapi.dll:NLAapi.dll (00007FFF079E0000), size: 114688 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\system32\wshbth.dll:wshbth.dll (00007FFEF8AB0000), size: 86016 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\fwpuclnt.dll:fwpuclnt.dll (00007FFF047D0000), size: 487424 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.113
-C:\Windows\System32\rasadhlp.dll:rasadhlp.dll (00007FFF00D80000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\AMDUnityPlugin.DLL:AMDUnityPlugin.DLL (00007FFEE4380000), size: 8814592 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\NVUnityPlugin.DLL:NVUnityPlugin.DLL (00007FFEE3400000), size: 1609728 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\astcenc-sse2.dll:astcenc-sse2.dll (00007FFEE9070000), size: 372736 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Windows\System32\MMDevApi.dll:MMDevApi.dll (00007FFF04C10000), size: 491520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\DEVOBJ.dll:DEVOBJ.dll (00007FFF0AF80000), size: 172032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\igd10umd64.dll:igd10umd64.dll (00007FFF05280000), size: 4792320 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 8.15.10.2702
-C:\Windows\system32\wbem\wbemprox.dll:wbemprox.dll (00007FFF050D0000), size: 69632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\wbemcomn.dll:wbemcomn.dll (00007FFEFCC60000), size: 540672 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\system32\wbem\wbemsvc.dll:wbemsvc.dll (00007FFEFC030000), size: 81920 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\system32\wbem\fastprox.dll:fastprox.dll (00007FFEFBED0000), size: 1052672 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\amsi.dll:amsi.dll (00007FFEFA9D0000), size: 86016 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\USERENV.dll:USERENV.dll (00007FFF0B0C0000), size: 151552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.175
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\radeonrays.dll:radeonrays.dll (00007FFEE7510000), size: 344064 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll:mono-2.0-bdwgc.dll (00007FFEE1D10000), size: 10756096 (result: 0), SymType: '-deferred-', PDB: ''
-C:\Windows\SYSTEM32\PROPSYS.dll:PROPSYS.dll (00007FFF07C50000), size: 978944 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.18362.1
-C:\Windows\SYSTEM32\edputil.dll:edputil.dll (00007FFF00540000), size: 143360 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\Windows.StateRepositoryPS.dll:Windows.StateRepositoryPS.dll (00007FFF00210000), size: 1265664 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\urlmon.dll:urlmon.dll (00007FFF02290000), size: 1916928 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 11.0.18362.175
-C:\Windows\SYSTEM32\iertutil.dll:iertutil.dll (00007FFF02BB0000), size: 2777088 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 11.0.18362.116
-C:\Windows\SYSTEM32\CRYPTBASE.DLL:CRYPTBASE.DLL (00007FFF0ABA0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\CLDAPI.dll:CLDAPI.dll (00007FFEFE300000), size: 131072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\SYSTEM32\FLTLIB.DLL:FLTLIB.DLL (00007FFF0ACD0000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\wintypes.dll:wintypes.dll (00007FFF07160000), size: 1388544 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\appresolver.dll:appresolver.dll (00007FFEFCED0000), size: 569344 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\Bcp47Langs.dll:Bcp47Langs.dll (00007FFF03340000), size: 380928 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\SLC.dll:SLC.dll (00007FFF0A0C0000), size: 159744 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\sppc.dll:sppc.dll (00007FFF0A090000), size: 155648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\OneCoreCommonProxyStub.dll:OneCoreCommonProxyStub.dll (00007FFEFAED0000), size: 495616 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
-C:\Windows\System32\OneCoreUAPCommonProxyStub.dll:OneCoreUAPCommonProxyStub.dll (00007FFF06360000), size: 7770112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.86
-C:\Windows\SYSTEM32\dbghelp.dll:dbghelp.dll (00007FFEFD780000), size: 2048000 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.18362.1
+- Loaded All Assemblies, in  3.911 seconds
+Refreshing native plugins compatible for Editor in 4.05 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Проект открыт! Запускаем свою логику.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:12)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-========== OUTPUTTING STACK TRACE ==================
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 12)
 
-0x00007FFF0B87A839 (KERNELBASE) RaiseException
-0x00007FFEDD5BAC35 (Unity) EditorMonoConsole::LogToConsoleImplementation
-0x00007FFEDD5BB8FA (Unity) EditorMonoConsole::LogToConsoleImplementation
-0x00007FFEDE26B9DD (Unity) DebugStringToFilePostprocessedStacktrace
-0x00007FFEDE26AD78 (Unity) DebugStringToFile
-0x00007FFEDC666102 (Unity) CachedReader::OutOfBoundsError
-0x00007FFEDC667114 (Unity) CachedReader::UpdateReadCache
-0x00007FFEDC99D7E6 (Unity) TransferField_NonArray<StreamedBinaryRead,Converter_String>
-0x00007FFEDC90DCCC (Unity) ExecuteSerializationCommands<JSONRead>
-0x00007FFEDC92AC58 (Unity) <lambda_580fa16bd23d18c3e466e7b58feca0a1>::operator()
-0x00007FFEDC924F48 (Unity) TransferScriptingObject<StreamedBinaryRead>
-0x00007FFEDC9266C3 (Unity) SerializableManagedRefTransfer::TransferScriptingObjectWithSerializedRefSupport<StreamedBinaryRead>
-0x00007FFEDC93C146 (Unity) SerializableManagedRefTransfer::TransferBinaryInstanceOnly
-0x00007FFEDC90F49E (Unity) SerializableManagedRefTransfer::RestoreBackupImpl<SerializableManagedRefBackupGenerator>
-0x00007FFEDC90F2C5 (Unity) SerializableManagedRefTransfer::RestoreBackup<SerializableManagedRefBackupGenerator>
-0x00007FFEDC9EF6AC (Unity) SerializableManagedRefsUtilities::RestoreBackups
-0x00007FFEDC931134 (Unity) MonoManager::FinalizeReload
-0x00007FFEDDE66D45 (Unity) ScriptingInitializer::FinalizeReload
-0x00007FFEDDEB62BF (Unity) AssetImportWorkerClient::ReloadScriptingDomain
-0x00007FFEDDE8FD7C (Unity) <lambda_94302c41bc55323db1fed16712a08587>::operator()
-0x00007FFEDDF73C2E (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
-0x00007FFEDDF614BA (Unity) asio::detail::win_iocp_io_context::do_one
-0x00007FFEDDF62824 (Unity) asio::detail::win_iocp_io_context::run
-0x00007FFEDDF7224C (Unity) IOService::Run
-0x00007FFEDDEBA336 (Unity) RunAssetImportWorkerClientV2
-0x00007FFEDDEBA3FB (Unity) RunAssetImporterV2
-0x00007FFEDD6C6048 (Unity) Application::InitializeProject
-0x00007FFEDDCCBD15 (Unity) UnityMain
-0x00007FF637702FBA (Unity) __scrt_common_main_seh
-0x00007FFF0D177BD4 (KERNEL32) BaseThreadInitThunk
-0x00007FFF0E36CE71 (ntdll) RtlUserThreadStart
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorLayoutDataSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+LayoutSetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/LayoutSetting.cs:10)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:46)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-========== END OF STACKTRACE ===========
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
 
-A crash has been intercepted by the crash handler. For call stack and other details, see the latest crash report generated in:
- * C:/Users/S/AppData/Local/Temp/Unity/Editor/Crashes
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorStyleSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+StyleService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/StyleService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:47)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorWindowSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+WindowStateService:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/WindowService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:48)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/FunctionLogicSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+FunctionSetting:.ctor (DIContainer) (at Assets/Edixor/Scripts/UI/SaveOptions/FunctionSetting.cs:14)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:49)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorTabSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+TabService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/TabService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:50)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/HotKeySettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+HotKeySetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/HotKeySetting.cs:13)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:51)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+Сервисы успешно зарегистрированы.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:94)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 94)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.542 seconds
+Domain Reload Profiling: 6444ms
+	BeginReloadAssembly (772ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (52ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (1ms)
+		CreateAndSetChildDomain (135ms)
+	RebuildCommonClasses (132ms)
+	RebuildNativeTypeToScriptingClass (52ms)
+	initialDomainReloadingComplete (107ms)
+	LoadAllAssembliesAndSetupDomain (2837ms)
+		LoadAssemblies (2454ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (862ms)
+			TypeCache.Refresh (83ms)
+				TypeCache.ScanAssembly (4ms)
+			BuildScriptInfoCaches (740ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (2543ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2022ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (48ms)
+			SetLoadedEditorAssemblies (12ms)
+			BeforeProcessingInitializeOnLoad (189ms)
+			ProcessInitializeOnLoadAttributes (1595ms)
+			ProcessInitializeOnLoadMethodAttributes (149ms)
+			AfterProcessingInitializeOnLoad (28ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (26ms)
+Refreshing native plugins compatible for Editor in 4.55 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4796 unused Assets / (1.1 MB). Loaded Objects now: 5310.
+Memory consumption went from 86.0 MB to 84.9 MB.
+Total: 20.691800 ms (FindLiveObjects: 2.191400 ms CreateObjectMapping: 1.337800 ms MarkObjects: 13.231200 ms  DeleteObjects: 3.923800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 6.09 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4785 unused Assets / (0.7 MB). Loaded Objects now: 5310.
+Memory consumption went from 86.2 MB to 85.5 MB.
+Total: 220.310100 ms (FindLiveObjects: 2.729500 ms CreateObjectMapping: 2.219800 ms MarkObjects: 210.519500 ms  DeleteObjects: 4.829400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 6.07 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4785 unused Assets / (394.4 KB). Loaded Objects now: 5310.
+Memory consumption went from 86.2 MB to 85.8 MB.
+Total: 31.358500 ms (FindLiveObjects: 2.367000 ms CreateObjectMapping: 1.603500 ms MarkObjects: 22.355300 ms  DeleteObjects: 5.023900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 3.99 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4785 unused Assets / (1.0 MB). Loaded Objects now: 5310.
+Memory consumption went from 86.2 MB to 85.2 MB.
+Total: 20.158100 ms (FindLiveObjects: 1.894600 ms CreateObjectMapping: 1.075600 ms MarkObjects: 13.528600 ms  DeleteObjects: 3.651500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  9.147 seconds
+Refreshing native plugins compatible for Editor in 5.13 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Проект открыт! Запускаем свою логику.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:12)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 12)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorLayoutDataSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+LayoutSetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/LayoutSetting.cs:10)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:46)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorStyleSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+StyleService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/StyleService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:47)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorWindowSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+WindowStateService:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/WindowService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:48)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/FunctionLogicSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+FunctionSetting:.ctor (DIContainer) (at Assets/Edixor/Scripts/UI/SaveOptions/FunctionSetting.cs:14)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:49)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorTabSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+TabService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/TabService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:50)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/HotKeySettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+HotKeySetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/HotKeySetting.cs:13)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:51)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+Сервисы успешно зарегистрированы.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:94)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 94)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  6.106 seconds
+Domain Reload Profiling: 15303ms
+	BeginReloadAssembly (3644ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (700ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (4ms)
+		CreateAndSetChildDomain (1217ms)
+	RebuildCommonClasses (251ms)
+	RebuildNativeTypeToScriptingClass (44ms)
+	initialDomainReloadingComplete (168ms)
+	LoadAllAssembliesAndSetupDomain (5088ms)
+		LoadAssemblies (4284ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (2097ms)
+			TypeCache.Refresh (377ms)
+				TypeCache.ScanAssembly (25ms)
+			BuildScriptInfoCaches (1616ms)
+			ResolveRequiredComponents (28ms)
+	FinalizeReload (6109ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (5476ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (98ms)
+			SetLoadedEditorAssemblies (47ms)
+			BeforeProcessingInitializeOnLoad (416ms)
+			ProcessInitializeOnLoadAttributes (4672ms)
+			ProcessInitializeOnLoadMethodAttributes (211ms)
+			AfterProcessingInitializeOnLoad (29ms)
+			EditorAssembliesLoaded (4ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (26ms)
+Refreshing native plugins compatible for Editor in 8.63 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4796 unused Assets / (131.0 KB). Loaded Objects now: 5312.
+Memory consumption went from 86.0 MB to 85.9 MB.
+Total: 77.574100 ms (FindLiveObjects: 18.878900 ms CreateObjectMapping: 1.514500 ms MarkObjects: 51.379300 ms  DeleteObjects: 5.788000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  3.985 seconds
+Refreshing native plugins compatible for Editor in 5.40 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Проект открыт! Запускаем свою логику.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:12)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 12)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorLayoutDataSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+LayoutSetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/LayoutSetting.cs:10)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:46)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorStyleSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+StyleService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/StyleService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:47)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorWindowSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+WindowStateService:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/WindowService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:48)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/FunctionLogicSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+FunctionSetting:.ctor (DIContainer) (at Assets/Edixor/Scripts/UI/SaveOptions/FunctionSetting.cs:14)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:49)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/EdixorTabSettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+TabService:.ctor (IRegister) (at Assets/Edixor/Scripts/UI/SaveOptions/TabService.cs:7)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:50)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+[PathResolver] Путь некорректен. Используйте: Assets/Edixor/Scripts/Data/Settings/HotKeySettings.asset
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+PathResolver:ResolvePath (string) (at Assets/Edixor/Scripts/PathResolver.cs:25)
+HotKeySetting:.ctor () (at Assets/Edixor/Scripts/UI/SaveOptions/HotKeySetting.cs:13)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:51)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/PathResolver.cs Line: 25)
+
+Сервисы успешно зарегистрированы.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:94)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Scripts/EdixorEntryPoint.cs:17)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Scripts/EdixorEntryPoint.cs Line: 94)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.437 seconds
+Domain Reload Profiling: 9417ms
+	BeginReloadAssembly (1047ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (55ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (2ms)
+		CreateAndSetChildDomain (342ms)
+	RebuildCommonClasses (161ms)
+	RebuildNativeTypeToScriptingClass (62ms)
+	initialDomainReloadingComplete (189ms)
+	LoadAllAssembliesAndSetupDomain (2519ms)
+		LoadAssemblies (2421ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (595ms)
+			TypeCache.Refresh (50ms)
+				TypeCache.ScanAssembly (6ms)
+			BuildScriptInfoCaches (516ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (5439ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (4441ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (102ms)
+			SetLoadedEditorAssemblies (30ms)
+			BeforeProcessingInitializeOnLoad (472ms)
+			ProcessInitializeOnLoadAttributes (3655ms)
+			ProcessInitializeOnLoadMethodAttributes (155ms)
+			AfterProcessingInitializeOnLoad (26ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (26ms)
+Refreshing native plugins compatible for Editor in 4.26 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4796 unused Assets / (0.9 MB). Loaded Objects now: 5314.
+Memory consumption went from 86.0 MB to 85.2 MB.
+Total: 21.157200 ms (FindLiveObjects: 1.812700 ms CreateObjectMapping: 1.049200 ms MarkObjects: 14.191300 ms  DeleteObjects: 4.095700 ms)
+
+Prepare: number of updated asset objects reloaded= 1

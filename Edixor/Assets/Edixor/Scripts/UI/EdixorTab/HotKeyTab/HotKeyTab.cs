@@ -1,13 +1,16 @@
+using HotKeySettingEntries = ISettingEntries<HotKeySaveAsset.KeyActionDictionaryEntry, string>;
+
+using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
 using System;
-using System.Collections.Generic;
 
 [Serializable]
 public class HotKeyTab : EdixorTab
 {
-    private HotKeySetting HotKeySetting;
+    private HotKeySettingEntries hotKeySettingEntries;
     private List<HotKeySaveAsset.KeyActionDictionaryEntry> hotkeyEntries;
     private VisualElement designContainer;
 
@@ -42,8 +45,8 @@ public class HotKeyTab : EdixorTab
 
     protected void Start()
     {
-        HotKeySetting = container.ResolveNamed<HotKeySetting>(ServiceNames.HotKeySetting);
-        hotkeyEntries = HotKeySetting.GetAllEntries();
+        hotKeySettingEntries = container.ResolveNamed<HotKeySetting>(ServiceNames.HotKeySetting);
+        hotkeyEntries = hotKeySettingEntries.GetAllEntries().ToList();
 
         designContainer = root.Q<VisualElement>("hotkeys-container");
         RefreshHotKeysUI();
@@ -72,7 +75,7 @@ public class HotKeyTab : EdixorTab
 
     private void RefreshHotKeysUI()
     {
-        hotkeyEntries = HotKeySetting.GetAllEntries();
+        hotkeyEntries = hotKeySettingEntries.GetAllEntries().ToList();
 
         if (designContainer != null)
         {
@@ -166,7 +169,7 @@ public class HotKeyTab : EdixorTab
             entry.Values[dataIndex].Combination = new List<KeyCode>(keys);
             Debug.Log($"Горячая клавиша обновлена: {string.Join(" + ", keys)}");
 
-            HotKeySetting.UpdateHotKeyInDictionary(entry.Key, entry.Values);
+            hotKeySettingEntries.UpdateEntry(entry.Key, entry);
             RefreshHotKeysUI();
         });
     }
@@ -176,7 +179,7 @@ public class HotKeyTab : EdixorTab
         KeyActionData keyData = entry.Values[dataIndex];
         keyData.enable = !keyData.enable;
         Debug.Log($"Горячая клавиша для {entry.Key}, item {dataIndex + 1} теперь {(keyData.enable ? "Включена" : "Выключена")}");
-        HotKeySetting.UpdateHotKeyInDictionary(entry.Key, entry.Values);
+        hotKeySettingEntries.UpdateEntry(entry.Key, entry);
         if (toggleButton != null)
             toggleButton.text = keyData.enable ? "Disable" : "Enable";
         RefreshHotKeysUI();
@@ -189,14 +192,14 @@ public class HotKeyTab : EdixorTab
             keyData.enable = !keyData.enable;
         }
         Debug.Log($"Группа '{entry.Key}' теперь {(entry.Values[0].enable ? "Включена" : "Выключена")}");
-        HotKeySetting.UpdateHotKeyInDictionary(entry.Key, entry.Values);
+        hotKeySettingEntries.UpdateEntry(entry.Key, entry);
         RefreshHotKeysUI();
     }
 
     private void DeleteGroup(string key)
     {
         Debug.Log($"Удаляем группу '{key}'");
-        HotKeySetting.RemoveHotKeyFromDictionary(key);
+        hotKeySettingEntries.RemoveEntry(key);
         RefreshHotKeysUI();
     }
 }

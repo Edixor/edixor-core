@@ -1,13 +1,14 @@
-using System;
+using HotKeySettings = EdixorSettingsData<HotKeySaveAsset, KeyActionData, HotKeyId>;
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 public class HotKeyController : IHotKeyController
 {
     private DIContainer container;
-    private HotKeySetting keyService;
-    private IFactory factoryBuilder;
+    private HotKeySettings keyService;
     private List<KeyAction> hotkeyActions = new List<KeyAction>();
     private HashSet<KeyCode> currentlyPressedKeys;
     private HashSet<List<KeyCode>> activatedCombinations;
@@ -29,7 +30,7 @@ public class HotKeyController : IHotKeyController
             return;
         }
 
-        hotkeyActions = keyService.GetAllHotKeys()
+        hotkeyActions = keyService.GetAllItem()
             .Select(hotKeyData => new KeyAction(hotKeyData, container))
             .ToList();
 

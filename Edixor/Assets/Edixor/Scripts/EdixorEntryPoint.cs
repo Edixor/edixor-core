@@ -43,15 +43,12 @@ public static class EdixorEntryPoint
 
         container.Register<IRegister>(register);
 
-        container.RegisterNamed<LayoutService>(ServiceNames.LayoutSetting, new LayoutService(register));
+        container.RegisterNamed<LayoutSetting>(ServiceNames.LayoutSetting, new LayoutSetting());
         container.RegisterNamed<StyleService>(ServiceNames.StyleSetting, new StyleService(register));
         container.RegisterNamed<WindowStateService>(ServiceNames.WindowStateSetting, new WindowStateService());
-        container.RegisterNamed<FunctionService>(ServiceNames.FunctionSetting, new FunctionService(container));
+        container.RegisterNamed<FunctionSetting>(ServiceNames.FunctionSetting, new FunctionSetting(container));
         container.RegisterNamed<TabService>(ServiceNames.TabSetting, new TabService(register));
         container.RegisterNamed<HotKeySetting>(ServiceNames.HotKeySetting, new HotKeySetting());
-
-        container.RegisterNamed<LayoutLogic>("Standard", new Standard());
-        container.RegisterNamed<LayoutLogic>("SidePanel", new SidePanel());
 
         container.RegisterNamed<FunctionLogic>("RestartFunc", new Restart());
         container.RegisterNamed<FunctionLogic>("Close", new Close());
@@ -60,12 +57,13 @@ public static class EdixorEntryPoint
 
         container.RegisterSingleton<HotkeyCaptureHandler, HotkeyCaptureHandler>();
 
-        container.Register<IUIController>(new UIController());
+        container.Register<IUIController>(new UIController(container));
         container.Register<ITabController>(new TabController(container));
-        container.Register<IFunctionController>(new FunctionController());
+        container.Register<IFunctionController>(new FunctionController(container));
         container.Register<IHotKeyController>(new HotKeyController(container));
 
-        container.Register<IFactoryHotKey>(new FactoryHotKey(container, container.Resolve<IHotKeyController>()));
+        container.Register<IFactoryHotKey>(new FactoryHotKey(container.ResolveNamed<HotKeySetting>(ServiceNames.HotKeySetting)));
+        container.Register<IFactoryFunction>(new FactoryFunction(container.ResolveNamed<FunctionSetting>(ServiceNames.FunctionSetting)));
 
         container.RegisterNamed<IEdixorInterfaceFacade>(ServiceNames.EdixorUIManager_Edixor,
         new EdixorInterfaceFacade(
@@ -73,7 +71,9 @@ public static class EdixorEntryPoint
             container.Resolve<IUIController>(),
             container.Resolve<IFunctionController>(),
             container.Resolve<IHotKeyController>(),
-            container.Resolve<IFactoryHotKey>()));
+            container.Resolve<IFactoryHotKey>(),
+            container.Resolve<IFactoryFunction>()
+            ));
             
         container.RegisterNamed<IEdixorInterfaceFacade>(ServiceNames.EdixorUIManager_EdixorWindow,
         new EdixorInterfaceFacade(
@@ -81,7 +81,9 @@ public static class EdixorEntryPoint
             container.Resolve<IUIController>(),
             container.Resolve<IFunctionController>(),
             container.Resolve<IHotKeyController>(),
-            container.Resolve<IFactoryHotKey>()));
+            container.Resolve<IFactoryHotKey>(),
+            container.Resolve<IFactoryFunction>()
+            ));
 
         container.RegisterNamed<IHotkeyCaptureHandler>(ServiceNames.IHotkeyCaptureHandler, new HotkeyCaptureHandler());
 

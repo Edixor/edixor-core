@@ -8,7 +8,7 @@ using System;
 [Serializable]
 public class SettingTab : EdixorTab
 {
-    private FunctionService functionSave;
+    private FunctionSetting functionSave;
     private StyleLogic styleLogic = new StyleLogic();
     private StyleParameters styleParameters;
     private StyleService styleService;
@@ -28,13 +28,13 @@ public class SettingTab : EdixorTab
 
     private void Start()
     {
-        functionSave = container.ResolveNamed<FunctionService>(ServiceNames.FunctionSetting);
+        functionSave = container.ResolveNamed<FunctionSetting>(ServiceNames.FunctionSetting);
         styleService = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting);
 
         SetupContainer("layout-container", AddLayoutToContainer);
         SetupContainer("style-container", AddStyleToContainer);
 
-        AddFunctionSettings(functionSave.GetFunctions());
+        AddFunctionSettings(functionSave.GetAllItemFull());
     }
 
     private void SetupContainer(string containerName, Action<VisualElement> action)
@@ -50,7 +50,7 @@ public class SettingTab : EdixorTab
 
     private void AddLayoutToContainer(VisualElement designContainer)
     {
-        var layoutDataArray = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetLayouts().ToArray();
+        LayoutData[] layoutDataArray = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetAllItem();
         var styleData = styleService.GetCurrentItem();
 
         if (layoutDataArray.Length == 0)
@@ -68,7 +68,7 @@ public class SettingTab : EdixorTab
     private void AddStyleToContainer(VisualElement styleContainer)
     {
         var styleDataArray = styleService.GetStyles().ToArray();
-        var layoutData = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).GetCurrentItem();
+        LayoutData layoutData = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetCorrectItem();
 
         if (styleDataArray.Length == 0)
         {
@@ -98,14 +98,14 @@ public class SettingTab : EdixorTab
 
         EdixorDesign edixorDesign = new EdixorDesign(
             isLayout ? (StyleData)layoutData : (StyleData)data,
-            isLayout ? (EdixorLayoutData)data : (EdixorLayoutData)layoutData,
+            isLayout ? (LayoutData)data : (LayoutData)layoutData,
             banner, container);
         edixorDesign.LoadUI(true);
 
         styleParameters = styleService.GetStyleParameter<EdixorParameters>(isLayout ? GetStyleIndex((StyleData)layoutData) : index);
         SetBannerStyle(banner, styleParameters);
 
-        string bannerName = isLayout ? ((EdixorLayoutData)data).Name : ((StyleData)data).Name;
+        string bannerName = isLayout ? ((LayoutData)data).Name : ((StyleData)data).Name;
         Label bannerNameLabel = new Label(bannerName);
         bannerNameLabel.AddToClassList("banner-name");
 
@@ -139,7 +139,7 @@ public class SettingTab : EdixorTab
         styleLogic.Init(banner, parameters);
     }
 
-    private void AddFunctionSettings(List<Function> functions)
+    private void AddFunctionSettings(Function[] functions)
     {
         VisualElement functionContainer = root.Q<VisualElement>("function-container");
         VisualElement functionSettingContainer = root.Q<VisualElement>("function-setting-container");

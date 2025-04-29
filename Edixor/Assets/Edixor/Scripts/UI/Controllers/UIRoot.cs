@@ -1,26 +1,25 @@
 using UnityEngine.UIElements;
+using UnityEngine;
 public class UIRoot : UIContent
 {
-    private readonly WindowStateService windowState;
     private readonly StyleService styleService;
-    private readonly LayoutService layoutService;
+    private readonly LayoutSetting layoutSetting;
     private readonly DIContainer container;
-
     private EdixorDesign design;
 
     public UIRoot(DIContainer container)
     {
         this.container = container;
-        this.windowState = container.ResolveNamed<WindowStateService>(ServiceNames.WindowStateSetting);
-        this.styleService = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting);
-        this.layoutService = container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting);
     }
 
     public override VisualElement LoadUI()
     {
+        Debug.Log("layoutData == null? " + (layoutData == null));
+        Debug.Log("styleData  == null? " + (styleData  == null));
+
         design = new EdixorDesign(
-            styleService.GetCurrentItem(),
-            layoutService.GetCurrentItem(),
+            styleData,
+            layoutData,
             root,
             container
         );

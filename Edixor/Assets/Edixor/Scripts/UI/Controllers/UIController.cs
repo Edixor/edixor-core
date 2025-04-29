@@ -5,10 +5,15 @@ public class UIController : IUIController
     private VisualElement _root;
     private VisualElement contentElement;
     private UIContent content;
+    private readonly DIContainer _container;
+    public StyleData Style { get; private set; }
+    public LayoutData Layout { get; private set; }
 
-    public UIController(VisualElement root = null)
+    public UIController(DIContainer container, VisualElement root = null)
     {
         _root = root;
+        Style = container.ResolveNamed<StyleService>(ServiceNames.StyleSetting).GetCurrentItem();
+        Layout = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetCorrectItem();
     }
 
     public void InitRoot(VisualElement root)
@@ -45,8 +50,11 @@ public class UIController : IUIController
 
         _root.Clear();
 
+        Debug.Log("layoutData == null? " + (Layout == null));
+        Debug.Log("styleData  == null? " + (Style  == null));
+
         contentElement = new VisualElement();
-        content.Init(contentElement);
+        content.Init(contentElement, Layout, Style);
 
         VisualElement newContent = content.LoadUI();
         newContent.AddToClassList("content");

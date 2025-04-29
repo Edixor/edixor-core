@@ -1,25 +1,41 @@
+using UnityEngine.UIElements;
+
 public class FunctionController : IFunctionController
 {
-    //private readonly IFunctionFactory _functionFactory;
-    private readonly IFunctionSetting _functionSetting;
+    private DIContainer _container;
+    private readonly FunctionSetting _functionSetting;
+    private readonly LayoutSetting _layoutSetting;
+    private FactoryUIFunction factory = new FactoryUIFunction();
 
-    public FunctionController()
+    public FunctionController(DIContainer container)
     {
-
+        _container = container;
+        _functionSetting = _container.ResolveNamed<FunctionSetting>(ServiceNames.FunctionSetting);
+        _layoutSetting = _container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting);
     }
 
-    public void AddFunction()
+    public void InitFunction(VisualElement root = null)
     {
-        // Implementation for adding a function
+        factory.Init(root);
+        
+        LayoutParameters parameters = _layoutSetting.GetCorrectItem().AssetParameters;
+        foreach (var element in parameters.Elements)
+        {
+            foreach (string name in element.functionNames)
+            {
+                Function function = _functionSetting.GetItemFull(name);
+                factory.Create(function, element.elementName);
+            }
+        }
     }
 
-    public void RemoveFunction(string functionId)
-    {
-        // Implementation for removing a function
-    }
+    public void AddFunction() {
 
-    public void Execute(string functionId)
-    {
-        // Implementation for executing a function
+    }
+    public void RemoveFunction(string functionId) {
+
+    }
+    public void Execute(string functionId) {
+        
     }
 }

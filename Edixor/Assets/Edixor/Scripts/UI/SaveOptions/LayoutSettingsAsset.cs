@@ -1,17 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 [CreateAssetMenu(fileName = "EdixorLayoutDataSettings", menuName = "Edixor/LayoutSettings", order = 1)]
-public class LayoutSaveAsset : ScriptableObject, ISaveCurrentAsset<EdixorLayoutData>
+public class LayoutSaveAsset : ScriptableObject
 {
     [SerializeField]
-    private List<EdixorLayoutData> layouts = new();
+    private List<LayoutData> layouts = new();
 
-    public List<EdixorLayoutData> SaveItems
+    public List<LayoutData> SaveItems
     {
-        get => layouts.ToList();
-        set => layouts = value?.ToList() ?? new();
+        get => layouts;
+        set => layouts = value ?? new List<LayoutData>();
     }
 
     [SerializeField]

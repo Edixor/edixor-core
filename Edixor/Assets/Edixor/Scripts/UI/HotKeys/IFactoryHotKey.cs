@@ -1,5 +1,6 @@
 using System;
 public interface IFactoryHotKey
 {
-    void CreateHotKey(string keyOrPath, Action action = null);
+    void CreateFromAssets(string path, HotKeyId key, Action action = null);
+    void CreateExample(HotKeyExampleData data, HotKeyId key);
 }

@@ -14,6 +14,7 @@ public class MyTab : EdixorTab
     private void Awake()
     {
         tabName = "My Custom Tab";
+        LoadHotKey("Assets/Test/KeyActionData.asset", GenericMenuDemonstration);
     }
 
     private void Start()

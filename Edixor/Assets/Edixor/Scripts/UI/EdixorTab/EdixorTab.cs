@@ -142,9 +142,21 @@ public abstract class EdixorTab
         root.styleSheets.Add(sheet);
     }
 
-    protected void LoadHotKey(string path, Action action = null)
+    protected void LoadHotKey(string path, Action action = null, string title = null)
     {
-        setting.LoadHotKey(path, action);
+        Debug.Log($"Loading hotkey from path: {path}");
+        if(string.IsNullOrEmpty(title)) 
+            title = tabName;
+        setting.LoadHotKey(path, title, action);
+        OnHotKeyAdded?.Invoke(new HotKeyTabInfo(tabName));
+    }
+
+    protected void LoadHotKey(string path, string title = null, Action action = null)
+    {
+        Debug.Log($"Loading hotkey from path: {path}");
+        if(string.IsNullOrEmpty(title)) 
+            title = tabName;
+        setting.LoadHotKey(path, title, action);
         OnHotKeyAdded?.Invoke(new HotKeyTabInfo(tabName));
     }
 
@@ -156,7 +168,7 @@ public abstract class EdixorTab
 
     protected void ChangeLayout(int index)
     {
-        container.ResolveNamed<LayoutService>(ServiceNames.LayoutSetting).SetCurrentItem(index);
+        container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).UpdateIndex(index);
     }
 
     public void DeleteUI()

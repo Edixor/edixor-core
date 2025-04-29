@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f685125267c3244b55ecbee2e2673e, type: 3}
+  m_Name: Default 1
+  m_EditorClassIdentifier: 
+  layoutName: sdfv
+  layoutDescription: vsddv
+  pathUss: Assets/Edixor/Scripts/UI/LayoutUxml/Standard/Standart.uss
+  pathUxml: Assets/Edixor/Scripts/UI/LayoutUxml/Standard/Standart.uxml
+  assetParameters: {fileID: 11400000, guid: 919037835317c2a4d8667fc22aea6d62, type: 2}
