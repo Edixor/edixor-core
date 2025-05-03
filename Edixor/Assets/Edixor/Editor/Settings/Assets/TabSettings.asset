@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56dea8e882ee824f93a5a93ba14a7ab, type: 3}
+  m_Name: TabSettings
+  m_EditorClassIdentifier: 
+  items:
+  - rid: 2779623706150568017
+  - rid: 2779623748467949630
+  currentIndex: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 2779623706150568017
+      type: {class: NewTab, ns: , asm: Assembly-CSharp-Editor}
+      data:
+        tabName: New Tab
+        openCount: 0
+        pathUxml: Tabs/NewTab/NewTab.uxml
+        pathUss: Tabs/NewTab/NewTab.uss
+    - rid: 2779623748467949630
+      type: {class: HotKeyTab, ns: , asm: Assembly-CSharp-Editor}
+      data:
+        tabName: Hot Keys
+        openCount: 0
+        pathUxml: Tabs/HotKeyTab/HotKeyTab.uxml
+        pathUss: Tabs/HotKeyTab/HotKeyTab.uss

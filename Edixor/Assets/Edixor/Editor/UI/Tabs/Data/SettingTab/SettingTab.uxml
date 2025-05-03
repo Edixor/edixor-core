@@ -1,0 +1,13 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="root-setting" class="main-container" style="padding-left: 0; padding-right: 0;">
+        <engine:Label text="Basic Setting" name="h1" parse-escape-sequences="false" selectable="false" class="basic-setting-label" style="height: 23px; width: 349px; -unity-text-align: upper-center; right: 100%; left: 0; -unity-font-style: bold;" />
+        <engine:Label text="Design" name="h2" class="basic-setting-label" style="height: 23px; width: 309px; border-left-width: 10px;" />
+        <engine:Label text="styles:" style="font-size: 22px; border-left-width: 20px; cursor: initial; margin-bottom: 2px; border-left-color: rgba(0, 0, 0, 0);" />
+        <engine:VisualElement name="style-container" class="design-container" style="border-left-width: 0; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.47);" />
+        <engine:Label text="layouts:" emoji-fallback-support="true" style="font-size: 22px; border-left-width: 20px;" />
+        <engine:VisualElement name="layout-container" class="design-container" style="border-left-width: 0; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.47); flex-direction: row;" />
+        <engine:Label text="Function Setting" class="basic-setting-label" style="height: 25px; width: 309px; border-left-width: 10px;" />
+        <engine:VisualElement name="function-container" style="flex-grow: 1; flex-direction: row; background-color: rgba(0, 0, 0, 0.47);" />
+        <engine:VisualElement name="function-setting-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.47);" />
+    </engine:VisualElement>
+</engine:UXML>
