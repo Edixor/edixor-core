@@ -1,8 +1,9 @@
-using System;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
+using ExTools;
+using System;
 
 public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 {
@@ -93,7 +94,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 
     private void OnTabAddedFromDrag(string filePath, string className)
     {
-        Debug.Log($"Tab {className} is being added from file: {filePath}");
+        ExDebug.Log($"Tab {className} is being added from file: {filePath}");
 
         FileDragHandler.AddTabFromFile(filePath, className, (file, tabType) =>
         {
@@ -146,11 +147,11 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
     {
         if (!WindowStateSetting.IsWindowOpen())
         {
-            Debug.LogWarning("Window is not open, skipping restart.");
+            ExDebug.LogWarning("Window is not open, skipping restart.");
             return;
         }
 
-        Debug.Log("Restarting window...");
+        ExDebug.Log("Restarting window...");
 
         CurrentWindow.Close();
         ShowWindow<EdixorWindow>("EdixorWindow");
@@ -167,7 +168,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         WindowStateSetting.SetMinimized(true);
         minSize = minimalSizeThreshold;
         CurrentWindow.position = new Rect(position.x, position.y, minimalSizeThreshold.x, minimalSizeThreshold.y);
-        Debug.Log("Window minimized to minimal size: " + minimalSizeThreshold);
+        ExDebug.Log("Window minimized to minimal size: " + minimalSizeThreshold);
     }
 
     public void ReturnWindowToOriginalSize()

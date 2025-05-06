@@ -1,7 +1,8 @@
-using System;
+using UnityEngine.UIElements;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.UIElements;
+using ExTools;
+using System;
 
 [Serializable]
 public class Restart : FunctionLogic, IFunctionSetting
@@ -46,7 +47,7 @@ public class Restart : FunctionLogic, IFunctionSetting
         }
         else
         {
-            Debug.LogError("Window is null in Restart action");
+            ExDebug.LogError("Window is null in Restart action");
         }
     }
 

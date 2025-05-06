@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using ExTools;
 using System;
 
 namespace Commands {
@@ -77,7 +78,7 @@ namespace Commands {
             } 
             else
             {
-                Debug.LogError("Parent game object not found.");
+                ExDebug.LogError("Parent game object not found.");
             }
         }
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
+using ExTools;
 using System;
 
 public class Setting : FunctionLogic
@@ -13,18 +14,18 @@ public class Setting : FunctionLogic
     {
         if (tabController == null)
         {
-            Debug.LogError("TabController is null.");
+            ExDebug.LogError("TabController is null.");
             return;
         }
         if (uiBase == null)
         {
-            Debug.LogError("UIController is null.");
+            ExDebug.LogError("UIController is null.");
             return;
         }
         VisualElement parentContainer = uiBase.GetElement("middle-section-content");
         if (parentContainer == null)
         {
-            Debug.LogError("ParentContainer is null.");
+            ExDebug.LogError("ParentContainer is null.");
             return;
         }
 

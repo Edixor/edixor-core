@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine;
+using ExTools;
 using System;
 
 public abstract class LayoutLogic
@@ -20,7 +21,7 @@ public abstract class LayoutLogic
             VisualElement uiElement = rootElement.Q<VisualElement>(element.Key);
             if (uiElement == null)
             {
-                UnityEngine.Debug.LogWarning($"UI элемент с ключом '{element.Key}' не найден.");
+                ExDebug.LogWarning($"UI элемент с ключом '{element.Key}' не найден.");
                 continue;
             }
 
@@ -37,7 +38,7 @@ public abstract class LayoutLogic
                 }
                 else
                 {
-                    Debug.LogError("Ошибка: backgroundImage не является Texture2D");
+                    ExDebug.LogError("Ошибка: backgroundImage не является Texture2D");
                 }
 
 
@@ -69,7 +70,7 @@ public abstract class LayoutLogic
         } 
         else
         {
-            Debug.LogWarning("Контейнер для вкладок не найден.");
+            ExDebug.LogWarning("Контейнер для вкладок не найден.");
         }
 
         VisualElement middleSection = rootElement.Q<VisualElement>("middle-section-content");
@@ -80,7 +81,7 @@ public abstract class LayoutLogic
         }
         else
         {
-            Debug.LogWarning("Контейнер для текста не найден.");
+            ExDebug.LogWarning("Контейнер для текста не найден.");
         }
 
         foreach (var element in elements)
@@ -88,7 +89,7 @@ public abstract class LayoutLogic
             VisualElement uiElement = rootElement.Q<VisualElement>(element.Key);
             if (uiElement == null)
             {
-                UnityEngine.Debug.LogWarning($"UI элемент с ключом '{element.Key}' не найден");
+                ExDebug.LogWarning($"UI элемент с ключом '{element.Key}' не найден");
                 continue;
             }
 
@@ -148,17 +149,17 @@ public abstract class LayoutLogic
     protected FunctionData LoadFunctionData(string name) {
         if (container == null)
         {
-            Debug.LogError("DIContainer не установлен. Вызови SetContainer перед Init или LoadFunction.");
+            ExDebug.LogError("DIContainer не установлен. Вызови SetContainer перед Init или LoadFunction.");
         }
         var service = container.ResolveNamed<FunctionSetting>(ServiceNames.FunctionSetting);
         if (service == null)
         {
-            Debug.LogError($"Сервис с ключом '{ServiceNames.FunctionSetting}' не найден в DIContainer.");
+            ExDebug.LogError($"Сервис с ключом '{ServiceNames.FunctionSetting}' не найден в DIContainer.");
         }
         var functionData = service.GetItem(name);
         if (functionData == null)
         {
-            Debug.LogError($"Функция '{name}' не найдена в FunctionService.");
+            ExDebug.LogError($"Функция '{name}' не найдена в FunctionService.");
         }
 
         return container.ResolveNamed<FunctionSetting>(ServiceNames.FunctionSetting).GetItem(name);

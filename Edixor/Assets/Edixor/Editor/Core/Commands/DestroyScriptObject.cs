@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using ExTools;
 using System;
 
 namespace Commands {
@@ -50,7 +51,6 @@ namespace Commands {
 
             if (scriptObject == null || arrayTask)
             { 
-                Debug.Log(index);
                 createScriptObject = func.Invoke(index);
                 scriptObject = createScriptObject.Get<T>();
             }

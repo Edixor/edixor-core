@@ -28,7 +28,7 @@ public class NewTab : EdixorTab
         VisualElement newsContainer = root.Q<VisualElement>("news");
         if (designContainer == null)
         {
-            Debug.LogError("Design container not found.");
+            ExDebug.LogError("Design container not found.");
             return;
         }
 

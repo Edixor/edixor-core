@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using ExTools;
 using System;
 
 namespace Commands
@@ -47,16 +48,16 @@ namespace Commands
                     FileUtil.CopyFileOrDirectory(pathCopy, createdFolderPath);
                     AssetDatabase.Refresh();
 
-                    Debug.Log($"<b><color=cyan>MetaGame</color></b>: Folder '{nameNewFolder}' created and contents copied from '{pathCopy}' to '{createdFolderPath}'");
+                    ExDebug.Log($"<b><color=cyan>MetaGame</color></b>: Folder '{nameNewFolder}' created and contents copied from '{pathCopy}' to '{createdFolderPath}'");
                 }
                 else
                 {
-                    Debug.LogWarning($"<b><color=cyan>MetaGame</color></b>: Folder already exists: {createdFolderPath}");
+                    ExDebug.LogWarning($"<b><color=cyan>MetaGame</color></b>: Folder already exists: {createdFolderPath}");
                 }
             }
             catch (System.Exception ex)
             {
-                Debug.LogError($"<b><color=cyan>MetaGame</color></b>: Error creating or copying folder: {ex.Message}");
+                ExDebug.LogError($"<b><color=cyan>MetaGame</color></b>: Error creating or copying folder: {ex.Message}");
             }
         }
 
@@ -67,29 +68,29 @@ namespace Commands
                 if (Directory.Exists(createdFolderPath))
                 {
                     Directory.Delete(createdFolderPath, true);
-                    Debug.Log($"<b><color=cyan>MetaGame</color></b>: Folder deleted: {createdFolderPath}");
+                    ExDebug.Log($"<b><color=cyan>MetaGame</color></b>: Folder deleted: {createdFolderPath}");
 
                     string metaFilePath = createdFolderPath + ".meta";
                     if (File.Exists(metaFilePath))
                     {
                         File.Delete(metaFilePath);
-                        Debug.Log($"<b><color=cyan>MetaGame</color></b>: .meta file deleted: {metaFilePath}");
+                        ExDebug.Log($"<b><color=cyan>MetaGame</color></b>: .meta file deleted: {metaFilePath}");
                     }
                     else
                     {
-                        Debug.LogWarning($"<b><color=cyan>MetaGame</color></b>: .meta file not found for folder: {createdFolderPath}");
+                        ExDebug.LogWarning($"<b><color=cyan>MetaGame</color></b>: .meta file not found for folder: {createdFolderPath}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"<b><color=cyan>MetaGame</color></b>: Folder does not exist: {createdFolderPath}");
+                    ExDebug.LogWarning($"<b><color=cyan>MetaGame</color></b>: Folder does not exist: {createdFolderPath}");
                 }
 
                 AssetDatabase.Refresh();
             }
             catch (System.Exception ex)
             {
-                Debug.LogError($"<b><color=cyan>MetaGame</color></b>: Error deleting folder {createdFolderPath}: {ex.Message}");
+                ExDebug.LogError($"<b><color=cyan>MetaGame</color></b>: Error deleting folder {createdFolderPath}: {ex.Message}");
             }
         }
 

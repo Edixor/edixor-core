@@ -1,0 +1,13 @@
+<!-- DebugTab.uxml -->
+<UXML xmlns="UnityEngine.UIElements">
+  <VisualElement style="flex-grow:1; flex-direction: column;">
+    <!-- верхняя панель: логи (60%) -->
+    <ScrollView name="log-scroll" style="flex-grow: 6; padding:4px;" />
+    <!-- нижняя панель: текстовое поле с деталями (40%) -->
+    <TextField name="detail-field"
+               style="flex-grow: 4; padding:8px; background-color:#2d2d30; white-space: pre-wrap;"
+               multiline="true"
+               isReadOnly="true"
+               focusable="true" />
+  </VisualElement>
+</UXML>

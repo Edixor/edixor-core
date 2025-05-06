@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
+using ExTools;
 using System;
 
 public class FunctionSetting : HotKeySettingsBase, SettingItemFull
@@ -84,7 +85,7 @@ public class FunctionSetting : HotKeySettingsBase, SettingItemFull
         // 3. Вставляем либо в конец, либо сразу после элемента с именем key
         if (string.IsNullOrEmpty(key))
         {
-            Debug.Log($"Добавление функции без ключа: {item.Name}");
+            ExDebug.Log($"Добавление функции без ключа: {item.Name}");
             list.Add(item);
         }
         else
@@ -94,7 +95,7 @@ public class FunctionSetting : HotKeySettingsBase, SettingItemFull
             if (idx < 0)
                 throw new InvalidOperationException($"Не найден элемент с именем '{key}', после которого нужно вставить.");
 
-            Debug.Log($"Добавление функции '{item.Name}' после '{key}'");
+            ExDebug.Log($"Добавление функции '{item.Name}' после '{key}'");
             list.Insert(idx + 1, item);
         }
 

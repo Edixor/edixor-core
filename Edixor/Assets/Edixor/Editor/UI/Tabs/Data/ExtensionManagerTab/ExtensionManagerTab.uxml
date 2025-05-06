@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <!-- Корневой контейнер вкладки -->
+  <ui:VisualElement class="root-container">
+    
+    <!-- Заголовок вкладки -->
+    <ui:Label text="Edixor Extensions" class="header-label" />
+
+    <!-- Кнопка обновления (сверху справа) -->
+    <ui:Button name="refresh-button" text="Refresh" class="refresh-button" />
+
+    <!-- Список расширений -->
+    <ui:ScrollView name="extension-list" class="list-container" />
+
+  </ui:VisualElement>
+</ui:UXML>

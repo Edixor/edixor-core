@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
+using ExTools;
 using System;
 
 public class EdixorDesign {
@@ -43,13 +44,13 @@ public class EdixorDesign {
 
         if (tree == null)
         {
-            Debug.LogError("[EdixorDesign] LayoutData is missing VisualTreeAsset (uxml).");
+            ExDebug.LogError("[EdixorDesign] LayoutData is missing VisualTreeAsset (uxml).");
             return;
         }
 
         if (layoutSheet == null)
         {
-            Debug.LogWarning("[EdixorDesign] LayoutData is missing StyleSheet (uss). Proceeding without styles.");
+            ExDebug.LogWarning("[EdixorDesign] LayoutData is missing StyleSheet (uss). Proceeding without styles.");
         }
 
         // Instantiate UI

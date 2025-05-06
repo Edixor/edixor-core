@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - rid: 2779623706150568017
-  - rid: 2779623748467949630
+  - rid: 2779623796251033664
   currentIndex: 1
   references:
     version: 2
@@ -26,10 +26,10 @@ MonoBehaviour:
         openCount: 0
         pathUxml: Tabs/NewTab/NewTab.uxml
         pathUss: Tabs/NewTab/NewTab.uss
-    - rid: 2779623748467949630
-      type: {class: HotKeyTab, ns: , asm: Assembly-CSharp-Editor}
+    - rid: 2779623796251033664
+      type: {class: ExtensionManagerTab, ns: , asm: Assembly-CSharp-Editor}
       data:
-        tabName: Hot Keys
+        tabName: Extensions
         openCount: 0
-        pathUxml: Tabs/HotKeyTab/HotKeyTab.uxml
-        pathUss: Tabs/HotKeyTab/HotKeyTab.uss
+        pathUxml: Tabs/ExtensionManagerTab/ExtensionManagerTab.uxml
+        pathUss: Tabs/ExtensionManagerTab/ExtensionManagerTab.uss

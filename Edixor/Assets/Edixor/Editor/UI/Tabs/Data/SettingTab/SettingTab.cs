@@ -43,7 +43,7 @@ public class SettingTab : EdixorTab
         VisualElement container = root.Q<VisualElement>(containerName);
         if (container == null)
         {
-            Debug.LogError($"{containerName} not found.");
+            ExDebug.LogError($"{containerName} not found.");
             return;
         }
         action(container);
@@ -56,7 +56,7 @@ public class SettingTab : EdixorTab
 
         if (layoutDataArray.Length == 0)
         {
-            Debug.LogWarning("Layouts not found.");
+            ExDebug.LogWarning("Layouts not found.");
             return;
         }
 
@@ -73,7 +73,7 @@ public class SettingTab : EdixorTab
 
         if (styleDataArray.Length == 0)
         {
-            Debug.LogWarning("Styles not found.");
+            ExDebug.LogWarning("Styles not found.");
             return;
         }
 
@@ -114,7 +114,7 @@ public class SettingTab : EdixorTab
 
         Button selectButton = new Button(() =>
         {
-            Debug.Log($"Banner with {(isLayout ? "layout" : "style")} {bannerName} selected.");
+            ExDebug.Log($"Banner with {(isLayout ? "layout" : "style")} {bannerName} selected.");
             if (isLayout)
                 ChangeLayout(index);
             else
@@ -174,7 +174,7 @@ public class SettingTab : EdixorTab
                 }
                 else
                 {
-                    Debug.LogError("No icon found for function: " + func.Data.Name);
+                    ExDebug.LogError("No icon found for function: " + func.Data.Name);
                 }
 
                 function.AddToClassList("function");

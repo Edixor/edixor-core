@@ -1,7 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using ExTools;
+using System;
 
 public class HotkeyCaptureHandler : IHotkeyCaptureHandler
 {
@@ -60,7 +61,7 @@ public class HotkeyCaptureHandler : IHotkeyCaptureHandler
 
                 if (capturedKeys.Count == 3)
                 {
-                    Debug.Log("Достигнуто 3 клавиши, принимаем комбинацию: " + string.Join(" + ", capturedKeys));
+                    ExDebug.Log("Достигнуто 3 клавиши, принимаем комбинацию: " + string.Join(" + ", capturedKeys));
                     onCaptureComplete?.Invoke(new List<KeyCode>(capturedKeys));
                     FinishCapture();
                     e.Use();

@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using UnityEngine;
+using ExTools;
+
 
 namespace Commands
 {
@@ -27,7 +29,7 @@ namespace Commands
             {
                 if (File.Exists(filePath))
                 {
-                    Debug.LogWarning($"File {filePath} already exists. Skipping creation.");
+                    ExDebug.LogWarning($"File {filePath} already exists. Skipping creation.");
                     return;
                 }
 
@@ -39,11 +41,11 @@ namespace Commands
                     }
                 }
 
-                Debug.Log($"Script {nameScript}.cs created successfully at {filePath}");
+                ExDebug.Log($"Script {nameScript}.cs created successfully at {filePath}");
             }
             catch (Exception ex)
             {
-                Debug.LogError($"Failed to create script {nameScript}.cs: {ex.Message}");
+                ExDebug.LogError($"Failed to create script {nameScript}.cs: {ex.Message}");
             }
         }
 
@@ -55,16 +57,16 @@ namespace Commands
                 if (File.Exists(filePath))
                 {
                     File.Delete(filePath);
-                    Debug.Log($"Script {nameScript}.cs rollback successful. File deleted.");
+                    ExDebug.Log($"Script {nameScript}.cs rollback successful. File deleted.");
                 }
                 else
                 {
-                    Debug.LogWarning($"Rollback failed. File {filePath} does not exist.");
+                    ExDebug.LogWarning($"Rollback failed. File {filePath} does not exist.");
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogError($"Failed to rollback script {nameScript}.cs: {ex.Message}");
+                ExDebug.LogError($"Failed to rollback script {nameScript}.cs: {ex.Message}");
             }
         }
 

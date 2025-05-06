@@ -1,5 +1,5 @@
+using ExTools;
 using System;
-using UnityEngine;
 
 public class Minimizable : KeyActionLogic
 {
@@ -16,7 +16,7 @@ public class Minimizable : KeyActionLogic
             }
             else
             {
-                Debug.LogError("Window is null in Minimize action");
+                ExDebug.LogError("Window is null in Minimize action");
             }
         };
     }

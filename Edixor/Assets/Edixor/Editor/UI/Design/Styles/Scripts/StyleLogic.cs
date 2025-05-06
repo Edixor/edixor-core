@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine;
+using ExTools;
 
 public class StyleLogic
 {
@@ -27,7 +28,7 @@ public class StyleLogic
 
         if (this._root == null || this._parameters == null)
         {
-            Debug.LogError("Root or parameters are null.");
+            ExDebug.LogError("Root or parameters are null.");
             return;
         }
 
@@ -41,7 +42,7 @@ public class StyleLogic
 
             if (styledElements == null || styledElements.Count == 0)
             {
-                Debug.LogWarning($"No elements found with class '{className}' for styling.");
+                ExDebug.LogWarning($"No elements found with class '{className}' for styling.");
                 continue;
             }
 
@@ -49,7 +50,7 @@ public class StyleLogic
             {
                 if (element == null)
                 {
-                    Debug.LogWarning($"Null element found for class '{className}'.");
+                    ExDebug.LogWarning($"Null element found for class '{className}'.");
                     continue;
                 }
 
@@ -63,7 +64,7 @@ public class StyleLogic
     {
         /*if (list == null || _parameters == null)
         {
-            Debug.LogError("List or parameters are null.");
+            ExDebug.LogError("List or parameters are null.");
             return;
         }
 
@@ -71,11 +72,11 @@ public class StyleLogic
         {
             if (button == null)
             {
-                Debug.LogWarning("Null button encountered in FunctionStyling.");
+                ExDebug.LogWarning("Null button encountered in FunctionStyling.");
                 continue;
             }
 
-            Debug.Log($"Styling button: {button.name}");
+            ExDebug.Log($"Styling button: {button.name}");
 
             button.style.backgroundColor = _parameters.FunctionBackgroundColors;
             button.style.unityBackgroundImageTintColor = _parameters.FunctionIconColors;

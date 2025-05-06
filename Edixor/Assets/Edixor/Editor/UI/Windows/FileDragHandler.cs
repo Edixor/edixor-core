@@ -1,10 +1,11 @@
+using System.Collections.Generic;
+using UnityEngine.UIElements;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using System;
-using System.Reflection;
-using UnityEngine.UIElements;
-using System.Collections.Generic;
 using System.Linq;
+using ExTools;
+using System;
 
 public class FileDragHandler
 {
@@ -35,7 +36,7 @@ public class FileDragHandler
             if (filePath.EndsWith(".cs"))
             {
                 string className = System.IO.Path.GetFileNameWithoutExtension(filePath);
-                Debug.Log($"Attempting to add tab from file: {filePath}");
+                ExDebug.Log($"Attempting to add tab from file: {filePath}");
 
                 // Вызываем обратный вызов для добавления вкладки
                 onTabAddedCallback(filePath, className);
@@ -58,7 +59,7 @@ public class FileDragHandler
                 Type tabType = assembly.GetType(className);
                 if (tabType != null)
                 {
-                    Debug.Log($"Found class: {tabType.Name}");
+                    ExDebug.Log($"Found class: {tabType.Name}");
                 }
 
                 if (tabType != null && tabType.IsSubclassOf(typeof(EdixorTab)))
@@ -68,16 +69,16 @@ public class FileDragHandler
 
                     // Вызываем обратный вызов для добавления вкладки через UIManager
                     addTabCallback(filePath, tab.GetType());
-                    Debug.Log($"Tab {className} added successfully from file {filePath}.");
+                    ExDebug.Log($"Tab {className} added successfully from file {filePath}.");
                     return;
                 }
             }
 
-            Debug.LogError($"Class {className} not found or does not inherit from EdixorTab.");
+            ExDebug.LogError($"Class {className} not found or does not inherit from EdixorTab.");
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Error while adding tab from file {filePath}: {ex.Message}");
+            ExDebug.LogError($"Error while adding tab from file {filePath}: {ex.Message}");
         }
     }
 }

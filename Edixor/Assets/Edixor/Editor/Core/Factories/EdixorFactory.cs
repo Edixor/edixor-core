@@ -20,11 +20,11 @@ public class EdixorFactory<TAsset, TSettings, TItem, TKey, TData>
 
     public virtual void CreateFromAssets(string path, TKey key, Action action = null)
     {
-        Debug.Log($"Creating from assets: {path}");
+        ExDebug.Log($"Creating from assets: {path}");
         TItem asset = EdixorObjectLocator.LoadObject<TItem>(path);
         if (asset != null)
         {
-            Debug.Log($"Loaded asset: {path}");
+            ExDebug.Log($"Loaded asset: {path}");
             SettingAddItem(asset, key);
         }
     }

@@ -1,5 +1,6 @@
 using UnityEngine.UIElements;
 using UnityEngine;
+using ExTools;
 using System;
 public class EdixorInterfaceFacade : IEdixorInterfaceFacade
 {
@@ -26,12 +27,12 @@ public class EdixorInterfaceFacade : IEdixorInterfaceFacade
     {
         if (root == null)
         {
-            Debug.LogError("Root element is null. Cannot initialize EdixorInterfaceFacade.");
+            ExDebug.LogError("Root element is null. Cannot initialize EdixorInterfaceFacade.");
             return;
         }
         if (container == null)
         {
-            Debug.LogError("Container is null. Cannot initialize EdixorInterfaceFacade.");
+            ExDebug.LogError("Container is null. Cannot initialize EdixorInterfaceFacade.");
             return;
         }
         _container = container;
@@ -59,7 +60,7 @@ public class EdixorInterfaceFacade : IEdixorInterfaceFacade
         }
         else
         {
-            Debug.LogWarning($"[EdixorInterfaceFacade] Попытка загрузить горячую клавишу \"{name}\" с заголовком \"{title}\", но она не найдена или равна null.");
+            ExDebug.LogWarning($"[EdixorInterfaceFacade] Попытка загрузить горячую клавишу \"{name}\" с заголовком \"{title}\", но она не найдена или равна null.");
         }
     }
 

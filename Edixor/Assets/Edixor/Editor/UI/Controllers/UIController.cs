@@ -1,5 +1,5 @@
 using UnityEngine.UIElements;
-using UnityEngine;
+using ExTools;
 public class UIController : IUIController
 {
     private VisualElement _root;
@@ -20,7 +20,7 @@ public class UIController : IUIController
     {
         if (root == null)
         {
-            Debug.LogError("Root element is null. Cannot initialize UIController.");
+            ExDebug.LogError("Root element is null. Cannot initialize UIController.");
             return;
         }
 
@@ -38,20 +38,17 @@ public class UIController : IUIController
     {
         if (content == null)
         {
-            Debug.LogError("Content is null. Cannot show UI.");
+            ExDebug.LogError("Content is null. Cannot show UI.");
             return;
         }
 
         if (_root == null)
         {
-            Debug.LogError("Root is not initialized. Call InitRoot() first.");
+            ExDebug.LogError("Root is not initialized. Call InitRoot() first.");
             return;
         }
 
         _root.Clear();
-
-        Debug.Log("layoutData == null? " + (Layout == null));
-        Debug.Log("styleData  == null? " + (Style  == null));
 
         contentElement = new VisualElement();
         content.Init(contentElement, Layout, Style);
@@ -62,7 +59,7 @@ public class UIController : IUIController
 
         if (newContent == null)
         {
-            Debug.LogError("Loaded UIContent returned null.");
+            ExDebug.LogError("Loaded UIContent returned null.");
             return;
         }
 
@@ -78,7 +75,7 @@ public class UIController : IUIController
         var element = contentElement.Q(name);
         if (element == null)
         {
-            Debug.LogError($"Element with name {name} not found in UIController.");
+            ExDebug.LogError($"Element with name {name} not found in UIController.");
         }
         return element;
     }

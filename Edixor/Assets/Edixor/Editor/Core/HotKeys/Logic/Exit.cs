@@ -1,6 +1,5 @@
+using ExTools;
 using System;
-using UnityEngine;
-
 public class Exit : KeyActionLogic
 {
     private IClosable window;
@@ -16,7 +15,7 @@ public class Exit : KeyActionLogic
             }
             else
             {
-                Debug.LogError("Window is null in Exit action");
+                ExDebug.LogError("Window is null in Exit action");
             }
         };
     }

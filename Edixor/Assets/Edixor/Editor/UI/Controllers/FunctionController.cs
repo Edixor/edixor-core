@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine;
 using System.Linq;
+using ExTools;
 
 public class FunctionController : IFunctionController
 {
@@ -21,7 +22,7 @@ public class FunctionController : IFunctionController
     {
         if (root == null)
         {
-            Debug.LogWarning("FunctionController: root VisualElement is null. Aborting InitFunction.");
+            ExDebug.LogWarning("FunctionController: root VisualElement is null. Aborting InitFunction.");
             return;
         }
 
@@ -38,7 +39,7 @@ public class FunctionController : IFunctionController
         var parameters = _layoutSetting.GetCorrectItem()?.AssetParameters;
         if (parameters == null)
         {
-            Debug.LogWarning("FunctionController: LayoutParameters is null. Nothing to create.");
+            ExDebug.LogWarning("FunctionController: LayoutParameters is null. Nothing to create.");
             return;
         }
 
@@ -63,20 +64,20 @@ public class FunctionController : IFunctionController
     {
         if (function == null)
         {
-            Debug.LogWarning("FunctionController: Attempt to add null Function.");
+            ExDebug.LogWarning("FunctionController: Attempt to add null Function.");
             return;
         }
 
         var name = function.Data?.Name;
         if (string.IsNullOrEmpty(name))
         {
-            Debug.LogWarning("FunctionController: Function.Data.Name is null or empty.");
+            ExDebug.LogWarning("FunctionController: Function.Data.Name is null or empty.");
             return;
         }
 
         if (_functions.Any(f => f.Data?.Name == name))
         {
-            Debug.LogWarning($"FunctionController: Function with Name '{name}' is already added.");
+            ExDebug.LogWarning($"FunctionController: Function with Name '{name}' is already added.");
             return;
         }
 
@@ -89,14 +90,14 @@ public class FunctionController : IFunctionController
     {
         if (string.IsNullOrEmpty(functionName))
         {
-            Debug.LogWarning("FunctionController: functionName is null or empty.");
+            ExDebug.LogWarning("FunctionController: functionName is null or empty.");
             return;
         }
 
         var function = _functions.FirstOrDefault(f => f.Data?.Name == functionName);
         if (function == null)
         {
-            Debug.LogWarning($"FunctionController: No Function found with Name '{functionName}'.");
+            ExDebug.LogWarning($"FunctionController: No Function found with Name '{functionName}'.");
             return;
         }
 
@@ -105,6 +106,6 @@ public class FunctionController : IFunctionController
 
     public void Execute(string functionName)
     {
-        Debug.LogWarning($"FunctionController: Execute('{functionName}') is not implemented.");
+        ExDebug.LogWarning($"FunctionController: Execute('{functionName}') is not implemented.");
     }
 }

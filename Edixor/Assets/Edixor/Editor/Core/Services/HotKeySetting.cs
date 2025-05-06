@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using ExTools;
 using System;
 
 public class HotKeySetting : HotKeySettingsBase, SettingEntries, SettingItemFull
@@ -126,14 +127,14 @@ public class HotKeySetting : HotKeySettingsBase, SettingEntries, SettingItemFull
 
         if (!Settings.HotKeyDictionary.TryGetValue(key.title, out var dataArray))
         {
-            Debug.LogWarning($"[HotKeySetting] Не найдена категория хоткеев с заголовком: \"{key.title}\"");
+            ExDebug.LogWarning($"[HotKeySetting] Не найдена категория хоткеев с заголовком: \"{key.title}\"");
             return null;
         }
 
         var data = dataArray.FirstOrDefault(d => d.Name.Equals(key.name, StringComparison.OrdinalIgnoreCase));
         if (data == null)
         {
-            Debug.LogWarning($"[HotKeySetting] В категории \"{key.title}\" не найдена горячая клавиша с именем: \"{key.name}\"");
+            ExDebug.LogWarning($"[HotKeySetting] В категории \"{key.title}\" не найдена горячая клавиша с именем: \"{key.name}\"");
             return null;
         }
 
@@ -144,7 +145,7 @@ public class HotKeySetting : HotKeySettingsBase, SettingEntries, SettingItemFull
         }
         catch (Exception e)
         {
-            Debug.LogError($"[HotKeySetting] Не удалось разрешить логику \"{data.LogicKey}\" для клавиши \"{key.name}\" в \"{key.title}\". Ошибка: {e.Message}");
+            ExDebug.LogError($"[HotKeySetting] Не удалось разрешить логику \"{data.LogicKey}\" для клавиши \"{key.name}\" в \"{key.title}\". Ошибка: {e.Message}");
             return null;
         }
     }

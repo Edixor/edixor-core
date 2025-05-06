@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using ExTools;
 
 public static class PathResolver
 {
@@ -16,19 +17,19 @@ public static class PathResolver
 
         if (allFiles.Length == 0)
         {
-            Debug.LogError($"[PathResolver] Файл '{fileName}' не найден в проекте.");
+            ExDebug.LogError($"[PathResolver] Файл '{fileName}' не найден в проекте.");
             return null;
         }
         else if (allFiles.Length == 1)
         {
             string correctPath = allFiles[0].Replace("\\", "/");
-            Debug.LogWarning($"[PathResolver] Путь некорректен. Используйте: {correctPath}, заместь {path}");
+            ExDebug.LogWarning($"[PathResolver] Путь некорректен. Используйте: {correctPath}, заместь {path}");
             return correctPath;
         }
         else
         {
             string correctPath = allFiles[0].Replace("\\", "/");
-            Debug.LogWarning($"[PathResolver] Найдено несколько файлов с именем '{fileName}', первый найденный путь: {correctPath}");
+            ExDebug.LogWarning($"[PathResolver] Найдено несколько файлов с именем '{fileName}', первый найденный путь: {correctPath}");
             return correctPath;
         }
     }

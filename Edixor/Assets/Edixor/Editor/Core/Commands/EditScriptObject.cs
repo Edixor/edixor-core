@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using ExTools;
 using System;
 
 namespace Commands {
@@ -45,7 +46,7 @@ namespace Commands {
 
             if (fields.Length != data.Length)
             {
-                Debug.LogError("Количество переменных в ScriptableObject и количество элементов в массиве не совпадает.");
+                ExDebug.LogError("Количество переменных в ScriptableObject и количество элементов в массиве не совпадает.");
                 return;
             }
 
@@ -53,15 +54,9 @@ namespace Commands {
 
             for (int i = 0; i < fields.Length; i++)
             {
-                Debug.Log(fields[i].FieldType);
-
-                if (data[i] != null)
+                if (data[i] == null)
                 {
-                    Debug.Log(data[i].GetType());
-                }
-                else
-                {
-                    Debug.LogWarning($"Элемент на индексе {i} равен null.");
+                    ExDebug.LogWarning($"Элемент на индексе {i} равен null.");
                     continue;
                 }
 
@@ -71,7 +66,7 @@ namespace Commands {
                 }
                 else
                 {
-                    Debug.LogWarning($"Тип переменной {fields[i].Name} ({fields[i].FieldType}) не совпадает с типом элемента массива ({data[i].GetType()}).");
+                    ExDebug.LogWarning($"Тип переменной {fields[i].Name} ({fields[i].FieldType}) не совпадает с типом элемента массива ({data[i].GetType()}).");
                 }
             }
         }
@@ -88,7 +83,7 @@ namespace Commands {
                 }
                 else
                 {
-                    Debug.LogWarning($"Тип переменной {fields[i].Name} ({fields[i].FieldType}) не совпадает с типом элемента массива ({dataOld[i].GetType()}).");
+                    ExDebug.LogWarning($"Тип переменной {fields[i].Name} ({fields[i].FieldType}) не совпадает с типом элемента массива ({dataOld[i].GetType()}).");
                 }
             }
         }

@@ -37,9 +37,9 @@ public class MyTab : EdixorTab
     {
         CustomMenu menu = ScriptableObject.CreateInstance<CustomMenu>();
 
-        menu.AddItem(new CMItemAction("Option 1", true, () => Debug.Log("Option 1 selected")));
-        menu.AddItem(new CMItemAction("Option 2", true, () => Debug.Log("Option 2 selected")));
-        menu.AddItem(new CMItemAction("Option 3", true, () => Debug.Log("Option 3 selected")));
+        menu.AddItem(new CMItemAction("Option 1", true, () => ExDebug.Log("Option 1 selected")));
+        menu.AddItem(new CMItemAction("Option 2", true, () => ExDebug.Log("Option 2 selected")));
+        menu.AddItem(new CMItemAction("Option 3", true, () => ExDebug.Log("Option 3 selected")));
 
         menu.ShowMenu();
     }
@@ -48,9 +48,9 @@ public class MyTab : EdixorTab
     {
         GenericMenu menu = new GenericMenu();
 
-        menu.AddItem(new GUIContent("Option 1"), false, () => Debug.Log("Option 1 selected"));
-        menu.AddItem(new GUIContent("Option 2"), false, () => Debug.Log("Option 2 selected"));
-        menu.AddItem(new GUIContent("Option 3"), false, () => Debug.Log("Option 3 selected"));
+        menu.AddItem(new GUIContent("Option 1"), false, () => ExDebug.Log("Option 1 selected"));
+        menu.AddItem(new GUIContent("Option 2"), false, () => ExDebug.Log("Option 2 selected"));
+        menu.AddItem(new GUIContent("Option 3"), false, () => ExDebug.Log("Option 3 selected"));
 
         menu.ShowAsContext();
     }

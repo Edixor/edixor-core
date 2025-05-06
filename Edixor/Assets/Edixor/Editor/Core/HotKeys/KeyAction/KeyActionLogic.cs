@@ -1,6 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ExTools;
+using System;
 
 
 [Serializable]
@@ -29,7 +30,7 @@ public abstract class KeyActionLogic
     {
         if (container == null)
         {
-            Debug.LogError("container is null in action: ");
+            ExDebug.LogError("container is null in action: ");
             return;
         }
         Action?.Invoke();

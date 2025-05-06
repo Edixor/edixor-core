@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using ExTools;
 
 public class CustomClue : EditorWindow
 {
@@ -15,7 +16,7 @@ public class CustomClue : EditorWindow
 
         if (labelRect.Contains(Event.current.mousePosition))
         {
-            Debug.Log("Cursor is hovering over the label in CustomEditorWindow.");
+            ExDebug.Log("Cursor is hovering over the label in CustomEditorWindow.");
         }
     }
 }

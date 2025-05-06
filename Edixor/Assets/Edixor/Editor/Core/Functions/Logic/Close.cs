@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine;
 using UnityEditor;
-
+using ExTools;
 
 public class Close : FunctionLogic, IFunctionSetting
 {
@@ -15,7 +15,7 @@ public class Close : FunctionLogic, IFunctionSetting
         }
         else
         {
-            Debug.LogError("Window is null in Close action");
+            ExDebug.LogError("Window is null in Close action");
         }
     }
 

@@ -1,0 +1,31 @@
+.box {
+  background-color: rgba(30,30,30, 0.5);
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+  padding: 4px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+}
+
+/* Существующие правила */
+ScrollView#log-scroll { background-color: #1e1e1e; }
+
+Label.info    { color: #CCCCCC; }
+Label.comment { color: #8BC34A; }
+Label.warning { color: #FFEB3B; }
+Label.error   {
+  color: #FF5252;
+  -unity-font-style: bold;
+}
+
+Label { margin-bottom: 2px; }
+
+TextField#detail-field {
+  color: #FFFFFF;
+  -unity-font-style: normal;
+  border-width: 1px;
+  border-color: #666666;
+  margin-top: 2px;
+}

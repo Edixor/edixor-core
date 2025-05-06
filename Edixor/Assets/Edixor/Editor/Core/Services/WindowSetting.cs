@@ -1,6 +1,7 @@
 using UnityEngine.UIElements;
 using UnityEngine;
 using UnityEditor;
+using ExTools;
 
 public class WindowStateSetting : EdixorSettingData<WindowStateSettingsAsset>
 {
@@ -26,7 +27,7 @@ public class WindowStateSetting : EdixorSettingData<WindowStateSettingsAsset>
     {
         if (Settings.rootElement == null)
         {
-            Debug.LogError("Root element is null.");
+            ExDebug.LogError("Root element is null.");
             return null;
         }
 
@@ -36,7 +37,7 @@ public class WindowStateSetting : EdixorSettingData<WindowStateSettingsAsset>
     {
         if (root == null)
         {
-            Debug.LogError("Root element is null.");
+            ExDebug.LogError("Root element is null.");
             return;
         }
 

@@ -10,11 +10,13 @@ public static class EdixorEntryPoint
 
     static EdixorEntryPoint()
     {
+        ExDebug.Log("DI: The edixor is open! Let's launch our logic");
         Initialize();
     }
 
     public static void Reinitialize()
     {
+        ExDebug.Log("DI: The edixor is restarting! Let's launch our logic");
         Initialize();
     }
 
@@ -28,7 +30,7 @@ public static class EdixorEntryPoint
     {
         if (container == null)
         {
-            Debug.LogError("DI контейнер не загружен. Инициализация сервисов прервана.");
+            ExDebug.LogError("DI контейнер не загружен. Инициализация сервисов прервана.");
             return;
         }
 
@@ -84,6 +86,6 @@ public static class EdixorEntryPoint
         container.RegisterNamed<KeyActionLogic>(HotKeyNames.Minimizable, new Minimizable());
         container.RegisterNamed<KeyActionLogic>(HotKeyNames.Exit, new Exit());
         
-        Debug.Log("Сервисы успешно зарегистрирован");
+        ExDebug.Log("Services registered successfully");
     }
 }

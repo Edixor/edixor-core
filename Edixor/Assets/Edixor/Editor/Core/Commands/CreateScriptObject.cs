@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using ExTools;
 using System;
 
 namespace Commands {
@@ -47,7 +48,7 @@ namespace Commands {
 
             if (!AssetDatabase.IsValidFolder(folderPath))
             {
-                Debug.LogError("<b><color=cyan>MetaGame</color></b>: The specified path does not exist: " + folderPath);
+                ExDebug.LogError("<b><color=cyan>MetaGame</color></b>: The specified path does not exist: " + folderPath);
                 return;
             }
 
@@ -62,12 +63,12 @@ namespace Commands {
             scriptObject = asset;
             scriptObject.name = assetName;
 
-            Debug.Log($"<b><color=cyan>MetaGame</color></b>: ScriptableObject created: {assetPath}");
+            ExDebug.Log($"<b><color=cyan>MetaGame</color></b>: ScriptableObject created: {assetPath}");
         }
 
         public override void JobRollback() 
         {
-            Debug.Log("CreateSO func:" + (func != null));
+            ExDebug.Log("CreateSO func:" + (func != null));
             new DestroyScriptObject<T>(arrayTask, folderPath, assetName, scriptObject, index, func, TdeAction, TcrAction).Tasks();
         }
 
@@ -91,10 +92,6 @@ namespace Commands {
             }
             else if (typeof(U) == scriptObject.GetType())
             {
-                Debug.Log(index + " LLLLLLLLLLLL");
-                Debug.Log("AAAAAAAAAAAAASSSSSSSSDDDDDDDD");
-                Debug.Log(scriptObject.GetType());
-                Debug.Log(scriptObject != null);
                 if (scriptObject == null)
                 {
                     Tasks();

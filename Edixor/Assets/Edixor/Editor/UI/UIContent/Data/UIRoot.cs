@@ -14,9 +14,6 @@ public class UIRoot : UIContent
 
     public override VisualElement LoadUI()
     {
-        Debug.Log("layoutData == null? " + (layoutData == null));
-        Debug.Log("styleData  == null? " + (styleData  == null));
-
         design = new EdixorDesign(
             styleData,
             layoutData,

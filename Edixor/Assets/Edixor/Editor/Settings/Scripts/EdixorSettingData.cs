@@ -21,7 +21,7 @@ public class EdixorSettingData<TData> where TData : ScriptableObject
                 _settings = EdixorObjectLocator.LoadObject<TData>(_path);
                 if (_settings == null)
                 {
-                    Debug.Log($"not path {_path}");
+                    ExDebug.Log($"not path {_path}");
                     _settings = ScriptableObject.CreateInstance<TData>();
                     AssetDatabase.CreateAsset(_settings, _path);
                     AssetDatabase.SaveAssets();

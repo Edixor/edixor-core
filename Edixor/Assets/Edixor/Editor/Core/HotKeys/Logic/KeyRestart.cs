@@ -1,5 +1,5 @@
+using ExTools;
 using System;
-using UnityEngine;
 
 public class KeyRestart : KeyActionLogic
 {
@@ -16,7 +16,7 @@ public class KeyRestart : KeyActionLogic
             }
             else
             {
-                Debug.LogError("Window is null in Restart action");
+                ExDebug.LogError("Window is null in Restart action");
             }
         };
     }

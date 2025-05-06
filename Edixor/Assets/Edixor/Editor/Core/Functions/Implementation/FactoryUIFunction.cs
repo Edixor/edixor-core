@@ -1,5 +1,6 @@
-using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine;
+using ExTools;
 
 public class FactoryUIFunction
 {
@@ -25,7 +26,7 @@ public class FactoryUIFunction
         }
         else
         {
-            Debug.LogWarning("FactoryUIFunction: не удалось загрузить изображение по пути Resources/Path/To/Image");
+            ExDebug.LogWarning("FactoryUIFunction: не удалось загрузить изображение по пути Resources/Path/To/Image");
         }
         
         container.Add(button);

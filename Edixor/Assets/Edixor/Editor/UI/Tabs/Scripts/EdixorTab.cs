@@ -60,7 +60,13 @@ public abstract class EdixorTab
         EdixorWindow wnd = EdixorWindow.CurrentWindow ?? EditorWindow.GetWindow<EdixorWindow>("EdixorWindow");
         T tab = new T();
         tab.container = cnt;
-        tab.setting.AddTab(tab, saveState: true, autoSwitch: true);
+        tab.setting.AddTab(tab);
+    }
+
+    protected void Option(string title, string uxml, string uss) {
+        tabName = title;
+        LoadUxml(uxml);
+        LoadUss(uss);
     }
 
     protected static DIContainer LoadOrCreateContainer()
@@ -113,18 +119,24 @@ public abstract class EdixorTab
         var visualTree = EdixorObjectLocator.LoadObject<VisualTreeAsset>(uxmlPath);
         if (visualTree == null)
         {
-            Debug.LogError($"UI файл не найден по пути: {uxmlPath}");
-            return;
+            //ExDebug.LogWarning($"UI файл не найден по пути: {uxmlPath}. Пытаюсь загрузить Default…");
+
+            uxmlPath = "Tabs/Default/Default.uxml";
+            visualTree = EdixorObjectLocator.LoadObject<VisualTreeAsset>(uxmlPath);
+            if (visualTree == null)
+            {
+                //ExDebug.LogError($"UI-файл Default не найден по пути: {uxmlPath}. Отмена загрузки.");
+                return;
+            }
         }
 
         pathUxml = uxmlPath;
-
         root = visualTree.Instantiate();
         root.style.height = new StyleLength(Length.Percent(100));
 
         if (ParentContainer == null)
         {
-            Debug.LogError("ParentContainer равен null. Невозможно загрузить UI.");
+            //ExDebug.LogError("ParentContainer равен null. Невозможно загрузить UI.");
             return;
         }
 
@@ -143,7 +155,7 @@ public abstract class EdixorTab
         var sheet = EdixorObjectLocator.LoadObject<StyleSheet>(ussPath);
         if (sheet == null)
         {
-            Debug.LogError($"StyleSheet не найден по пути: {ussPath}");
+            ExDebug.LogError($"StyleSheet не найден по пути: {ussPath}");
             return;
         }
 

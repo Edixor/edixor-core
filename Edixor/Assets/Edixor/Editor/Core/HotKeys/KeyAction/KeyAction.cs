@@ -1,6 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ExTools;
+using System;
 
 public class KeyAction
 {
@@ -11,13 +12,13 @@ public class KeyAction
     {
         if (keyActionData == null)
         {
-            Debug.LogError("KeyActionData is null in KeyAction constructor.");
+            ExDebug.LogError("KeyActionData is null in KeyAction constructor.");
             return;
         }
         this.Data = keyActionData;
         if (keyActionLogic == null)
         {
-            Debug.LogError("KeyActionLogic is null in KeyAction constructor.");
+            ExDebug.LogError("KeyActionLogic is null in KeyAction constructor.");
             return;
         }
         this.Logic = keyActionLogic;
@@ -27,14 +28,14 @@ public class KeyAction
     {
         if (keyActionData == null)
         {
-            Debug.LogError("KeyActionData is null in KeyAction constructor.");
+            ExDebug.LogError("KeyActionData is null in KeyAction constructor.");
             return;
         }
         this.Data = keyActionData;
         Logic = container.ResolveNamed<KeyActionLogic>(keyActionData.LogicKey);
         if (Logic == null)
         {
-            Debug.LogError($"KeyActionLogic not found for {keyActionData.LogicKey} in KeyAction constructor.");
+            ExDebug.LogError($"KeyActionLogic not found for {keyActionData.LogicKey} in KeyAction constructor.");
             return;
         }
     }
@@ -47,7 +48,7 @@ public class KeyAction
         }
         else
         {
-            Debug.LogError("KeyActionLogic is null in container: " + Data.Name);
+            ExDebug.LogError("KeyActionLogic is null in container: " + Data.Name);
         }
     }
 }
