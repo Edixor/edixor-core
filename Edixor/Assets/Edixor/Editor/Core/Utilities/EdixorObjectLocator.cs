@@ -15,7 +15,8 @@ namespace ExTools
             { "Extensions", "Editor/Extensions" },
             { "HotKeys", "Editor/Core/HotKeys/Data" },
             { "Functions", "Editor/Core/Functions/Data" },
-            { "Tabs", "Editor/UI/Tabs/Data" }
+            { "Tabs", "Editor/UI/Tabs/Data" },
+            { "Resources", "Editor/Resources" }
         };
 
         private static string _cachedEdixorRoot;
@@ -38,9 +39,6 @@ namespace ExTools
             return asset;
         }
 
-        /// <summary>
-        /// Возвращает абсолютный путь к asset-файлу с учетом псевдонимов.
-        /// </summary>
         public static string Resolve(string virtualPath)
         {
             if (string.IsNullOrEmpty(virtualPath))

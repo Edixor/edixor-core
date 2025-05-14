@@ -1,24 +1,20 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
 using ExTools;
-using System;
 
 [Serializable]
 public class SettingTab : EdixorTab
 {
-    private FunctionSetting functionSave;
-    private StyleLogic styleLogic = new StyleLogic();
-    private StyleParameters styleParameters;
-    private StyleSetting StyleSetting;
+    private FunctionSetting _functionSave;
+    private StyleSetting _styleSetting;
+    private StyleLogic _styleLogic = new StyleLogic();
 
     [MenuItem("Edixor/Tabs/Setting")]
-    public static void ShowTab()
-    {
-        ShowTab<SettingTab>();
-    }
+    public static void ShowTab() => ShowTab<SettingTab>();
 
     private void Awake()
     {
@@ -27,159 +23,163 @@ public class SettingTab : EdixorTab
         LoadUss("auto");
     }
 
-    private void Start()
+    // Это метод жизненного цикла, который EdixorTab найдёт и вызовет автоматически
+    private void OnEnable()
     {
-        functionSave = container.ResolveNamed<FunctionSetting>(ServiceNames.FunctionSetting);
-        StyleSetting = container.ResolveNamed<StyleSetting>(ServiceNames.StyleSetting);
+        // Получаем сервисы
+        _functionSave = container.ResolveNamed<FunctionSetting>(ServiceNames.FunctionSetting);
+        _styleSetting = container.ResolveNamed<StyleSetting>(ServiceNames.StyleSetting);
 
-        SetupContainer("layout-container", AddLayoutToContainer);
-        SetupContainer("style-container", AddStyleToContainer);
-
-        AddFunctionSettings(functionSave.GetAllItemFull());
+        // Перестраиваем UI
+        RebuildLayouts();
+        RebuildStyles();
+        //RebuildFunctionSettings();
     }
 
-    private void SetupContainer(string containerName, Action<VisualElement> action)
+    private void RebuildLayouts()
     {
-        VisualElement container = root.Q<VisualElement>(containerName);
-        if (container == null)
+        var layoutContainer = root.Q<VisualElement>("layout-container");
+        if (layoutContainer == null)
         {
-            ExDebug.LogError($"{containerName} not found.");
+            ExDebug.LogError("layout-container not found.");
             return;
         }
-        action(container);
-    }
+        layoutContainer.Clear();
 
-    private void AddLayoutToContainer(VisualElement designContainer)
-    {
-        LayoutData[] layoutDataArray = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetAllItem();
-        var styleData = StyleSetting.GetCorrectItem();
-
-        if (layoutDataArray.Length == 0)
+        var layouts = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetAllItem();
+        var currentStyle = _styleSetting.GetCorrectItem();
+        if (layouts == null || layouts.Length == 0)
         {
             ExDebug.LogWarning("Layouts not found.");
             return;
         }
 
-        foreach (var (data, index) in layoutDataArray.Select((data, i) => (data, i)))
-        {
-            designContainer.Add(CreateBanner(data, styleData, index, true));
-        }
+        foreach (var (data, idx) in layouts.Select((d, i) => (d, i)))
+            layoutContainer.Add(CreateBanner(data, currentStyle, idx, true));
     }
 
-    private void AddStyleToContainer(VisualElement styleContainer)
+    private void RebuildStyles()
     {
-        var styleDataArray = StyleSetting.GetAllItem().ToArray();
-        LayoutData layoutData = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetCorrectItem();
+        var styleContainer = root.Q<VisualElement>("style-container");
+        if (styleContainer == null)
+        {
+            ExDebug.LogError("style-container not found.");
+            return;
+        }
+        styleContainer.Clear();
 
-        if (styleDataArray.Length == 0)
+        var styles = _styleSetting.GetAllItem().ToArray();
+        var currentLayout = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetCorrectItem();
+        if (styles == null || styles.Length == 0)
         {
             ExDebug.LogWarning("Styles not found.");
             return;
         }
 
-        ScrollView scrollView = new ScrollView(ScrollViewMode.Horizontal);
-        scrollView.AddToClassList("banner-scroll-view");
-
-        foreach (var (data, index) in styleDataArray.Select((data, i) => (data, i)))
-        {
-            scrollView.Add(CreateBanner(data, layoutData, index, false));
-        }
-
-        styleContainer.Add(scrollView);
+        var scroll = new ScrollView(ScrollViewMode.Horizontal);
+        scroll.AddToClassList("banner-scroll-view");
+        foreach (var (data, idx) in styles.Select((d, i) => (d, i)))
+            scroll.Add(CreateBanner(data, currentLayout, idx, false));
+        styleContainer.Add(scroll);
     }
 
-    private VisualElement CreateBanner(object data, object layoutData, int index, bool isLayout)
+    private void RebuildFunctionSettings()
     {
-        VisualElement bannerContainer = new VisualElement();
+        var funcContainer   = root.Q<VisualElement>("function-container");
+        var configContainer = root.Q<VisualElement>("function-setting-container");
+        if (funcContainer == null || configContainer == null)
+        {
+            ExDebug.LogError("Function containers not found.");
+            return;
+        }
+        funcContainer.Clear();
+        configContainer.Clear();
+
+        // Инструктивная надпись
+        configContainer.Add(new Label("Click on a function to configure it"));
+
+        // Кнопки для каждой функции
+        foreach (var func in _functionSave.GetAllItemFull())
+        {
+            if (func.Logic is IFunctionSetting)
+            {
+                var btn = new Button(() => ShowFunctionConfig(func, configContainer)){};
+                if (func.Data.Icon is Texture2D icon)
+                    btn.style.backgroundImage = new StyleBackground(icon);
+                btn.AddToClassList("function");
+                funcContainer.Add(btn);
+            }
+        }
+    }
+
+    private void ShowFunctionConfig(Function func, VisualElement configContainer)
+    {
+        configContainer.Clear();
+        var title = new Label(func.Data.Name);
+        title.AddToClassList("function-title");
+        configContainer.Add(title);
+
+        if (func.Logic.Empty())
+        {
+            func.Logic.SetContainer(container);
+            func.Logic.Init();
+        }
+        ((IFunctionSetting)func.Logic).Setting(configContainer);
+    }
+
+    private VisualElement CreateBanner(object dataObj, object otherObj, int index, bool isLayout)
+    {
+        var bannerContainer = new VisualElement();
         bannerContainer.AddToClassList("banner-container");
 
-        VisualElement banner = new VisualElement();
+        var banner = new VisualElement();
         banner.AddToClassList("banner");
         banner.AddToClassList("middle-section");
 
-        EdixorDesign edixorDesign = new EdixorDesign(
-            isLayout ? (StyleData)layoutData : (StyleData)data,
-            isLayout ? (LayoutData)data : (LayoutData)layoutData,
-            banner, container);
+        // Определяем, что за data и style/layout
+        var styleData  = isLayout ? (StyleData)otherObj  : (StyleData)dataObj;
+        var layoutData = isLayout ? (LayoutData)dataObj : (LayoutData)otherObj;
+
+        // Рисуем дизайн
+        var edixorDesign = new EdixorDesign(styleData, layoutData, banner, container);
         edixorDesign.LoadUI(true);
 
-        StyleData style = (StyleData)data;
-        styleParameters = style.AssetParameters[0];
+        // Стилизация бордюров
+        var parameters = styleData.AssetParameters[0];
+        banner.style.borderTopColor    = new StyleColor(parameters.BorderColors[0]);
+        banner.style.borderBottomColor = new StyleColor(parameters.BorderColors[0]);
+        banner.style.borderLeftColor   = new StyleColor(parameters.BorderColors[0]);
+        banner.style.borderRightColor  = new StyleColor(parameters.BorderColors[0]);
+        _styleLogic.Init(banner, parameters);
 
-        SetBannerStyle(banner, styleParameters);
+        // Имя баннера
+        string name = isLayout ? ((LayoutData)dataObj).Name : ((StyleData)dataObj).Name;
+        var nameLabel = new Label(name);
+        nameLabel.style.color = parameters.Colors[0];
+        nameLabel.AddToClassList("banner-name");
 
-        string bannerName = isLayout ? ((LayoutData)data).Name : ((StyleData)data).Name;
-        Label bannerNameLabel = new Label(bannerName);
-        bannerNameLabel.AddToClassList("banner-name");
-
-        Button selectButton = new Button(() =>
+        // Кнопка Select
+        var selectBtn = new Button(() =>
         {
-            ExDebug.Log($"Banner with {(isLayout ? "layout" : "style")} {bannerName} selected.");
             if (isLayout)
-                ChangeLayout(index);
+                container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).UpdateIndex(index);
             else
-                ChangeStyle(index);
+                container.ResolveNamed<StyleSetting>(ServiceNames.StyleSetting).UpdateIndex(index);
 
             container.ResolveNamed<IRestartable>(ServiceNames.IRestartable_EdixorWindow).RestartWindow();
-        })
-        { text = "Select" };
+        }) { text = "Select" };
+        selectBtn.AddToClassList("select-button");
+        selectBtn.style.color = parameters.Colors[0];
+        selectBtn.style.backgroundColor = parameters.BackgroundColors[0];
+        selectBtn.style.borderTopColor    = parameters.BorderColors[0];
+        selectBtn.style.borderBottomColor = parameters.BorderColors[0];
+        selectBtn.style.borderLeftColor   = parameters.BorderColors[0];
+        selectBtn.style.borderRightColor  = parameters.BorderColors[0];
 
-        selectButton.AddToClassList("select-button");
-
-        bannerContainer.Add(bannerNameLabel);
+        bannerContainer.Add(nameLabel);
         bannerContainer.Add(banner);
-        bannerContainer.Add(selectButton);
+        bannerContainer.Add(selectBtn);
 
         return bannerContainer;
-    }
-
-    private void SetBannerStyle(VisualElement banner, StyleParameters parameters)
-    {
-        banner.style.borderTopColor = new StyleColor(parameters.Colors[0]);
-        banner.style.borderBottomColor = new StyleColor(parameters.Colors[0]);
-        banner.style.borderLeftColor = new StyleColor(parameters.Colors[0]);
-        banner.style.borderRightColor = new StyleColor(parameters.Colors[0]);
-        styleLogic.Init(banner, parameters);
-    }
-
-    private void AddFunctionSettings(Function[] functions)
-    {
-        VisualElement functionContainer = root.Q<VisualElement>("function-container");
-        VisualElement functionSettingContainer = root.Q<VisualElement>("function-setting-container");
-        Label infoLabel = new Label("Click on a function to configure it");
-        functionSettingContainer.Add(infoLabel);
-
-        foreach (Function func in functions)
-        {
-            if (func.Logic is IFunctionSetting settingFunc)
-            {
-                Button function = new Button(() =>
-                {
-                    functionSettingContainer.Clear();
-                    Label functionTitle = new Label(func.Data.Name);
-                    functionTitle.AddToClassList("function-title");
-                    functionSettingContainer.Add(functionTitle);
-
-                    if (func.Logic.Empty())
-                    {
-                        func.Logic.SetContainer(container);
-                        func.Logic.Init();
-                    }
-                    settingFunc.Setting(functionSettingContainer);
-                });
-
-                if (func.Data.Icon is Texture2D backgroundImage)
-                {
-                    function.style.backgroundImage = new StyleBackground(backgroundImage);
-                }
-                else
-                {
-                    ExDebug.LogError("No icon found for function: " + func.Data.Name);
-                }
-
-                function.AddToClassList("function");
-                functionContainer.Add(function);
-            }
-        }
     }
 }

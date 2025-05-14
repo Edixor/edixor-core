@@ -1,83 +1,89 @@
-using System.Collections.Generic;
-using UnityEngine.UIElements;
-using UnityEditor;
+using System.Linq;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.UIElements;
 using ExTools;
-using System;
 
-public class EdixorDesign {
+public class EdixorDesign
+{
     public StyleData Style { get; private set; }
     public LayoutData Layout { get; private set; }
-    private VisualTreeAsset tree;
-    private StyleSheet layoutSheet;
-    private StyleLogic styleLogic;
-    private EdixorParameters parameters;
-    private VisualElement rootElement;
-    private LayoutLogic layoutLogic;
-    private DIContainer Container;
+    private VisualTreeAsset _tree;
+    private StyleSheet _layoutSheet;
+    private StyleLogicEdixor _styleLogic;
+    private EdixorParameters _parameters;
+    private VisualElement _root;
+    private DIContainer _container;
 
     public EdixorDesign(StyleData style, LayoutData layout, VisualElement root, DIContainer container)
     {
-        Style = style;
-        Layout = layout;
-        rootElement = root;
-        Container = container;
+        Style      = style;
+        Layout     = layout;
+        _root      = root;
+        _container = container;
     }
-
-    public EdixorDesign(StyleData style, LayoutData layout)
-    {
-        Style = style;
-        Layout = layout;
-    }
-
-    public EdixorDesign(DIContainer container) {
-        Container = container;
-    }
+    public EdixorDesign(DIContainer container) => _container = container;
+    public EdixorDesign(StyleData style, LayoutData layout) { Style = style; Layout = layout; }
 
     public void LoadUI(bool demo = false)
     {
-        if (rootElement == null)
-            rootElement = new VisualElement();
+        if (_root == null)
+            _root = new VisualElement();
 
-        tree = Layout.LayoutVisualTreeAsset;
-        layoutSheet = Layout.LayoutStyleSheet;
-
-        if (tree == null)
+        // 1) Instantiate UXML/USS
+        _tree        = Layout.LayoutVisualTreeAsset;
+        _layoutSheet = Layout.LayoutStyleSheet;
+        if (_tree == null)
         {
-            ExDebug.LogError("[EdixorDesign] LayoutData is missing VisualTreeAsset (uxml).");
+            ExDebug.LogError("Missing UXML");
             return;
         }
 
-        if (layoutSheet == null)
+        _root.Clear();
+        var instance = _tree.Instantiate();
+        instance.style.flexGrow = 1;
+        instance.style.width    = Length.Percent(100);
+        instance.style.height   = Length.Percent(100);
+        _root.Add(instance);
+
+        if (_layoutSheet != null && !_root.styleSheets.Contains(_layoutSheet))
+            _root.styleSheets.Add(_layoutSheet);
+
+        // 2) Init style logic
+        _parameters = (EdixorParameters)Style.AssetParameters[0];
+        _styleLogic = new StyleLogicEdixor(_root, _parameters);
+        _styleLogic.Init();
+
+        _parameters.ScrollStyle.ApplyScrollStyleWithStates(_root);
+
+        // 4) Register style logic
+        _container?.Register<StyleLogicEdixor>(_styleLogic);
+
+        // 5) Demo block
+        if (demo)
         {
-            ExDebug.LogWarning("[EdixorDesign] LayoutData is missing StyleSheet (uss). Proceeding without styles.");
+            foreach (var elem in Layout.AssetParameters.Elements)
+            {
+                if (elem?.functionNames == null) continue;
+                var section = GetSection(elem.elementName);
+                if (section == null) continue;
+                foreach (var nm in elem.functionNames)
+                {
+                    var b = new Button(() => { }) { text = "F" };
+                    b.AddToClassList("function");
+                    _parameters.FunctionStyle.ApplyWithStates(b);
+                    section.Add(b);
+                }
+            }
         }
 
-        // Instantiate UI
-        rootElement.Clear();
-        var instance = tree.Instantiate();
-        instance.style.flexGrow = 1;
-        instance.style.width = Length.Percent(100);
-        instance.style.height = Length.Percent(100);
-        rootElement.Add(instance);
-
-        // Apply USS
-        if (layoutSheet != null && !rootElement.styleSheets.Contains(layoutSheet))
-            rootElement.styleSheets.Add(layoutSheet);
-
-        parameters = (EdixorParameters)Style.AssetParameters[0];
-
-        styleLogic = new StyleLogic(rootElement, parameters);
-        styleLogic.Init();
+        // 6) Tabs section
+        var tabs = new TabUIFactory().CreateTabContainer(new NewTab(), _parameters, () => { }, () => { });
+        GetSection("tab-section")?.Add(tabs);
+        _parameters.AddTabStyle.ApplyWithStates(
+            GetSection("tab-section").Q<VisualElement>("AddTab"));
     }
 
-    public VisualElement GetSection(string sectionName)
-    {
-        return rootElement?.Q(sectionName);
-    }
-
-    public VisualElement GetRoot()
-    {
-        return rootElement;
-    }
+    public VisualElement GetSection(string name) => _root.Q(name);
+    public VisualElement GetRoot()            => _root;
 }

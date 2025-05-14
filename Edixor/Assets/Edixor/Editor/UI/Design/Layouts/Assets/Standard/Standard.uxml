@@ -13,5 +13,6 @@
             <ui:VisualElement name="command-function-section" class="command-function-section" />
             <ui:VisualElement name="other-function-section" class="other-function-section" />
         </ui:VisualElement>
+        <ui:VisualElement name="debug-section" class="debug-section"></ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

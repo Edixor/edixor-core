@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: TabSettings
   m_EditorClassIdentifier: 
   items:
-  - rid: 2779623706150568017
-  - rid: 2779623796251033664
-  currentIndex: 1
+  - rid: 2779623906543927370
+  - rid: 2779623922808389697
+  currentIndex: 0
   references:
     version: 2
     RefIds:
-    - rid: 2779623706150568017
+    - rid: 2779623906543927370
       type: {class: NewTab, ns: , asm: Assembly-CSharp-Editor}
       data:
         tabName: New Tab
         openCount: 0
         pathUxml: Tabs/NewTab/NewTab.uxml
         pathUss: Tabs/NewTab/NewTab.uss
-    - rid: 2779623796251033664
+    - rid: 2779623922808389697
       type: {class: ExtensionManagerTab, ns: , asm: Assembly-CSharp-Editor}
       data:
-        tabName: Extensions
+        tabName: Extension Manager
         openCount: 0
         pathUxml: Tabs/ExtensionManagerTab/ExtensionManagerTab.uxml
         pathUss: Tabs/ExtensionManagerTab/ExtensionManagerTab.uss

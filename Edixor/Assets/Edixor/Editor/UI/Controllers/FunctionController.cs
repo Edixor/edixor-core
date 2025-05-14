@@ -1,39 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
-using UnityEngine;
-using System.Linq;
 using ExTools;
+using System.Linq;
 
 public class FunctionController : IFunctionController
 {
-    private readonly DIContainer _container;
-    private readonly FunctionSetting _functionSetting;
-    private readonly LayoutSetting _layoutSetting;
-    private readonly List<Function> _functions = new List<Function>();
-    private readonly FactoryUIFunction _factory = new FactoryUIFunction();
+    private IUIController _ui;
+    private DIContainer _container;
+    private LayoutSetting _layoutSetting;
+    private List<Function> _functions = new List<Function>();
+    private FactoryUIFunction _factory = new FactoryUIFunction();
 
-    public FunctionController(DIContainer container)
+    public FunctionController(IUIController ui, DIContainer container)
     {
+        _ui = ui;
         _container = container;
-        _layoutSetting = _container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting);
+        _layoutSetting = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting);
     }
 
-    public void InitFunction(VisualElement root)
+    public void Initialize(IUIController uiBase = null)
     {
-        if (root == null)
-        {
-            ExDebug.LogWarning("FunctionController: root VisualElement is null. Aborting InitFunction.");
-            return;
-        }
+        _ui = uiBase ?? _container.ResolveNamed<IUIController>(ServiceNames.UIController);
+    }
 
-        _factory.Init(root);
+    public void RestoreFunction()
+    {
+        ExDebug.BeginGroup("FunctionController: restore function");
 
-        foreach (Function item in _functions)
+        ExDebug.Log("List functions:" );
+        foreach (var func in _functions)
         {
-            if(!item.Logic.Empty()) 
-            {
-                item.Logic.SetContainer(_container);
-            }
+            ExDebug.Log($"Initializing function '{func.Data.Name}'.");
         }
 
         var parameters = _layoutSetting.GetCorrectItem()?.AssetParameters;
@@ -45,39 +42,52 @@ public class FunctionController : IFunctionController
 
         foreach (var element in parameters.Elements)
         {
-
             if (element?.functionNames == null) continue;
 
-            foreach (string name in element.functionNames)
+            var containerElement = _ui.GetElement(element.elementName);
+            if (containerElement == null)
             {
-                if (string.IsNullOrEmpty(name)) continue;
+                ExDebug.LogWarning($"FunctionController: Container '{element.elementName}' not found in UI.");
+                continue;
+            }
 
-                var function = _functions.FirstOrDefault(f => f.Data?.Name == name);
-                if (function == null) continue;
+            _factory.Init(containerElement);
 
-                _factory.Create(function, element.elementName);
+            foreach (var name in element.functionNames)
+            {
+                var func = _functions.FirstOrDefault(f => f.Data.Name == name);
+                if (func == null) continue;
+                _factory.Create(func);
+            }
+
+            if (!containerElement.Children().Any())
+            {
+                ExDebug.LogError($"FunctionController: Container '{element.elementName}' is empty after adding buttons.");
             }
         }
+
+        _container.Resolve<StyleLogicEdixor>().FunctionStyling(_factory.GetItems());
+        ExDebug.EndGroup();
     }
 
     public void AddFunction(Function function)
     {
         if (function == null)
         {
-            ExDebug.LogWarning("FunctionController: Attempt to add null Function.");
+            ExDebug.LogWarning("Attempt to add null Function.");
             return;
         }
 
         var name = function.Data?.Name;
         if (string.IsNullOrEmpty(name))
         {
-            ExDebug.LogWarning("FunctionController: Function.Data.Name is null or empty.");
+            ExDebug.LogWarning("Function.Data.Name is null or empty.");
             return;
         }
 
         if (_functions.Any(f => f.Data?.Name == name))
         {
-            ExDebug.LogWarning($"FunctionController: Function with Name '{name}' is already added.");
+            ExDebug.LogWarning($"Function with Name '{name}' is already added.");
             return;
         }
 
@@ -88,24 +98,17 @@ public class FunctionController : IFunctionController
 
     public void RemoveFunction(string functionName)
     {
-        if (string.IsNullOrEmpty(functionName))
-        {
-            ExDebug.LogWarning("FunctionController: functionName is null or empty.");
-            return;
-        }
-
         var function = _functions.FirstOrDefault(f => f.Data?.Name == functionName);
         if (function == null)
         {
-            ExDebug.LogWarning($"FunctionController: No Function found with Name '{functionName}'.");
+            ExDebug.LogWarning($"No Function found with Name '{functionName}'.");
             return;
         }
-
         _functions.Remove(function);
     }
 
     public void Execute(string functionName)
     {
-        ExDebug.LogWarning($"FunctionController: Execute('{functionName}') is not implemented.");
+        ExDebug.LogWarning($"Execute('{functionName}') is not implemented.");
     }
 }

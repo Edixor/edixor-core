@@ -18,6 +18,6 @@ MonoBehaviour:
     y: 0
     width: 320
     height: 550
-  isWindowOpen: 0
+  isWindowOpen: 1
   isMinimized: 0
   isMaximized: 0

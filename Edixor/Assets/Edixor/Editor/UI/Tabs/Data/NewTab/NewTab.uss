@@ -1,0 +1,38 @@
+.dual-container {
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.dual-container .section {
+    width: 50%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dual-container .section-header {
+    font-size: 16px;
+    margin-bottom: 4px;
+    -unity-font-style: bold;
+}
+
+.dual-container .divider {
+    width: 1px;
+    background-color: #CCCCCC;
+    margin: 0 10px;
+}
+
+.basic-label {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    -unity-font-style: bold;
+}
+
+.E-button {
+    margin-left: 25%;
+    width: 50%;
+    height: 25px;
+    -unity-font-style: bold;
+}

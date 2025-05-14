@@ -1,65 +1,104 @@
-/* ExtensionManagerTab.uss */
-.root-container {
-    flex-direction: column;
-    padding: 16px;
-    background-color: #1e1e1e;
-}
-
-.header-label {
-    font-size: 20px;
-    -unity-font-style: bold;
-    color: #ffffff;
-    margin-bottom: 8px;
-}
-
-.refresh-button {
-    align-self: flex-end;
-    margin-bottom: 12px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    -unity-font-style: bold;
-}
-
-.list-container {
-    flex-grow: 1;
-    background-color: #2d2d2d;
-    border-radius: 4px;
-    padding: 8px;
-}
-
+/* Корневой контейнер карточки */
 .extension-box {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-bottom: 6px;
-    background-color: #3a3a3a;
-    border-radius: 4px;
-    border-color: #444444;
-    border-width: 1px;
+  flex-direction: row;
+  align-items: center;          /* центрируем иконку и контент по вертикали */
+  padding: 8px;
+  margin-bottom: 6px;
+  background-color: #3a3a3a;
+  border-radius: 4px;
 }
 
+/* Иконка */
+.extension-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background-color:rgb(17, 17, 17);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+.extension-icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Обёртка правой части (контент) */
+.extension-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Верхний бокс: название + кнопка */
+.extension-top-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
 .extension-title {
-    font-size: 14px;
-    -unity-font-style: bold;
-    color: #ffffff;
+  font-size: 14px;
+  -unity-font-style: bold;
+  color: #ffffff;
+}
+.extension-action-btn {
+  width: 80px;
+  height: 24px;
+  -unity-font-style: bold;
 }
 
+/* Нижний бокс: описание + Inspect */
+.extension-bottom-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .extension-desc {
-    font-size: 12px;
-    color: #bbbbbb;
-    margin-left: 12px;
-    flex-grow: 1;
+  flex-grow: 1;
+  font-size: 12px;
+  color: #bbbbbb;
+  margin-right: 12px;
+}
+.extension-inspect-btn {
+  width: 80px;
+  height: 24px;
+  -unity-font-style: bold;
 }
 
-/* Стили для кнопки внутри .extension-box */
-.extension-box > Button {
-    width: 80px;
-    height: 24px;
-    -unity-font-style: bold;
+/* Скруглённый контейнер для поиска + списка */
+.extensions-box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(20,20,20, 0.9); /* ещё темнее */
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 12px;
 }
+
+/* Поисковое поле, остаётся сверху */
+.extensions-box > .search-field {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+/* ScrollView растягивается */
+.extensions-box > .list-scroll {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+}
+
+/* Стиль для пустого списка */
+.empty-label {
+  color: #888888;
+  unity-font-style: italic;
+  margin-top: 12px;
+  text-align: center;
+  width: 100%;
+}
+

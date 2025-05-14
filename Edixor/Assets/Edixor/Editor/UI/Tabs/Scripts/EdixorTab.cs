@@ -105,10 +105,66 @@ public abstract class EdixorTab
 
     public void InvokeAwake()    { LoadUxml(pathUxml); childAwake?.Invoke(); }
     public void InvokeStart()    { childStart?.Invoke(); }
-    public void InvokeOnEnable(){ childOnEnable?.Invoke(); }
+    public void InvokeOnEnable(){ 
+        childOnEnable?.Invoke(); 
+        EdixorParameters p = (EdixorParameters)container
+            .ResolveNamed<StyleSetting>(ServiceNames.StyleSetting)
+            .GetCorrectItem()
+            .AssetParameters[0];
+        InitStyleTab(p);
+    }
     public void InvokeOnDisable(){ childOnDisable?.Invoke(); }
     public void InvokeOnDestroy(){ childOnDestroy?.Invoke(); }
     public void InvokeUpdateGUI(){ childUpdate?.Invoke(); }
+
+    public void InitStyleTab(EdixorParameters parameters)
+    {
+        if (parameters == null)
+        {
+            Debug.LogError("EdixorParameters is null. Cannot apply styles.");
+            return;
+        }
+        if (root == null)
+        {
+            Debug.LogError("Root VisualElement is null. Cannot apply styles.");
+            return;
+        }
+
+        // 0) Прокинем класс E-Scroll на все внутренние scrollers всех ScrollView
+        foreach (var scroll in root.Query<ScrollView>().ToList())
+        {
+            scroll.horizontalScroller.AddToClassList("E-Scroll");
+            scroll.verticalScroller  .AddToClassList("E-Scroll");
+        }
+
+        // 1) Применение обычных стилей
+        foreach (var styleEntry in parameters.Styles)
+        {
+            Debug.Log($"Found {styleEntry.Name} style entry");
+            var elements = root.Query<VisualElement>()
+                            .Class(styleEntry.Name)
+                            .ToList();
+            foreach (var element in elements)
+                styleEntry.Style.ApplyWithStates(element);
+        }
+
+        // 2) Применение стилей для Scroll/Slider по классу E-Scroll
+        foreach (var scrollEntry in parameters.ScrollStyles)
+        {
+            var elements = root.Query<VisualElement>()
+                            .Class(scrollEntry.Name)  // здесь scrollEntry.Name == "E-Scroll"
+                            .ToList();
+
+            Debug.Log($"Found {elements.Count} elements with class '{scrollEntry.Name}'");
+            foreach (var element in elements)
+            {
+                Debug.Log($"  → Applying scroll-style to '{element.name}' ({element.GetType().Name})");
+                scrollEntry.Style.ApplyScrollStyleWithStates(element);
+            }
+        }
+    }
+
+
 
     protected void LoadUxml(string path = null)
     {

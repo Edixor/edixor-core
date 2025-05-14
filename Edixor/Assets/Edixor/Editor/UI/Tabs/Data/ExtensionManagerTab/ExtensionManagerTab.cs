@@ -1,218 +1,254 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
-using ExTools; // Для доступа к EdixorObjectLocator
+using ExTools;
 
 public class ExtensionManagerTab : EdixorTab
 {
     [MenuItem("Edixor/Tabs/Extensions")]
     public static void ShowTab() => ShowTab<ExtensionManagerTab>();
 
-    private const string IndexUrl = "https://raw.githubusercontent.com/Terafy/edixor-extensions/main/Index.json";
-
-    // Список всех метаданных расширений
-    private List<ExtensionInfo> _extensions    = new List<ExtensionInfo>();
-    private HashSet<string>   _loadedNames     = new HashSet<string>();
-    private ScrollView        _listContainer;
-
-    private void Awake()
-    {
-        Option("Extensions", "auto", "auto");
+    private VisualElement _downloadedContainer, _availableContainer;
+    private ScrollView _downloadedList, _availableList;
+    private TextField _searchDownloaded, _searchAvailable;
+    private Toggle _toggleDownloaded, _toggleAvailable;
+    private IExtensionIndexProvider _provider;
+    private IExtensionInstaller _installer;
+    private List<IndexEntry> _allExtensions;
+    private HashSet<string> _installedExtensions;
+ 
+    public void Awake() {
+        Option("Extension Manager", "auto", "auto");
+        _provider = container.ResolveNamed<IExtensionIndexProvider>(ServiceNames.GitHubExtensionIndexProvider);
+        _installer = container.ResolveNamed<IExtensionInstaller>(ServiceNames.GitHubExtensionInstaller);
     }
 
-    private void Start()
+    public void Start()
     {
-        _listContainer = root.Q<ScrollView>("extension-list");
-        if (_listContainer == null)
-            Debug.LogError("ExtensionManagerTab: ScrollView 'extension-list' not found in UXML.");
-        LoadIndex();
-    }
+        // 1) Разрешаем провайдер/инсталлятор здесь
+        _provider = container.ResolveNamed<IExtensionIndexProvider>(ServiceNames.GitHubExtensionIndexProvider);
+        _installer = container.ResolveNamed<IExtensionInstaller>(ServiceNames.GitHubExtensionInstaller);
+        if (_provider == null) Debug.LogError("ExtensionManagerTab: _provider is null");
+        if (_installer == null) Debug.LogError("ExtensionManagerTab: _installer is null");
 
-    private void LoadIndex()
-    {
-        // Сбрасываем данные и UI перед каждым новым запросом
-        _extensions.Clear();
-        _loadedNames.Clear();
-        _listContainer?.Clear();
+        // 2) Разрешаем UI-элементы
+        _toggleDownloaded    = root.Q<Toggle>("toggle-downloaded");
+        _toggleAvailable     = root.Q<Toggle>("toggle-available");
+        _downloadedContainer = root.Q<VisualElement>("downloaded-container");
+        _availableContainer  = root.Q<VisualElement>("available-container");
+        _searchDownloaded    = root.Q<TextField>("search-downloaded");
+        _searchAvailable     = root.Q<TextField>("search-available");
+        _downloadedList      = root.Q<ScrollView>("downloaded-list");
+        _availableList       = root.Q<ScrollView>("available-list");
 
-        Debug.Log("Loading Index.json from: " + IndexUrl);
-        UnityWebRequest req = UnityWebRequest.Get(IndexUrl);
-        req.SendWebRequest().completed += _ =>
+        // Проверяем, что всё нашли
+        void Check(object ui, string name)
         {
-            if (req.result != UnityWebRequest.Result.Success)
+            if (ui == null) Debug.LogError($"ExtensionManagerTab: cannot find UI element '{name}' in UXML");
+        }
+        Check(_toggleDownloaded,    "toggle-downloaded");
+        Check(_toggleAvailable,     "toggle-available");
+        Check(_downloadedContainer, "downloaded-container");
+        Check(_availableContainer,  "available-container");
+        Check(_searchDownloaded,    "search-downloaded");
+        Check(_searchAvailable,     "search-available");
+        Check(_downloadedList,      "downloaded-list");
+        Check(_availableList,       "available-list");
+
+        // 3) Тумблеры показывают/скрывают весь контейнер
+        _toggleDownloaded.RegisterValueChangedCallback(evt =>
+            _downloadedContainer.style.display = evt.newValue ? DisplayStyle.Flex : DisplayStyle.None);
+        _toggleAvailable.RegisterValueChangedCallback(evt =>
+            _availableContainer.style.display  = evt.newValue ? DisplayStyle.Flex : DisplayStyle.None);
+
+        // 4) Поиск
+        _searchDownloaded.RegisterValueChangedCallback(evt => RenderDownloaded());
+        _searchAvailable.RegisterValueChangedCallback(evt => RenderAvailable());
+
+        // 5) Собираем уже установленные расширения
+        _installedExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var extRoot = Path.Combine(Application.dataPath, "Extensions");
+        if (Directory.Exists(extRoot))
+            foreach (var d in Directory.GetDirectories(extRoot))
+                _installedExtensions.Add(Path.GetFileName(d));
+
+        // 6) Запускаем загрузку
+        LoadExtensionsAsync();
+    }
+
+    private async void LoadExtensionsAsync()
+    {
+        try
+        {
+            if (_provider == null)
             {
-                Debug.LogError($"Index load error: {req.error}");
+                Debug.LogError("Cannot load extensions: _provider is null");
                 return;
             }
 
-            Debug.Log("Index.json loaded: " + req.downloadHandler.text);
-            var urls = JsonUtilityWrapper.FromJsonList(req.downloadHandler.text);
-            foreach (var url in urls)
+            _allExtensions = await _provider.LoadIndexAsync();
+            if (_allExtensions == null)
             {
-                Debug.Log("Processing extension URL: " + url);
-                LoadExtensionMeta(url);
+                Debug.LogError("LoadExtensionsAsync: provider returned null list");
+                return;
             }
-        };
+
+            RenderDownloaded();
+            RenderAvailable();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to load extensions: {e}");
+        }
     }
 
-    private void LoadExtensionMeta(string url)
+    private void RenderDownloaded()
     {
-        // Приводим ссылку к raw.githubusercontent.com формату
-        string requestUrl = NormalizeToRawUrl(url);
-        Debug.Log($"Normalized URL: {requestUrl}");
+        _downloadedList.Clear();
+        var filter = _searchDownloaded.value.ToLowerInvariant();
+        int count = 0;
 
-        UnityWebRequest req = UnityWebRequest.Get(requestUrl);
-        req.SendWebRequest().completed += _ =>
+        foreach (var ext in _allExtensions)
         {
-            if (req.result == UnityWebRequest.Result.Success)
-            {
-                Debug.Log($"Meta loaded from {requestUrl}: {req.downloadHandler.text}");
-                var info = JsonUtility.FromJson<ExtensionInfo>(req.downloadHandler.text);
+            if (!_installedExtensions.Contains(ext.name)) continue;
+            if (!ext.name.ToLowerInvariant().Contains(filter)) continue;
+            _downloadedList.Add(CreateExtensionItem(ext, false));
+            count++;
+        }
 
-                // Отсекаем дубли по имени
-                if (_loadedNames.Add(info.name))
-                {
-                    _extensions.Add(info);
-                    RenderList();
-                }
-                else
-                {
-                    Debug.Log($"Skipping duplicate extension: {info.name}");
-                }
+        if (count == 0)
+        {
+            var empty = new Label("You have no extensions here.");
+            empty.AddToClassList("empty-label");
+            _downloadedList.Add(empty);
+        }
+    }
+
+    private void RenderAvailable()
+    {
+        _availableList.Clear();
+        var filter = _searchAvailable.value.ToLowerInvariant();
+        int count = 0;
+
+        foreach (var ext in _allExtensions)
+        {
+            if (_installedExtensions.Contains(ext.name)) continue;
+            if (!ext.name.ToLowerInvariant().Contains(filter)) continue;
+            _availableList.Add(CreateExtensionItem(ext, true));
+            count++;
+        }
+
+        if (count == 0)
+        {
+            var empty = new Label("You have no extensions here.");
+            empty.AddToClassList("empty-label");
+            _availableList.Add(empty);
+        }
+    }
+
+
+    private VisualElement CreateExtensionItem(IndexEntry ext, bool canInstall)
+    {
+        // Root box
+        var rootBox = new VisualElement();
+        rootBox.AddToClassList("extension-box");
+
+        // 1) Icon слева, по центру вертикали
+        var iconWrapper = new VisualElement();
+        iconWrapper.AddToClassList("extension-icon-wrapper");
+        var img = new Image() { scaleMode = ScaleMode.ScaleToFit };
+        img.AddToClassList("extension-icon");
+        if (!string.IsNullOrEmpty(ext.iconUrl))
+            LoadIcon(ext.iconUrl, img);
+        else
+            img.image = EdixorObjectLocator.LoadObject<Texture2D>("Resources/Images/Icons/exten.png");
+        iconWrapper.Add(img);
+        rootBox.Add(iconWrapper);
+
+        // 2) Основное содержимое — справа от иконки
+        var contentWrapper = new VisualElement();
+        contentWrapper.AddToClassList("extension-content-wrapper");
+
+        // 2.1) Верхний бокс: имя слева, кнопка справа
+        var topBox = new VisualElement();
+        topBox.AddToClassList("extension-top-box");
+        // Имя
+        var titleLabel = new Label(ext.name);
+        titleLabel.AddToClassList("extension-title");
+        topBox.Add(titleLabel);
+        // Установить / Удалить
+        var actionBtn = new Button();
+        actionBtn.AddToClassList("extension-action-btn");
+        actionBtn.text = canInstall ? "Install" : "Uninstall";
+        actionBtn.clicked += async () =>
+        {
+            if (canInstall)
+            {
+                await Install(ext);
             }
             else
             {
-                Debug.LogWarning($"Meta load failed for {requestUrl}: {req.error}");
+                await _installer.UninstallAsync(ext);
+                _installedExtensions.Remove(ext.name);
+                RenderDownloaded();
+                RenderAvailable();
             }
         };
+        topBox.Add(actionBtn);
+
+        // 2.2) Нижний бокс: описание слева, Inspect справа
+        var bottomBox = new VisualElement();
+        bottomBox.AddToClassList("extension-bottom-box");
+        // Описание
+        var descLabel = new Label(ext.description);
+        descLabel.AddToClassList("extension-desc");
+        bottomBox.Add(descLabel);
+        // Inspect
+        var inspectBtn = new Button(() =>
+        {
+            // TODO: Inspector logic
+        });
+        inspectBtn.AddToClassList("extension-inspect-btn");
+        inspectBtn.text = "Inspect";
+        bottomBox.Add(inspectBtn);
+
+        // Собираем контент
+        contentWrapper.Add(topBox);
+        contentWrapper.Add(bottomBox);
+        rootBox.Add(contentWrapper);
+
+        return rootBox;
     }
 
-    private void RenderList()
+
+    private async Task Install(IndexEntry ext)
     {
-        if (_listContainer == null) return;
-        _listContainer.Clear();
-
-        foreach (var ext in _extensions)
+        try
         {
-            var box = new VisualElement();
-            box.AddToClassList("extension-box");
-
-            var title = new Label(ext.name);
-            title.AddToClassList("extension-title");
-            box.Add(title);
-
-            var desc = new Label(ext.description);
-            desc.AddToClassList("extension-desc");
-            box.Add(desc);
-
-            // Проверяем, установлено ли расширение
-            string virtualPath = $"Extensions/{ext.name}";
-            string resolved    = EdixorObjectLocator.Resolve(virtualPath);
-            bool installed     = !string.IsNullOrEmpty(resolved)
-                                 && Directory.Exists(Path.Combine(Application.dataPath, resolved.Substring("Assets/".Length)));
-
-            var installBtn = new Button(() => InstallExtension(ext))
-            {
-                text = installed ? "Installed" : "Install"
-            };
-            installBtn.SetEnabled(!installed);
-            box.Add(installBtn);
-
-            _listContainer.Add(box);
+            await _installer.InstallAsync(ext);
+            _installedExtensions.Add(ext.name);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
+        finally
+        {
+            RenderDownloaded();
+            RenderAvailable();
         }
     }
 
-    private void InstallExtension(ExtensionInfo ext)
+    private async void LoadIcon(string url, Image img)
     {
-        string zipUrl     = ext.zipUrl;
-        string tempZip    = Path.Combine(Application.temporaryCachePath, ext.name + ".zip");
-        string extractDir = Path.Combine(Application.temporaryCachePath, ext.name);
-
-        Debug.Log($"Downloading ZIP from {zipUrl}");
-        UnityWebRequest req = UnityWebRequest.Get(zipUrl);
-        req.SendWebRequest().completed += _ =>
-        {
-            if (req.result == UnityWebRequest.Result.Success)
-            {
-                File.WriteAllBytes(tempZip, req.downloadHandler.data);
-
-                if (Directory.Exists(extractDir))
-                    Directory.Delete(extractDir, true);
-
-                ZipFile.ExtractToDirectory(tempZip, extractDir);
-
-                // Определяем правильную корневую папку внутри extractDir
-                string sourceDir = extractDir;
-                var subdirs = Directory.GetDirectories(extractDir);
-                if (subdirs.Length == 1)
-                {
-                    string onlyDir = subdirs[0];
-                    if (Path.GetFileName(onlyDir).Equals(ext.name, StringComparison.OrdinalIgnoreCase))
-                    {
-                        // Если в корне нет файлов, берем вложенную
-                        if (Directory.GetFiles(extractDir).Length == 0)
-                            sourceDir = onlyDir;
-                    }
-                }
-
-                Debug.Log($"Importing directory {sourceDir} to virtual path Extensions/{ext.name}");
-                EdixorObjectLocator.ImportDirectory(sourceDir, $"Extensions/{ext.name}");
-
-                File.Delete(tempZip);
-                AssetDatabase.Refresh();
-                RenderList();
-            }
-            else
-            {
-                Debug.LogError($"Download failed: {req.error}");
-            }
-        };
-    }
-
-    // Помогает превратить URL GitHub в raw.githubusercontent.com
-    private string NormalizeToRawUrl(string url)
-    {
-        if (url.Contains("raw.githubusercontent.com"))
-            return url;
-
-        if (url.StartsWith("https://github.com/"))
-        {
-            var parts = url.Replace("https://github.com/", "").Split(new[] {'/'}, 4);
-            if (parts.Length >= 4)
-            {
-                string user = parts[0], repo = parts[1], branch = parts[2], path = parts[3];
-                if (path.StartsWith("blob/")) path = path.Substring(5);
-                return $"https://raw.githubusercontent.com/{user}/{repo}/{branch}/{path}";
-            }
-        }
-
-        return url;
-    }
-
-    // Парсер JSON-массивов через JsonUtility
-    private static class JsonUtilityWrapper
-    {
-        [Serializable]
-        private class StringArray { public List<string> items; }
-
-        public static List<string> FromJsonList(string json)
-        {
-            var wrapped = "{\"items\":" + json + "}";
-            return JsonUtility.FromJson<StringArray>(wrapped).items;
-        }
-    }
-
-    [Serializable]
-    public class ExtensionInfo
-    {
-        public string name;
-        public string description;
-        public string version;
-        public string zipUrl;
+        using var req = UnityWebRequestTexture.GetTexture(url);
+        var op = req.SendWebRequest(); while (!op.isDone) await Task.Yield();
+        if (req.result == UnityWebRequest.Result.Success) img.image = DownloadHandlerTexture.GetContent(req);
+        else img.image = EdixorObjectLocator.LoadObject<Texture2D>("Resources/Images/Icon/exten.png");
     }
 }

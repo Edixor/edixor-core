@@ -1,12 +1,16 @@
+/* Обновлённые стили для таблицы хоткеев с увеличенной высотой строк */
 .hotkey-table-header,
 .hotkey-table-row {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    /* увеличенный отступ по вертикали для большей высоты */
+    padding: 8px 24px 8px 8px;
+    /* минимальная высота строки, чтобы гарантировать достаточный размер */
+    min-height: 40px;
     border-bottom-width: 1px;
     border-bottom-color: #444;
+    position: relative; /* для абсолютного позиционирования опций */
 }
 
 .hotkey-table-header {
@@ -21,36 +25,66 @@
     background-color: #1f1f1f;
 }
 
-#column-index,
-#column-key,
-#column-name,
-#column-combo,
-#column-options {
-    padding-left: 8px;
-    padding-right: 8px;
-    min-width: 100px;
-    flex-shrink: 0;
+/* Сброс отступов у Label внутри ячеек */
+.hotkey-table-header > Label,
+.hotkey-table-row > Label {
+    margin: 0;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
 }
 
+/* Пропорциональное распределение ширин колонок */
+#column-index {
+    flex: 0 0 5%;
+    justify-content: center;
+}
+#column-key {
+    flex: 0 0 20%;
+    justify-content: flex-start;
+}
+#column-name {
+    flex: 0 0 35%;
+    justify-content: flex-start;
+}
 #column-combo {
-    flex-grow: 1;
+    flex: 0 0 30%;
+    justify-content: flex-start;
 }
 
+/* Позиционирование контейнера опций абсолютно */
 .options-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 16px; /* отступ от правого края окна */
     display: flex;
     flex-direction: row;
+    align-items: center; /* вертикальное центрирование */
 }
 
+/* Отступы между кнопками */
 .options-container > .edit-button,
 .options-container > .toggle-button {
-    margin-right: 6px;
+    margin-left: 6px;
 }
 
 .edit-button,
 .toggle-button {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 2px 8px;
     font-size: 12px;
+}
+
+.hotkey-header {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.basic-label {
+    font-size: 24px;
+    -unity-font-style: bold;
+}
+
+.add-button {
+    height: 20px;
 }

@@ -1,11 +1,47 @@
 <UXML xmlns="UnityEngine.UIElements">
-    <VisualElement style="flex-grow: 1;">
-        <VisualElement name="basic-data" style="flex-grow: 1;">
-            <Label text="WELCOME TO THE EDIXOR" style="font-size: 20px; -unity-font-style: bold; -unity-text-align: center;" />
-        </VisualElement>
-        <VisualElement style="flex-grow: 1; flex-direction: row;">
-            <VisualElement name="frequent-tabs" style="flex-grow: 1;" />
-            <VisualElement name="news" style="flex-grow: 1;" />
-        </VisualElement>
+  <VisualElement class="root">
+    <!-- Header -->
+    <VisualElement name="basic-data" class="basic-data">
+      <Label text="WELCOME TO THE EDIXOR" class="basic-label E-title"/>
     </VisualElement>
+
+    <!-- Main Content -->
+    <VisualElement class="content-row">
+      <VisualElement name="frequent-tabs" class="panel frequent-tabs" />
+
+      <VisualElement name="news" class="panel news">
+        <!-- Information Box -->
+        <VisualElement name="information-box" class="information-box">
+          <Label name="info-label" text="Edixor info: " class="E-label" />
+          <Label name="version-label" class="E-label" />
+          <Label name="updates-label" class="E-label" />
+          <Button name="doc-button" text="Documentation" class="E-button" />
+          <Button name="github-button" text="Git Hub Edixor" class="E-button" />
+          <Button name="github-button-extensions" text="Git Hub Edixor-extensions" class="E-button" />
+
+          <!-- Две секции с разделителем -->
+          <VisualElement class="dual-container" style="flex-direction: row; width: 100%; margin-top: 10px;">
+            <!-- Левая секция -->
+            <VisualElement class="section left-section" style="width: 50%; padding: 5px; display: flex; flex-direction: column;">
+              <Label text="Tabs" class="section-header E-title" />
+              <Label text="No Tabs available yet =[" class="E-label"/>
+            </VisualElement>
+
+            <!-- Разделитель -->
+            <VisualElement class="divider" style="
+                width: 3px;
+                background-color: #CCCCCC;
+                margin: 0 10px;
+            " />
+
+            <!-- Правая секция -->
+            <VisualElement class="section right-section" style="width: 50%; padding: 5px; display: flex; flex-direction: column;">
+              <Label text="News" class="section-header E-title" />
+              <Label text="No news available yet =[" class="E-label"/>
+            </VisualElement>
+          </VisualElement>
+        </VisualElement>
+      </VisualElement>
+    </VisualElement>
+  </VisualElement>
 </UXML>

@@ -35,65 +35,51 @@ public class DebugTab : EdixorTab
         {
             if (item is DebugGroup group)
             {
-                // Separator above group
                 var sep = new VisualElement();
                 sep.AddToClassList("separator");
                 parent.Add(sep);
 
-                // Group box container
                 var groupBox = new Box();
                 groupBox.AddToClassList("box");
                 groupBox.style.marginLeft = indent * 10;
-                groupBox.style.paddingTop = 4;
-                groupBox.style.paddingBottom = 4;
-                groupBox.style.position = Position.Relative;
 
-                // Content container declared early for closure
                 var contentContainer = new VisualElement();
                 contentContainer.AddToClassList("children-container");
                 contentContainer.style.display = group.IsExpanded ? DisplayStyle.Flex : DisplayStyle.None;
-                contentContainer.style.flexDirection = FlexDirection.Column;
-                contentContainer.style.marginTop = 4;
 
-                // Header row
                 var headerRow = new VisualElement();
                 headerRow.AddToClassList("row");
-                headerRow.style.flexDirection = FlexDirection.Row;
-                headerRow.style.alignItems = Align.Center;
 
-                // Timestamp + group label
                 var label = new Label($"[{group.Timestamp:HH:mm:ss}] [Group] {group.Header}");
                 label.AddToClassList("group-label");
-                label.style.flexGrow = 1;
                 headerRow.Add(label);
-
                 groupBox.Add(headerRow);
 
-                // Toggle button (square icon placeholder)
                 var arrow = new VisualElement();
                 arrow.AddToClassList("toggle-icon");
-                arrow.style.width = 12;
-                arrow.style.height = 12;
-                arrow.transform.rotation = group.IsExpanded ? Quaternion.Euler(0, 0, 90) : Quaternion.identity;
+                arrow.transform.rotation = Quaternion.identity;
+
+                var icon = new Image();
+                icon.image = EdixorObjectLocator.LoadObject<Texture2D>("Resources/Images/Icons/arrow-top.png");
+                icon.AddToClassList("toggle-icon");
+                icon.style.scale = new Scale(new Vector3(1, 1, 1));
 
                 var btn = new Button(() =>
                 {
                     group.IsExpanded = !group.IsExpanded;
                     contentContainer.style.display = group.IsExpanded ? DisplayStyle.Flex : DisplayStyle.None;
-                    arrow.transform.rotation = group.IsExpanded ? Quaternion.Euler(0, 0, 90) : Quaternion.identity;
+
+                    icon.style.unityBackgroundImageTintColor = group.IsExpanded ? Color.white : Color.gray;
+                    icon.style.scale = new Scale(new Vector3(1, group.IsExpanded ? -1 : 1, 1));
                 })
                 { name = "toggle-button" };
-                btn.Add(arrow);
-                btn.style.position = Position.Absolute;
-                btn.style.right = 4;
-                btn.style.top = 4;
-                groupBox.Add(btn);
 
-                // Add the content container
+                btn.AddToClassList("E-button");
+                btn.Add(icon);
+                groupBox.Add(btn);
                 groupBox.Add(contentContainer);
                 parent.Add(groupBox);
 
-                // Recursively build children
                 foreach (var child in group.Children)
                     BuildItem(child, indent + 1, contentContainer);
             }
@@ -101,9 +87,8 @@ public class DebugTab : EdixorTab
             {
                 var entryBox = new Box();
                 entryBox.AddToClassList("box");
+                entryBox.AddToClassList("entry-box");
                 entryBox.style.marginLeft = indent * 10;
-                entryBox.style.paddingTop = 2;
-                entryBox.style.paddingBottom = 2;
 
                 var txt = new Label($"[{entry.Timestamp:HH:mm:ss}] {entry.Header}");
                 txt.AddToClassList(entry.Severity.ToString().ToLower());
@@ -127,6 +112,23 @@ public class DebugTab : EdixorTab
         if (history.Count > 0)
             ShowDetails(0);
     }
+
+
+    private Texture2D FlipTextureVertically(Texture2D original)
+    {
+        if (original == null) return null;
+
+        Texture2D flipped = new Texture2D(original.width, original.height);
+        for (int y = 0; y < original.height; y++)
+        {
+            for (int x = 0; x < original.width; x++)
+            {
+                flipped.SetPixel(x, original.height - y - 1, original.GetPixel(x, y));
+            }
+        }
+        flipped.Apply();
+        return flipped;
+}
 
     private void ShowDetails(int index)
     {

@@ -1,15 +1,27 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-  <!-- Корневой контейнер вкладки -->
+
   <ui:VisualElement class="root-container">
-    
-    <!-- Заголовок вкладки -->
     <ui:Label text="Edixor Extensions" class="header-label" />
 
-    <!-- Кнопка обновления (сверху справа) -->
-    <ui:Button name="refresh-button" text="Refresh" class="refresh-button" />
+    <uie:Toolbar class="toolbar">
+      <ui:Label text="view: " />
+      <ui:Toggle name="toggle-downloaded" text="Downloaded" value="true" />
+      <ui:Toggle name="toggle-available"  text="Available"  value="true" />
+    </uie:Toolbar>
 
-    <!-- Список расширений -->
-    <ui:ScrollView name="extension-list" class="list-container" />
+    <!-- Downloaded -->
+    <ui:Box name="downloaded-container" class="extensions-box">
+      <ui:TextField name="search-downloaded"
+                    placeholder="Search downloaded..." class="search-field" />
+      <ui:ScrollView name="downloaded-list" class="list-scroll" />
+    </ui:Box>
+
+    <!-- Available -->
+    <ui:Box name="available-container" class="extensions-box">
+      <ui:TextField name="search-available"
+                    placeholder="Search available..." class="search-field" />
+      <ui:ScrollView name="available-list" class="list-scroll" />
+    </ui:Box>
 
   </ui:VisualElement>
 </ui:UXML>

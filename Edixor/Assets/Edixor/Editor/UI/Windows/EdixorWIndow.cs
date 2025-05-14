@@ -8,6 +8,7 @@ using System;
 public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 {
     private static readonly HashSet<Type> _initializedWindowTypes = new HashSet<Type>();
+    private string _title = "None";
     public static EdixorWindow CurrentWindow { get; private set; }
     protected DIContainer container;
     protected Rect originalWindowRect;
@@ -40,11 +41,15 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
 
     public static void ShowWindow<T>(string title) where T : EdixorWindow
     {
-        GetWindow<T>(title).Show();
+        T window = GetWindow<T>(title);
+        window.Show();
     }
 
     protected virtual void OnEnable()
     {
+        _title = this.titleContent.text;
+        ExDebug.BeginGroup(_title + " is open");
+
         container = LoadOrCreateContainer();
         RegisterServers();
         setting.InitOptions(rootVisualElement, container);
@@ -192,5 +197,7 @@ public class EdixorWindow : EditorWindow, IMinimizable, IRestartable, IClosable
         setting.OnWindowClose();
         WindowStateSetting.SetWindowOpen(false);
         CurrentWindow = null;
+        ExDebug.Log($"{_title} is disable");
+        ExDebug.EndGroup();
     }
 }

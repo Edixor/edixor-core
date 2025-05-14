@@ -11,8 +11,8 @@ public interface IEdixorInterfaceFacade
     void Update();
     void OnWindowClose();
     void AddTab(EdixorTab tab, bool saveState = true, bool autoSwitch = true);
-    void SetLayout(string path);
-    void SetStyle(string path);
+    void SetLayout(string name);
+    void SetStyle(string name);
     void BeginWindowSize(Vector2 size);
     void FixedWindowSize(Vector2 size);
     void BeginWindowPosition(Vector2 position);

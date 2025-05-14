@@ -43,10 +43,11 @@ public class EdixorInterfaceFacade : IEdixorInterfaceFacade
     {
         _ui.InitRoot(_root);
         _ui.Show(new UIRoot(_container));
+        _func.Initialize(_ui);
         _tabs.Initialize(_ui);
+        _func.RestoreFunction();
         _tabs.RestoreTabs();
         _hotKey.InitHotKeys();
-        _func.InitFunction(_root);
     }
 
     public void LoadHotKey(string name, string title = null, Action action = null)
@@ -91,11 +92,13 @@ public class EdixorInterfaceFacade : IEdixorInterfaceFacade
         _tabs.OnWindowClose();
     }
 
-    public void SetLayout(string path) {
-
+    public void SetLayout(string name) {
+        LayoutData layout = _container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetItem(name);
+        _ui.SetLayout(layout);
     }
-    public void SetStyle(string path) {
-
+    public void SetStyle(string name) {
+        StyleData style = _container.ResolveNamed<StyleSetting>(ServiceNames.StyleSetting).GetItem(name);
+        _ui.SetStyle(style);
     }
 
     public void BeginWindowSize(Vector2 size) {

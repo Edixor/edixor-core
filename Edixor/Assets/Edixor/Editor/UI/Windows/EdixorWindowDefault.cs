@@ -10,7 +10,7 @@ public class EdixorWindowDefault : EdixorWindow
     [MenuItem("Edixor/Window/" + WindowName)]
     public static void ShowExample()
     {
-        GetWindow<EdixorWindowDefault>(WindowName);
+        ShowWindow<EdixorWindowDefault>(WindowName);
     }
 
     protected override void OnOptions()

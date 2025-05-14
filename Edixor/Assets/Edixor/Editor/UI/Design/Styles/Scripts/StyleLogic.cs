@@ -5,8 +5,8 @@ using ExTools;
 
 public class StyleLogic
 {
-    private StyleParameters _parameters;
-    private VisualElement _root;
+    protected StyleParameters _parameters;
+    protected VisualElement _root;
 
     public StyleLogic(VisualElement root = null, StyleParameters parameter = null)
     {
@@ -58,29 +58,5 @@ public class StyleLogic
                 element.style.backgroundColor = _parameters.BackgroundColors[backgroundColorIndex];
             }
         }
-    }
-
-    public void FunctionStyling(List<Button> list)
-    {
-        /*if (list == null || _parameters == null)
-        {
-            ExDebug.LogError("List or parameters are null.");
-            return;
-        }
-
-        foreach (var button in list)
-        {
-            if (button == null)
-            {
-                ExDebug.LogWarning("Null button encountered in FunctionStyling.");
-                continue;
-            }
-
-            ExDebug.Log($"Styling button: {button.name}");
-
-            button.style.backgroundColor = _parameters.FunctionBackgroundColors;
-            button.style.unityBackgroundImageTintColor = _parameters.FunctionIconColors;
-        }
-        */
     }
 }

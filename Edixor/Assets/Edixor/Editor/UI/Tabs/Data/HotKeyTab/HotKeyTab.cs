@@ -86,8 +86,8 @@ public class HotKeyTab : EdixorTab
             VisualElement headerRow = new VisualElement();
             headerRow.AddToClassList("hotkey-table-header");
 
-            headerRow.Add(new Label("Index") { name = "column-index" });
-            headerRow.Add(new Label("Key") { name = "column-key" });
+            headerRow.Add(new Label("№") { name = "column-index" });
+            headerRow.Add(new Label("Base") { name = "column-key" });
             headerRow.Add(new Label("Name") { name = "column-name" });
             headerRow.Add(new Label("Combination") { name = "column-combo" });
             headerRow.Add(new Label("Options") { name = "column-options" });
@@ -115,13 +115,22 @@ public class HotKeyTab : EdixorTab
 
         VisualElement row = new VisualElement();
         row.AddToClassList("hotkey-table-row");
-
-        row.Add(new Label(globalIndex.ToString()) { name = "column-index" });
-        row.Add(new Label(entry.Key) { name = "column-key" });
-        row.Add(new Label(keyData.Name) { name = "column-name" });
+        
+        Label labelIndex = new Label(globalIndex.ToString()) { name = "column-index" };
+        labelIndex.AddToClassList("E-label");
+        Label labelKey = new Label(entry.Key) { name = "column-key" };
+        labelKey.AddToClassList("E-label");
+        Label labelName = new Label(keyData.Name) { name = "column-name" };
+        labelName.AddToClassList("E-label");
+        row.Add(labelIndex);
+        row.Add(labelKey);
+        row.Add(labelName);
 
         var comboText = string.Join(" + ", keyData.Combination);
-        row.Add(new Label(comboText) { name = "column-combo" });
+        Label labelCombo = new Label(comboText) { name = "column-combo" };
+        labelCombo.AddToClassList("E-label");
+
+        row.Add(labelCombo);
 
         // Options buttons
         VisualElement optionsContainer = new VisualElement();
@@ -129,15 +138,21 @@ public class HotKeyTab : EdixorTab
 
         Button editButton = new Button(() => EditHotKey(entry, dataIndex, null)) { text = "Edit" };
         editButton.AddToClassList("edit-button");
+        editButton.AddToClassList("E-button");
 
-        Button toggleButton = new Button(() => ToggleHotKeyItem(entry, dataIndex, toggleButton: null))
-        {
-            text = keyData.enable ? "Disable" : "Enable"
+        Toggle enableToggle = new Toggle() {
+            value = keyData.enable,
+            name = "column-enable-toggle"
         };
-        toggleButton.AddToClassList("toggle-button");
+        enableToggle.RegisterValueChangedCallback(evt => {
+            keyData.enable = evt.newValue;
+            hotKeySettingEntries.UpdateEntry(entry.Key, entry);
+            RefreshHotKeysUI();
+        });
 
+        optionsContainer.Add(enableToggle);
         optionsContainer.Add(editButton);
-        optionsContainer.Add(toggleButton);
+
         row.Add(optionsContainer);
 
         return row;

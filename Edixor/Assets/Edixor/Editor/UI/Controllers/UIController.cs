@@ -1,5 +1,7 @@
 using UnityEngine.UIElements;
+using UnityEngine;
 using ExTools;
+
 public class UIController : IUIController
 {
     private VisualElement _root;
@@ -12,12 +14,12 @@ public class UIController : IUIController
     public UIController(DIContainer container, VisualElement root = null)
     {
         _root = root;
-        Style = container.ResolveNamed<StyleSetting>(ServiceNames.StyleSetting).GetCorrectItem();
-        Layout = container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetCorrectItem();
+        _container = container;
     }
 
     public void InitRoot(VisualElement root)
     {
+        ExDebug.BeginGroup("UIController: Initialized");
         if (root == null)
         {
             ExDebug.LogError("Root element is null. Cannot initialize UIController.");
@@ -27,6 +29,28 @@ public class UIController : IUIController
         _root = root;
 
         _root.Clear();
+    }
+
+    public void SetStyle(StyleData style)
+    {
+        if (style == null)
+        {
+            ExDebug.LogError("Style is null. Cannot set style.");
+            return;
+        }
+
+        Style = style;
+    }
+
+    public void SetLayout(LayoutData layout)
+    {
+        if (layout == null)
+        {
+            ExDebug.LogError("Layout is null. Cannot set layout.");
+            return;
+        }
+
+        Layout = layout;
     }
 
     public bool IsRootInitialized()
@@ -50,9 +74,30 @@ public class UIController : IUIController
 
         _root.Clear();
 
+        Style = _container.ResolveNamed<StyleSetting>(ServiceNames.StyleSetting).GetCorrectItem();
+        if (Style == null)
+        {
+            ExDebug.LogWarning("Style is null. Default styles will not be applied.");
+        }
+        else
+        {
+            ExDebug.Log("Style successfully resolved and applied.");
+        }
+
+        Layout = _container.ResolveNamed<LayoutSetting>(ServiceNames.LayoutSetting).GetCorrectItem();
+        if (Layout == null)
+        {
+            ExDebug.LogWarning("Layout is null. Default layout will not be applied.");
+        }
+        else
+        {
+            ExDebug.Log("Layout successfully resolved and applied.");
+        }
+
         contentElement = new VisualElement();
         content.Init(contentElement, Layout, Style);
 
+        ExDebug.Log("Loading UIContent: " + content.GetType().Name);
         VisualElement newContent = content.LoadUI();
         newContent.AddToClassList("content");
         newContent.name = "content";
@@ -62,13 +107,18 @@ public class UIController : IUIController
             ExDebug.LogError("Loaded UIContent returned null.");
             return;
         }
+        else
+        {
+            ExDebug.Log("UIContent successfully loaded and added to the content container.");
+        }
 
         contentElement.Add(newContent);
         contentElement.AddToClassList("content-container");
         contentElement.name = "content-container";
         _root.Add(contentElement);
-    }
 
+        ExDebug.EndGroup();
+    }
 
     public VisualElement GetElement(string name)
     {

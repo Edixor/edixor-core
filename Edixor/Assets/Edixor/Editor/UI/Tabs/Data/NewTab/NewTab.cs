@@ -1,44 +1,28 @@
-using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
-using ExTools;
+using UnityEngine.UIElements;
 using System;
 
 [Serializable]
 public class NewTab : EdixorTab
 {
     [MenuItem("Edixor/Tabs/New Tab")]
-    public static void ShowTab()
-    {
-        ShowTab<NewTab>();
-    }
-
+    public static void ShowTab() => ShowTab<NewTab>();
 
     private void Awake()
     {
-        tabName = "New Tab";
-        LoadUxml("auto");
-        LoadUss("auto");
+        Option("New Tab", "auto", "auto");
     }
 
-    private void Start() 
+    private void Start()
     {
-        VisualElement designContainer = root.Q<VisualElement>("basic-data");
-        VisualElement tabContainer = root.Q<VisualElement>("frequent-tabs");
-        VisualElement newsContainer = root.Q<VisualElement>("news");
-        if (designContainer == null)
-        {
-            ExDebug.LogError("Design container not found.");
-            return;
-        }
+        // Заполняем статичные элементы данными
+        var versionLabel = root.Q<Label>("version-label");
+        if (versionLabel != null)
+            versionLabel.text = $"Version: {Application.version}";
 
-        VisualElement informationBox = new VisualElement();
-        informationBox.AddToClassList("...");
-        informationBox.Add(new Label("version: " + "0.1"));
-        informationBox.Add(new Label("recent updates " + "15.10.2025"));
-        Button documentation = new Button() { text = "Documentation" };
-        informationBox.Add(documentation);
-
-        designContainer.Add(informationBox);
+        var updatesLabel = root.Q<Label>("updates-label");
+        if (updatesLabel != null)
+            updatesLabel.text = $"Recent updates: {DateTime.Now:dd.MM.yyyy}";
     }
 }

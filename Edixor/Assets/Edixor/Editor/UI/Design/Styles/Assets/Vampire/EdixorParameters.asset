@@ -1,0 +1,411 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93aa79def820f0d47ae9bb38e21bdd4b, type: 3}
+  m_Name: EdixorParameters
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 1, g: 0.8522512, b: 0.1273585, a: 1}
+  - {r: 0.3019608, g: 0.12941177, b: 0.98823535, a: 1}
+  backgroundColors:
+  - {r: 0.08235294, g: 0.08235294, b: 0.16470589, a: 1}
+  - {r: 0.098039225, g: 0.09411766, b: 0.18823531, a: 1}
+  borderColors:
+  - {r: 0.98039216, g: 0.8156863, b: 0, a: 1}
+  styleEntry:
+  - Key: tab-section
+    Indices: 0000000000000000
+  - Key: middle-section-content
+    Indices: 0000000001000000
+  - Key: function-section
+    Indices: 0000000000000000
+  font:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tabStyle:
+    normal:
+      textColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      backgroundColor: {r: 0.097979195, g: 0.06341225, b: 0.1792453, a: 0.2784314}
+      borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+      borderBottomColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+      borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+      borderWidth: 1
+      borderRadius: 0
+      font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+    hover:
+      textColor: {r: 1, g: 0.91560197, b: 0.504717, a: 1}
+      backgroundColor: {r: 0.097979195, g: 0.06341225, b: 0.1792453, a: 0.07450981}
+      borderTopColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderBottomColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderLeftColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderRightColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderWidth: 1
+      borderRadius: 0
+      font: {fileID: 12800000, guid: 0b92b8c2f4e01804fa5622ea6351ecd0, type: 3}
+    active:
+      textColor: {r: 1, g: 0.91560197, b: 0.504717, a: 1}
+      backgroundColor: {r: 0.097979195, g: 0.06341225, b: 0.1792453, a: 0.07450981}
+      borderTopColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderBottomColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderLeftColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderRightColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderWidth: 1
+      borderRadius: 0
+      font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+    disabled:
+      textColor: {r: 0, g: 0, b: 0, a: 0}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+      borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+      borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+      borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+      borderWidth: 0
+      borderRadius: 0
+      font: {fileID: 0}
+  addTabStyle:
+    normal:
+      textColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      backgroundColor: {r: 0.097979195, g: 0.06341225, b: 0.1792453, a: 0.2784314}
+      borderTopColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderBottomColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+      borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+      borderWidth: 1
+      borderRadius: 0
+      font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+    hover:
+      textColor: {r: 1, g: 0.91560197, b: 0.504717, a: 1}
+      backgroundColor: {r: 0.097979195, g: 0.06341225, b: 0.1792453, a: 0.07450981}
+      borderTopColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderBottomColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderLeftColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderRightColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+      borderWidth: 1
+      borderRadius: 0
+      font: {fileID: 12800000, guid: 0b92b8c2f4e01804fa5622ea6351ecd0, type: 3}
+    active:
+      textColor: {r: 1, g: 0.91560197, b: 0.504717, a: 1}
+      backgroundColor: {r: 0.097979195, g: 0.06341225, b: 0.1792453, a: 0.07450981}
+      borderTopColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderBottomColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderLeftColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderRightColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+      borderWidth: 1
+      borderRadius: 0
+      font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+    disabled:
+      textColor: {r: 0, g: 0, b: 0, a: 0}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+      borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+      borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+      borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+      borderWidth: 0
+      borderRadius: 0
+      font: {fileID: 0}
+  functionStyle:
+    normal:
+      textColor: {r: 0.72330016, g: 0.7646036, b: 0.8113208, a: 1}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      borderTopColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+      borderBottomColor: {r: 0.47058824, g: 0.5372549, b: 0.6039216, a: 1}
+      borderLeftColor: {r: 0.46991813, g: 0.5368458, b: 0.6037736, a: 1}
+      borderRightColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+      borderWidth: 1
+      borderRadius: 0
+      font: {fileID: 0}
+    hover:
+      textColor: {r: 0, g: 0, b: 0, a: 0}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+      borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+      borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+      borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+      borderWidth: 0
+      borderRadius: 0
+      font: {fileID: 0}
+    active:
+      textColor: {r: 0, g: 0, b: 0, a: 0}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+      borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+      borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+      borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+      borderWidth: 0
+      borderRadius: 0
+      font: {fileID: 0}
+    disabled:
+      textColor: {r: 0, g: 0, b: 0, a: 0}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+      borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+      borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+      borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+      borderWidth: 0
+      borderRadius: 0
+      font: {fileID: 0}
+  scrollStyle:
+    normal:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.64413494, g: 0.69857544, b: 0.7075472, a: 0.3529412}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+    hover:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.6431373, g: 0.69803923, b: 0.7058824, a: 0.59607846}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+    active:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.6431373, g: 0.69803923, b: 0.7058824, a: 0.7647059}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+    disabled:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+  styles:
+  - Name: E-button
+    Style:
+      normal:
+        textColor: {r: 0.098039225, g: 0.09411766, b: 0.18823531, a: 1}
+        backgroundColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+        borderTopColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderBottomColor: {r: 0.47058824, g: 0.5372549, b: 0.6039216, a: 1}
+        borderLeftColor: {r: 0.46991813, g: 0.5368458, b: 0.6037736, a: 1}
+        borderRightColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 0b92b8c2f4e01804fa5622ea6351ecd0, type: 3}
+      hover:
+        textColor: {r: 0.098039225, g: 0.09411766, b: 0.18823531, a: 1}
+        backgroundColor: {r: 1, g: 0.91077924, b: 0.4764151, a: 1}
+        borderTopColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderBottomColor: {r: 0.47058824, g: 0.5372549, b: 0.6039216, a: 1}
+        borderLeftColor: {r: 0.46991813, g: 0.5368458, b: 0.6037736, a: 1}
+        borderRightColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 0b92b8c2f4e01804fa5622ea6351ecd0, type: 3}
+      active:
+        textColor: {r: 0.098039225, g: 0.09411766, b: 0.18823531, a: 1}
+        backgroundColor: {r: 1, g: 0.95061255, b: 0.7122642, a: 1}
+        borderTopColor: {r: 1, g: 0.9490196, b: 0.7137255, a: 1}
+        borderBottomColor: {r: 1, g: 0.9490196, b: 0.7137255, a: 1}
+        borderLeftColor: {r: 1, g: 0.9490196, b: 0.7137255, a: 1}
+        borderRightColor: {r: 1, g: 0.9490196, b: 0.7137255, a: 1}
+        borderWidth: 2
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 0b92b8c2f4e01804fa5622ea6351ecd0, type: 3}
+      disabled:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+  - Name: E-button2
+    Style:
+      normal:
+        textColor: {r: 0.72330016, g: 0.7646036, b: 0.8113208, a: 1}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderBottomColor: {r: 0.47058824, g: 0.5372549, b: 0.6039216, a: 1}
+        borderLeftColor: {r: 0.46991813, g: 0.5368458, b: 0.6037736, a: 1}
+        borderRightColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderWidth: 1
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+      hover:
+        textColor: {r: 0.72330016, g: 0.7646036, b: 0.8113208, a: 1}
+        backgroundColor: {r: 1, g: 1, b: 1, a: 0.09803922}
+        borderTopColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderBottomColor: {r: 0.47058824, g: 0.5372549, b: 0.6039216, a: 1}
+        borderLeftColor: {r: 0.46991813, g: 0.5368458, b: 0.6037736, a: 1}
+        borderRightColor: {r: 0.72156864, g: 0.7647059, b: 0.8117647, a: 1}
+        borderWidth: 2
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+      active:
+        textColor: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColor: {r: 1, g: 1, b: 1, a: 0.27058825}
+        borderTopColor: {r: 0.8501246, g: 0.8766852, b: 0.9056604, a: 1}
+        borderBottomColor: {r: 0.57498217, g: 0.6318307, b: 0.6886792, a: 1}
+        borderLeftColor: {r: 0.59073514, g: 0.6491412, b: 0.7075472, a: 1}
+        borderRightColor: {r: 0.8324136, g: 0.85842085, b: 0.8867924, a: 1}
+        borderWidth: 2
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+      disabled:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+  - Name: E-title
+    Style:
+      normal:
+        textColor: {r: 1, g: 0.8509804, b: 0.1254902, a: 1}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 12800000, guid: c58075e16aecc894cbb6e276ac9d9043, type: 3}
+      hover:
+        textColor: {r: 1, g: 0.9137255, b: 0.5058824, a: 1}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 12800000, guid: c58075e16aecc894cbb6e276ac9d9043, type: 3}
+      active:
+        textColor: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColor: {r: 1, g: 1, b: 1, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 1
+        borderRadius: 0
+        font: {fileID: 12800000, guid: c58075e16aecc894cbb6e276ac9d9043, type: 3}
+      disabled:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+  - Name: E-label
+    Style:
+      normal:
+        textColor: {r: 0.7809719, g: 0.840546, b: 0.8490566, a: 1}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+      hover:
+        textColor: {r: 0.6431373, g: 0.69803923, b: 0.7058824, a: 1}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+      active:
+        textColor: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColor: {r: 1, g: 1, b: 1, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 1
+        borderRadius: 0
+        font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+      disabled:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+  scrollStyles: []

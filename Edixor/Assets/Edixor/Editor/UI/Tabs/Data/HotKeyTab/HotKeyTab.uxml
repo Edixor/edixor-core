@@ -1,6 +1,12 @@
 <UXML xmlns="UnityEngine.UIElements" editor-extension-mode="False">
-    <VisualElement name="VisualElement" style="flex-grow: 1;">
-        <Label text="Hotkeys" style="-unity-text-align: center; font-size: 20px; -unity-font-style: bold;" />
+    <VisualElement name="root" style="flex-grow: 1;">
+        <!-- Верхняя панель с заголовком и кнопкой -->
+        <VisualElement class="hotkey-header E-title" style="height: 40px; flex-direction: row; align-items: center; justify-content: space-between; padding: 8px;">
+            <Label text="HOT KEYS" class="basic-label" style="-unity-text-align: left; font-size: 20px; -unity-font-style: bold;" />
+            <!-- Кнопка добавления горячей клавиши -->
+            <Button text="Create New" name="add-hotkey-button" class="add-button E-button2" />
+        </VisualElement>
+        <!-- Контейнер таблицы -->
         <VisualElement name="hotkeys-container" style="flex-grow: 1;" />
     </VisualElement>
 </UXML>

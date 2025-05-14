@@ -15,7 +15,7 @@ C:/Users/S/Documents/GitHub/Edixor/Edixor
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58100
+50828
 -job-worker-count
 1
 -background-job-worker-count
@@ -59,12 +59,12 @@ C:/Users/S/Documents/GitHub/Edixor/Edixor
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [7932]  Target information:
+Player connection [23824]  Target information:
 
-Player connection [7932]  * "[IP] 192.168.1.46 [Port] 0 [Flags] 2 [Guid] 821113450 [EditorId] 821113450 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-7VPLHCL) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [23824]  * "[IP] 192.168.1.46 [Port] 0 [Flags] 2 [Guid] 2527360093 [EditorId] 2527360093 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-7VPLHCL) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [7932] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [7932] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [23824] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [23824] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 1
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -75,7 +75,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 37.04 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 17.14 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.29f1 (9fafe5c9db65)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Resources/UnitySubsystems
@@ -91,1813 +91,1365 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56468
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56652
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.29f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Registered in 0.046110 seconds.
-- Loaded All Assemblies, in  3.208 seconds
+Registered in 0.019886 seconds.
+- Loaded All Assemblies, in  2.436 seconds
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 1091 ms
+Android Extension - Scanning For ADB Devices 1443 ms
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.523 seconds
-Domain Reload Profiling: 5720ms
-	BeginReloadAssembly (1374ms)
+- Finished resetting the current domain, in 12.204 seconds
+Domain Reload Profiling: 14495ms
+	BeginReloadAssembly (798ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (2ms)
-	RebuildCommonClasses (272ms)
-	RebuildNativeTypeToScriptingClass (69ms)
-	initialDomainReloadingComplete (383ms)
-	LoadAllAssembliesAndSetupDomain (1097ms)
-		LoadAssemblies (1363ms)
+		CreateAndSetChildDomain (3ms)
+	RebuildCommonClasses (164ms)
+	RebuildNativeTypeToScriptingClass (43ms)
+	initialDomainReloadingComplete (492ms)
+	LoadAllAssembliesAndSetupDomain (793ms)
+		LoadAssemblies (825ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1077ms)
-			TypeCache.Refresh (1070ms)
-				TypeCache.ScanAssembly (972ms)
+		AnalyzeDomain (744ms)
+			TypeCache.Refresh (736ms)
+				TypeCache.ScanAssembly (670ms)
 			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (3ms)
-	FinalizeReload (2524ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (12206ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2315ms)
+		SetupLoadedEditorAssemblies (11921ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1483ms)
-			SetLoadedEditorAssemblies (17ms)
+			InitializePlatformSupportModulesInManaged (1924ms)
+			SetLoadedEditorAssemblies (13ms)
 			BeforeProcessingInitializeOnLoad (23ms)
-			ProcessInitializeOnLoadAttributes (496ms)
-			ProcessInitializeOnLoadMethodAttributes (277ms)
-			AfterProcessingInitializeOnLoad (17ms)
-			EditorAssembliesLoaded (3ms)
+			ProcessInitializeOnLoadAttributes (8120ms)
+			ProcessInitializeOnLoadMethodAttributes (399ms)
+			AfterProcessingInitializeOnLoad (1442ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (0ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  5.761 seconds
-Refreshing native plugins compatible for Editor in 14.38 ms, found 4 plugins.
+- Loaded All Assemblies, in  3.776 seconds
+Refreshing native plugins compatible for Editor in 5.43 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:56)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:36)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint/<>c:<Initialize>b__3_0 () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:30)
+OtherEdixorSettingAsset:OnValidate () (at Assets/Edixor/Editor/Settings/Script-Assets/OtherEdixorSettingAsset.cs:19)
+UnityEditor.AssetDatabase:LoadAssetAtPath (string,System.Type)
+UnityEditor.AssetDatabase:LoadAssetAtPath<OtherEdixorSettingAsset> (string)
+ExTools.EdixorObjectLocator:LoadObject<OtherEdixorSettingAsset> (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorObjectLocator.cs:33)
+EdixorSettingData`1<OtherEdixorSettingAsset>:get_Settings () (at Assets/Edixor/Editor/Settings/Scripts/EdixorSettingData.cs:21)
+OtherEdixorSetting:IsConsoleLoggingEnabled () (at Assets/Edixor/Editor/Core/Services/OtherEdixorSetting.cs:10)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:114)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 56)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
-Services registered successfully
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:56)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:36)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 56)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  5.152 seconds
-Domain Reload Profiling: 10899ms
-	BeginReloadAssembly (1116ms)
+- Finished resetting the current domain, in  2.288 seconds
+Domain Reload Profiling: 6056ms
+	BeginReloadAssembly (734ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (44ms)
+		DisableScriptedObjects (22ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (156ms)
-	RebuildCommonClasses (208ms)
-	RebuildNativeTypeToScriptingClass (63ms)
-	initialDomainReloadingComplete (225ms)
-	LoadAllAssembliesAndSetupDomain (4129ms)
-		LoadAssemblies (3443ms)
+		CreateAndSetChildDomain (81ms)
+	RebuildCommonClasses (116ms)
+	RebuildNativeTypeToScriptingClass (39ms)
+	initialDomainReloadingComplete (127ms)
+	LoadAllAssembliesAndSetupDomain (2751ms)
+		LoadAssemblies (2252ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1303ms)
-			TypeCache.Refresh (983ms)
-				TypeCache.ScanAssembly (864ms)
-			BuildScriptInfoCaches (275ms)
-			ResolveRequiredComponents (31ms)
-	FinalizeReload (5157ms)
+		AnalyzeDomain (1015ms)
+			TypeCache.Refresh (822ms)
+				TypeCache.ScanAssembly (725ms)
+			BuildScriptInfoCaches (165ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (2290ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (4353ms)
+		SetupLoadedEditorAssemblies (1902ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (82ms)
-			SetLoadedEditorAssemblies (24ms)
-			BeforeProcessingInitializeOnLoad (365ms)
-			ProcessInitializeOnLoadAttributes (3549ms)
-			ProcessInitializeOnLoadMethodAttributes (289ms)
-			AfterProcessingInitializeOnLoad (42ms)
-			EditorAssembliesLoaded (2ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (37ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
-Refreshing native plugins compatible for Editor in 7.85 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4798 unused Assets / (0.7 MB). Loaded Objects now: 5303.
-Memory consumption went from 88.2 MB to 87.4 MB.
-Total: 43.869600 ms (FindLiveObjects: 2.548800 ms CreateObjectMapping: 1.464400 ms MarkObjects: 32.234700 ms  DeleteObjects: 7.608300 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 766406.551919 seconds.
-  path: Assets/Edixor/Editor/Settings/Script-Assets/FunctionSettingsAsset.cs
-  artifactKey: Guid(44ef9f5ee8974624d8008c50f6f95a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Editor/Settings/Script-Assets/FunctionSettingsAsset.cs using Guid(44ef9f5ee8974624d8008c50f6f95a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '530f4f65d525910a1bb73766b14cb66d') in 0.1118948 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001259 seconds.
-  path: Assets/Edixor/Editor/Settings/Script-Assets/HotKeySettingAsset.cs
-  artifactKey: Guid(157d39fed506d004f8fa2772b131ce92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Editor/Settings/Script-Assets/HotKeySettingAsset.cs using Guid(157d39fed506d004f8fa2772b131ce92) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3d6a93b921c7baa36c99153bb75df871') in 0.0014221 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.61 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4785 unused Assets / (131.0 KB). Loaded Objects now: 5305.
-Memory consumption went from 84.5 MB to 84.4 MB.
-Total: 29.956100 ms (FindLiveObjects: 2.288800 ms CreateObjectMapping: 1.969100 ms MarkObjects: 22.116300 ms  DeleteObjects: 3.573400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 16.665 seconds
-Refreshing native plugins compatible for Editor in 6.33 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:56)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:36)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 56)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:56)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:36)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 56)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  7.766 seconds
-Domain Reload Profiling: 24458ms
-	BeginReloadAssembly (5989ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (409ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (2ms)
-		CreateAndSetChildDomain (2348ms)
-	RebuildCommonClasses (417ms)
-	RebuildNativeTypeToScriptingClass (71ms)
-	initialDomainReloadingComplete (836ms)
-	LoadAllAssembliesAndSetupDomain (9359ms)
-		LoadAssemblies (9191ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2486ms)
-			TypeCache.Refresh (1117ms)
-				TypeCache.ScanAssembly (280ms)
-			BuildScriptInfoCaches (1297ms)
-			ResolveRequiredComponents (29ms)
-	FinalizeReload (7787ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (6790ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (49ms)
-			SetLoadedEditorAssemblies (26ms)
-			BeforeProcessingInitializeOnLoad (1445ms)
-			ProcessInitializeOnLoadAttributes (5031ms)
-			ProcessInitializeOnLoadMethodAttributes (199ms)
-			AfterProcessingInitializeOnLoad (33ms)
-			EditorAssembliesLoaded (6ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (55ms)
-Refreshing native plugins compatible for Editor in 7.31 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4797 unused Assets / (1.5 MB). Loaded Objects now: 5309.
-Memory consumption went from 86.3 MB to 84.8 MB.
-Total: 95.633700 ms (FindLiveObjects: 18.740400 ms CreateObjectMapping: 2.205700 ms MarkObjects: 68.716200 ms  DeleteObjects: 5.959900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.83 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4786 unused Assets / (1.1 MB). Loaded Objects now: 5309.
-Memory consumption went from 86.4 MB to 85.3 MB.
-Total: 18.883000 ms (FindLiveObjects: 1.637300 ms CreateObjectMapping: 1.108800 ms MarkObjects: 12.539700 ms  DeleteObjects: 3.588500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  3.792 seconds
-Refreshing native plugins compatible for Editor in 4.32 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:56)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:36)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 56)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:56)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:36)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 56)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.900 seconds
-Domain Reload Profiling: 6685ms
-	BeginReloadAssembly (1421ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (157ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (2ms)
-		CreateAndSetChildDomain (217ms)
-	RebuildCommonClasses (164ms)
-	RebuildNativeTypeToScriptingClass (48ms)
-	initialDomainReloadingComplete (126ms)
-	LoadAllAssembliesAndSetupDomain (2025ms)
-		LoadAssemblies (2177ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (589ms)
-			TypeCache.Refresh (25ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (533ms)
-			ResolveRequiredComponents (21ms)
-	FinalizeReload (2903ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2158ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (44ms)
-			SetLoadedEditorAssemblies (21ms)
-			BeforeProcessingInitializeOnLoad (233ms)
-			ProcessInitializeOnLoadAttributes (1627ms)
-			ProcessInitializeOnLoadMethodAttributes (199ms)
-			AfterProcessingInitializeOnLoad (32ms)
+			InitializePlatformSupportModulesInManaged (39ms)
+			SetLoadedEditorAssemblies (14ms)
+			BeforeProcessingInitializeOnLoad (166ms)
+			ProcessInitializeOnLoadAttributes (1500ms)
+			ProcessInitializeOnLoadMethodAttributes (155ms)
+			AfterProcessingInitializeOnLoad (27ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (47ms)
-Refreshing native plugins compatible for Editor in 3.79 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (20ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 5.54 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4799 unused Assets / (1.2 MB). Loaded Objects now: 5313.
-Memory consumption went from 86.3 MB to 85.1 MB.
-Total: 35.725400 ms (FindLiveObjects: 4.663800 ms CreateObjectMapping: 7.172000 ms MarkObjects: 20.472500 ms  DeleteObjects: 3.408700 ms)
+Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4822 unused Assets / (1.6 MB). Loaded Objects now: 5313.
+Memory consumption went from 87.6 MB to 86.0 MB.
+Total: 30.895100 ms (FindLiveObjects: 3.976100 ms CreateObjectMapping: 1.200900 ms MarkObjects: 18.428300 ms  DeleteObjects: 7.278900 ms)
 
-Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 4.18 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 4.50 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4788 unused Assets / (0.9 MB). Loaded Objects now: 5313.
-Memory consumption went from 86.4 MB to 85.5 MB.
-Total: 19.934500 ms (FindLiveObjects: 1.634700 ms CreateObjectMapping: 1.388800 ms MarkObjects: 13.284000 ms  DeleteObjects: 3.618900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 6.68 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (1.0 MB). Loaded Objects now: 5314.
-Memory consumption went from 86.4 MB to 85.5 MB.
-Total: 25.941800 ms (FindLiveObjects: 1.927500 ms CreateObjectMapping: 1.938000 ms MarkObjects: 18.281500 ms  DeleteObjects: 3.785600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.09 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.9 MB). Loaded Objects now: 5314.
-Memory consumption went from 86.4 MB to 85.6 MB.
-Total: 21.026500 ms (FindLiveObjects: 1.874200 ms CreateObjectMapping: 1.125600 ms MarkObjects: 14.033500 ms  DeleteObjects: 3.985000 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 5.38 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.9 MB). Loaded Objects now: 5314.
-Memory consumption went from 86.4 MB to 85.6 MB.
-Total: 22.788700 ms (FindLiveObjects: 1.589200 ms CreateObjectMapping: 1.037500 ms MarkObjects: 16.011700 ms  DeleteObjects: 4.142400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 7.03 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.8 MB). Loaded Objects now: 5314.
-Memory consumption went from 86.4 MB to 85.6 MB.
-Total: 31.993300 ms (FindLiveObjects: 2.541600 ms CreateObjectMapping: 6.481000 ms MarkObjects: 19.241600 ms  DeleteObjects: 3.720900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.05 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.9 MB). Loaded Objects now: 5314.
-Memory consumption went from 86.4 MB to 85.6 MB.
-Total: 22.010400 ms (FindLiveObjects: 1.578000 ms CreateObjectMapping: 1.626900 ms MarkObjects: 15.124300 ms  DeleteObjects: 3.672900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 5.04 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.6 MB). Loaded Objects now: 5314.
-Memory consumption went from 86.4 MB to 85.8 MB.
-Total: 32.002400 ms (FindLiveObjects: 2.109300 ms CreateObjectMapping: 4.407200 ms MarkObjects: 21.725200 ms  DeleteObjects: 3.752000 ms)
+Unloading 4809 unused Assets / (131.0 KB). Loaded Objects now: 5313.
+Memory consumption went from 83.6 MB to 83.5 MB.
+Total: 54.007800 ms (FindLiveObjects: 6.419000 ms CreateObjectMapping: 1.628500 ms MarkObjects: 40.674600 ms  DeleteObjects: 5.273400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  8.251 seconds
-Refreshing native plugins compatible for Editor in 6.40 ms, found 4 plugins.
+- Loaded All Assemblies, in  7.668 seconds
+Refreshing native plugins compatible for Editor in 4.11 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.763 seconds
-Domain Reload Profiling: 11027ms
-	BeginReloadAssembly (2607ms)
+- Finished resetting the current domain, in  3.307 seconds
+Domain Reload Profiling: 10981ms
+	BeginReloadAssembly (2170ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (258ms)
+		DisableScriptedObjects (142ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (3ms)
-		CreateAndSetChildDomain (960ms)
-	RebuildCommonClasses (157ms)
-	RebuildNativeTypeToScriptingClass (48ms)
-	initialDomainReloadingComplete (125ms)
-	LoadAllAssembliesAndSetupDomain (5324ms)
-		LoadAssemblies (4695ms)
+		CreateAndSetChildDomain (572ms)
+	RebuildCommonClasses (169ms)
+	RebuildNativeTypeToScriptingClass (50ms)
+	initialDomainReloadingComplete (116ms)
+	LoadAllAssembliesAndSetupDomain (5166ms)
+		LoadAssemblies (4496ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1652ms)
-			TypeCache.Refresh (311ms)
-				TypeCache.ScanAssembly (22ms)
-			BuildScriptInfoCaches (1266ms)
-			ResolveRequiredComponents (35ms)
-	FinalizeReload (2766ms)
+		AnalyzeDomain (1765ms)
+			TypeCache.Refresh (917ms)
+				TypeCache.ScanAssembly (151ms)
+			BuildScriptInfoCaches (783ms)
+			ResolveRequiredComponents (32ms)
+	FinalizeReload (3309ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2020ms)
+		SetupLoadedEditorAssemblies (2676ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (47ms)
-			SetLoadedEditorAssemblies (17ms)
-			BeforeProcessingInitializeOnLoad (214ms)
-			ProcessInitializeOnLoadAttributes (1562ms)
-			ProcessInitializeOnLoadMethodAttributes (152ms)
-			AfterProcessingInitializeOnLoad (26ms)
+			InitializePlatformSupportModulesInManaged (53ms)
+			SetLoadedEditorAssemblies (24ms)
+			BeforeProcessingInitializeOnLoad (299ms)
+			ProcessInitializeOnLoadAttributes (2049ms)
+			ProcessInitializeOnLoadMethodAttributes (215ms)
+			AfterProcessingInitializeOnLoad (35ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (38ms)
+		AwakeInstancesAfterBackupRestoration (32ms)
+Refreshing native plugins compatible for Editor in 4.27 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4820 unused Assets / (1.2 MB). Loaded Objects now: 5316.
+Memory consumption went from 85.4 MB to 84.2 MB.
+Total: 28.947300 ms (FindLiveObjects: 1.623300 ms CreateObjectMapping: 1.017000 ms MarkObjects: 20.312400 ms  DeleteObjects: 5.983600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 5.19 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (131.0 KB). Loaded Objects now: 5316.
+Memory consumption went from 85.6 MB to 85.5 MB.
+Total: 41.362600 ms (FindLiveObjects: 5.660000 ms CreateObjectMapping: 1.576000 ms MarkObjects: 29.679100 ms  DeleteObjects: 4.435400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  7.787 seconds
+Refreshing native plugins compatible for Editor in 5.00 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.420 seconds
+Domain Reload Profiling: 11209ms
+	BeginReloadAssembly (1631ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (106ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (3ms)
+		CreateAndSetChildDomain (221ms)
+	RebuildCommonClasses (143ms)
+	RebuildNativeTypeToScriptingClass (281ms)
+	initialDomainReloadingComplete (454ms)
+	LoadAllAssembliesAndSetupDomain (5277ms)
+		LoadAssemblies (4282ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (2081ms)
+			TypeCache.Refresh (262ms)
+				TypeCache.ScanAssembly (21ms)
+			BuildScriptInfoCaches (1743ms)
+			ResolveRequiredComponents (31ms)
+	FinalizeReload (3423ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2660ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (60ms)
+			SetLoadedEditorAssemblies (18ms)
+			BeforeProcessingInitializeOnLoad (244ms)
+			ProcessInitializeOnLoadAttributes (2150ms)
+			ProcessInitializeOnLoadMethodAttributes (159ms)
+			AfterProcessingInitializeOnLoad (27ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (27ms)
+Refreshing native plugins compatible for Editor in 4.48 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4820 unused Assets / (1.0 MB). Loaded Objects now: 5318.
+Memory consumption went from 85.4 MB to 84.5 MB.
+Total: 33.865800 ms (FindLiveObjects: 3.767700 ms CreateObjectMapping: 1.772900 ms MarkObjects: 23.358800 ms  DeleteObjects: 4.955600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.29 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (1.3 MB). Loaded Objects now: 5318.
+Memory consumption went from 85.6 MB to 84.3 MB.
+Total: 21.868900 ms (FindLiveObjects: 1.622400 ms CreateObjectMapping: 1.657100 ms MarkObjects: 14.412400 ms  DeleteObjects: 4.168600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 7.24 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (130.9 KB). Loaded Objects now: 5318.
+Memory consumption went from 85.6 MB to 85.5 MB.
+Total: 27.087600 ms (FindLiveObjects: 2.625700 ms CreateObjectMapping: 1.753200 ms MarkObjects: 19.436700 ms  DeleteObjects: 3.263000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  6.004 seconds
+Refreshing native plugins compatible for Editor in 6.38 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.128 seconds
+Domain Reload Profiling: 9059ms
+	BeginReloadAssembly (1872ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (130ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (2ms)
+		CreateAndSetChildDomain (562ms)
+	RebuildCommonClasses (208ms)
+	RebuildNativeTypeToScriptingClass (57ms)
+	initialDomainReloadingComplete (130ms)
+	LoadAllAssembliesAndSetupDomain (3660ms)
+		LoadAssemblies (3753ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (860ms)
+			TypeCache.Refresh (126ms)
+				TypeCache.ScanAssembly (6ms)
+			BuildScriptInfoCaches (612ms)
+			ResolveRequiredComponents (29ms)
+	FinalizeReload (3131ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2547ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (48ms)
+			SetLoadedEditorAssemblies (17ms)
+			BeforeProcessingInitializeOnLoad (214ms)
+			ProcessInitializeOnLoadAttributes (2052ms)
+			ProcessInitializeOnLoadMethodAttributes (175ms)
+			AfterProcessingInitializeOnLoad (40ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (32ms)
+Refreshing native plugins compatible for Editor in 3.80 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4820 unused Assets / (1.1 MB). Loaded Objects now: 5320.
+Memory consumption went from 85.4 MB to 84.4 MB.
+Total: 18.859000 ms (FindLiveObjects: 1.696100 ms CreateObjectMapping: 1.056700 ms MarkObjects: 12.563100 ms  DeleteObjects: 3.534800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 5.29 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (131.0 KB). Loaded Objects now: 5320.
+Memory consumption went from 85.6 MB to 85.5 MB.
+Total: 271.547400 ms (FindLiveObjects: 9.088100 ms CreateObjectMapping: 1.614300 ms MarkObjects: 251.075300 ms  DeleteObjects: 9.755900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  6.347 seconds
+Refreshing native plugins compatible for Editor in 3.97 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.267 seconds
+Domain Reload Profiling: 9610ms
+	BeginReloadAssembly (1372ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (130ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (5ms)
+		CreateAndSetChildDomain (264ms)
+	RebuildCommonClasses (182ms)
+	RebuildNativeTypeToScriptingClass (55ms)
+	initialDomainReloadingComplete (169ms)
+	LoadAllAssembliesAndSetupDomain (4562ms)
+		LoadAssemblies (3674ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1603ms)
+			TypeCache.Refresh (171ms)
+				TypeCache.ScanAssembly (29ms)
+			BuildScriptInfoCaches (1260ms)
+			ResolveRequiredComponents (122ms)
+	FinalizeReload (3270ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2702ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (50ms)
+			SetLoadedEditorAssemblies (20ms)
+			BeforeProcessingInitializeOnLoad (253ms)
+			ProcessInitializeOnLoadAttributes (2145ms)
+			ProcessInitializeOnLoadMethodAttributes (199ms)
+			AfterProcessingInitializeOnLoad (34ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (33ms)
 Refreshing native plugins compatible for Editor in 4.10 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.4 MB). Loaded Objects now: 5316.
-Memory consumption went from 86.3 MB to 84.9 MB.
-Total: 31.161900 ms (FindLiveObjects: 3.347400 ms CreateObjectMapping: 1.632700 ms MarkObjects: 19.379900 ms  DeleteObjects: 6.790500 ms)
+Unloading 4820 unused Assets / (0.9 MB). Loaded Objects now: 5322.
+Memory consumption went from 85.5 MB to 84.6 MB.
+Total: 28.045300 ms (FindLiveObjects: 3.540000 ms CreateObjectMapping: 1.515000 ms MarkObjects: 18.891000 ms  DeleteObjects: 4.087700 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 6.99 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 6.74 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.9 MB). Loaded Objects now: 5316.
-Memory consumption went from 86.4 MB to 85.5 MB.
-Total: 40.602400 ms (FindLiveObjects: 3.149100 ms CreateObjectMapping: 6.705500 ms MarkObjects: 26.179600 ms  DeleteObjects: 4.549300 ms)
+Unloading 4809 unused Assets / (0.5 MB). Loaded Objects now: 5322.
+Memory consumption went from 85.6 MB to 85.1 MB.
+Total: 202.956100 ms (FindLiveObjects: 9.657600 ms CreateObjectMapping: 1.654000 ms MarkObjects: 185.632800 ms  DeleteObjects: 5.999400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 4.24 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 5.23 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (131.0 KB). Loaded Objects now: 5316.
-Memory consumption went from 86.4 MB to 86.3 MB.
-Total: 40.712100 ms (FindLiveObjects: 1.901500 ms CreateObjectMapping: 1.556500 ms MarkObjects: 33.657500 ms  DeleteObjects: 3.588000 ms)
+Unloading 4809 unused Assets / (131.0 KB). Loaded Objects now: 5322.
+Memory consumption went from 85.6 MB to 85.5 MB.
+Total: 28.282700 ms (FindLiveObjects: 2.490400 ms CreateObjectMapping: 1.528300 ms MarkObjects: 20.392400 ms  DeleteObjects: 3.862800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 6.75 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (1.1 MB). Loaded Objects now: 5322.
+Memory consumption went from 85.6 MB to 84.5 MB.
+Total: 24.415900 ms (FindLiveObjects: 1.659800 ms CreateObjectMapping: 1.272300 ms MarkObjects: 16.456700 ms  DeleteObjects: 5.018800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 7.70 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (189.8 KB). Loaded Objects now: 5322.
+Memory consumption went from 85.6 MB to 85.4 MB.
+Total: 36.851200 ms (FindLiveObjects: 2.070800 ms CreateObjectMapping: 3.468200 ms MarkObjects: 27.847600 ms  DeleteObjects: 3.456000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  7.023 seconds
-Refreshing native plugins compatible for Editor in 4.16 ms, found 4 plugins.
+- Loaded All Assemblies, in  8.528 seconds
+Refreshing native plugins compatible for Editor in 6.24 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.187 seconds
-Domain Reload Profiling: 10210ms
-	BeginReloadAssembly (1505ms)
+- Finished resetting the current domain, in  2.643 seconds
+Domain Reload Profiling: 11172ms
+	BeginReloadAssembly (2850ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (81ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (2ms)
-		CreateAndSetChildDomain (504ms)
-	RebuildCommonClasses (151ms)
-	RebuildNativeTypeToScriptingClass (45ms)
-	initialDomainReloadingComplete (129ms)
-	LoadAllAssembliesAndSetupDomain (5190ms)
-		LoadAssemblies (3614ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2334ms)
-			TypeCache.Refresh (742ms)
-				TypeCache.ScanAssembly (9ms)
-			BuildScriptInfoCaches (1528ms)
-			ResolveRequiredComponents (26ms)
-	FinalizeReload (3190ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2298ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (84ms)
-			SetLoadedEditorAssemblies (16ms)
-			BeforeProcessingInitializeOnLoad (230ms)
-			ProcessInitializeOnLoadAttributes (1754ms)
-			ProcessInitializeOnLoadMethodAttributes (185ms)
-			AfterProcessingInitializeOnLoad (26ms)
-			EditorAssembliesLoaded (2ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (41ms)
-Refreshing native plugins compatible for Editor in 5.50 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (0.7 MB). Loaded Objects now: 5318.
-Memory consumption went from 86.3 MB to 85.6 MB.
-Total: 34.677600 ms (FindLiveObjects: 3.856300 ms CreateObjectMapping: 1.682900 ms MarkObjects: 23.565500 ms  DeleteObjects: 5.561500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 16.16 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.9 MB). Loaded Objects now: 5318.
-Memory consumption went from 86.4 MB to 85.5 MB.
-Total: 47.346300 ms (FindLiveObjects: 3.373200 ms CreateObjectMapping: 2.708300 ms MarkObjects: 37.266500 ms  DeleteObjects: 3.987800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 5.14 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (1.1 MB). Loaded Objects now: 5318.
-Memory consumption went from 86.4 MB to 85.3 MB.
-Total: 21.359600 ms (FindLiveObjects: 1.995400 ms CreateObjectMapping: 1.117600 ms MarkObjects: 14.840700 ms  DeleteObjects: 3.397700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 5.66 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (131.0 KB). Loaded Objects now: 5318.
-Memory consumption went from 86.4 MB to 86.3 MB.
-Total: 314.940600 ms (FindLiveObjects: 8.883700 ms CreateObjectMapping: 1.590100 ms MarkObjects: 299.917500 ms  DeleteObjects: 4.537500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  7.905 seconds
-Refreshing native plugins compatible for Editor in 4.56 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  4.792 seconds
-Domain Reload Profiling: 12707ms
-	BeginReloadAssembly (2830ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (449ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (3ms)
-		CreateAndSetChildDomain (865ms)
-	RebuildCommonClasses (157ms)
-	RebuildNativeTypeToScriptingClass (63ms)
-	initialDomainReloadingComplete (340ms)
-	LoadAllAssembliesAndSetupDomain (4522ms)
-		LoadAssemblies (3685ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1693ms)
-			TypeCache.Refresh (184ms)
-				TypeCache.ScanAssembly (13ms)
-			BuildScriptInfoCaches (1193ms)
-			ResolveRequiredComponents (53ms)
-	FinalizeReload (4795ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (3416ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (188ms)
-			SetLoadedEditorAssemblies (229ms)
-			BeforeProcessingInitializeOnLoad (640ms)
-			ProcessInitializeOnLoadAttributes (2153ms)
-			ProcessInitializeOnLoadMethodAttributes (170ms)
-			AfterProcessingInitializeOnLoad (31ms)
-			EditorAssembliesLoaded (5ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (39ms)
-Refreshing native plugins compatible for Editor in 4.00 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (0.7 MB). Loaded Objects now: 5320.
-Memory consumption went from 86.3 MB to 85.6 MB.
-Total: 28.512500 ms (FindLiveObjects: 1.711600 ms CreateObjectMapping: 2.391200 ms MarkObjects: 20.850700 ms  DeleteObjects: 3.547100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.25 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.7 MB). Loaded Objects now: 5320.
-Memory consumption went from 86.5 MB to 85.8 MB.
-Total: 24.179400 ms (FindLiveObjects: 2.230900 ms CreateObjectMapping: 1.457300 ms MarkObjects: 16.604900 ms  DeleteObjects: 3.877500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.15 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (1.3 MB). Loaded Objects now: 5320.
-Memory consumption went from 86.5 MB to 85.1 MB.
-Total: 21.426700 ms (FindLiveObjects: 1.901400 ms CreateObjectMapping: 1.088900 ms MarkObjects: 14.075200 ms  DeleteObjects: 4.352900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.45 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (230.7 KB). Loaded Objects now: 5320.
-Memory consumption went from 86.5 MB to 86.2 MB.
-Total: 28.697800 ms (FindLiveObjects: 2.656400 ms CreateObjectMapping: 1.481500 ms MarkObjects: 21.221500 ms  DeleteObjects: 3.329500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  6.309 seconds
-Refreshing native plugins compatible for Editor in 6.61 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.821 seconds
-Domain Reload Profiling: 9131ms
-	BeginReloadAssembly (1435ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (54ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (2ms)
-		CreateAndSetChildDomain (230ms)
-	RebuildCommonClasses (162ms)
-	RebuildNativeTypeToScriptingClass (48ms)
-	initialDomainReloadingComplete (510ms)
-	LoadAllAssembliesAndSetupDomain (4152ms)
-		LoadAssemblies (3878ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1220ms)
-			TypeCache.Refresh (236ms)
-				TypeCache.ScanAssembly (21ms)
-			BuildScriptInfoCaches (910ms)
-			ResolveRequiredComponents (29ms)
-	FinalizeReload (2825ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2013ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (49ms)
-			SetLoadedEditorAssemblies (17ms)
-			BeforeProcessingInitializeOnLoad (209ms)
-			ProcessInitializeOnLoadAttributes (1559ms)
-			ProcessInitializeOnLoadMethodAttributes (153ms)
-			AfterProcessingInitializeOnLoad (25ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (38ms)
-Refreshing native plugins compatible for Editor in 4.70 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (315.3 KB). Loaded Objects now: 5322.
-Memory consumption went from 86.3 MB to 86.0 MB.
-Total: 54.654900 ms (FindLiveObjects: 4.279600 ms CreateObjectMapping: 5.782500 ms MarkObjects: 38.035000 ms  DeleteObjects: 6.546100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 8.16 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (130.9 KB). Loaded Objects now: 5322.
-Memory consumption went from 86.5 MB to 86.3 MB.
-Total: 32.570100 ms (FindLiveObjects: 2.646500 ms CreateObjectMapping: 5.411500 ms MarkObjects: 21.060600 ms  DeleteObjects: 3.442400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  3.760 seconds
-Refreshing native plugins compatible for Editor in 3.93 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.029 seconds
-Domain Reload Profiling: 6792ms
-	BeginReloadAssembly (1169ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (64ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (3ms)
-		CreateAndSetChildDomain (190ms)
-	RebuildCommonClasses (143ms)
-	RebuildNativeTypeToScriptingClass (45ms)
-	initialDomainReloadingComplete (116ms)
-	LoadAllAssembliesAndSetupDomain (2284ms)
-		LoadAssemblies (2218ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (834ms)
-			TypeCache.Refresh (132ms)
-				TypeCache.ScanAssembly (6ms)
-			BuildScriptInfoCaches (523ms)
-			ResolveRequiredComponents (77ms)
-	FinalizeReload (3034ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2169ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (49ms)
-			SetLoadedEditorAssemblies (20ms)
-			BeforeProcessingInitializeOnLoad (235ms)
-			ProcessInitializeOnLoadAttributes (1674ms)
-			ProcessInitializeOnLoadMethodAttributes (160ms)
-			AfterProcessingInitializeOnLoad (30ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (42ms)
-Refreshing native plugins compatible for Editor in 4.03 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.5 MB). Loaded Objects now: 5324.
-Memory consumption went from 86.3 MB to 84.9 MB.
-Total: 21.868700 ms (FindLiveObjects: 1.600700 ms CreateObjectMapping: 1.085300 ms MarkObjects: 14.287800 ms  DeleteObjects: 4.887000 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 3.83 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (1.1 MB). Loaded Objects now: 5324.
-Memory consumption went from 86.5 MB to 85.4 MB.
-Total: 26.034200 ms (FindLiveObjects: 2.188000 ms CreateObjectMapping: 1.814400 ms MarkObjects: 16.812700 ms  DeleteObjects: 5.211500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.17 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (1.8 MB). Loaded Objects now: 5324.
-Memory consumption went from 86.5 MB to 84.6 MB.
-Total: 30.540600 ms (FindLiveObjects: 2.271900 ms CreateObjectMapping: 1.269100 ms MarkObjects: 19.149100 ms  DeleteObjects: 7.842000 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 5.35 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (194.4 KB). Loaded Objects now: 5324.
-Memory consumption went from 86.5 MB to 86.3 MB.
-Total: 27.571100 ms (FindLiveObjects: 1.886700 ms CreateObjectMapping: 1.551200 ms MarkObjects: 19.915900 ms  DeleteObjects: 4.208100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  8.147 seconds
-Refreshing native plugins compatible for Editor in 9.04 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.367 seconds
-Domain Reload Profiling: 11519ms
-	BeginReloadAssembly (2067ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (80ms)
+		DisableScriptedObjects (354ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (4ms)
-		CreateAndSetChildDomain (709ms)
-	RebuildCommonClasses (132ms)
-	RebuildNativeTypeToScriptingClass (80ms)
-	initialDomainReloadingComplete (146ms)
-	LoadAllAssembliesAndSetupDomain (5723ms)
-		LoadAssemblies (4659ms)
+		CreateAndSetChildDomain (907ms)
+	RebuildCommonClasses (303ms)
+	RebuildNativeTypeToScriptingClass (49ms)
+	initialDomainReloadingComplete (153ms)
+	LoadAllAssembliesAndSetupDomain (5172ms)
+		LoadAssemblies (4722ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2094ms)
-			TypeCache.Refresh (939ms)
-				TypeCache.ScanAssembly (12ms)
-			BuildScriptInfoCaches (1068ms)
-			ResolveRequiredComponents (42ms)
-	FinalizeReload (3371ms)
+		AnalyzeDomain (1527ms)
+			TypeCache.Refresh (738ms)
+				TypeCache.ScanAssembly (48ms)
+			BuildScriptInfoCaches (705ms)
+			ResolveRequiredComponents (30ms)
+	FinalizeReload (2645ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2475ms)
+		SetupLoadedEditorAssemblies (2113ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (66ms)
-			SetLoadedEditorAssemblies (22ms)
-			BeforeProcessingInitializeOnLoad (232ms)
-			ProcessInitializeOnLoadAttributes (1908ms)
-			ProcessInitializeOnLoadMethodAttributes (218ms)
-			AfterProcessingInitializeOnLoad (27ms)
-			EditorAssembliesLoaded (2ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (42ms)
-Refreshing native plugins compatible for Editor in 4.08 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.2 MB). Loaded Objects now: 5326.
-Memory consumption went from 86.3 MB to 85.1 MB.
-Total: 33.593800 ms (FindLiveObjects: 3.081900 ms CreateObjectMapping: 1.631500 ms MarkObjects: 23.501700 ms  DeleteObjects: 5.367900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 7.51 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (131.0 KB). Loaded Objects now: 5326.
-Memory consumption went from 86.5 MB to 86.3 MB.
-Total: 28.742700 ms (FindLiveObjects: 3.152600 ms CreateObjectMapping: 1.962100 ms MarkObjects: 18.226300 ms  DeleteObjects: 5.392900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.987 seconds
-Refreshing native plugins compatible for Editor in 6.92 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.743 seconds
-Domain Reload Profiling: 5725ms
-	BeginReloadAssembly (864ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (51ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (2ms)
-		CreateAndSetChildDomain (131ms)
-	RebuildCommonClasses (138ms)
-	RebuildNativeTypeToScriptingClass (44ms)
-	initialDomainReloadingComplete (120ms)
-	LoadAllAssembliesAndSetupDomain (1815ms)
-		LoadAssemblies (1774ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (580ms)
-			TypeCache.Refresh (34ms)
-				TypeCache.ScanAssembly (4ms)
-			BuildScriptInfoCaches (516ms)
-			ResolveRequiredComponents (21ms)
-	FinalizeReload (2745ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2026ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (44ms)
-			SetLoadedEditorAssemblies (16ms)
-			BeforeProcessingInitializeOnLoad (182ms)
-			ProcessInitializeOnLoadAttributes (1572ms)
-			ProcessInitializeOnLoadMethodAttributes (183ms)
-			AfterProcessingInitializeOnLoad (28ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (38ms)
-Refreshing native plugins compatible for Editor in 3.97 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (0.9 MB). Loaded Objects now: 5328.
-Memory consumption went from 86.3 MB to 85.5 MB.
-Total: 26.704900 ms (FindLiveObjects: 2.413100 ms CreateObjectMapping: 1.075300 ms MarkObjects: 18.881300 ms  DeleteObjects: 4.324700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 9.44 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (131.0 KB). Loaded Objects now: 5328.
-Memory consumption went from 86.5 MB to 86.3 MB.
-Total: 80.049900 ms (FindLiveObjects: 8.530900 ms CreateObjectMapping: 1.700300 ms MarkObjects: 52.523800 ms  DeleteObjects: 17.279500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.18 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (329.5 KB). Loaded Objects now: 5328.
-Memory consumption went from 86.5 MB to 86.2 MB.
-Total: 24.083100 ms (FindLiveObjects: 1.816700 ms CreateObjectMapping: 1.516100 ms MarkObjects: 16.192300 ms  DeleteObjects: 4.548800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  9.268 seconds
-Refreshing native plugins compatible for Editor in 9.13 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:51)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 51)
-
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.784 seconds
-Domain Reload Profiling: 12054ms
-	BeginReloadAssembly (3133ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (635ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (3ms)
-		CreateAndSetChildDomain (808ms)
-	RebuildCommonClasses (272ms)
-	RebuildNativeTypeToScriptingClass (57ms)
-	initialDomainReloadingComplete (172ms)
-	LoadAllAssembliesAndSetupDomain (5634ms)
-		LoadAssemblies (5244ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1448ms)
-			TypeCache.Refresh (266ms)
-				TypeCache.ScanAssembly (20ms)
-			BuildScriptInfoCaches (1113ms)
-			ResolveRequiredComponents (28ms)
-	FinalizeReload (2787ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2037ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (47ms)
+			InitializePlatformSupportModulesInManaged (48ms)
 			SetLoadedEditorAssemblies (18ms)
-			BeforeProcessingInitializeOnLoad (205ms)
-			ProcessInitializeOnLoadAttributes (1579ms)
-			ProcessInitializeOnLoadMethodAttributes (160ms)
+			BeforeProcessingInitializeOnLoad (187ms)
+			ProcessInitializeOnLoadAttributes (1679ms)
+			ProcessInitializeOnLoadMethodAttributes (154ms)
 			AfterProcessingInitializeOnLoad (27ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (38ms)
-Refreshing native plugins compatible for Editor in 4.25 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (25ms)
+Refreshing native plugins compatible for Editor in 4.55 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (0.8 MB). Loaded Objects now: 5330.
-Memory consumption went from 86.3 MB to 85.5 MB.
-Total: 29.322900 ms (FindLiveObjects: 3.343700 ms CreateObjectMapping: 1.616000 ms MarkObjects: 19.465600 ms  DeleteObjects: 4.887000 ms)
+Unloading 4820 unused Assets / (0.8 MB). Loaded Objects now: 5324.
+Memory consumption went from 85.5 MB to 84.6 MB.
+Total: 27.481800 ms (FindLiveObjects: 3.076200 ms CreateObjectMapping: 1.548900 ms MarkObjects: 18.608100 ms  DeleteObjects: 4.237200 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
+Received Import Request.
+  Time since last request: 1339299.110865 seconds.
+  path: Assets/Edixor/Editor/Extensions/NewDesign
+  artifactKey: Guid(ec004440475ce6e4eb6406c007e28c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Edixor/Editor/Extensions/NewDesign using Guid(ec004440475ce6e4eb6406c007e28c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a7917eba0902ea92769ddee01ea4dfaa') in 0.0576222 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 5.38 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 5.05 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (131.0 KB). Loaded Objects now: 5330.
-Memory consumption went from 86.5 MB to 86.3 MB.
-Total: 449.241100 ms (FindLiveObjects: 8.745500 ms CreateObjectMapping: 1.882400 ms MarkObjects: 433.704300 ms  DeleteObjects: 4.894900 ms)
+Unloading 4809 unused Assets / (197.8 KB). Loaded Objects now: 5326.
+Memory consumption went from 86.2 MB to 86.0 MB.
+Total: 218.336800 ms (FindLiveObjects: 7.458000 ms CreateObjectMapping: 1.957300 ms MarkObjects: 203.506900 ms  DeleteObjects: 5.405000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  6.536 seconds
-Refreshing native plugins compatible for Editor in 7.83 ms, found 4 plugins.
+- Loaded All Assemblies, in  9.586 seconds
+Refreshing native plugins compatible for Editor in 6.42 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.022 seconds
-Domain Reload Profiling: 9553ms
-	BeginReloadAssembly (1981ms)
+- Finished resetting the current domain, in  2.921 seconds
+Domain Reload Profiling: 12505ms
+	BeginReloadAssembly (2793ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (205ms)
+		DisableScriptedObjects (139ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (2ms)
-		CreateAndSetChildDomain (441ms)
-	RebuildCommonClasses (140ms)
+		CreateAndSetChildDomain (673ms)
+	RebuildCommonClasses (262ms)
 	RebuildNativeTypeToScriptingClass (46ms)
-	initialDomainReloadingComplete (537ms)
-	LoadAllAssembliesAndSetupDomain (3825ms)
-		LoadAssemblies (3657ms)
+	initialDomainReloadingComplete (145ms)
+	LoadAllAssembliesAndSetupDomain (6336ms)
+		LoadAssemblies (6501ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1071ms)
-			TypeCache.Refresh (274ms)
-				TypeCache.ScanAssembly (14ms)
-			BuildScriptInfoCaches (735ms)
-			ResolveRequiredComponents (28ms)
-	FinalizeReload (3025ms)
+		AnalyzeDomain (1542ms)
+			TypeCache.Refresh (507ms)
+				TypeCache.ScanAssembly (145ms)
+			BuildScriptInfoCaches (966ms)
+			ResolveRequiredComponents (29ms)
+	FinalizeReload (2923ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2177ms)
+		SetupLoadedEditorAssemblies (2348ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (50ms)
-			SetLoadedEditorAssemblies (17ms)
-			BeforeProcessingInitializeOnLoad (217ms)
-			ProcessInitializeOnLoadAttributes (1701ms)
-			ProcessInitializeOnLoadMethodAttributes (164ms)
-			AfterProcessingInitializeOnLoad (27ms)
-			EditorAssembliesLoaded (2ms)
+			InitializePlatformSupportModulesInManaged (64ms)
+			SetLoadedEditorAssemblies (20ms)
+			BeforeProcessingInitializeOnLoad (216ms)
+			ProcessInitializeOnLoadAttributes (1870ms)
+			ProcessInitializeOnLoadMethodAttributes (151ms)
+			AfterProcessingInitializeOnLoad (26ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (43ms)
-Refreshing native plugins compatible for Editor in 4.68 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (27ms)
+Refreshing native plugins compatible for Editor in 4.47 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.2 MB). Loaded Objects now: 5332.
-Memory consumption went from 86.3 MB to 85.2 MB.
-Total: 31.024400 ms (FindLiveObjects: 3.469900 ms CreateObjectMapping: 1.414000 ms MarkObjects: 20.601900 ms  DeleteObjects: 5.527800 ms)
+Unloading 4820 unused Assets / (1.1 MB). Loaded Objects now: 5328.
+Memory consumption went from 86.0 MB to 84.9 MB.
+Total: 35.513400 ms (FindLiveObjects: 5.468700 ms CreateObjectMapping: 1.424200 ms MarkObjects: 22.032200 ms  DeleteObjects: 6.577700 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 8.86 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 4.52 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (240.2 KB). Loaded Objects now: 5332.
-Memory consumption went from 86.5 MB to 86.2 MB.
-Total: 39.922400 ms (FindLiveObjects: 1.794600 ms CreateObjectMapping: 1.444700 ms MarkObjects: 32.589300 ms  DeleteObjects: 4.084400 ms)
+Unloading 4809 unused Assets / (131.0 KB). Loaded Objects now: 5328.
+Memory consumption went from 86.1 MB to 86.0 MB.
+Total: 26.303200 ms (FindLiveObjects: 2.130000 ms CreateObjectMapping: 1.582400 ms MarkObjects: 17.592300 ms  DeleteObjects: 4.988100 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  3.620 seconds
-Refreshing native plugins compatible for Editor in 4.49 ms, found 4 plugins.
+- Loaded All Assemblies, in  5.756 seconds
+Refreshing native plugins compatible for Editor in 6.90 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.864 seconds
-Domain Reload Profiling: 6483ms
-	BeginReloadAssembly (898ms)
+- Finished resetting the current domain, in  3.816 seconds
+Domain Reload Profiling: 9567ms
+	BeginReloadAssembly (1035ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (57ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (2ms)
+		CreateAndSetChildDomain (197ms)
+	RebuildCommonClasses (192ms)
+	RebuildNativeTypeToScriptingClass (67ms)
+	initialDomainReloadingComplete (112ms)
+	LoadAllAssembliesAndSetupDomain (4342ms)
+		LoadAssemblies (3922ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1011ms)
+			TypeCache.Refresh (325ms)
+				TypeCache.ScanAssembly (67ms)
+			BuildScriptInfoCaches (631ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (3818ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3059ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (45ms)
+			SetLoadedEditorAssemblies (17ms)
+			BeforeProcessingInitializeOnLoad (190ms)
+			ProcessInitializeOnLoadAttributes (2448ms)
+			ProcessInitializeOnLoadMethodAttributes (283ms)
+			AfterProcessingInitializeOnLoad (74ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (141ms)
+Refreshing native plugins compatible for Editor in 4.28 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4820 unused Assets / (1.1 MB). Loaded Objects now: 5330.
+Memory consumption went from 86.0 MB to 84.9 MB.
+Total: 24.834800 ms (FindLiveObjects: 1.920600 ms CreateObjectMapping: 1.228400 ms MarkObjects: 17.884700 ms  DeleteObjects: 3.790100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 6.04 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (2.4 MB). Loaded Objects now: 5330.
+Memory consumption went from 86.1 MB to 83.8 MB.
+Total: 44.697800 ms (FindLiveObjects: 2.260500 ms CreateObjectMapping: 1.736800 ms MarkObjects: 28.202800 ms  DeleteObjects: 12.487900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.64 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (0.8 MB). Loaded Objects now: 5330.
+Memory consumption went from 86.1 MB to 85.3 MB.
+Total: 40.542200 ms (FindLiveObjects: 2.545600 ms CreateObjectMapping: 3.779900 ms MarkObjects: 28.971000 ms  DeleteObjects: 5.237400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  8.740 seconds
+Refreshing native plugins compatible for Editor in 7.37 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.401 seconds
+Domain Reload Profiling: 14137ms
+	BeginReloadAssembly (2406ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (223ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (788ms)
+	RebuildCommonClasses (231ms)
+	RebuildNativeTypeToScriptingClass (81ms)
+	initialDomainReloadingComplete (383ms)
+	LoadAllAssembliesAndSetupDomain (5632ms)
+		LoadAssemblies (4903ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1710ms)
+			TypeCache.Refresh (672ms)
+				TypeCache.ScanAssembly (35ms)
+			BuildScriptInfoCaches (970ms)
+			ResolveRequiredComponents (27ms)
+	FinalizeReload (5405ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (4550ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (77ms)
+			SetLoadedEditorAssemblies (22ms)
+			BeforeProcessingInitializeOnLoad (229ms)
+			ProcessInitializeOnLoadAttributes (3789ms)
+			ProcessInitializeOnLoadMethodAttributes (389ms)
+			AfterProcessingInitializeOnLoad (40ms)
+			EditorAssembliesLoaded (4ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (87ms)
+Refreshing native plugins compatible for Editor in 12.26 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4820 unused Assets / (1.0 MB). Loaded Objects now: 5332.
+Memory consumption went from 86.0 MB to 85.0 MB.
+Total: 54.167600 ms (FindLiveObjects: 4.729800 ms CreateObjectMapping: 8.534800 ms MarkObjects: 34.178800 ms  DeleteObjects: 6.711900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 1100.235260 seconds.
+  path: Assets/Edixor/Editor/UI/Tabs/Data/ExtensionManagerTab/ExtensionManagerTab.uxml
+  artifactKey: Guid(fdc8906747aae394a96cd76a65be545e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Edixor/Editor/UI/Tabs/Data/ExtensionManagerTab/ExtensionManagerTab.uxml using Guid(fdc8906747aae394a96cd76a65be545e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b6d905c316e873a210ee96d34e27b56a') in 0.5823675 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Edixor/Editor/UI/Tabs/Data/ExtensionManagerTab/ExtensionManagerTab.uss
+  artifactKey: Guid(ede0aa44d7b4c8449aac474a9d8a75d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Edixor/Editor/UI/Tabs/Data/ExtensionManagerTab/ExtensionManagerTab.uss using Guid(ede0aa44d7b4c8449aac474a9d8a75d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8a513e3b45eba8cd5c5717dfb8d6cfc2') in 0.0271017 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 13.45 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (0.7 MB). Loaded Objects now: 5333.
+Memory consumption went from 86.5 MB to 85.8 MB.
+Total: 29.851800 ms (FindLiveObjects: 1.848000 ms CreateObjectMapping: 2.114100 ms MarkObjects: 21.703100 ms  DeleteObjects: 4.177900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 19.62 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (131.0 KB). Loaded Objects now: 5333.
+Memory consumption went from 86.5 MB to 86.3 MB.
+Total: 39.357100 ms (FindLiveObjects: 2.059800 ms CreateObjectMapping: 11.788800 ms MarkObjects: 22.307900 ms  DeleteObjects: 3.191700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  4.717 seconds
+Refreshing native plugins compatible for Editor in 6.20 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.560 seconds
+Domain Reload Profiling: 7263ms
+	BeginReloadAssembly (1044ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (58ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (2ms)
-		CreateAndSetChildDomain (213ms)
-	RebuildCommonClasses (153ms)
-	RebuildNativeTypeToScriptingClass (43ms)
-	initialDomainReloadingComplete (118ms)
-	LoadAllAssembliesAndSetupDomain (2403ms)
-		LoadAssemblies (1807ms)
+		CreateAndSetChildDomain (190ms)
+	RebuildCommonClasses (135ms)
+	RebuildNativeTypeToScriptingClass (45ms)
+	initialDomainReloadingComplete (110ms)
+	LoadAllAssembliesAndSetupDomain (3366ms)
+		LoadAssemblies (3129ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1083ms)
-			TypeCache.Refresh (110ms)
-				TypeCache.ScanAssembly (6ms)
-			BuildScriptInfoCaches (905ms)
-			ResolveRequiredComponents (26ms)
-	FinalizeReload (2869ms)
+		AnalyzeDomain (899ms)
+			TypeCache.Refresh (130ms)
+				TypeCache.ScanAssembly (11ms)
+			BuildScriptInfoCaches (701ms)
+			ResolveRequiredComponents (25ms)
+	FinalizeReload (2562ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2173ms)
+		SetupLoadedEditorAssemblies (2053ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (44ms)
-			SetLoadedEditorAssemblies (19ms)
-			BeforeProcessingInitializeOnLoad (192ms)
-			ProcessInitializeOnLoadAttributes (1723ms)
-			ProcessInitializeOnLoadMethodAttributes (166ms)
-			AfterProcessingInitializeOnLoad (27ms)
-			EditorAssembliesLoaded (2ms)
+			InitializePlatformSupportModulesInManaged (45ms)
+			SetLoadedEditorAssemblies (18ms)
+			BeforeProcessingInitializeOnLoad (196ms)
+			ProcessInitializeOnLoadAttributes (1610ms)
+			ProcessInitializeOnLoadMethodAttributes (155ms)
+			AfterProcessingInitializeOnLoad (28ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (44ms)
+		AwakeInstancesAfterBackupRestoration (27ms)
+Refreshing native plugins compatible for Editor in 4.57 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4820 unused Assets / (1.0 MB). Loaded Objects now: 5335.
+Memory consumption went from 86.0 MB to 85.0 MB.
+Total: 22.074100 ms (FindLiveObjects: 1.681000 ms CreateObjectMapping: 1.542500 ms MarkObjects: 15.191800 ms  DeleteObjects: 3.648100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 7.97 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (467.3 KB). Loaded Objects now: 5335.
+Memory consumption went from 86.2 MB to 85.7 MB.
+Total: 36.615000 ms (FindLiveObjects: 2.705200 ms CreateObjectMapping: 1.528300 ms MarkObjects: 28.736900 ms  DeleteObjects: 3.635800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.55 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (1.2 MB). Loaded Objects now: 5335.
+Memory consumption went from 86.2 MB to 84.9 MB.
+Total: 29.904200 ms (FindLiveObjects: 2.571100 ms CreateObjectMapping: 1.486600 ms MarkObjects: 21.708200 ms  DeleteObjects: 4.130000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.48 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (312.3 KB). Loaded Objects now: 5335.
+Memory consumption went from 86.2 MB to 85.8 MB.
+Total: 24.261900 ms (FindLiveObjects: 2.039300 ms CreateObjectMapping: 1.575600 ms MarkObjects: 16.564000 ms  DeleteObjects: 4.074400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  7.847 seconds
+Refreshing native plugins compatible for Editor in 6.44 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.042 seconds
+Domain Reload Profiling: 10888ms
+	BeginReloadAssembly (2729ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (457ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (2ms)
+		CreateAndSetChildDomain (815ms)
+	RebuildCommonClasses (163ms)
+	RebuildNativeTypeToScriptingClass (81ms)
+	initialDomainReloadingComplete (151ms)
+	LoadAllAssembliesAndSetupDomain (4720ms)
+		LoadAssemblies (4481ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1269ms)
+			TypeCache.Refresh (286ms)
+				TypeCache.ScanAssembly (24ms)
+			BuildScriptInfoCaches (876ms)
+			ResolveRequiredComponents (67ms)
+	FinalizeReload (3044ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2363ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (82ms)
+			SetLoadedEditorAssemblies (29ms)
+			BeforeProcessingInitializeOnLoad (231ms)
+			ProcessInitializeOnLoadAttributes (1840ms)
+			ProcessInitializeOnLoadMethodAttributes (151ms)
+			AfterProcessingInitializeOnLoad (28ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (26ms)
 Refreshing native plugins compatible for Editor in 4.19 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.4 MB). Loaded Objects now: 5334.
-Memory consumption went from 86.3 MB to 84.9 MB.
-Total: 22.619800 ms (FindLiveObjects: 2.060900 ms CreateObjectMapping: 1.111000 ms MarkObjects: 14.043800 ms  DeleteObjects: 5.395300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 6613.341889 seconds.
-  path: Assets/Edixor/Editor/UI/Tabs/Data/DebugTab/DebugTab.uss
-  artifactKey: Guid(17c8c82c2f05a0c43bfdbf5c262d3dda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Editor/UI/Tabs/Data/DebugTab/DebugTab.uss using Guid(17c8c82c2f05a0c43bfdbf5c262d3dda) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '68c9b1527f866469506ddad9fb1d87e3') in 0.2921935 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001683 seconds.
-  path: Assets/Edixor/Editor/UI/Tabs/Data/DebugTab/DebugTab.uxml
-  artifactKey: Guid(5307cedc5488b5e4885823d16c9c831b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Edixor/Editor/UI/Tabs/Data/DebugTab/DebugTab.uxml using Guid(5307cedc5488b5e4885823d16c9c831b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e9fe5c9f407e20a7e033a2161781975d') in 0.0154186 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.10 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.7 MB). Loaded Objects now: 5335.
-Memory consumption went from 86.6 MB to 85.9 MB.
-Total: 24.738200 ms (FindLiveObjects: 1.956700 ms CreateObjectMapping: 1.118600 ms MarkObjects: 17.420100 ms  DeleteObjects: 4.234800 ms)
+Unloading 4820 unused Assets / (1.0 MB). Loaded Objects now: 5337.
+Memory consumption went from 86.0 MB to 85.0 MB.
+Total: 25.854700 ms (FindLiveObjects: 2.027000 ms CreateObjectMapping: 1.305400 ms MarkObjects: 18.072200 ms  DeleteObjects: 4.438500 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 4.42 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 10.17 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (233.3 KB). Loaded Objects now: 5335.
-Memory consumption went from 86.6 MB to 86.4 MB.
-Total: 32.470300 ms (FindLiveObjects: 2.169700 ms CreateObjectMapping: 1.485900 ms MarkObjects: 24.615900 ms  DeleteObjects: 4.131400 ms)
+Unloading 4809 unused Assets / (484.1 KB). Loaded Objects now: 5337.
+Memory consumption went from 86.2 MB to 85.7 MB.
+Total: 32.803700 ms (FindLiveObjects: 2.606900 ms CreateObjectMapping: 1.302400 ms MarkObjects: 23.258000 ms  DeleteObjects: 5.627100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 5.44 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (380.4 KB). Loaded Objects now: 5337.
+Memory consumption went from 86.2 MB to 85.8 MB.
+Total: 60.422200 ms (FindLiveObjects: 8.775000 ms CreateObjectMapping: 1.461800 ms MarkObjects: 41.201700 ms  DeleteObjects: 8.971300 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  3.869 seconds
-Refreshing native plugins compatible for Editor in 4.88 ms, found 4 plugins.
+- Loaded All Assemblies, in  8.571 seconds
+Refreshing native plugins compatible for Editor in 6.51 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.014 seconds
-Domain Reload Profiling: 6880ms
-	BeginReloadAssembly (1075ms)
+- Finished resetting the current domain, in  3.258 seconds
+Domain Reload Profiling: 11859ms
+	BeginReloadAssembly (2520ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (52ms)
+		DisableScriptedObjects (303ms)
 		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (136ms)
-	RebuildCommonClasses (372ms)
-	RebuildNativeTypeToScriptingClass (44ms)
-	initialDomainReloadingComplete (102ms)
-	LoadAllAssembliesAndSetupDomain (2269ms)
-		LoadAssemblies (1927ms)
+		ReleaseScriptingObjects (4ms)
+		CreateAndSetChildDomain (804ms)
+	RebuildCommonClasses (170ms)
+	RebuildNativeTypeToScriptingClass (45ms)
+	initialDomainReloadingComplete (152ms)
+	LoadAllAssembliesAndSetupDomain (5709ms)
+		LoadAssemblies (4844ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1113ms)
-			TypeCache.Refresh (496ms)
-				TypeCache.ScanAssembly (13ms)
-			BuildScriptInfoCaches (564ms)
-			ResolveRequiredComponents (22ms)
-	FinalizeReload (3018ms)
+		AnalyzeDomain (1538ms)
+			TypeCache.Refresh (540ms)
+				TypeCache.ScanAssembly (222ms)
+			BuildScriptInfoCaches (892ms)
+			ResolveRequiredComponents (43ms)
+	FinalizeReload (3263ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2238ms)
+		SetupLoadedEditorAssemblies (2616ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (61ms)
-			SetLoadedEditorAssemblies (17ms)
-			BeforeProcessingInitializeOnLoad (204ms)
-			ProcessInitializeOnLoadAttributes (1722ms)
-			ProcessInitializeOnLoadMethodAttributes (196ms)
-			AfterProcessingInitializeOnLoad (32ms)
-			EditorAssembliesLoaded (5ms)
+			InitializePlatformSupportModulesInManaged (63ms)
+			SetLoadedEditorAssemblies (23ms)
+			BeforeProcessingInitializeOnLoad (258ms)
+			ProcessInitializeOnLoadAttributes (2031ms)
+			ProcessInitializeOnLoadMethodAttributes (185ms)
+			AfterProcessingInitializeOnLoad (54ms)
+			EditorAssembliesLoaded (3ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (48ms)
-Refreshing native plugins compatible for Editor in 16.45 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (26ms)
+Refreshing native plugins compatible for Editor in 4.27 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.1 MB). Loaded Objects now: 5337.
-Memory consumption went from 86.3 MB to 85.3 MB.
-Total: 38.833200 ms (FindLiveObjects: 8.125600 ms CreateObjectMapping: 1.444600 ms MarkObjects: 23.612400 ms  DeleteObjects: 5.641000 ms)
+Unloading 4820 unused Assets / (0.8 MB). Loaded Objects now: 5339.
+Memory consumption went from 86.0 MB to 85.2 MB.
+Total: 37.277400 ms (FindLiveObjects: 4.294400 ms CreateObjectMapping: 1.339800 ms MarkObjects: 25.271100 ms  DeleteObjects: 6.361100 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 5.02 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 5.59 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (356.3 KB). Loaded Objects now: 5337.
-Memory consumption went from 86.5 MB to 86.1 MB.
-Total: 28.597300 ms (FindLiveObjects: 2.458500 ms CreateObjectMapping: 1.799500 ms MarkObjects: 19.088400 ms  DeleteObjects: 5.241800 ms)
+Unloading 4809 unused Assets / (275.4 KB). Loaded Objects now: 5339.
+Memory consumption went from 86.2 MB to 85.9 MB.
+Total: 37.140900 ms (FindLiveObjects: 7.440700 ms CreateObjectMapping: 1.835400 ms MarkObjects: 22.965200 ms  DeleteObjects: 4.887400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  3.861 seconds
-Refreshing native plugins compatible for Editor in 4.80 ms, found 4 plugins.
+- Loaded All Assemblies, in 11.249 seconds
+Refreshing native plugins compatible for Editor in 5.11 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-DI: The edixor is open! Let's launch our logic
+Settings loaded successfully
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:13)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
-
-Services registered successfully
-UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:Log (object)
-ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:58)
-ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:33)
-EdixorEntryPoint:InitializeServices (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:89)
-EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:26)
-EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:14)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 58)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.653 seconds
-Domain Reload Profiling: 7511ms
-	BeginReloadAssembly (829ms)
+- Finished resetting the current domain, in  4.027 seconds
+Domain Reload Profiling: 15280ms
+	BeginReloadAssembly (2980ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (51ms)
+		DisableScriptedObjects (279ms)
 		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
+		ReleaseScriptingObjects (4ms)
+		CreateAndSetChildDomain (1543ms)
+	RebuildCommonClasses (1334ms)
+	RebuildNativeTypeToScriptingClass (50ms)
+	initialDomainReloadingComplete (183ms)
+	LoadAllAssembliesAndSetupDomain (6704ms)
+		LoadAssemblies (5299ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (2197ms)
+			TypeCache.Refresh (222ms)
+				TypeCache.ScanAssembly (10ms)
+			BuildScriptInfoCaches (1859ms)
+			ResolveRequiredComponents (64ms)
+	FinalizeReload (4029ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3210ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (49ms)
+			SetLoadedEditorAssemblies (15ms)
+			BeforeProcessingInitializeOnLoad (249ms)
+			ProcessInitializeOnLoadAttributes (2580ms)
+			ProcessInitializeOnLoadMethodAttributes (263ms)
+			AfterProcessingInitializeOnLoad (48ms)
+			EditorAssembliesLoaded (6ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (59ms)
+Refreshing native plugins compatible for Editor in 4.38 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4820 unused Assets / (0.9 MB). Loaded Objects now: 5341.
+Memory consumption went from 86.0 MB to 85.1 MB.
+Total: 29.408700 ms (FindLiveObjects: 3.840200 ms CreateObjectMapping: 1.220400 ms MarkObjects: 19.140900 ms  DeleteObjects: 5.194400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.07 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (1.4 MB). Loaded Objects now: 5341.
+Memory consumption went from 86.2 MB to 84.7 MB.
+Total: 21.050900 ms (FindLiveObjects: 1.856300 ms CreateObjectMapping: 1.325400 ms MarkObjects: 13.178700 ms  DeleteObjects: 4.682600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  3.432 seconds
+Refreshing native plugins compatible for Editor in 6.19 ms, found 4 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.805 seconds
+Domain Reload Profiling: 6232ms
+	BeginReloadAssembly (1154ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (143ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (2ms)
 		CreateAndSetChildDomain (130ms)
-	RebuildCommonClasses (142ms)
-	RebuildNativeTypeToScriptingClass (64ms)
-	initialDomainReloadingComplete (153ms)
-	LoadAllAssembliesAndSetupDomain (2668ms)
-		LoadAssemblies (1970ms)
+	RebuildCommonClasses (165ms)
+	RebuildNativeTypeToScriptingClass (49ms)
+	initialDomainReloadingComplete (117ms)
+	LoadAllAssembliesAndSetupDomain (1940ms)
+		LoadAssemblies (2086ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1236ms)
-			TypeCache.Refresh (472ms)
-				TypeCache.ScanAssembly (4ms)
-			BuildScriptInfoCaches (695ms)
-			ResolveRequiredComponents (28ms)
-	FinalizeReload (3656ms)
+		AnalyzeDomain (602ms)
+			TypeCache.Refresh (25ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (549ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (2807ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2857ms)
+		SetupLoadedEditorAssemblies (2206ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (61ms)
-			SetLoadedEditorAssemblies (22ms)
-			BeforeProcessingInitializeOnLoad (319ms)
-			ProcessInitializeOnLoadAttributes (2251ms)
-			ProcessInitializeOnLoadMethodAttributes (171ms)
-			AfterProcessingInitializeOnLoad (31ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (41ms)
-Refreshing native plugins compatible for Editor in 4.04 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.5 MB). Loaded Objects now: 5339.
-Memory consumption went from 86.3 MB to 84.9 MB.
-Total: 22.391100 ms (FindLiveObjects: 1.760500 ms CreateObjectMapping: 1.150700 ms MarkObjects: 13.858900 ms  DeleteObjects: 5.612600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 15.28 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (215.9 KB). Loaded Objects now: 5339.
-Memory consumption went from 86.5 MB to 86.3 MB.
-Total: 41.313200 ms (FindLiveObjects: 2.177500 ms CreateObjectMapping: 1.951400 ms MarkObjects: 31.174100 ms  DeleteObjects: 6.001600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 12.340 seconds
-Refreshing native plugins compatible for Editor in 14.23 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  7.298 seconds
-Domain Reload Profiling: 19616ms
-	BeginReloadAssembly (2960ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (70ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (557ms)
-	RebuildCommonClasses (346ms)
-	RebuildNativeTypeToScriptingClass (239ms)
-	initialDomainReloadingComplete (570ms)
-	LoadAllAssembliesAndSetupDomain (8202ms)
-		LoadAssemblies (8467ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1890ms)
-			TypeCache.Refresh (69ms)
-				TypeCache.ScanAssembly (4ms)
-			BuildScriptInfoCaches (1708ms)
-			ResolveRequiredComponents (83ms)
-	FinalizeReload (7299ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (6113ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1306ms)
-			SetLoadedEditorAssemblies (131ms)
-			BeforeProcessingInitializeOnLoad (869ms)
-			ProcessInitializeOnLoadAttributes (3553ms)
-			ProcessInitializeOnLoadMethodAttributes (224ms)
+			InitializePlatformSupportModulesInManaged (60ms)
+			SetLoadedEditorAssemblies (16ms)
+			BeforeProcessingInitializeOnLoad (207ms)
+			ProcessInitializeOnLoadAttributes (1720ms)
+			ProcessInitializeOnLoadMethodAttributes (172ms)
 			AfterProcessingInitializeOnLoad (29ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (56ms)
-Refreshing native plugins compatible for Editor in 4.53 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (30ms)
+Refreshing native plugins compatible for Editor in 3.94 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (1.8 MB). Loaded Objects now: 5341.
-Memory consumption went from 86.4 MB to 84.6 MB.
-Total: 39.515900 ms (FindLiveObjects: 1.966700 ms CreateObjectMapping: 2.454800 ms MarkObjects: 28.142600 ms  DeleteObjects: 6.941800 ms)
+Unloading 4820 unused Assets / (1.1 MB). Loaded Objects now: 5343.
+Memory consumption went from 86.0 MB to 84.9 MB.
+Total: 23.172400 ms (FindLiveObjects: 1.710900 ms CreateObjectMapping: 1.660700 ms MarkObjects: 15.533800 ms  DeleteObjects: 4.258300 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 16.19 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 4.21 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (1.3 MB). Loaded Objects now: 5341.
-Memory consumption went from 86.5 MB to 85.2 MB.
-Total: 35.748300 ms (FindLiveObjects: 4.976700 ms CreateObjectMapping: 3.650800 ms MarkObjects: 21.492500 ms  DeleteObjects: 5.619400 ms)
+Unloading 4810 unused Assets / (1.4 MB). Loaded Objects now: 5344.
+Memory consumption went from 86.2 MB to 84.8 MB.
+Total: 25.652800 ms (FindLiveObjects: 3.260900 ms CreateObjectMapping: 1.589400 ms MarkObjects: 16.223700 ms  DeleteObjects: 4.570700 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 16.56 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 6.17 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (0.9 MB). Loaded Objects now: 5341.
-Memory consumption went from 86.5 MB to 85.6 MB.
-Total: 32.930500 ms (FindLiveObjects: 1.905900 ms CreateObjectMapping: 6.131600 ms MarkObjects: 19.719500 ms  DeleteObjects: 5.165100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 6.72 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (1.1 MB). Loaded Objects now: 5341.
-Memory consumption went from 86.5 MB to 85.4 MB.
-Total: 26.538900 ms (FindLiveObjects: 1.676900 ms CreateObjectMapping: 1.585800 ms MarkObjects: 18.486900 ms  DeleteObjects: 4.780400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.97 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (324.8 KB). Loaded Objects now: 5341.
-Memory consumption went from 86.5 MB to 86.2 MB.
-Total: 43.985800 ms (FindLiveObjects: 2.633200 ms CreateObjectMapping: 1.678900 ms MarkObjects: 20.385900 ms  DeleteObjects: 19.279300 ms)
+Unloading 4809 unused Assets / (131.0 KB). Loaded Objects now: 5343.
+Memory consumption went from 86.2 MB to 86.0 MB.
+Total: 34.401000 ms (FindLiveObjects: 2.893100 ms CreateObjectMapping: 3.575100 ms MarkObjects: 23.692400 ms  DeleteObjects: 4.231200 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 10.342 seconds
-Refreshing native plugins compatible for Editor in 6.25 ms, found 4 plugins.
+- Loaded All Assemblies, in  2.721 seconds
+Refreshing native plugins compatible for Editor in 4.12 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.457 seconds
-Domain Reload Profiling: 13766ms
-	BeginReloadAssembly (2830ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (306ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (3ms)
-		CreateAndSetChildDomain (594ms)
-	RebuildCommonClasses (215ms)
-	RebuildNativeTypeToScriptingClass (63ms)
-	initialDomainReloadingComplete (662ms)
-	LoadAllAssembliesAndSetupDomain (6536ms)
-		LoadAssemblies (6734ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1391ms)
-			TypeCache.Refresh (169ms)
-				TypeCache.ScanAssembly (6ms)
-			BuildScriptInfoCaches (1160ms)
-			ResolveRequiredComponents (26ms)
-	FinalizeReload (3460ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2622ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (52ms)
-			SetLoadedEditorAssemblies (19ms)
-			BeforeProcessingInitializeOnLoad (244ms)
-			ProcessInitializeOnLoadAttributes (2087ms)
-			ProcessInitializeOnLoadMethodAttributes (181ms)
-			AfterProcessingInitializeOnLoad (36ms)
-			EditorAssembliesLoaded (2ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (43ms)
-Refreshing native plugins compatible for Editor in 17.69 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (131.0 KB). Loaded Objects now: 5343.
-Memory consumption went from 86.4 MB to 86.2 MB.
-Total: 104.160900 ms (FindLiveObjects: 15.188200 ms CreateObjectMapping: 7.249400 ms MarkObjects: 63.222600 ms  DeleteObjects: 18.484800 ms)
+Settings loaded successfully
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ExTools.ExDebug:AddEntry (string,ExTools.DebugSeverity) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:63)
+ExTools.ExDebug:Log (string) (at Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs:37)
+EdixorEntryPoint:InitializeSettings (DIContainer) (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:116)
+EdixorEntryPoint:Initialize () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:34)
+EdixorEntryPoint:.cctor () (at Assets/Edixor/Editor/Core/Services/EdixorEntryPoint.cs:15)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 9.24 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4789 unused Assets / (333.5 KB). Loaded Objects now: 5343.
-Memory consumption went from 86.5 MB to 86.2 MB.
-Total: 45.099600 ms (FindLiveObjects: 2.483200 ms CreateObjectMapping: 1.628800 ms MarkObjects: 22.379000 ms  DeleteObjects: 18.512300 ms)
+(Filename: Assets/Edixor/Editor/Core/Utilities/EdixorDebug.cs Line: 63)
 
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 10.346 seconds
-Refreshing native plugins compatible for Editor in 14.36 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  9.679 seconds
-Domain Reload Profiling: 20018ms
-	BeginReloadAssembly (2468ms)
+- Finished resetting the current domain, in  2.614 seconds
+Domain Reload Profiling: 5332ms
+	BeginReloadAssembly (848ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (136ms)
+		DisableScriptedObjects (59ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (1ms)
-		CreateAndSetChildDomain (354ms)
-	RebuildCommonClasses (278ms)
-	RebuildNativeTypeToScriptingClass (103ms)
-	initialDomainReloadingComplete (292ms)
-	LoadAllAssembliesAndSetupDomain (7191ms)
-		LoadAssemblies (6076ms)
+		CreateAndSetChildDomain (172ms)
+	RebuildCommonClasses (141ms)
+	RebuildNativeTypeToScriptingClass (50ms)
+	initialDomainReloadingComplete (101ms)
+	LoadAllAssembliesAndSetupDomain (1577ms)
+		LoadAssemblies (1394ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2784ms)
-			TypeCache.Refresh (488ms)
-				TypeCache.ScanAssembly (30ms)
-			BuildScriptInfoCaches (2176ms)
-			ResolveRequiredComponents (39ms)
-	FinalizeReload (9685ms)
+		AnalyzeDomain (662ms)
+			TypeCache.Refresh (21ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (605ms)
+			ResolveRequiredComponents (26ms)
+	FinalizeReload (2616ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (8021ms)
+		SetupLoadedEditorAssemblies (2135ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (89ms)
-			SetLoadedEditorAssemblies (45ms)
-			BeforeProcessingInitializeOnLoad (670ms)
-			ProcessInitializeOnLoadAttributes (6510ms)
-			ProcessInitializeOnLoadMethodAttributes (665ms)
-			AfterProcessingInitializeOnLoad (39ms)
-			EditorAssembliesLoaded (3ms)
+			InitializePlatformSupportModulesInManaged (40ms)
+			SetLoadedEditorAssemblies (16ms)
+			BeforeProcessingInitializeOnLoad (187ms)
+			ProcessInitializeOnLoadAttributes (1713ms)
+			ProcessInitializeOnLoadMethodAttributes (152ms)
+			AfterProcessingInitializeOnLoad (26ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (73ms)
-Refreshing native plugins compatible for Editor in 4.60 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (25ms)
+Refreshing native plugins compatible for Editor in 4.18 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4800 unused Assets / (237.4 KB). Loaded Objects now: 5345.
-Memory consumption went from 86.4 MB to 86.1 MB.
-Total: 124.720700 ms (FindLiveObjects: 2.316500 ms CreateObjectMapping: 2.065000 ms MarkObjects: 61.294300 ms  DeleteObjects: 59.035500 ms)
+Unloading 4820 unused Assets / (1.2 MB). Loaded Objects now: 5345.
+Memory consumption went from 86.0 MB to 84.8 MB.
+Total: 21.789600 ms (FindLiveObjects: 1.627200 ms CreateObjectMapping: 1.034400 ms MarkObjects: 14.641400 ms  DeleteObjects: 4.478900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 6.62 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4810 unused Assets / (131.0 KB). Loaded Objects now: 5346.
+Memory consumption went from 86.2 MB to 86.1 MB.
+Total: 336.421000 ms (FindLiveObjects: 2.267300 ms CreateObjectMapping: 1.557400 ms MarkObjects: 19.860000 ms  DeleteObjects: 312.726900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 6.17 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4809 unused Assets / (212.3 KB). Loaded Objects now: 5345.
+Memory consumption went from 86.2 MB to 86.0 MB.
+Total: 23.918800 ms (FindLiveObjects: 1.946900 ms CreateObjectMapping: 1.486200 ms MarkObjects: 16.664300 ms  DeleteObjects: 3.812900 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportWorkerClient::OnTransportError - code=10054 error=Удаленный хост принудительно разорвал существующее подключение.
