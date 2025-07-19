@@ -1,0 +1,10 @@
+<UXML xmlns="UnityEngine.UIElements" xmlns:ui="UnityEngine.UIElements">
+  <VisualElement class="root">
+    <Image name="preview-image" class="preview-image"/>
+    <Label name="title-label" class="title-label"/>
+    <Label name="date-label" class="date-label"/>
+    <ScrollView name="content-scroll" class="content-scroll" vertical-scrolling-enabled="true">
+      <VisualElement name="content-container" class="content-container"/>
+    </ScrollView>
+  </VisualElement>
+</UXML>

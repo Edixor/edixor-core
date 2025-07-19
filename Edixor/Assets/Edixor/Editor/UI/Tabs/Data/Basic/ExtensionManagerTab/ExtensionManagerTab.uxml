@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+
+  <ui:VisualElement class="root-container">
+    <ui:Label text="Edixor Extensions" class="header-label" />
+
+    <uie:Toolbar class="toolbar">
+      <ui:Label text="view: " />
+      <ui:Toggle name="toggle-downloaded" text="Downloaded" value="true" />
+      <ui:Toggle name="toggle-available"  text="Available"  value="true" />
+    </uie:Toolbar>
+
+  <ui:Box name="downloaded-container" class="extensions-box">
+    <ui:Label text="DOWNLOADED EXTENSIONS" class="E-title list-title" />
+    <ui:TextField name="search-downloaded"
+                  placeholder="Search downloaded..." class="search-field" />
+    <ui:ScrollView name="downloaded-list" class="list-scroll" />
+  </ui:Box>
+
+  <ui:Box name="available-container" class="extensions-box">
+    <ui:Label text="AVAILABLE EXTENSIONS" class="E-title list-title" />
+    <ui:TextField name="search-available"
+                  placeholder="Search available..." class="search-field" />
+    <ui:ScrollView name="available-list" class="list-scroll" />
+  </ui:Box>
+
+
+  </ui:VisualElement>
+</ui:UXML>

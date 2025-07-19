@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f685125267c3244b55ecbee2e2673e, type: 3}
+  m_Name: Standard
+  m_EditorClassIdentifier: 
+  layoutName: Standard
+  layoutDescription: vsddv
+  uss: {fileID: 7433441132597879392, guid: 26f9f7155cccf824a9a2e03df2a675b6, type: 3}
+  uxml: {fileID: 9197481963319205126, guid: d7b24236486a1944484635e8a4a9b7ee, type: 3}
+  assetParameters: {fileID: 11400000, guid: 919037835317c2a4d8667fc22aea6d62, type: 2}

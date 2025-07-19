@@ -1,0 +1,75 @@
+ 
+.box {
+  background-color: rgba(30,30,30, 0.5);
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  position: relative;
+}
+
+ 
+.entry-box {
+  margin-left: 0px;  
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+ 
+.row {
+  flex-direction: row;
+  align-items: center;
+}
+
+ 
+.group-label {
+  flex-grow: 1;
+}
+
+.entry-label {
+  margin-bottom: 2px;
+}
+
+Label.info    { color: #CCCCCC; }
+Label.comment { color: #8BC34A; }
+Label.warning { color: #FFEB3B; }
+Label.error   {
+  color: #FF5252;
+  -unity-font-style: bold;
+}
+
+ 
+ScrollView#log-scroll {
+  background-color: #1e1e1e;
+}
+
+ 
+TextField#detail-field {
+  color: #FFFFFF;
+  -unity-font-style: normal;
+  border-width: 1px;
+  border-color: #666666;
+  margin-top: 2px;
+  background-color: #2d2d30;
+  white-space: pre-wrap;
+  padding: 8px;
+}
+
+ 
+.toggle-icon {
+  width: 12px;
+  height: 12px;
+  align-self: center;
+}
+
+ 
+#toggle-button {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+

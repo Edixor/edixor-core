@@ -1,0 +1,537 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93aa79def820f0d47ae9bb38e21bdd4b, type: 3}
+  m_Name: EdixorParameters
+  m_EditorClassIdentifier: 
+  LayoutStyles:
+  - name: tab-section
+    style:
+      states:
+      - StateName: 0
+        State:
+          backgroundColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderTopColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderBottomColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderLeftColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderRightColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          useSeparateBorderWidths: 1
+          borderWidth: 0
+          borderTopWidth: 0
+          borderBottomWidth: 1
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 0
+  - name: middle-section-content
+    style:
+      states:
+      - StateName: 0
+        State:
+          backgroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+          useSeparateBorderColors: 1
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 0
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 0
+  - name: function-section
+    style:
+      states:
+      - StateName: 0
+        State:
+          backgroundColor: {r: 0.14901961, g: 0.14901961, b: 0.14901961, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 1
+          borderWidth: 0
+          borderTopWidth: 1
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 0
+  - name: status-section
+    style:
+      states:
+      - StateName: 0
+        State:
+          backgroundColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 0
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 0
+  TabContentBoxStyles:
+  - name: E-box
+    style:
+      states:
+      - StateName: 0
+        State:
+          backgroundColor: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 1
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 6
+  - name: E-sub-box
+    style:
+      states:
+      - StateName: 0
+        State:
+          backgroundColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 1
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 6
+  - name: E-box-background
+    style:
+      states:
+      - StateName: 0
+        State:
+          backgroundColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 1
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 0
+  TabContentLabelStyles:
+  - name: E-label
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 1}
+          font: {fileID: 0}
+  - name: E-link
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 0.5538448, g: 0.75344366, b: 0.9245283, a: 1}
+          font: {fileID: 0}
+      - StateName: 1
+        State:
+          textColor: {r: 0.7896493, g: 0.89750993, b: 0.990566, a: 1}
+          font: {fileID: 0}
+      - StateName: 1
+        State:
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  - name: E-secondary-text
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+          font: {fileID: 12800000, guid: da851b09e691ce24287e6a3c0560dcd5, type: 3}
+  - name: E-error-text
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 1, g: 0.3254902, b: 0.2901961, a: 1}
+          font: {fileID: 0}
+  - name: E-warning-text
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 1, g: 0.9573764, b: 0.29019606, a: 1}
+          font: {fileID: 0}
+  TabContentButtonStyles:
+  - name: E-button
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 0.81568635, g: 0.81568635, b: 0.81568635, a: 1}
+          backgroundColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 1}
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderWidth: 1
+          borderRadius: 2
+          font: {fileID: 0}
+      - StateName: 1
+        State:
+          textColor: {r: 0.81568635, g: 0.81568635, b: 0.81568635, a: 1}
+          backgroundColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderWidth: 1
+          borderRadius: 2
+          font: {fileID: 0}
+      - StateName: 2
+        State:
+          textColor: {r: 0.81568635, g: 0.81568635, b: 0.81568635, a: 1}
+          backgroundColor: {r: 0.17254902, g: 0.3647059, b: 0.5254902, a: 1}
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderWidth: 1
+          borderRadius: 2
+          font: {fileID: 0}
+  - name: E-special-button
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 0.81568635, g: 0.81568635, b: 0.81568635, a: 1}
+          backgroundColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 1}
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderWidth: 1
+          borderRadius: 2
+          font: {fileID: 0}
+      - StateName: 1
+        State:
+          textColor: {r: 0.81568635, g: 0.81568635, b: 0.81568635, a: 1}
+          backgroundColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderWidth: 1
+          borderRadius: 2
+          font: {fileID: 0}
+      - StateName: 2
+        State:
+          textColor: {r: 0.81568635, g: 0.81568635, b: 0.81568635, a: 1}
+          backgroundColor: {r: 0.17254902, g: 0.3647059, b: 0.5254902, a: 1}
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderWidth: 1
+          borderRadius: 2
+          font: {fileID: 0}
+  TabStyles:
+  - states:
+    - StateName: 0
+      State:
+        boxStyle:
+          backgroundColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderTopColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 0
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 2
+        labelStyle:
+          textColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 1}
+          font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+        tabButtonStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          backgroundColor: {r: 0.28235295, g: 0.28235295, b: 0.28235295, a: 1}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 0}
+        closeButtonStyle:
+          textColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 1}
+          backgroundColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+        iconColor: {r: 0.7725491, g: 0.7725491, b: 0.7725491, a: 1}
+    name: normal
+  - states:
+    - StateName: 0
+      State:
+        boxStyle:
+          backgroundColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderTopColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 0
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 2
+        labelStyle:
+          textColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 1}
+          font: {fileID: 12800000, guid: 0b92b8c2f4e01804fa5622ea6351ecd0, type: 3}
+        tabButtonStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          backgroundColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 0}
+        closeButtonStyle:
+          textColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 1}
+          backgroundColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 12800000, guid: 1e30c8a4e9715ba42aa5a1c66c4f6db6, type: 3}
+        iconColor: {r: 0.7725491, g: 0.7725491, b: 0.7725491, a: 1}
+    name: active
+  - states:
+    - StateName: 0
+      State:
+        boxStyle:
+          backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 0
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 0
+        labelStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          font: {fileID: 0}
+        tabButtonStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 0}
+        closeButtonStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 0}
+        iconColor: {r: 0, g: 0, b: 0, a: 0}
+    name: warning
+  - states:
+    - StateName: 0
+      State:
+        boxStyle:
+          backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderColors: 0
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+          borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+          borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+          borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+          useSeparateBorderWidths: 0
+          borderWidth: 0
+          borderTopWidth: 0
+          borderBottomWidth: 0
+          borderLeftWidth: 0
+          borderRightWidth: 0
+          borderRadius: 0
+        labelStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          font: {fileID: 0}
+        tabButtonStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 0}
+        closeButtonStyle:
+          textColor: {r: 0, g: 0, b: 0, a: 0}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+          borderColor: {r: 0, g: 0, b: 0, a: 0}
+          borderWidth: 0
+          borderRadius: 0
+          font: {fileID: 0}
+        iconColor: {r: 0, g: 0, b: 0, a: 0}
+    name: error
+  FunctionStyle:
+  - states:
+    - StateName: 0
+      State:
+        iconColor: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 1}
+        backgroundColor: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 1}
+        borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+        borderWidth: 1
+        borderRadius: 2
+    - StateName: 1
+      State:
+        iconColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+        backgroundColor: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 1}
+        borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+        borderWidth: 1
+        borderRadius: 2
+    - StateName: 2
+      State:
+        iconColor: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+        borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+        borderWidth: 1
+        borderRadius: 2
+    name: normal
+  - states:
+    - StateName: 0
+      State:
+        iconColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+    name: warning
+  - states:
+    - StateName: 0
+      State:
+        iconColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+    name: error
+  scrollStyleEntries: []
+  AddTabButtonStyle:
+    name: AddTab
+    style:
+      states:
+      - StateName: 0
+        State:
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 1}
+          borderColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+          borderWidth: 1
+          borderRadius: 2
+          font: {fileID: 0}
+  SliderStyle:
+    normal:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.37254903, g: 0.37254903, b: 0.37254903, a: 1}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 6
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.20784315, g: 0.20784315, b: 0.20784315, a: 1}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+    hover:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 6
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.20784315, g: 0.20784315, b: 0.20784315, a: 1}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+    active:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 6
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+    disabled:
+      dragger:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}
+      tracker:
+        textColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        borderTopColor: {r: 0, g: 0, b: 0, a: 0}
+        borderBottomColor: {r: 0, g: 0, b: 0, a: 0}
+        borderLeftColor: {r: 0, g: 0, b: 0, a: 0}
+        borderRightColor: {r: 0, g: 0, b: 0, a: 0}
+        borderWidth: 0
+        borderRadius: 0
+        font: {fileID: 0}

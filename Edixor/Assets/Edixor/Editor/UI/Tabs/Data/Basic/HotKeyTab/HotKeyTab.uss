@@ -1,0 +1,90 @@
+ 
+.hotkey-table-header,
+.hotkey-table-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+     
+    padding: 8px 24px 8px 8px;
+     
+    min-height: 40px;
+    border-bottom-width: 1px;
+    border-bottom-color: #444;
+    position: relative;  
+}
+
+.hotkey-table-header {
+    background-color: #222;
+    color: #ddd;
+}
+
+.row-odd {
+    background-color: #2a2a2a;
+}
+.row-even {
+    background-color: #1f1f1f;
+}
+
+ 
+.hotkey-table-header > Label,
+.hotkey-table-row > Label {
+    margin: 0;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+}
+
+ 
+#column-index {
+    flex: 0 0 5%;
+    justify-content: center;
+}
+#column-key {
+    flex: 0 0 20%;
+    justify-content: flex-start;
+}
+#column-name {
+    flex: 0 0 35%;
+    justify-content: flex-start;
+}
+#column-combo {
+    flex: 0 0 30%;
+    justify-content: flex-start;
+}
+
+ 
+.options-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 16px;  
+    display: flex;
+    flex-direction: row;
+    align-items: center;  
+}
+
+ 
+.options-container > .edit-button,
+.options-container > .toggle-button {
+    margin-left: 6px;
+}
+
+.edit-button,
+.toggle-button {
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.hotkey-header {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.basic-label {
+    font-size: 24px;
+    -unity-font-style: bold;
+}
+
+.add-button {
+    height: 20px;
+}

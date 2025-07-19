@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c532663ebc86f08498aa042e5c54e478, type: 3}
+  m_Name: Restart
+  m_EditorClassIdentifier: 
+  functionName: Restart
+  functionDescription: dgbdbv
+  functionIcon: {fileID: 2800000, guid: 4d98b6d11b001b640b0b18ec5d3ed8f6, type: 3}
+  enable: 1
+  scriptLogic: {fileID: 11500000, guid: 8a1d68e28e60a3e4aabc40af8d101578, type: 3}

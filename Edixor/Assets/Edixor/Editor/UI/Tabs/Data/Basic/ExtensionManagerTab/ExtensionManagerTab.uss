@@ -1,0 +1,106 @@
+ 
+.extension-box {
+  flex-direction: row;
+  align-items: center;           
+  padding: 8px;
+  margin-bottom: 6px;
+  background-color: #3a3a3a;
+  border-radius: 4px;
+}
+
+ 
+.extension-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background-color:rgb(17, 17, 17);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+.extension-icon {
+  width: 32px;
+  height: 32px;
+}
+
+ 
+.extension-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+ 
+.extension-top-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.extension-title {
+  font-size: 14px;
+  -unity-font-style: bold;
+  color: #ffffff;
+}
+.extension-action-btn {
+  width: 80px;
+  height: 24px;
+  -unity-font-style: bold;
+}
+
+ 
+.extension-bottom-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.extension-desc {
+  flex-grow: 1;
+  font-size: 12px;
+  color: #bbbbbb;
+  margin-right: 12px;
+}
+.extension-inspect-btn {
+  width: 80px;
+  height: 24px;
+  -unity-font-style: bold;
+}
+
+ 
+.extensions-box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(20,20,20, 0.9);  
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+ 
+.extensions-box > .search-field {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+ 
+.extensions-box > .list-scroll {
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.empty-label {
+  color: #888888;
+  -unity-font-style: italic;
+  -unity-text-align: middle-center;
+  align-self: center;
+  margin-top: 12px;
+}
+
+.list-title {
+  font-size: 14px;
+  margin-bottom: 4px;
+}

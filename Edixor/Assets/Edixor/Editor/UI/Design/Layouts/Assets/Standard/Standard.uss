@@ -1,0 +1,137 @@
+.content-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.tab-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 24px;
+    margin: 0;  
+}
+
+.tab-section .unity-base-slider__input {
+    visibility: hidden;
+}
+
+
+
+.tab-section .unity-base-slider--horizontal {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tab-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 3px;
+}
+
+.tab-button {
+    border-radius: 0;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 2px;
+}
+
+.tab-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.tab-button-exit {
+    width: 20px;
+    height: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0; 
+}
+
+.add-tab-button {
+    width: 20px;
+    height: 20px;
+    margin-right: 0px;
+    margin-left: 1px;
+}
+
+.middle-section {
+    flex-grow: 1;
+}
+
+.middle-section-content {
+    flex-grow: 1;
+}
+
+.function-section {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+}
+
+.command-function-section,
+.other-function-section {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.other-function-section {
+    justify-content: flex-end;
+}
+
+.function
+{
+    width: 27px;
+    height: 27px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+}
+
+.status-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #1e1e1e;
+    border-top-width: 1px;
+    border-top-color: #3c3c3c;
+    
+    height: 20px;
+    min-height: 20px;
+    max-height: 20px;
+
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.status-bar-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 12px;
+}

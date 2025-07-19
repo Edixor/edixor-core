@@ -1,0 +1,22 @@
+<UXML xmlns="UnityEngine.UIElements">
+  <VisualElement class="extension-details-root">
+    
+    <Image name="preview-image" class="extension-preview" />
+
+    <VisualElement class="extension-info">
+      <Image name="avatar-image" class="extension-avatar" />
+      <VisualElement class="extension-meta">
+        <Label name="extension-name" class="extension-name" />
+        <Label name="extension-version" class="extension-version" />
+        <Label name="extension-date" class="extension-date" />
+      </VisualElement>
+    </VisualElement>
+
+    <Label name="extension-description" class="extension-description" />
+
+    <VisualElement name="markdown-container" class="extension-markdown">
+      <Label text="Documentation is not yet available." class="empty-label"/>
+    </VisualElement>
+    
+  </VisualElement>
+</UXML>

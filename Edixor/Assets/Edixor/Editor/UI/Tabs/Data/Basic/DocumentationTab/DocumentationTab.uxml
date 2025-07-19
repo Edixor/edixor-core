@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:VisualElement class="root-container">
+    <ui:Label text="Documentation:" class="header-label" />
+
+    <ui:Box name="docs-container" class="extensions-box">
+      <ui:TextField name="search-docs" placeholder="Search documentation..." class="search-field" />
+      <ui:ScrollView name="docs-list" class="list-scroll" />
+    </ui:Box>
+  </ui:VisualElement>
+</ui:UXML>

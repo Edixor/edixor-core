@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94302e691623b814abb334cb245e9ef1, type: 3}
+  m_Name: Restart
+  m_EditorClassIdentifier: 
+  _actionName: Restart
+  _enable: 1
+  _combination: 3001000072000000
+  scriptLogic: {fileID: 11500000, guid: c2bb06865fd6b444bb27eb00b04791a8, type: 3}

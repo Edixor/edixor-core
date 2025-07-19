@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010530a9df1437e488d9a13240bdf0e3, type: 3}
+  m_Name: Setting_540d810bb76f400c91f1a738c227909e
+  m_EditorClassIdentifier: 
+  _logicTypeName: ExTools.Tabs.Basic.SettingTab, Assembly-CSharp-Editor, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  _tabName: Setting
+  _uxml: {fileID: 9197481963319205126, guid: df445641ece038144a78958ad135d5e9, type: 3}
+  _uss: {fileID: 7433441132597879392, guid: 6fa26c3804420bb4fa6b2e9901a2c381, type: 3}
+  _icon: {fileID: 2800000, guid: 362dcc954df96154db76493f3844444b, type: 3}

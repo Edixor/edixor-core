@@ -1,0 +1,29 @@
+<UXML xmlns="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <VisualElement class="root">
+    <Label text="WELCOME TO THE EDIXOR" class="header-label" />
+
+    <VisualElement name="info-section" class="info-section E-box-background">
+      <Label name="info-label" text="Edixor info:" class="info-title-label" />
+      <Label name="version-label" class="info-value-label" />
+      <Label name="updates-label" class="info-value-label" />
+      <Label name="version-unity-label" class="info-value-label" />
+      <Label name="size-label" class="info-value-label" />
+    </VisualElement>
+
+    <VisualElement name="links-section" class="dual-container links-section E-box-background" />
+
+    <VisualElement class="dual-container horizontal-sections E-box-background">
+      <VisualElement name="tabs-container" class="section tabs-container">
+        <Label text="Tabs" class="section-header" />
+        <VisualElement name="tabs-list" class="tabs-list" />
+      </VisualElement>
+
+      <VisualElement class="divider" />
+
+      <VisualElement name="news-container" class="section news-container">
+        <Label text="News" class="section-header" />
+        <VisualElement name="news-list" class="news-list" />
+      </VisualElement>
+    </VisualElement>
+  </VisualElement>
+</UXML>

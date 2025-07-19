@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement class="error-tab-root">
+        <ui:Label name="error-title" class="error-title" text="ErrorTab"/>
+        <ui:Label name="error-message" class="error-message"/>
+        <ui:Button name="copy-button" text="📋 Copy"/>
+    </ui:VisualElement>
+</ui:UXML>

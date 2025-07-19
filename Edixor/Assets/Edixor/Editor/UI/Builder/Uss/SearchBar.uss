@@ -1,0 +1,93 @@
+.search-bar {
+    flex-direction: row;
+    align-items: center;
+    height: 28px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #1e1e1e;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #3c3c3c;
+    margin-bottom: 6px;
+}
+
+.search-bar-icon {
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-right: 4px;
+}
+
+.search-bar-icon .unity-image {
+    width: 16px;
+    height: 16px;
+}
+
+.reverse-button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background-color: transparent;
+    border-width: 0;
+}
+
+.reverse-button .unity-image {
+    width: 16px;
+    height: 16px;
+}
+
+.relative-container {
+    position: relative;
+    flex-grow: 1;
+    height: 24px;
+}
+
+.search-field {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+}
+
+.search-placeholder {
+    position: absolute;
+    left: 6px;
+    top: 4px;
+    color: #888;
+    font-size: 12px;
+}
+
+.extra-action-button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-left: 2px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-width: 0;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.extra-action-button .unity-image {
+    width: 16px;
+    height: 16px;
+}
+
+.search-error {
+    color: #ff5c5c;
+    font-size: 11px;
+    margin-top: 4px;
+    margin-left: 4px;
+    display: none;
+}

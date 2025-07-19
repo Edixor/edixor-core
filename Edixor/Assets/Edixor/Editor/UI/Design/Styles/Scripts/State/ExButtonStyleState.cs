@@ -1,0 +1,22 @@
+using UnityEngine;
+using UnityEngine.UIElements;
+
+[System.Serializable]
+public struct ExButtonStyleState : IExStyleState 
+{
+    public Color textColor;
+    public Color backgroundColor;
+    public Color borderColor;
+    public float borderWidth;
+    public float borderRadius;
+    public Font font;
+    public void ApplyTo(VisualElement element)
+    {
+        element.style.backgroundColor = backgroundColor;
+        element.style.color = textColor;
+        element.style.borderTopColor = element.style.borderBottomColor = element.style.borderLeftColor = element.style.borderRightColor = borderColor;
+        element.style.borderTopWidth = element.style.borderBottomWidth = element.style.borderLeftWidth = element.style.borderRightWidth = borderWidth;
+        element.style.borderTopLeftRadius = element.style.borderTopRightRadius = element.style.borderBottomLeftRadius = element.style.borderBottomRightRadius = borderRadius;
+        if(font!=null) element.style.unityFontDefinition = FontDefinition.FromFont(font);
+    }
+}

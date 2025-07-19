@@ -1,0 +1,26 @@
+<UXML xmlns="UnityEngine.UIElements" xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement>
+        <ui:Label text="Label: E-label" class="E-label" />
+        <ui:Label text="Link: E-link" class="E-link" />
+        <ui:Label text="Error: E-error-text" class="E-error-text" />
+        <ui:Label text="Warning: E-warning-text" class="E-warning-text" />
+        <ui:Label text="Secondary: E-secondary-text" class="E-secondary-text" />
+
+        <ui:VisualElement class="E-box">
+            <ui:Label text="Inside E-box" />
+        </ui:VisualElement>
+        <ui:VisualElement class="E-sub-box">
+            <ui:Label text="Inside E-sub-box" />
+        </ui:VisualElement>
+        <ui:VisualElement class="E-box-background">
+            <ui:Label text="Inside E-box-background" />
+        </ui:VisualElement>
+
+        <ui:Button text="Default Button" class="E-button" />
+        <ui:Button text="Special Button" class="E-special-button" />
+
+        <ui:ScrollView class="E-Scroll">
+            <ui:Label text="Scrollable Content" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</UXML>

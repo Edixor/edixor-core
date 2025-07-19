@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010530a9df1437e488d9a13240bdf0e3, type: 3}
+  m_Name: Demonstration UIStyle_b0c57b5b607643dc9f4b4d53d9d4ef6f
+  m_EditorClassIdentifier: 
+  _logicTypeName: ExTools.Tabs.Basic.DemonstrationTab, Assembly-CSharp-Editor, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  _tabName: Demonstration UIStyle
+  _uxml: {fileID: 9197481963319205126, guid: 348f592f90399374daf54c7cf6b7e6cf, type: 3}
+  _uss: {fileID: 7433441132597879392, guid: 3370ee7127834444889be00f9ec17039, type: 3}
+  _icon: {fileID: 2800000, guid: 57297abe20a60514bb1179915abefbca, type: 3}

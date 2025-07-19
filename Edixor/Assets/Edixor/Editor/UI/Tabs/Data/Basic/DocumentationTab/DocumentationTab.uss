@@ -1,0 +1,38 @@
+.root-container {
+  flex-direction: column;
+  padding: 12px;
+}
+
+.header-label {
+  font-size: 18px;
+  -unity-font-style: bold;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.extensions-box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(20, 20, 20, 0.9);
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+.search-field {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.list-scroll {
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+.empty-label {
+  color: #888888;
+  -unity-font-style: italic;
+  -unity-text-align: middle-center;
+  align-self: center;
+  margin-top: 12px;
+}

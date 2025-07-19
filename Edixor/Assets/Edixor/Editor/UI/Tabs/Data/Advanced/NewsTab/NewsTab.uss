@@ -1,0 +1,43 @@
+.root {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background-color: #222222;
+  color: white;
+}
+
+.preview-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  background-color: #1e1e1e;
+}
+
+.title-label {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.date-label {
+  font-size: 14px;
+  color: #999999;
+  margin-bottom: 12px;
+}
+
+.content-scroll {
+  flex-grow: 1;
+  background-color: #1e1e1e;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.content-container {
+  flex-direction: column;
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: #ddd;
+}
