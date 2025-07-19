@@ -1,7 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/ussCreator.uss?fileID=7433441132597879392&amp;guid=00980e375578f3248ad66c330d8ba51a&amp;type=3#ussCreator" />
-    <ui:VisualElement name="VisualElement" style="flex-grow: 1;">
-        <ui:Button text="Create" />
-        <ui:Button text="Delete" />
-    </ui:VisualElement>
-</ui:UXML>
